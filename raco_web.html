@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raco — Wine Bar · Palma de Mallorca</title>
+<meta name="description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
+<meta name="theme-color" content="#FFFDF8">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&family=Bebas+Neue&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FFFDF8;
+  --ink: #161E14;
+  --gold: #B49356;
+  --gold-text: #8C6A2E;
+  --gold-20: rgba(180,147,86,0.3);
+  --gold-40: rgba(180,147,86,0.4);
+  --ink-10: rgba(22,30,20,0.08);
+  --ink-30: rgba(22,30,20,0.75);
+  --ink-50: rgba(22,30,20,0.88);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.05;}
+
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:10000;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;pointer-events:none;}
+.loader-word{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,7vw,64px);letter-spacing:0.3em;color:transparent;transition:color 0.7s ease;}
+#loader-raco{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,10vw,96px);letter-spacing:0.25em;color:var(--gold);position:absolute;opacity:0;transform:scaleY(0.05);}
+
+/* CURSOR */
+#cursor-dot{position:fixed;z-index:10001;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;will-change:transform;transition:width 0.2s,height 0.2s,transform 0.05s linear;}
+#cursor-ring{position:fixed;z-index:10000;width:32px;height:32px;border-radius:50%;border:0.5px solid var(--gold-40);pointer-events:none;will-change:transform;transition:transform 0.12s ease-out,width 0.25s,height 0.25s;}
+/* cursor dot stays same size */
+body.hovering #cursor-ring{width:48px;height:48px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;background:rgba(255,253,248,0.93);backdrop-filter:blur(6px);border-bottom:0.5px solid var(--gold-20);}
+.nav-logo svg{height:34px;display:block;}
+.nav-links{display:flex;gap:2rem;flex:1;justify-content:center;}
+.nav-links a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--ink);text-decoration:none;cursor:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--gold-text);}
+.nav-lang{display:flex;gap:2px;}
+.nav-lang span{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:rgba(22,30,20,0.8);cursor:none;padding:2px 6px;transition:color 0.3s;}
+.nav-lang span.on{color:var(--gold-text);}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 5vw 3rem;position:relative;overflow:hidden;}
+.hero-pre{font-family:'Outfit',sans-serif;font-weight:400;font-size:12px;letter-spacing:4px;color:var(--gold-text);text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease 0.2s forwards;animation-fill-mode:forwards;}
+.hero-logo-wrap{opacity:0;animation:fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;margin-bottom:2.5rem;display:flex;justify-content:center;}
+.hero-logo-wrap svg{width:min(260px,52vw);display:block;}
+.hero-rule{display:flex;align-items:center;gap:14px;width:min(320px,60vw);margin:0 auto 2.5rem;opacity:0;animation:fadeUp 0.8s ease 0.9s forwards;}
+.hero-rule-line{flex:1;height:0.5px;background:var(--gold-20);}
+.hero-rule-diamond{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
+.hero-cta{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;padding:15px 48px;border:0.5px solid var(--ink);color:var(--ink);text-decoration:none;cursor:none;position:relative;opacity:0;animation:fadeUp 0.8s ease 1.1s forwards;transition:color 0.3s,border-color 0.3s;}
+.hero-cta:hover{color:var(--gold);border-color:var(--gold);}
+.hero-cta::after{content:'';position:absolute;top:4px;left:4px;right:-4px;bottom:-4px;border:0.5px solid var(--gold-20);pointer-events:none;}
+.hero-sections{display:flex;gap:0;margin-top:2.5rem;border:0.5px solid var(--gold-20);opacity:0;animation:fadeUp 0.8s ease 1.35s forwards;flex-wrap:wrap;justify-content:center;flex-shrink:0;max-width:min(640px,92vw);}
+.hs-link{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--ink);text-decoration:none;cursor:none;padding:13px 22px;border-right:0.5px solid var(--gold-20);transition:background 0.3s,color 0.3s;flex:0 0 auto;}
+.hs-link:last-child{border-right:none;}
+.hs-link:hover{background:var(--ink);color:var(--paper);}
+@media(max-width:560px){
+  .hero-sections{width:min(320px,90vw);}
+  .hs-link{flex:1 1 50%;padding:12px 8px;font-size:11px;letter-spacing:2px;text-align:center;border-bottom:0.5px solid var(--gold-20);}
+  .hs-link:nth-child(2){border-right:none;}
+  .hs-link:nth-child(4){border-right:none;}
+  .hs-link:nth-child(5){flex-basis:100%;border-bottom:none;border-right:none;}
+  .hs-link:nth-child(3),.hs-link:nth-child(4){border-bottom:0.5px solid var(--gold-20);}
+}
+.hero-scroll{position:absolute;bottom:5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 0.8s ease 1.6s forwards;}
+.hero-scroll span{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(22,30,20,0.75);}
+.hero-scroll-line{width:1px;height:28px;background:var(--gold-20);overflow:hidden;position:relative;}
+.hero-scroll-line::after{content:'';position:absolute;top:-100%;width:100%;height:100%;background:var(--gold);animation:scrollSlide 2s ease 2s infinite;}
+.hero-ig{position:absolute;bottom:2rem;right:5vw;font-family:'Bebas Neue',sans-serif;font-size:9px;letter-spacing:3px;color:rgba(22,30,20,0.75);text-decoration:none;cursor:none;transition:color 0.3s;display:flex;align-items:center;gap:8px;opacity:0;animation:fadeUp 0.8s ease 1.8s forwards;}
+.hero-ig:hover{color:var(--gold);}
+
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;padding:10px 0;border-top:0.5px solid var(--gold-20);border-bottom:0.5px solid var(--gold-20);}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap;}
+.mi{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--ink-30);padding:0 2rem;}
+.md{color:var(--gold-20);}
+
+/* NOSOTROS */
+.nos-section{display:grid;grid-template-columns:40% 60%;position:relative;}
+.nos-sticky{position:sticky;top:60px;height:calc(100vh - 60px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;border-right:0.5px solid var(--gold-20);background:var(--paper);position:sticky;}
+.nos-sticky::before{content:'';position:absolute;inset:0;background:url('paper-texture.png') center/cover no-repeat;opacity:0.08;filter:blur(40px) saturate(0.6);mix-blend-mode:multiply;pointer-events:none;}
+.nos-sticky > *{position:relative;}
+.nos-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:4px;color:var(--gold-text);margin-bottom:2rem;}
+.raco-split{display:flex;align-items:center;justify-content:center;gap:0;}
+.ra-block{padding:0.8rem 1.2rem;border:0.5px solid var(--gold-20);text-align:center;}
+.ra-word{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,3.5vw,44px);line-height:1;display:block;letter-spacing:0.05em;}
+.ra-word .strong{color:var(--ink);}
+.ra-word .soft{color:rgba(180,147,86,0.7);}
+.ra-plus{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold-20);padding:0 0.8rem;}
+.nos-scroll{padding:4rem 3rem;display:flex;flex-direction:column;gap:4rem;overflow-y:auto;}
+.nos-block{padding-bottom:3rem;border-bottom:0.5px solid var(--gold-20);}
+.nos-block:last-child{border-bottom:none;}
+.nos-block-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--gold-text);margin-bottom:0.8rem;}
+.nos-block-text{font-family:'Outfit',sans-serif;font-weight:300;font-size:clamp(20px,2.4vw,28px);color:var(--ink);line-height:1.4;}
+.nos-block-body{font-family:'Outfit',sans-serif;font-weight:300;font-size:15px;color:var(--ink-50);line-height:1.9;margin-top:0.8rem;}
+/* ORIGEN — bloque editorial */
+.nos-origen{padding-bottom:4rem;}
+.origen-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--gold-text);text-transform:uppercase;margin-bottom:1.4rem;border-top:0.5px solid var(--gold-40);padding-top:0.8rem;display:inline-block;}
+.origen-img{margin:0 0 2rem;max-width:80%;}
+.origen-img img{aspect-ratio:auto;max-height:380px;width:100%;object-fit:cover;}
+.origen-img figcaption{font-size:10px;letter-spacing:2px;}
+/* STICKY — gran display Ramis + Company */
+.sticky-display{font-family:'Bebas Neue',sans-serif;line-height:0.92;letter-spacing:0.01em;color:var(--ink);display:flex;flex-direction:column;gap:0.4rem;text-align:left;margin-top:1.6rem;}
+.sticky-display .od-word{display:flex;align-items:baseline;gap:0;font-size:clamp(56px,9vw,108px);}
+.sticky-display .od-word .hi{color:var(--gold);font-size:1.4em;line-height:0.85;letter-spacing:-0.02em;}
+.sticky-display .od-word .rest{color:var(--ink);font-size:0.5em;letter-spacing:0.04em;margin-left:0.05em;align-self:flex-end;padding-bottom:0.2em;font-weight:300;}
+.sticky-display .od-plus{color:var(--gold);font-weight:300;font-size:clamp(34px,5vw,56px);padding-left:0.1em;align-self:flex-start;}
+@media(max-width:720px){
+  .origen-img{max-width:100%;}
+  .origen-img img{max-height:280px;}
+  .sticky-display .od-word{font-size:clamp(48px,11vw,80px);}
+}
+.ig-mini{margin-top:2rem;padding-top:1.8rem;border-top:0.5px solid var(--gold-20);}
+.ig-mini-cap{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gold-text);margin-bottom:1rem;}
+.ig-mini-cap a{color:var(--gold);text-decoration:none;border-bottom:0.5px solid var(--gold-40);padding-bottom:1px;transition:color 0.3s;}
+.ig-mini-cap a:hover{color:var(--ink);border-color:var(--ink);}
+.ig-feed{max-width:520px;overflow:hidden;aspect-ratio:3/1;}
+.ig-feed behold-widget{display:block;width:100%;}
+.nos-img-ph{width:100%;aspect-ratio:4/3;background:#E0D8C4;background-image:repeating-linear-gradient(90deg,rgba(22,30,20,0.03) 0,rgba(22,30,20,0.03) 1px,transparent 1px,transparent 16px);display:flex;align-items:flex-end;padding:1rem;}
+.nos-img-ph span{font-family:'Bebas Neue',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(22,30,20,0.4);}
+.nos-img{margin:0;width:100%;}
+.nos-img img{width:100%;height:auto;display:block;aspect-ratio:1/1;object-fit:cover;filter:saturate(0.95) contrast(1.02);}
+.nos-img figcaption{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gold-text);margin-top:0.8rem;text-align:left;}
+
+/* SHARED */
+.s-section{padding:8rem 5vw;}
+.s-section.centered{text-align:center;}
+.s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:4px;color:var(--gold-text);display:block;margin-bottom:1rem;}
+.s-title{font-family:'Outfit',sans-serif;font-weight:200;font-size:clamp(34px,5.2vw,56px);color:var(--ink);line-height:1.1;letter-spacing:-0.01em;margin-bottom:2rem;}
+.s-body{font-family:'Outfit',sans-serif;font-weight:300;font-size:16px;color:var(--ink-50);line-height:1.9;}
+.sep{display:flex;align-items:center;gap:1.5rem;padding:0 5vw;}
+.sep-line{flex:1;height:0.5px;background:var(--gold-20);}
+.divider-anim{height:0.5px;background:transparent;overflow:hidden;position:relative;}
+.divider-anim::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold-20);transition:left 1.2s ease;}
+.divider-anim.visible::after{left:0;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* CARTA */
+.carta-grid-pdf{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gold-20);max-width:640px;margin:0 auto 4rem;}
+.carta-pdf-block{background:var(--paper);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:0.5rem;text-decoration:none;cursor:none;transition:background 0.3s,box-shadow 0.3s;text-align:left;box-shadow:0 1px 4px rgba(0,0,0,0.03);}
+.carta-pdf-block:hover{background:#F3EEE4;}
+.carta-pdf-block:hover .cpb-cta{color:var(--gold);}
+.cpb-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--gold-text);}
+.cpb-name{font-family:'Outfit',sans-serif;font-weight:200;font-size:26px;color:var(--ink);}
+.cpb-desc{font-family:'Outfit',sans-serif;font-weight:300;font-size:14px;color:var(--ink-30);line-height:1.5;}
+.cpb-cta{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:rgba(22,30,20,0.75);margin-top:0.8rem;transition:color 0.3s;}
+.menu-semanal-block{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:640px;margin:0 auto;padding-top:3rem;border-top:0.5px solid var(--gold-20);align-items:center;}
+.msb-title{font-family:'Outfit',sans-serif;font-weight:200;font-size:clamp(24px,3vw,36px);color:var(--ink);line-height:1.2;margin-bottom:0.8rem;}
+.msb-body{font-family:'Outfit',sans-serif;font-weight:300;font-size:15px;color:var(--ink-50);line-height:1.8;}
+.nl-form{display:flex;flex-direction:column;gap:8px;}
+.nl-inp{background:transparent;border:0.5px solid var(--gold-20);padding:14px 16px;font-family:'Outfit',sans-serif;font-weight:300;font-size:14px;color:var(--ink);outline:none;cursor:none;transition:border-color 0.2s;}
+.nl-inp:focus{border-color:var(--gold);}
+.nl-inp::placeholder{color:rgba(22,30,20,0.7);}
+.nl-btn{background:var(--ink);color:var(--paper);border:none;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;cursor:none;transition:background 0.3s;}
+.nl-btn:hover{background:var(--gold);color:var(--ink);}
+.consent-lbl{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--ink-50);line-height:1.5;text-align:left;}
+.consent-lbl input{margin-top:3px;accent-color:var(--gold);cursor:none;flex-shrink:0;}
+.consent-lbl a{color:var(--gold);text-decoration:underline;}
+.consent-lbl.full{grid-column:1/-1;}
+#cookies{position:fixed;bottom:1rem;left:1rem;right:1rem;max-width:580px;margin:0 auto;background:var(--ink);color:var(--paper);padding:1rem 1.2rem;z-index:9998;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;box-shadow:0 8px 24px rgba(0,0,0,0.25);border:0.5px solid var(--gold-40);}
+#cookies p{font-size:12px;line-height:1.5;flex:1;min-width:200px;}
+#cookies a{color:var(--gold);text-decoration:underline;}
+#cookies button{background:var(--gold);color:var(--ink);border:none;padding:10px 18px;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;cursor:none;}
+.footer-legal{font-family:'Outfit',sans-serif;font-weight:300;font-size:11px;color:rgba(255,253,248,0.55);letter-spacing:0.5px;}
+.footer-legal a{color:inherit;text-decoration:none;transition:color 0.3s;}
+.footer-legal a:hover{color:var(--gold);}
+.nl-ok{display:none;font-family:'Outfit',sans-serif;font-weight:300;font-size:16px;color:var(--gold);}
+
+/* BEBIDAS */
+.bebidas-section{background:var(--ink);padding:8rem 5vw;text-align:center;position:relative;overflow:hidden;}
+.bebidas-bg{position:absolute;font-family:'Outfit',sans-serif;font-weight:200;font-size:clamp(120px,20vw,260px);color:rgba(180,147,86,0.04);line-height:1;top:50%;right:-20px;transform:translateY(-50%);pointer-events:none;user-select:none;letter-spacing:0.2em;}
+.bebidas-section .s-label{color:var(--gold);font-weight:400;}
+.bebidas-section .s-title{color:var(--paper);max-width:600px;margin:0 auto 1.5rem;}
+.bebidas-section .s-body{color:rgba(255,253,248,0.85);max-width:500px;margin:0 auto;}
+.bebidas-aside{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:rgba(180,147,86,0.95);margin-top:2rem;}
+.bebidas-cats{display:flex;justify-content:center;gap:0;margin-top:3rem;position:relative;z-index:1;}
+.bcat{padding:0.8rem 2rem;border-right:0.5px solid rgba(180,147,86,0.15);}
+.bcat:last-child{border-right:none;}
+.bcat-name{font-family:'Outfit',sans-serif;font-weight:200;font-size:20px;color:rgba(255,253,248,0.98);}
+.bcat-desc{font-family:'Outfit',sans-serif;font-weight:300;font-size:12px;color:rgba(255,253,248,0.8);margin-top:4px;letter-spacing:0.05em;}
+
+/* RESERVAS */
+.res-section{padding:8rem 5vw;text-align:center;border-top:0.5px solid var(--gold-20);}
+.res-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:2rem;}
+.res-btn{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;padding:15px 40px;text-decoration:none;cursor:none;transition:all 0.3s;}
+.res-btn.primary{background:var(--ink);color:var(--paper);}
+.res-btn.primary:hover{background:var(--gold);color:var(--ink);}
+.res-btn.secondary{border:0.5px solid var(--gold-40);color:var(--gold-text);}
+.res-btn.secondary:hover{background:var(--gold);color:var(--ink);}
+.res-note{font-family:'Outfit',sans-serif;font-weight:300;font-size:14px;color:rgba(22,30,20,0.8);margin-top:1.5rem;}
+
+/* CONTACTO */
+.contacto-section{background:var(--ink);padding:8rem 5vw;display:grid;grid-template-columns:1fr 1fr;gap:6rem;}
+.contacto-img{background:#1C1C0E;min-height:380px;overflow:hidden;display:flex;}
+.contacto-img iframe{filter:grayscale(0.4) contrast(1.05);}
+.contacto-info{display:flex;flex-direction:column;justify-content:center;}
+.contacto-info .s-label{color:var(--gold);font-weight:400;}
+.contacto-info .s-title{color:var(--paper);font-size:clamp(28px,4vw,48px);margin-bottom:2.5rem;}
+.ubic-row{margin-bottom:1.6rem;}
+.ubic-lbl{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--gold);display:block;margin-bottom:5px;}
+.ubic-val{font-family:'Outfit',sans-serif;font-weight:200;font-size:19px;color:rgba(255,253,248,0.95);}
+.ubic-val-link{font-family:'Outfit',sans-serif;font-weight:200;font-size:19px;color:rgba(255,253,248,0.95);text-decoration:none;cursor:none;transition:color 0.3s;}
+.ubic-val-link:hover{color:var(--gold);}
+
+/* EMPLEO */
+.empleo-section{padding:8rem 5vw;border-top:0.5px solid var(--gold-20);text-align:center;}
+.empleo-section .s-title{max-width:500px;margin:0 auto 0.5rem;}
+.emp-sub{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:rgba(22,30,20,0.8);margin-bottom:2.5rem;}
+.emp-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:520px;margin:0 auto;}
+.emp-in{background:transparent;border:0.5px solid var(--gold-20);padding:14px 16px;font-family:'Outfit',sans-serif;font-weight:300;font-size:14px;color:var(--ink);outline:none;cursor:none;transition:border-color 0.2s;}
+.emp-in:focus{border-color:var(--gold);}
+.emp-in::placeholder{color:rgba(22,30,20,0.7);}
+.emp-in.full{grid-column:1/-1;}
+textarea.emp-in{resize:vertical;font-family:'Outfit',sans-serif;line-height:1.5;}
+.emp-cv-note{grid-column:1/-1;font-size:12px;color:var(--ink-50);text-align:center;margin:0.4rem 0 0;}
+.emp-cv-note a{color:var(--gold);text-decoration:underline;}
+.emp-btn{grid-column:1/-1;background:var(--ink);color:var(--paper);border:none;padding:15px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;cursor:none;transition:background 0.3s;margin-top:4px;}
+.emp-btn:hover{background:var(--gold);color:var(--ink);}
+.emp-ok{display:none;font-family:'Outfit',sans-serif;font-weight:300;font-size:17px;color:var(--gold);margin-top:1rem;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid rgba(180,147,86,0.1);flex-wrap:wrap;gap:1rem;}
+.footer-logo svg{height:16px;}
+.footer-copy{font-family:'Outfit',sans-serif;font-weight:300;font-size:12px;color:rgba(255,253,248,0.8);letter-spacing:1px;}
+.footer-ra{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:rgba(180,147,86,0.95);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scrollSlide{0%{top:-100%}100%{top:100%}}
+@keyframes loaderExpand{0%{opacity:0;transform:scaleY(0.05)}40%{opacity:1;transform:scaleY(1.05)}70%{transform:scaleY(1)}100%{opacity:1;transform:scaleY(1)}}
+
+/* MOBILE */
+@media(max-width:768px){
+  body::after{display:none;}
+  body{cursor:auto;}
+  #cursor-dot,#cursor-ring{display:none;}
+
+  /* NAV */
+  nav{padding:0.6rem 1.2rem;backdrop-filter:none;background:rgba(255,253,248,0.97);flex-wrap:wrap;height:auto;row-gap:0.5rem;}
+  .nav-logo{order:1;}
+  .nav-lang{order:2;}
+  .nav-links{order:3;flex-basis:100%;justify-content:space-between;gap:0.5rem;padding:0.4rem 0 0.2rem;border-top:0.5px solid var(--gold-20);}
+  .nav-links a{font-size:11px;letter-spacing:2px;flex:1;text-align:center;padding:4px 0;}
+  .nav-logo svg{height:28px;}
+
+  /* HERO */
+  .hero{padding:5rem 1.5rem 3rem;min-height:100svh;}
+  .hero-logo-wrap svg{width:min(200px,55vw);}
+  .hero-cta{padding:13px 32px;font-size:11px;}
+  .hero-ig{display:none;}
+
+  /* NOSOTROS — stacked */
+  .nos-section{display:flex;flex-direction:column;}
+  .nos-sticky{position:relative;height:auto;top:auto;padding:3rem 1.5rem 2rem;border-right:none;border-bottom:0.5px solid var(--gold-20);}
+  .nos-scroll{padding:2.5rem 1.5rem;gap:2.5rem;}
+  .nos-block-text{font-size:18px;}
+
+  /* SECTIONS */
+  .s-section{padding:3.5rem 1.5rem;}
+  .s-title{font-size:clamp(26px,7vw,36px);}
+  .sep{padding:0 1.5rem;}
+
+  /* CARTA */
+  .carta-grid-pdf{grid-template-columns:1fr;}
+  .menu-semanal-block{grid-template-columns:1fr;gap:2rem;}
+  .cpb-name{font-size:20px;}
+
+  /* BEBIDAS */
+  .bebidas-section{padding:3.5rem 1.5rem;}
+  .bebidas-cats{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:2.5rem;}
+  .bcat{border-right:0.5px solid rgba(180,147,86,0.15);border-bottom:0.5px solid rgba(180,147,86,0.15);padding:1.2rem 0.8rem;width:auto;}
+  .bcat:nth-child(2n){border-right:none;}
+  .bcat:nth-last-child(-n+2){border-bottom:none;}
+  .bcat:last-child{border-bottom:none;}
+  .bebidas-bg{display:none;}
+
+  /* RESERVAS */
+  .res-section{padding:3.5rem 1.5rem;}
+  .res-btns{flex-direction:column;align-items:center;}
+  .res-btn{width:100%;text-align:center;padding:14px;}
+
+  /* CONTACTO */
+  .contacto-section{grid-template-columns:1fr;gap:2rem;padding:3.5rem 1.5rem;}
+  .contacto-img{min-height:200px;}
+  .ubic-val{font-size:15px;}
+
+  /* EMPLEO */
+  .empleo-section{padding:3.5rem 1.5rem;}
+  .emp-form{grid-template-columns:1fr;}
+  .emp-in.full,.emp-btn{grid-column:1;}
+
+  /* FOOTER */
+  footer{padding:1.5rem 1.5rem;flex-direction:column;align-items:flex-start;gap:0.5rem;}
+}
+
+@media(max-width:480px){
+  .s-title{font-weight:300;letter-spacing:0;}
+  .nos-block-text{font-weight:300;}
+  .cpb-name{font-weight:300;}
+  .msb-title{font-weight:300;}
+}
+
+@media(min-width:600px){
+  .nos-section{display:grid;grid-template-columns:40% 60%;}
+  .nos-sticky{position:sticky;top:60px;height:calc(100vh - 60px);border-right:0.5px solid var(--gold-20);border-bottom:none;padding:3rem 2rem;}
+  .nos-scroll{padding:4rem 3rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}
+  .reveal,.nos-block{opacity:1!important;transform:none!important;}
+  .marquee-track{animation:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <span class="loader-word" id="lw-ramis">RAMIS</span>
+  <span class="loader-word" id="lw-company">COMPANY</span>
+  <span id="loader-raco">RACO</span>
+</div>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" style="cursor:none;">
+    <svg viewBox="0 0 141.732 141.732" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Raco">
+      <path fill="#1C1C0E" d="M 19.035156 75.347656 C 24.667969 75.347656 27.910156 78.929688 27.910156 85.074219 L 27.910156 125.191406 C 27.910156 130.824219 28.25 134.75 28.933594 137.480469 L 32.691406 137.480469 C 31.835938 134.238281 31.492188 130.480469 31.492188 125.191406 L 31.492188 85.074219 C 31.492188 79.101562 29.617188 75.6875 25.007812 73.640625 C 29.273438 71.078125 31.664062 67.324219 31.664062 62.371094 L 31.664062 27.890625 C 31.664062 19.699219 26.886719 14.917969 19.203125 14.917969 L 6.402344 14.917969 L 6.402344 137.480469 L 9.988281 137.480469 L 9.988281 75.347656 Z M 28.082031 62.371094 C 28.082031 68.519531 24.835938 72.101562 19.203125 72.101562 L 9.988281 72.101562 L 9.988281 18.164062 L 19.203125 18.164062 C 24.835938 18.164062 28.082031 21.746094 28.082031 27.890625 Z M 35.078125 137.480469 L 38.492188 137.480469 L 42.929688 93.609375 L 58.292969 93.609375 L 62.730469 137.480469 L 66.144531 137.480469 L 53.171875 14.917969 L 48.050781 14.917969 Z M 50.441406 21.578125 L 50.78125 21.578125 L 53.511719 47.863281 L 57.949219 90.367188 L 43.269531 90.367188 L 47.710938 47.863281 Z M 93.96875 26.355469 C 93.96875 18.675781 89.015625 13.554688 81.675781 13.554688 C 74.335938 13.554688 69.214844 18.675781 69.214844 26.355469 L 69.214844 126.042969 C 69.214844 133.726562 74.335938 138.847656 81.675781 138.847656 C 89.015625 138.847656 93.96875 133.726562 93.96875 126.042969 L 93.96875 89.683594 L 90.554688 89.683594 L 90.554688 126.042969 C 90.554688 132.019531 87.140625 135.601562 81.675781 135.601562 C 76.214844 135.601562 72.800781 132.019531 72.800781 126.042969 L 72.800781 26.355469 C 72.800781 20.382812 76.214844 16.796875 81.675781 16.796875 C 87.140625 16.796875 90.554688 20.382812 90.554688 26.355469 L 90.554688 60.664062 L 93.96875 60.664062 Z M 112.230469 13.554688 C 104.890625 13.554688 99.429688 19.015625 99.429688 26.527344 L 99.429688 125.871094 C 99.429688 133.382812 104.890625 138.847656 112.230469 138.847656 C 119.570312 138.847656 125.03125 133.382812 125.03125 125.871094 L 125.03125 26.527344 C 125.03125 19.015625 119.570312 13.554688 112.230469 13.554688 M 112.230469 16.796875 C 117.691406 16.796875 121.449219 20.550781 121.449219 26.527344 L 121.449219 125.871094 C 121.449219 131.847656 117.691406 135.601562 112.230469 135.601562 C 106.769531 135.601562 103.011719 131.847656 103.011719 125.871094 L 103.011719 26.527344 C 103.011719 20.550781 106.769531 16.796875 112.230469 16.796875"/>
+      <path fill="#B49356" d="M 135.0625 27.785156 L 135.0625 2.617188 L 109.554688 2.617188 L 109.554688 5.871094 L 131.46875 5.871094 L 131.46875 27.785156 Z"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="#nosotros" data-i18n="nav-nosotros">Nosotros</a>
+    <a href="#carta" data-i18n="nav-carta">Carta</a>
+    <a href="#bebidas" data-i18n="nav-bebidas">Bebidas</a>
+    <a href="#reservas" data-i18n="nav-reservas">Reservas</a>
+    <a href="#contacto" data-i18n="nav-contacto">Contacto</a>
+  </div>
+  <div class="nav-lang">
+    <span class="on" onclick="setLang('es',this)">ES</span>
+    <span onclick="setLang('ca',this)">CA</span>
+    <span onclick="setLang('en',this)">EN</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-logo-wrap">
+    <svg viewBox="0 0 141.732 141.732" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Raco">
+      <path fill="#B49356" d="M 19.035156 75.347656 C 24.667969 75.347656 27.910156 78.929688 27.910156 85.074219 L 27.910156 125.191406 C 27.910156 130.824219 28.25 134.75 28.933594 137.480469 L 32.691406 137.480469 C 31.835938 134.238281 31.492188 130.480469 31.492188 125.191406 L 31.492188 85.074219 C 31.492188 79.101562 29.617188 75.6875 25.007812 73.640625 C 29.273438 71.078125 31.664062 67.324219 31.664062 62.371094 L 31.664062 27.890625 C 31.664062 19.699219 26.886719 14.917969 19.203125 14.917969 L 6.402344 14.917969 L 6.402344 137.480469 L 9.988281 137.480469 L 9.988281 75.347656 Z M 28.082031 62.371094 C 28.082031 68.519531 24.835938 72.101562 19.203125 72.101562 L 9.988281 72.101562 L 9.988281 18.164062 L 19.203125 18.164062 C 24.835938 18.164062 28.082031 21.746094 28.082031 27.890625 Z M 35.078125 137.480469 L 38.492188 137.480469 L 42.929688 93.609375 L 58.292969 93.609375 L 62.730469 137.480469 L 66.144531 137.480469 L 53.171875 14.917969 L 48.050781 14.917969 Z M 50.441406 21.578125 L 50.78125 21.578125 L 53.511719 47.863281 L 57.949219 90.367188 L 43.269531 90.367188 L 47.710938 47.863281 Z M 93.96875 26.355469 C 93.96875 18.675781 89.015625 13.554688 81.675781 13.554688 C 74.335938 13.554688 69.214844 18.675781 69.214844 26.355469 L 69.214844 126.042969 C 69.214844 133.726562 74.335938 138.847656 81.675781 138.847656 C 89.015625 138.847656 93.96875 133.726562 93.96875 126.042969 L 93.96875 89.683594 L 90.554688 89.683594 L 90.554688 126.042969 C 90.554688 132.019531 87.140625 135.601562 81.675781 135.601562 C 76.214844 135.601562 72.800781 132.019531 72.800781 126.042969 L 72.800781 26.355469 C 72.800781 20.382812 76.214844 16.796875 81.675781 16.796875 C 87.140625 16.796875 90.554688 20.382812 90.554688 26.355469 L 90.554688 60.664062 L 93.96875 60.664062 Z M 112.230469 13.554688 C 104.890625 13.554688 99.429688 19.015625 99.429688 26.527344 L 99.429688 125.871094 C 99.429688 133.382812 104.890625 138.847656 112.230469 138.847656 C 119.570312 138.847656 125.03125 133.382812 125.03125 125.871094 L 125.03125 26.527344 C 125.03125 19.015625 119.570312 13.554688 112.230469 13.554688 M 112.230469 16.796875 C 117.691406 16.796875 121.449219 20.550781 121.449219 26.527344 L 121.449219 125.871094 C 121.449219 131.847656 117.691406 135.601562 112.230469 135.601562 C 106.769531 135.601562 103.011719 131.847656 103.011719 125.871094 L 103.011719 26.527344 C 103.011719 20.550781 106.769531 16.796875 112.230469 16.796875"/>
+      <path fill="#B49356" d="M 135.0625 27.785156 L 135.0625 2.617188 L 109.554688 2.617188 L 109.554688 5.871094 L 131.46875 5.871094 L 131.46875 27.785156 Z"/>
+    </svg>
+  </div>
+  <div class="hero-rule">
+    <div class="hero-rule-line"></div>
+    <div class="hero-rule-diamond"></div>
+    <div class="hero-rule-line"></div>
+  </div>
+  <a href="#reservas" class="hero-cta" data-i18n="hero-cta">Reservar mesa</a>
+</section>
+
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Raco — Wine Bar en Palma de Mallorca. Desayunos, carta de comida y cena, vinos y reservas en Blanquerna.</h1>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mi" data-i18n-m="mq1">Wine Bar</span><span class="md"> ◆ </span>
+    <span class="mi">Palma de Mallorca</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq2">Desayunos</span><span class="md"> ◆ </span>
+    <span class="mi">Terraza</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq3">Menú de Mediodía</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq4">Cocina de Producto</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq5">Proyecto Familiar</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq1">Wine Bar</span><span class="md"> ◆ </span>
+    <span class="mi">Palma de Mallorca</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq2">Desayunos</span><span class="md"> ◆ </span>
+    <span class="mi">Terraza</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq3">Menú de Mediodía</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq4">Cocina de Producto</span><span class="md"> ◆ </span>
+    <span class="mi" data-i18n-m="mq5">Proyecto Familiar</span><span class="md"> ◆ </span>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="nos-section">
+  <div class="nos-sticky">
+    <span class="nos-label" data-i18n="nos-label">01 · Nosotros</span>
+    <div class="origen-display sticky-display">
+      <span class="od-word"><span class="hi">RA</span><span class="rest">mis</span></span>
+      <span class="od-plus">+</span>
+      <span class="od-word"><span class="hi">CO</span><span class="rest">mpany</span></span>
+    </div>
+  </div>
+  <div class="nos-scroll">
+    <div class="nos-block nos-origen">
+      <div class="origen-label" data-i18n="nos-b1-label">Origen</div>
+      <figure class="nos-img origen-img">
+        <img src="familia.jpg" alt="Las dos familias — Ramis y Company" loading="lazy"/>
+        <figcaption data-i18n="nos-cap1">Las dos familias · Antes de Raco</figcaption>
+      </figure>
+      <div class="nos-block-text" data-i18n="nos-b1-text">Crecimos entre mesas y recetas familiares.</div>
+      <div class="nos-block-body" data-i18n="nos-b1-body">Soñábamos con un rincón donde el producto mediterráneo fuera el único protagonista. Así nace Raco, en el centro de Palma.<br><br>El nombre es nuestra esencia: la suma de <strong>Ra</strong>mis y <strong>Co</strong>mpany. Dos familias que se vuelven una para ofrecerte lo que mejor sabemos hacer: cocina auténtica, vinos con historia y un ambiente donde te sientas como en casa.</div>
+    </div>
+    <div class="nos-block">
+      <div class="nos-block-label" data-i18n="nos-b2-label">El lugar y la filosofía</div>
+      <div class="nos-block-text" data-i18n="nos-b2-text">Raco no es el restaurante de un hotel. Un proyecto propio en Blanquerna.</div>
+      <div class="nos-block-body" data-i18n="nos-b2-body">Un lugar donde desayunar sin prisa, comer bien o quedarte hasta tarde con una copa que vale la pena. Una selección de vinos hecha con amor, una carta que cambia con el mercado y un proyecto de familia hecho con las manos.</div>
+      <div class="ig-mini">
+        <p class="ig-mini-cap" data-i18n="ig-cap">El día a día · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a></p>
+        <div class="ig-feed">
+          <behold-widget feed-id="FCB38ZTMShIjxyC29mNB"></behold-widget>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-anim" id="div1"></div>
+
+<!-- CARTA -->
+<section id="carta" class="s-section centered reveal">
+  <span class="s-label" data-i18n="carta-label">02 · Carta</span>
+  <h2 class="s-title" style="max-width:500px;margin:0 auto 3rem;" data-i18n="carta-title">Todo lo que tenemos para ofrecerte</h2>
+  <div class="carta-grid-pdf">
+    <a href="cartas/carta-desayunos.pdf" target="_blank" class="carta-pdf-block">
+      <span class="cpb-label" data-i18n="c-des-label">Desayunos</span>
+      <span class="cpb-name" data-i18n="c-des-name">Desayunos</span>
+      <span class="cpb-desc" data-i18n="c-des-desc">Sin reserva</span>
+      <span class="cpb-cta" data-i18n="c-cta">Abrir PDF →</span>
+    </a>
+    <a href="cartas/carta-comida-cena.pdf" target="_blank" class="carta-pdf-block">
+      <span class="cpb-label" data-i18n="c-com-label">Carta</span>
+      <span class="cpb-name" data-i18n="c-com-name">Comida y cena</span>
+      <span class="cpb-desc" data-i18n="c-com-desc">Cocina de producto · Tapas · Principales</span>
+      <span class="cpb-cta" data-i18n="c-cta">Abrir PDF →</span>
+    </a>
+  </div>
+  <div class="menu-semanal-block">
+    <div>
+      <span class="s-label" data-i18n="ms-label">Menú semanal</span>
+      <h3 class="msb-title" data-i18n="ms-title">Cada semana, algo nuevo.</h3>
+      <p class="msb-body" data-i18n="ms-body">El menú de mediodía cambia cada semana con producto de temporada. Recíbelo en tu correo cada lunes.</p>
+    </div>
+    <div class="nl-form">
+      <label for="nl-email" class="sr-only">Email para suscripción al menú semanal</label>
+      <input class="nl-inp" id="nl-email" type="email" data-i18n-placeholder="nl-placeholder" placeholder="Tu email"/>
+      <button class="nl-btn" onclick="submitNL()" data-i18n="nl-btn">Apuntarme al menú</button>
+      <label class="consent-lbl"><input type="checkbox" id="nl-consent"/><span>Acepto recibir comunicaciones de Raco y la <a href="privacidad.html">política de privacidad</a>.</span></label>
+      <p class="nl-ok" id="nl-ok" data-i18n="nl-ok">Perfecto — te escribimos el lunes.</p>
+      <p style="font-family:'Outfit',sans-serif;font-weight:300;font-size:11px;color:rgba(22,30,20,0.35);margin-top:0.5rem;letter-spacing:0.03em;">El equipo gestiona el envío cada semana.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-anim" id="div2"></div>
+
+<!-- BEBIDAS -->
+<section id="bebidas" class="bebidas-section reveal">
+  <div class="bebidas-bg">Bebidas</div>
+  <span class="s-label" data-i18n="beb-label">03 · Bebidas</span>
+  <h2 class="s-title" data-i18n="beb-title">Una bodega para perderse.</h2>
+  <p class="s-body" data-i18n="beb-body">Hemos seleccionado cada botella con mimo — vinos del mundo y de la isla, referencias para descubrir. Ven, siéntate, y deja que el equipo te cuente la historia detrás de cada copa.</p>
+  <p class="bebidas-aside" data-i18n="beb-aside">Pregunta siempre al equipo · Hay vinos por copa</p>
+  <div class="bebidas-cats">
+    <div class="bcat"><div class="bcat-name" data-i18n="bcat1">Vinos</div><div class="bcat-desc" data-i18n="bcat1d">Decenas de referencias</div></div>
+    <div class="bcat"><div class="bcat-name" data-i18n="bcat2">Cervezas</div><div class="bcat-desc" data-i18n="bcat2d">De tirador</div></div>
+    <div class="bcat"><div class="bcat-name" data-i18n="bcat3">Cócteles</div><div class="bcat-desc" data-i18n="bcat3d">Clásicos y de autor</div></div>
+    <div class="bcat"><div class="bcat-name" data-i18n="bcat4">Refrescos</div><div class="bcat-desc" data-i18n="bcat4d">Lo sencillo también tiene lugar</div></div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section id="reservas" class="res-section reveal">
+  <span class="s-label" data-i18n="res-label">Reservas</span>
+  <h2 class="s-title" style="max-width:400px;margin:0 auto;" data-i18n="res-title">Reserva tu mesa</h2>
+  <div class="res-btns">
+    <a href="https://racorestaurant.myrestoo.net/" target="_blank" rel="noopener" class="res-btn primary" data-i18n="res-btn1">Reservar ahora</a>
+    <a href="tel:+34660388061" class="res-btn secondary" data-i18n="res-btn2">Llámanos · 660 38 80 61</a>
+  </div>
+  <p class="res-note" data-i18n="res-note">La terraza no necesita reserva</p>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto-section reveal">
+  <div class="contacto-img"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3075.1391580881705!2d2.6507664!3d39.579014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1297938a6a1d0bcd%3A0xb3293aaa49c24e19!2sRaco!5e0!3m2!1ses!2ses!4v1778175995573!5m2!1ses!2ses" width="100%" height="100%" style="border:0;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Raco · Blanquerna 12, Palma de Mallorca"></iframe></div>
+  <div class="contacto-info">
+    <span class="s-label" data-i18n="con-label">Dónde estamos</span>
+    <h2 class="s-title" data-i18n="con-title">Blanquerna,<br>Palma</h2>
+    <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-dir-l">Dirección</span><span class="ubic-val">Blanquerna 12, 07003 · Palma de Mallorca</span></div>
+    <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-hor-l">Horario</span><span class="ubic-val" data-i18n="con-hor-v">Próximamente</span></div>
+    <div class="ubic-row"><span class="ubic-lbl">Teléfono</span><a href="tel:+34660388061" class="ubic-val-link">+34 660 38 80 61</a></div>
+    <div class="ubic-row"><span class="ubic-lbl">Email</span><a href="mailto:hola@racorestaurant.com" class="ubic-val-link">hola@racorestaurant.com</a></div>
+    <div class="ubic-row"><span class="ubic-lbl">Instagram</span><a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener" class="ubic-val-link">@racoblanquerna →</a></div>
+  </div>
+</section>
+
+<!-- EMPLEO -->
+<section class="empleo-section reveal">
+  <span class="s-label" data-i18n="emp-label">Trabaja con nosotros</span>
+  <h2 class="s-title" style="font-size:clamp(22px,3vw,36px);white-space:nowrap;" data-i18n="emp-title">Buscamos personas con ganas.</h2>
+  <p class="emp-sub" data-i18n="emp-sub">Si te apasiona el vino y la hospitalidad, cuéntanos quién eres</p>
+  <div class="emp-form">
+    <label for="emp-name" class="sr-only">Nombre completo</label>
+    <input class="emp-in" id="emp-name" data-i18n-placeholder="emp-p1" placeholder="Nombre completo"/>
+    <label for="emp-job" class="sr-only">Puesto que buscas</label>
+    <input class="emp-in" id="emp-job" data-i18n-placeholder="emp-p2" placeholder="Puesto que buscas"/>
+    <label for="emp-exp" class="sr-only">Experiencia</label>
+    <textarea class="emp-in full" id="emp-exp" data-i18n-placeholder="emp-p3" placeholder="Experiencia — breve resumen" rows="3"></textarea>
+    <label for="emp-tel" class="sr-only">Teléfono</label>
+    <input class="emp-in" id="emp-tel" data-i18n-placeholder="emp-p4" placeholder="Teléfono"/>
+    <label for="emp-email" class="sr-only">Email</label>
+    <input class="emp-in" id="emp-email" type="email" data-i18n-placeholder="emp-p5" placeholder="Email"/>
+    <p class="emp-cv-note full" data-i18n="emp-cv">¿Tienes CV? Envíalo por email a <a href="mailto:hola@racorestaurant.com">hola@racorestaurant.com</a> tras enviar este formulario.</p>
+    <label class="consent-lbl full"><input type="checkbox" id="emp-consent"/><span>Acepto el tratamiento de mis datos según la <a href="privacidad.html">política de privacidad</a>.</span></label>
+    <button class="emp-btn" onclick="submitEmp()" data-i18n="emp-btn">Enviar candidatura</button>
+  </div>
+  <p class="emp-ok" id="emp-ok" data-i18n="emp-ok">Recibido. Nos ponemos en contacto contigo.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg height="32" viewBox="0 0 141.732 141.732" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#B49356" d="M 19.035156 75.347656 C 24.667969 75.347656 27.910156 78.929688 27.910156 85.074219 L 27.910156 125.191406 C 27.910156 130.824219 28.25 134.75 28.933594 137.480469 L 32.691406 137.480469 C 31.835938 134.238281 31.492188 130.480469 31.492188 125.191406 L 31.492188 85.074219 C 31.492188 79.101562 29.617188 75.6875 25.007812 73.640625 C 29.273438 71.078125 31.664062 67.324219 31.664062 62.371094 L 31.664062 27.890625 C 31.664062 19.699219 26.886719 14.917969 19.203125 14.917969 L 6.402344 14.917969 L 6.402344 137.480469 L 9.988281 137.480469 L 9.988281 75.347656 Z M 28.082031 62.371094 C 28.082031 68.519531 24.835938 72.101562 19.203125 72.101562 L 9.988281 72.101562 L 9.988281 18.164062 L 19.203125 18.164062 C 24.835938 18.164062 28.082031 21.746094 28.082031 27.890625 Z M 35.078125 137.480469 L 38.492188 137.480469 L 42.929688 93.609375 L 58.292969 93.609375 L 62.730469 137.480469 L 66.144531 137.480469 L 53.171875 14.917969 L 48.050781 14.917969 Z M 50.441406 21.578125 L 50.78125 21.578125 L 53.511719 47.863281 L 57.949219 90.367188 L 43.269531 90.367188 L 47.710938 47.863281 Z M 93.96875 26.355469 C 93.96875 18.675781 89.015625 13.554688 81.675781 13.554688 C 74.335938 13.554688 69.214844 18.675781 69.214844 26.355469 L 69.214844 126.042969 C 69.214844 133.726562 74.335938 138.847656 81.675781 138.847656 C 89.015625 138.847656 93.96875 133.726562 93.96875 126.042969 L 93.96875 89.683594 L 90.554688 89.683594 L 90.554688 126.042969 C 90.554688 132.019531 87.140625 135.601562 81.675781 135.601562 C 76.214844 135.601562 72.800781 132.019531 72.800781 126.042969 L 72.800781 26.355469 C 72.800781 20.382812 76.214844 16.796875 81.675781 16.796875 C 87.140625 16.796875 90.554688 20.382812 90.554688 26.355469 L 90.554688 60.664062 L 93.96875 60.664062 Z M 112.230469 13.554688 C 104.890625 13.554688 99.429688 19.015625 99.429688 26.527344 L 99.429688 125.871094 C 99.429688 133.382812 104.890625 138.847656 112.230469 138.847656 C 119.570312 138.847656 125.03125 133.382812 125.03125 125.871094 L 125.03125 26.527344 C 125.03125 19.015625 119.570312 13.554688 112.230469 13.554688 M 112.230469 16.796875 C 117.691406 16.796875 121.449219 20.550781 121.449219 26.527344 L 121.449219 125.871094 C 121.449219 131.847656 117.691406 135.601562 112.230469 135.601562 C 106.769531 135.601562 103.011719 131.847656 103.011719 125.871094 L 103.011719 26.527344 C 103.011719 20.550781 106.769531 16.796875 112.230469 16.796875"/>
+    <path fill="#B49356" d="M 135.0625 27.785156 L 135.0625 2.617188 L 109.554688 2.617188 L 109.554688 5.871094 L 131.46875 5.871094 L 131.46875 27.785156 Z"/>
+  </svg>
+  <span class="footer-copy">© 2026 · Palma de Mallorca</span>
+  <span class="footer-ra">Ra + Co</span>
+  <span class="footer-legal"><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></span>
+</footer>
+
+<div id="cookies" style="display:none;">
+  <p>Usamos cookies técnicas necesarias. No usamos analítica ni publicidad. <a href="cookies.html">Más info</a>.</p>
+  <button onclick="acceptCookies()">Entendido</button>
+</div>
+
+<script>
+// ── TRADUCCIONES ──
+const i18n = {
+  es: {
+    'nav-nosotros':'Nosotros','nav-carta':'Carta','nav-bebidas':'Bebidas','nav-reservas':'Reservas','nav-contacto':'Contacto',
+    'hero-cta':'Reservar mesa',
+    'nos-label':'01 · Nosotros',
+    'ig-cap':'El día a día · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Las dos familias · Antes de Raco','nos-b1-label':'Origen','nos-b1-text':'Crecimos entre mesas y recetas familiares.','nos-b1-body':'Soñábamos con un rincón donde el producto mediterráneo fuera el único protagonista. Así nace Raco, en el centro de Palma.<br><br>El nombre es nuestra esencia: la suma de <strong>Ra</strong>mis y <strong>Co</strong>mpany. Dos familias que se vuelven una para ofrecerte lo que mejor sabemos hacer: cocina auténtica, vinos con historia y un ambiente donde te sientas como en casa.',
+    'nos-b2-label':'El lugar y la filosofía','nos-b2-text':'Raco no es el restaurante de un hotel. Un proyecto propio en Blanquerna.','nos-b2-body':'Un lugar donde desayunar sin prisa, comer bien o quedarte hasta tarde con una copa que vale la pena. Una selección de vinos hecha con amor, una carta que cambia con el mercado y un proyecto de familia hecho con las manos.',
+    'carta-label':'02 · Carta','carta-title':'Todo lo que tenemos para ofrecerte',
+    'c-des-label':'Desayunos','c-des-name':'Desayunos','c-des-desc':'Sin reserva','c-cta':'Abrir PDF →',
+    'c-com-label':'Carta','c-com-name':'Comida y cena','c-com-desc':'Cocina de producto · Tapas · Principales',
+    'ms-label':'Menú semanal','ms-title':'Cada semana, algo nuevo.','ms-body':'El menú de mediodía cambia cada semana con producto de temporada. Recíbelo en tu correo cada lunes.',
+    'nl-placeholder':'Tu email','nl-btn':'Apuntarme al menú','nl-ok':'Perfecto — te escribimos el lunes.',
+    'beb-label':'03 · Bebidas','beb-title':'Una bodega para perderse.','beb-body':'Hemos seleccionado cada botella con mimo — vinos del mundo y de la isla, referencias para descubrir. Ven, siéntate, y deja que el equipo te cuente la historia detrás de cada copa.','beb-aside':'Pregunta siempre al equipo · Hay vinos por copa',
+    'bcat1':'Vinos','bcat1d':'Decenas de referencias','bcat2':'Cervezas','bcat2d':'De tirador','bcat3':'Cócteles','bcat3d':'Clásicos y de autor','bcat4':'Refrescos','bcat4d':'Lo sencillo también tiene lugar',
+    'res-label':'Reservas','res-title':'Reserva tu mesa','res-btn1':'Reservar ahora','res-btn2':'Llámanos · 660 38 80 61','res-note':'La terraza no necesita reserva',
+    'con-label':'Dónde estamos','con-title':'Blanquerna,<br>Palma','con-dir-l':'Dirección','con-hor-l':'Horario','con-hor-v':'Próximamente','con-ter-l':'Terraza','con-ter-v':'Sin reserva',
+    'emp-label':'Trabaja con nosotros','emp-title':'Buscamos personas con ganas.','emp-sub':'Si te apasiona el vino y la hospitalidad, cuéntanos quién eres',
+    'emp-p1':'Nombre completo','emp-p2':'Puesto que buscas','emp-p3':'Experiencia — breve resumen','emp-p4':'Teléfono','emp-p5':'Email','emp-cv':'¿Tienes CV? Envíalo por email a <a href="mailto:hola@racorestaurant.com">hola@racorestaurant.com</a> tras enviar este formulario.',
+    'emp-btn':'Enviar candidatura','emp-ok':'Recibido. Nos ponemos en contacto contigo.',
+    'mq1':'Wine Bar','mq2':'Desayunos','mq3':'Menú de Mediodía','mq4':'Cocina de Producto','mq5':'Proyecto Familiar'
+  },
+  ca: {
+    'nav-nosotros':'Nosaltres','nav-carta':'Carta','nav-bebidas':'Begudes','nav-reservas':'Reserves','nav-contacto':'Contacte',
+    'hero-cta':'Reservar taula',
+    'nos-label':'01 · Nosaltres',
+    'ig-cap':'El dia a dia · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Les dues famílies · Abans de Raco','nos-b1-label':'Origen','nos-b1-text':'Vam créixer entre taules i receptes familiars.','nos-b1-body':'Somiàvem amb un racó on el producte mediterrani fos l\'únic protagonista. Així neix Raco, al centre de Palma.<br><br>El nom és la nostra essència: la suma de <strong>Ra</strong>mis i <strong>Co</strong>mpany. Dues famílies que es tornen una per oferir-te el que millor sabem fer: cuina autèntica, vins amb història i un ambient on et sentis com a casa.',
+    'nos-b2-label':'El lloc i la filosofia','nos-b2-text':'Raco no és el restaurant d\'un hotel. Un projecte propi a Blanquerna.','nos-b2-body':'Un lloc on esmorzar sense pressa, dinar bé o quedar-se fins tard amb una copa que val la pena. Una selecció de vins feta amb amor, una carta que canvia amb el mercat i un projecte de família fet amb les mans.',
+    'carta-label':'02 · Carta','carta-title':'Tot el que tenim per oferir-te',
+    'c-des-label':'Esmorzars','c-des-name':'Esmorzars','c-des-desc':'Sense reserva','c-cta':'Obrir PDF →',
+    'c-com-label':'Carta','c-com-name':'Dinar i sopar','c-com-desc':'Cuina de producte · Tapes · Principals',
+    'ms-label':'Menú setmanal','ms-title':'Cada setmana, alguna cosa nova.','ms-body':'El menú de migdia canvia cada setmana amb producte de temporada. Rep-lo al teu correu cada dilluns.',
+    'nl-placeholder':'El teu email','nl-btn':'Apuntar-me al menú','nl-ok':'Perfecte — t\'escrivim el dilluns.',
+    'beb-label':'03 · Begudes','beb-title':'Per a cada moment, la seva copa.','beb-body':'Construïm el nostre petit celler amb amor — seleccionant cada ampolla com si fos per a nosaltres mateixos.','beb-aside':'Pregunta sempre a l\'equip · Hi ha vins per copa',
+    'bcat1':'Vins','bcat1d':'Per copa i ampolla','bcat2':'Cerveses','bcat2d':'De tirador','bcat3':'Còctels','bcat3d':'Clàssics i d\'autor','bcat4':'Refrescos','bcat4d':'El senzill també té lloc',
+    'res-label':'Reserves','res-title':'Reserva la teva taula','res-btn1':'Reservar ara','res-btn2':'Truca\'ns · 660 38 80 61','res-note':'La terrassa no necessita reserva',
+    'con-label':'On som','con-title':'Blanquerna,<br>Palma','con-dir-l':'Adreça','con-hor-l':'Horari','con-hor-v':'Pròximament','con-ter-l':'Terrassa','con-ter-v':'Sense reserva',
+    'emp-label':'Treballa amb nosaltres','emp-title':'Busquem persones amb ganes.','emp-sub':'Si t\'apassiona el vi i l\'hospitalitat, explica\'ns qui ets',
+    'emp-p1':'Nom complet','emp-p2':'Lloc que busques','emp-p3':'Experiència — breu resum','emp-p4':'Telèfon','emp-p5':'Email','emp-cv':'Tens CV? Envia\'l per email a <a href="mailto:hola@racorestaurant.com">hola@racorestaurant.com</a> després d\'enviar aquest formulari.',
+    'emp-btn':'Enviar candidatura','emp-ok':'Rebut. Ens posem en contacte amb tu.',
+    'mq1':'Wine Bar','mq2':'Esmorzars','mq3':'Menú de Migdia','mq4':'Cuina de Producte','mq5':'Projecte Familiar'
+  },
+  en: {
+    'nav-nosotros':'About','nav-carta':'Menu','nav-bebidas':'Drinks','nav-reservas':'Reservations','nav-contacto':'Contact',
+    'hero-cta':'Reserve a table',
+    'nos-label':'01 · About us',
+    'ig-cap':'Day by day · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'The two families · Before Raco','nos-b1-label':'Origin','nos-b1-text':'We grew up between tables and family recipes.','nos-b1-body':'We dreamed of a corner where Mediterranean produce would be the only protagonist. That\'s how Raco was born, in the heart of Palma.<br><br>The name is our essence: the sum of <strong>Ra</strong>mis and <strong>Co</strong>mpany. Two families becoming one to offer you what we do best: honest cooking, wines with stories, and a place where you feel at home.',
+    'nos-b2-label':'The place & the philosophy','nos-b2-text':'Raco is not a hotel restaurant. A project of its own in Blanquerna.','nos-b2-body':'A place to have breakfast without rushing, eat well at lunch, or stay late over a glass worth lingering on. A wine list built with love, a menu that changes with the market, and a family project made by hand.',
+    'carta-label':'02 · Menu','carta-title':'Everything we have to offer',
+    'c-des-label':'Breakfast','c-des-name':'Breakfast','c-des-desc':'No reservation needed','c-cta':'Open PDF →',
+    'c-com-label':'Menu','c-com-name':'Lunch & dinner','c-com-desc':'Product cuisine · Small plates · Mains',
+    'ms-label':'Weekly menu','ms-title':'Every week, something new.','ms-body':'Our lunch menu changes weekly with seasonal produce. Get it in your inbox every Monday.',
+    'nl-placeholder':'Your email','nl-btn':'Subscribe to the menu','nl-ok':'Perfect — we\'ll write on Monday.',
+    'beb-label':'03 · Drinks','beb-title':'The right glass for every moment.','beb-body':'We built our small cellar with love — choosing every bottle as if it were for ourselves.','beb-aside':'Always ask the team · Wines available by the glass',
+    'bcat1':'Wines','bcat1d':'By glass & bottle','bcat2':'Beers','bcat2d':'On tap','bcat3':'Cocktails','bcat3d':'Classic & house','bcat4':'Soft drinks','bcat4d':'Simple pleasures deserve a place too',
+    'res-label':'Reservations','res-title':'Reserve your table','res-btn1':'Book now','res-btn2':'Call us · +34 660 38 80 61','res-note':'The terrace needs no reservation',
+    'con-label':'Find us','con-title':'Blanquerna,<br>Palma','con-dir-l':'Address','con-hor-l':'Hours','con-hor-v':'Soon','con-ter-l':'Terrace','con-ter-v':'No reservation',
+    'emp-label':'Join the team','emp-title':'We\'re looking for people with passion.','emp-sub':'If you love wine and hospitality, tell us who you are',
+    'emp-p1':'Full name','emp-p2':'Role you\'re looking for','emp-p3':'Experience — brief summary','emp-p4':'Phone','emp-p5':'Email','emp-cv':'Have a CV? Email it to <a href="mailto:hola@racorestaurant.com">hola@racorestaurant.com</a> after submitting this form.',
+    'emp-btn':'Send application','emp-ok':'Received. We\'ll be in touch.',
+    'mq1':'Wine Bar','mq2':'Breakfast','mq3':'Lunch Menu','mq4':'Product Cuisine','mq5':'Family Project'
+  }
+};
+
+function setLang(lang, el) {
+  document.querySelectorAll('.nav-lang span').forEach(s => s.classList.remove('on'));
+  el.classList.add('on');
+  document.documentElement.lang = lang;
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(node => {
+    const k = node.dataset.i18n;
+    if (t[k] !== undefined) node.innerHTML = t[k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(node => {
+    const k = node.dataset.i18nPlaceholder;
+    if (t[k] !== undefined) node.placeholder = t[k];
+  });
+  document.querySelectorAll('[data-i18n-m]').forEach(node => {
+    const k = node.dataset.i18nM;
+    if (t[k] !== undefined) node.textContent = t[k];
+  });
+}
+
+// ── LOADER ──
+(function(){
+  const loader = document.getElementById('loader');
+
+  const ramis = document.getElementById('lw-ramis');
+  const company = document.getElementById('lw-company');
+  const raco = document.getElementById('loader-raco');
+  // Show RAMIS immediately
+  ramis.style.color = 'rgba(22,30,20,0.85)';
+  setTimeout(() => { company.style.color = 'rgba(22,30,20,0.85)'; }, 400);
+  setTimeout(() => {
+    ramis.style.transition = 'color 0.4s ease';
+    company.style.transition = 'color 0.4s ease';
+    ramis.style.color = 'transparent';
+    company.style.color = 'transparent';
+    setTimeout(() => {
+      raco.style.animation = 'loaderExpand 0.7s cubic-bezier(0.16,1,0.3,1) forwards';
+    }, 250);
+  }, 1100);
+  setTimeout(() => {
+    loader.style.transition = 'opacity 0.4s ease';
+    loader.style.opacity = '0';
+    loader.style.pointerEvents = 'none';
+    setTimeout(() => loader.remove(), 400);
+  }, 2000);
+})();
+
+// ── CURSOR ──
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+if (dot && ring) {
+  document.addEventListener('mousemove', e => {
+    const x = e.clientX, y = e.clientY;
+    dot.style.transform = `translate(${x-4}px,${y-4}px)`;
+    ring.style.transform = `translate(${x-16}px,${y-16}px)`;
+  }, {passive: true});
+  // Event delegation — escala mejor que añadir listeners por elemento
+  const HOVER_SEL = 'a, button, input, textarea, select, label';
+  document.body.addEventListener('mouseover', e => {
+    if (e.target.closest(HOVER_SEL)) document.body.classList.add('hovering');
+  });
+  document.body.addEventListener('mouseout', e => {
+    if (e.target.closest(HOVER_SEL)) document.body.classList.remove('hovering');
+  });
+}
+
+// Force all reveals visible on load as fallback
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal, .nos-block, .divider-anim').forEach(el => el.classList.add('visible'));
+  }, 2500);
+});
+
+// ── REVEAL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal,.divider-anim').forEach(el => obs.observe(el));
+// Stagger nos-blocks with simpler approach
+document.querySelectorAll('.nos-block').forEach((el,i) => { setTimeout(() => obs.observe(el), i*80); });
+
+// ── UTILS ──
+function submitNL(){
+  const v = document.getElementById('nl-email').value;
+  const c = document.getElementById('nl-consent').checked;
+  if(!v||!v.includes('@')) return;
+  if(!c){ alert('Debes aceptar la política de privacidad.'); return; }
+  // Send to Google Form newsletter
+  const fd = new FormData();
+  fd.append('entry.12182691', v);
+  fd.append('entry.1719803586', 'si');
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLScuLJMV6q4HmRiXL_UKO7JWj3YZ60tIfWCnYiH2qVDIZZ2IZQ/formResponse', { method:'POST', mode:'no-cors', body: fd }).catch(()=>{});
+  document.querySelectorAll('.nl-form input,.nl-form button,.nl-form .consent-lbl').forEach(el=>el.style.display='none');
+  document.getElementById('nl-ok').style.display='block';
+}
+function submitEmp(){
+  const name = document.getElementById('emp-name').value.trim();
+  const job  = document.getElementById('emp-job').value.trim();
+  const exp  = document.getElementById('emp-exp').value.trim();
+  const tel  = document.getElementById('emp-tel').value.trim();
+  const em   = document.getElementById('emp-email').value.trim();
+  const c    = document.getElementById('emp-consent').checked;
+  if(!name||!em||!em.includes('@')){ alert('Por favor rellena al menos nombre y email.'); return; }
+  if(!c){ alert('Debes aceptar la política de privacidad.'); return; }
+  // Send to Google Form empleo
+  const fd = new FormData();
+  fd.append('entry.1928440510', name);
+  fd.append('entry.1172963608', job);
+  fd.append('entry.1175854457', exp);
+  fd.append('entry.1343292253', tel);
+  fd.append('entry.108685660', em);
+  fd.append('entry.319689733', 'Acepto');
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSf5GhZQmnbD7EjKP6Wt4przKBHBPYYi62WGrB9GWiPSpeuy3Q/formResponse', { method:'POST', mode:'no-cors', body: fd }).catch(()=>{});
+  document.querySelector('.emp-form').style.display='none';
+  document.getElementById('emp-ok').style.display='block';
+}
+function acceptCookies(){ localStorage.setItem('raco_cookies','1'); document.getElementById('cookies').style.display='none'; }
+if(!localStorage.getItem('raco_cookies')){ document.getElementById('cookies').style.display='flex'; }
+// Behold Instagram widget loader
+(()=>{const s=document.createElement('script');s.type='module';s.src='https://w.behold.so/widget.js';document.head.append(s);})();
+</script>
+</body>
+</html>
