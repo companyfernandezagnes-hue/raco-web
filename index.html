@@ -90,7 +90,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 
 /* MARQUEE */
 .marquee-wrap{overflow:hidden;padding:10px 0;border-top:0.5px solid var(--gold-20);border-bottom:0.5px solid var(--gold-20);}
-.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap;}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap;will-change:transform;}
 .mi{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--ink-30);padding:0 2rem;}
 .md{color:var(--gold-20);}
 
@@ -334,9 +334,8 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   .nos-scroll{padding:4rem 3rem;}
 }
 @media(prefers-reduced-motion:reduce){
-  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}
-  .reveal,.nos-block{opacity:1!important;transform:none!important;}
-  .marquee-track{animation:none;}
+  .reveal,.nos-block{animation:none;transition:none;opacity:1!important;transform:none!important;}
+  /* Marquee se mantiene activo: es decorativo y aporta vida a la web */
 }
 </style>
 </head>
