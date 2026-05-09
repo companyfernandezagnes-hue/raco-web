@@ -567,6 +567,12 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
 </div>
 
 <script>
+// ── SCROLL TOP ON LOAD ──
+// Evita que el navegador restaure la posición de scroll anterior (común en móvil)
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
+window.scrollTo(0, 0);
+
 // ── TRADUCCIONES ──
 const i18n = {
   es: {
