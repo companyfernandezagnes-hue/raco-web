@@ -6,6 +6,11 @@
 <title>Raco — Wine Bar · Palma de Mallorca</title>
 <meta name="description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
 <meta name="theme-color" content="#FFFDF8">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Raco">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&family=Bebas+Neue&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -50,6 +55,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 .nav-lang{display:flex;gap:2px;}
 .nav-lang span{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:rgba(22,30,20,0.8);cursor:none;padding:2px 6px;transition:color 0.3s;}
 .nav-lang span.on{color:var(--gold-text);}
+#menu-toggle{display:none;background:none;border:none;padding:10px;gap:5px;flex-direction:column;cursor:none;z-index:100;}
+#menu-toggle span{display:block;width:24px;height:1.5px;background:var(--ink);transition:all 0.3s;}
 
 /* HERO */
 .hero{min-height:100vh;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 5vw 3rem;position:relative;overflow:hidden;}
@@ -245,17 +252,24 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
 
 /* MOBILE */
 @media(max-width:768px){
+  /* Anti-zoom iOS — inputs deben ser >=16px */
+  input,textarea,select{font-size:16px !important;}
   body::after{display:none;}
   body{cursor:auto;}
   #cursor-dot,#cursor-ring{display:none;}
 
-  /* NAV */
-  nav{padding:0.6rem 1.2rem;backdrop-filter:none;background:rgba(255,253,248,0.97);flex-wrap:wrap;height:auto;row-gap:0.5rem;}
-  .nav-logo{order:1;}
-  .nav-lang{order:2;}
-  .nav-links{order:3;flex-basis:100%;justify-content:space-between;gap:0.5rem;padding:0.4rem 0 0.2rem;border-top:0.5px solid var(--gold-20);}
-  .nav-links a{font-size:11px;letter-spacing:2px;flex:1;text-align:center;padding:4px 0;}
+  /* NAV — hamburguesa */
+  nav{padding:0 1.2rem;backdrop-filter:none;background:rgba(255,253,248,0.97);height:60px;}
   .nav-logo svg{height:28px;}
+  #menu-toggle{display:flex;}
+  .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);z-index:99;}
+  .nav-links.open{transform:translateX(0);}
+  .nav-links a{font-size:24px;letter-spacing:5px;}
+  .nav-links .nav-lang{margin-top:1.5rem;}
+  .nav-links .nav-lang span{font-size:14px;}
+  #menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  #menu-toggle.active span:nth-child(2){opacity:0;}
+  #menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   /* HERO */
   .hero{padding:5rem 1.5rem 3rem;min-height:100svh;}
@@ -346,17 +360,20 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
       <path fill="#B49356" d="M 135.0625 27.785156 L 135.0625 2.617188 L 109.554688 2.617188 L 109.554688 5.871094 L 131.46875 5.871094 L 131.46875 27.785156 Z"/>
     </svg>
   </a>
-  <div class="nav-links">
+  <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
     <a href="#nosotros" data-i18n="nav-nosotros">Nosotros</a>
     <a href="#carta" data-i18n="nav-carta">Carta</a>
     <a href="#bebidas" data-i18n="nav-bebidas">Bebidas</a>
     <a href="#reservas" data-i18n="nav-reservas">Reservas</a>
     <a href="#contacto" data-i18n="nav-contacto">Contacto</a>
-  </div>
-  <div class="nav-lang">
-    <span class="on" onclick="setLang('es',this)">ES</span>
-    <span onclick="setLang('ca',this)">CA</span>
-    <span onclick="setLang('en',this)">EN</span>
+    <div class="nav-lang">
+      <span class="on" onclick="setLang('es',this)">ES</span>
+      <span onclick="setLang('ca',this)">CA</span>
+      <span onclick="setLang('en',this)">EN</span>
+    </div>
   </div>
 </nav>
 
@@ -637,13 +654,18 @@ function setLang(lang, el) {
 // ── LOADER ──
 (function(){
   const loader = document.getElementById('loader');
+  if(!loader) return;
+  // Móvil: tiempos más cortos para que no se sienta lento
+  const isMobile = window.innerWidth <= 768;
+  const t1 = isMobile ? 200 : 400;
+  const t2 = isMobile ? 600 : 1100;
+  const t3 = isMobile ? 1100 : 2000;
 
   const ramis = document.getElementById('lw-ramis');
   const company = document.getElementById('lw-company');
   const raco = document.getElementById('loader-raco');
-  // Show RAMIS immediately
   ramis.style.color = 'rgba(22,30,20,0.85)';
-  setTimeout(() => { company.style.color = 'rgba(22,30,20,0.85)'; }, 400);
+  setTimeout(() => { company.style.color = 'rgba(22,30,20,0.85)'; }, t1);
   setTimeout(() => {
     ramis.style.transition = 'color 0.4s ease';
     company.style.transition = 'color 0.4s ease';
@@ -652,13 +674,13 @@ function setLang(lang, el) {
     setTimeout(() => {
       raco.style.animation = 'loaderExpand 0.7s cubic-bezier(0.16,1,0.3,1) forwards';
     }, 250);
-  }, 1100);
+  }, t2);
   setTimeout(() => {
     loader.style.transition = 'opacity 0.4s ease';
     loader.style.opacity = '0';
     loader.style.pointerEvents = 'none';
     setTimeout(() => loader.remove(), 400);
-  }, 2000);
+  }, t3);
 })();
 
 // ── CURSOR ──
@@ -734,6 +756,26 @@ function acceptCookies(){ localStorage.setItem('raco_cookies','1'); document.get
 if(!localStorage.getItem('raco_cookies')){ document.getElementById('cookies').style.display='flex'; }
 // Behold Instagram widget loader
 (()=>{const s=document.createElement('script');s.type='module';s.src='https://w.behold.so/widget.js';document.head.append(s);})();
+// ── MENÚ MÓVIL (hamburguesa) ──
+(function(){
+  const toggle = document.getElementById('menu-toggle');
+  const links = document.getElementById('nav-links');
+  if(!toggle || !links) return;
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+})();
 </script>
 </body>
 </html>
