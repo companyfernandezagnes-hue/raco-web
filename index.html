@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script src="/cookies-raco.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Raco — Wine Bar · Palma de Mallorca</title>
 <meta name="description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
+<link rel="canonical" href="https://racorestaurant.com/">
+
+<!-- Open Graph / redes sociales -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raco">
+<meta property="og:title" content="Raco — Wine Bar · Palma de Mallorca">
+<meta property="og:description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
+<meta property="og:url" content="https://racorestaurant.com/">
+<meta property="og:image" content="https://racorestaurant.com/og-plato.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="ca_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Raco — Wine Bar · Palma de Mallorca">
+<meta name="twitter:description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor.">
+<meta name="twitter:image" content="https://racorestaurant.com/og-plato.jpg">
+
+<!-- Datos estructurados para Google (horario, dirección, precio) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Raco",
+  "image": "https://racorestaurant.com/og-plato.jpg",
+  "url": "https://racorestaurant.com/",
+  "telephone": "+34660388061",
+  "priceRange": "€€",
+  "servesCuisine": ["Mediterranean", "Spanish"],
+  "menu": "https://racorestaurant.com/carta/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Blanquerna 12",
+    "addressLocality": "Palma de Mallorca",
+    "postalCode": "07003",
+    "addressRegion": "Illes Balears",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.579014,
+    "longitude": 2.6507664
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "09:30",
+    "closes": "00:00"
+  },
+  "sameAs": ["https://www.instagram.com/racoblanquerna/"]
+}
+</script>
+
 <meta name="theme-color" content="#FFFDF8">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
@@ -156,14 +211,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 .reveal.visible{opacity:1;transform:translateY(0);}
 
 /* CARTA */
-.carta-grid-pdf{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gold-20);max-width:640px;margin:0 auto 4rem;}
-.carta-pdf-block{background:var(--paper);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:0.5rem;text-decoration:none;cursor:none;transition:background 0.3s,box-shadow 0.3s;text-align:left;box-shadow:0 1px 4px rgba(0,0,0,0.03);}
+.carta-grid-pdf{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--gold-20);max-width:760px;margin:0 auto 4rem;}
+.carta-pdf-block{background:var(--paper);padding:1.8rem 1.4rem;display:flex;flex-direction:column;gap:0.4rem;text-decoration:none;cursor:none;transition:background 0.3s,box-shadow 0.3s;text-align:left;box-shadow:0 1px 4px rgba(0,0,0,0.03);}
 .carta-pdf-block:hover{background:#F3EEE4;}
 .carta-pdf-block:hover .cpb-cta{color:var(--gold);}
-.cpb-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--gold-text);}
-.cpb-name{font-family:'Outfit',sans-serif;font-weight:200;font-size:26px;color:var(--ink);}
-.cpb-desc{font-family:'Outfit',sans-serif;font-weight:300;font-size:14px;color:var(--ink-30);line-height:1.5;}
-.cpb-cta{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:rgba(22,30,20,0.75);margin-top:0.8rem;transition:color 0.3s;}
+.cpb-label{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2.5px;color:var(--gold-text);}
+.cpb-name{font-family:'Outfit',sans-serif;font-weight:200;font-size:20px;color:var(--ink);}
+.cpb-desc{font-family:'Outfit',sans-serif;font-weight:300;font-size:12.5px;color:var(--ink-30);line-height:1.45;}
+.cpb-cta{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1.5px;color:rgba(22,30,20,0.75);margin-top:0.6rem;transition:color 0.3s;}
 .menu-semanal-block{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:640px;margin:0 auto;padding-top:3rem;border-top:0.5px solid var(--gold-20);align-items:center;}
 .msb-title{font-family:'Outfit',sans-serif;font-weight:200;font-size:clamp(24px,3vw,36px);color:var(--ink);line-height:1.2;margin-bottom:0.8rem;}
 .msb-body{font-family:'Outfit',sans-serif;font-weight:300;font-size:15px;color:var(--ink-50);line-height:1.8;}
@@ -364,7 +419,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   </button>
   <div class="nav-links" id="nav-links">
     <a href="#nosotros" data-i18n="nav-nosotros">Nosotros</a>
-    <a href="#carta" data-i18n="nav-carta">Carta</a>
+    <a href="/carta/" data-i18n="nav-carta">Carta</a>
     <a href="#bebidas" data-i18n="nav-bebidas">Bebidas</a>
     <a href="#reservas" data-i18n="nav-reservas">Reservas</a>
     <a href="#contacto" data-i18n="nav-contacto">Contacto</a>
@@ -455,17 +510,23 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   <span class="s-label" data-i18n="carta-label">02 · Carta</span>
   <h2 class="s-title" style="max-width:500px;margin:0 auto 3rem;" data-i18n="carta-title">Todo lo que tenemos para ofrecerte</h2>
   <div class="carta-grid-pdf">
-    <a href="https://raw.githubusercontent.com/companyfernandezagnes-hue/raco-web/main/cartas/carta-desayunos.pdf" target="_blank" class="carta-pdf-block">
+    <a href="/carta/#desayunos" class="carta-pdf-block">
       <span class="cpb-label" data-i18n="c-des-label">Desayunos</span>
       <span class="cpb-name" data-i18n="c-des-name">Desayunos</span>
       <span class="cpb-desc" data-i18n="c-des-desc">Sin reserva</span>
-      <span class="cpb-cta" data-i18n="c-cta">Abrir PDF →</span>
+      <span class="cpb-cta" data-i18n="c-cta">Ver carta →</span>
     </a>
-    <a href="https://raw.githubusercontent.com/companyfernandezagnes-hue/raco-web/main/cartas/carta-comida-cena.pdf target="_blank" class="carta-pdf-block">
+    <a href="/carta/#carta-general" class="carta-pdf-block">
       <span class="cpb-label" data-i18n="c-com-label">Carta</span>
       <span class="cpb-name" data-i18n="c-com-name">Comida y cena</span>
       <span class="cpb-desc" data-i18n="c-com-desc">Cocina de producto · Tapas · Principales</span>
-      <span class="cpb-cta" data-i18n="c-cta">Abrir PDF →</span>
+      <span class="cpb-cta" data-i18n="c-cta">Ver carta →</span>
+    </a>
+    <a href="/carta/#grupos" class="carta-pdf-block">
+      <span class="cpb-label" data-i18n="c-grp-label">Nuevo</span>
+      <span class="cpb-name" data-i18n="c-grp-name">Menú de grupos</span>
+      <span class="cpb-desc" data-i18n="c-grp-desc">Desde 45€ · por persona</span>
+      <span class="cpb-cta" data-i18n="c-cta">Ver carta →</span>
     </a>
   </div>
   <div class="menu-semanal-block">
@@ -582,8 +643,9 @@ const i18n = {
     'ig-cap':'El día a día · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Las dos familias · Antes de Raco','nos-b1-label':'Origen','nos-b1-text':'Crecimos entre mesas y recetas familiares.','nos-b1-body':'Soñábamos con un rincón donde el producto mediterráneo fuera el único protagonista. Así nace Raco, en el centro de Palma.<br><br>El nombre es nuestra esencia: la suma de <strong>Ra</strong>mis y <strong>Co</strong>mpany. Dos familias que se vuelven una para ofrecerte lo que mejor sabemos hacer: cocina auténtica, vinos con historia y un ambiente donde te sientas como en casa.',
     'nos-b2-label':'El lugar y la filosofía','nos-b2-text':'Raco no es el restaurante de un hotel. Un proyecto propio en Blanquerna.','nos-b2-body':'Un lugar donde desayunar sin prisa, comer bien o quedarte hasta tarde con una copa que vale la pena. Una selección de vinos hecha con amor, una carta que cambia con el mercado y un proyecto de familia hecho con las manos.',
     'carta-label':'02 · Carta','carta-title':'Todo lo que tenemos para ofrecerte',
-    'c-des-label':'Desayunos','c-des-name':'Desayunos','c-des-desc':'Sin reserva','c-cta':'Abrir PDF →',
+    'c-des-label':'Desayunos','c-des-name':'Desayunos','c-des-desc':'Sin reserva','c-cta':'Ver carta →',
     'c-com-label':'Carta','c-com-name':'Comida y cena','c-com-desc':'Cocina de producto · Tapas · Principales',
+    'c-grp-label':'Nuevo','c-grp-name':'Menú de grupos','c-grp-desc':'Desde 45€ · por persona',
     'ms-label':'Menú semanal','ms-title':'Cada semana, algo nuevo.','ms-body':'El menú de mediodía cambia cada semana con producto de temporada. Recíbelo en tu correo cada lunes.',
     'nl-placeholder':'Tu email','nl-btn':'Apuntarme al menú','nl-ok':'Perfecto — te escribimos el lunes.',
     'beb-label':'03 · Bebidas','beb-title':'Una bodega para perderse.','beb-body':'Hemos seleccionado cada botella con mimo — vinos del mundo y de la isla, referencias para descubrir. Ven, siéntate, y deja que el equipo te cuente la historia detrás de cada copa.','beb-aside':'Pregunta siempre al equipo · Hay vinos por copa',
@@ -602,8 +664,9 @@ const i18n = {
     'ig-cap':'El dia a dia · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Les dues famílies · Abans de Raco','nos-b1-label':'Origen','nos-b1-text':'Vam créixer entre taules i receptes familiars.','nos-b1-body':'Somiàvem amb un racó on el producte mediterrani fos l\'únic protagonista. Així neix Raco, al centre de Palma.<br><br>El nom és la nostra essència: la suma de <strong>Ra</strong>mis i <strong>Co</strong>mpany. Dues famílies que es tornen una per oferir-te el que millor sabem fer: cuina autèntica, vins amb història i un ambient on et sentis com a casa.',
     'nos-b2-label':'El lloc i la filosofia','nos-b2-text':'Raco no és el restaurant d\'un hotel. Un projecte propi a Blanquerna.','nos-b2-body':'Un lloc on esmorzar sense pressa, dinar bé o quedar-se fins tard amb una copa que val la pena. Una selecció de vins feta amb amor, una carta que canvia amb el mercat i un projecte de família fet amb les mans.',
     'carta-label':'02 · Carta','carta-title':'Tot el que tenim per oferir-te',
-    'c-des-label':'Berenars','c-des-name':'Berenars','c-des-desc':'Sense reserva','c-cta':'Obrir PDF →',
+    'c-des-label':'Berenars','c-des-name':'Berenars','c-des-desc':'Sense reserva','c-cta':'Veure carta →',
     'c-com-label':'Carta','c-com-name':'Dinar i sopar','c-com-desc':'Cuina de producte · Tapes · Principals',
+    'c-grp-label':'Nou','c-grp-name':'Menú de grups','c-grp-desc':'Des de 45€ · per persona',
     'ms-label':'Menú setmanal','ms-title':'Cada setmana, alguna cosa nova.','ms-body':'El menú de migdia canvia cada setmana amb producte de temporada. Rep-lo al teu correu cada dilluns.',
     'nl-placeholder':'El teu email','nl-btn':'Apuntar-me al menú','nl-ok':'Perfecte — t\'escrivim el dilluns.',
     'beb-label':'03 · Begudes','beb-title':'Per a cada moment, la seva copa.','beb-body':'Construïm el nostre petit celler amb amor — seleccionant cada ampolla com si fos per a nosaltres mateixos.','beb-aside':'Pregunta sempre a l\'equip · Hi ha vins per copa',
@@ -622,8 +685,9 @@ const i18n = {
     'ig-cap':'Day by day · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'The two families · Before Raco','nos-b1-label':'Origin','nos-b1-text':'We grew up between tables and family recipes.','nos-b1-body':'We dreamed of a corner where Mediterranean produce would be the only protagonist. That\'s how Raco was born, in the heart of Palma.<br><br>The name is our essence: the sum of <strong>Ra</strong>mis and <strong>Co</strong>mpany. Two families becoming one to offer you what we do best: honest cooking, wines with stories, and a place where you feel at home.',
     'nos-b2-label':'The place & the philosophy','nos-b2-text':'Raco is not a hotel restaurant. A project of its own in Blanquerna.','nos-b2-body':'A place to have breakfast without rushing, eat well at lunch, or stay late over a glass worth lingering on. A wine list built with love, a menu that changes with the market, and a family project made by hand.',
     'carta-label':'02 · Menu','carta-title':'Everything we have to offer',
-    'c-des-label':'Breakfast','c-des-name':'Breakfast','c-des-desc':'No reservation needed','c-cta':'Open PDF →',
+    'c-des-label':'Breakfast','c-des-name':'Breakfast','c-des-desc':'No reservation needed','c-cta':'View menu →',
     'c-com-label':'Menu','c-com-name':'Lunch & dinner','c-com-desc':'Product cuisine · Small plates · Mains',
+    'c-grp-label':'New','c-grp-name':'Group menu','c-grp-desc':'From 45€ · per person',
     'ms-label':'Weekly menu','ms-title':'Every week, something new.','ms-body':'Our lunch menu changes weekly with seasonal produce. Get it in your inbox every Monday.',
     'nl-placeholder':'Your email','nl-btn':'Subscribe to the menu','nl-ok':'Perfect — we\'ll write on Monday.',
     'beb-label':'03 · Drinks','beb-title':'The right glass for every moment.','beb-body':'We built our small cellar with love — choosing every bottle as if it were for ourselves.','beb-aside':'Always ask the team · Wines available by the glass',
