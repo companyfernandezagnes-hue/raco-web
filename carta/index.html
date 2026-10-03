@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script src="/cookies-raco.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta · Raco — Wine Bar</title>
+<meta name="description" content="La carta de Raco: desayunos, tapas, arroces, carnes, pescados y menús cerrados para grupos. Palma de Mallorca.">
+<link rel="canonical" href="https://racorestaurant.com/carta/">
+
+<!-- Open Graph / redes sociales (importante: es el link que se comparte por WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raco">
+<meta property="og:title" content="Carta · Raco — Wine Bar">
+<meta property="og:description" content="La carta de Raco: desayunos, tapas, arroces, carnes, pescados y menús cerrados para grupos. Palma de Mallorca.">
+<meta property="og:url" content="https://racorestaurant.com/carta/">
+<meta property="og:image" content="https://racorestaurant.com/og-plato.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carta · Raco — Wine Bar">
+<meta name="twitter:description" content="Desayunos, carta de comida y cena, y menús de grupo desde 45€/persona.">
+<meta name="twitter:image" content="https://racorestaurant.com/og-plato.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "Carta Raco",
+  "url": "https://racorestaurant.com/carta/",
+  "inLanguage": ["es","ca","en"],
+  "isPartOf": {
+    "@type": "Restaurant",
+    "name": "Raco",
+    "url": "https://racorestaurant.com/"
+  }
+}
+</script>
+
+<meta name="theme-color" content="#FFFDF8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#FFFDF8;
+  --paper-soft:#F7F1E4;
+  --ink:#161E14;
+  --ink-muted:rgba(22,30,20,0.62);
+  --ink-faint:rgba(22,30,20,0.4);
+  --gold:#B49356;
+  --gold-text:#8C6A2E;
+  --gold-20:rgba(180,147,86,0.3);
+  --gold-40:rgba(180,147,86,0.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;position:relative;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+body::after{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.05;
+}
+
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:10000;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;pointer-events:none;}
+.loader-word{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,7vw,64px);letter-spacing:0.3em;color:transparent;transition:color 0.7s ease;}
+#loader-raco{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,10vw,96px);letter-spacing:0.25em;color:var(--gold);position:absolute;opacity:0;transform:scaleY(0.05);}
+@keyframes loaderExpand{0%{opacity:0;transform:scaleY(0.05)}40%{opacity:1;transform:scaleY(1.05)}70%{transform:scaleY(1)}100%{opacity:1;transform:scaleY(1)}}
+
+/* CURSOR */
+#cursor-dot{position:fixed;z-index:10001;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;will-change:transform;transition:width 0.2s,height 0.2s,transform 0.05s linear;}
+#cursor-ring{position:fixed;z-index:10000;width:32px;height:32px;border-radius:50%;border:0.5px solid var(--gold-40);pointer-events:none;will-change:transform;transition:transform 0.12s ease-out,width 0.25s,height 0.25s;}
+body.hovering #cursor-ring{width:48px;height:48px;}
+
+/* NAV — copiado de la home */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;background:rgba(255,253,248,0.93);backdrop-filter:blur(6px);border-bottom:0.5px solid var(--gold-20);}
+.nav-logo svg{height:34px;display:block;}
+.nav-links{display:flex;gap:2rem;flex:1;justify-content:center;}
+.nav-links a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--ink);text-decoration:none;cursor:none;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.on{color:var(--gold-text);}
+.nav-lang{display:flex;gap:2px;}
+.nav-lang span{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:rgba(22,30,20,0.8);cursor:none;padding:2px 6px;transition:color 0.3s;}
+.nav-lang span.on{color:var(--gold-text);}
+#menu-toggle{display:none;background:none;border:none;padding:10px;gap:5px;flex-direction:column;cursor:none;z-index:10003;position:relative;}
+#menu-toggle span{display:block;width:24px;height:1.5px;background:var(--ink);transition:all 0.3s;}
+@media(max-width:860px){
+  input,textarea,select{font-size:16px !important;}
+  body::after{display:none;}
+  body{cursor:auto;}
+  #cursor-dot,#cursor-ring{display:none;}
+  nav{padding:0 1.2rem;backdrop-filter:none;background:rgba(255,253,248,0.97);height:60px;}
+  .nav-logo svg{height:28px;}
+  #menu-toggle{display:flex;}
+  .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);z-index:10002;padding:0;}
+  .nav-links.open{transform:translateX(0) !important;}
+  .nav-links a{font-size:24px;letter-spacing:5px;}
+  .nav-links .nav-lang{margin-top:1.5rem;}
+  .nav-links .nav-lang span{font-size:14px;}
+  #menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  #menu-toggle.active span:nth-child(2){opacity:0;}
+  #menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .dish-name{font-size:14.5px;}
+  footer{padding:1.5rem 1.5rem;flex-direction:column;align-items:flex-start;gap:0.5rem;}
+}
+
+::selection{background:var(--gold);color:var(--paper);}
+.wrap{max-width:740px;margin:0 auto;padding:0 5vw 8rem;}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* page hero */
+.page-hero{padding:9.5rem 0 2.6rem;text-align:center;}
+.page-hero-eyebrow{font-family:'Outfit',sans-serif;font-weight:400;font-size:12px;letter-spacing:4px;color:var(--gold-text);text-transform:uppercase;margin:0 0 1rem;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(34px,7vw,56px);letter-spacing:3px;line-height:1.05;margin:0 0 1.2rem;text-wrap:balance;}
+.page-hero p{font-size:16px;line-height:1.75;color:var(--ink-muted);max-width:56ch;margin:0 auto;}
+
+.rule-diamond{display:flex;align-items:center;gap:10px;margin:1.4rem auto 0;max-width:220px;}
+.rd-line{flex:1;height:0.5px;background:var(--gold-20);}
+.rd-dot{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
+
+/* section */
+.menu-section{padding:3.2rem 0;}
+.section-head{text-align:center;margin-bottom:1.1rem;}
+.section-num{display:block;font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:3px;color:var(--gold-text);margin-bottom:0.5rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(26px,4.4vw,34px);letter-spacing:4px;margin:0 0 1.4rem;}
+.section-note{font-size:13px;color:var(--ink-faint);text-align:center;margin:0 0 2.2rem;font-style:italic;}
+.section-gap{height:2.2rem;border-bottom:0.5px solid var(--gold-20);margin-bottom:2.2rem;}
+
+.pdf-link{display:block;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2.5px;color:var(--ink-muted);text-decoration:none;margin:0 0 2.2rem;transition:color 0.3s;}
+.pdf-link:hover{color:var(--gold-text);}
+.allergen-hint{text-align:center;font-size:11.5px;color:var(--ink-faint);font-style:italic;margin:-1.6rem 0 2.2rem;}
+
+.cat{margin:2.2rem 0;}
+.cat-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold-text);text-transform:uppercase;margin:0 0 0.9rem;text-align:center;}
+
+.dish{display:flex;align-items:baseline;gap:0.5rem;padding:0.6rem 0;border-bottom:0.5px solid var(--gold-20);}
+.dish:last-child{border-bottom:none;}
+.dish-name{font-size:15.5px;color:var(--ink);line-height:1.4;}
+.dish-leader{flex:1;border-bottom:1px dotted var(--gold-40);height:0;transform:translateY(-4px);min-width:16px;}
+.dish-price{font-family:'Outfit',sans-serif;font-weight:500;font-size:15px;color:var(--gold-text);font-variant-numeric:tabular-nums;white-space:nowrap;}
+
+/* group menus */
+.tabs{display:flex;gap:10px;justify-content:center;margin:0 auto 1.6rem;flex-wrap:wrap;}
+.tab-btn{
+  font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;
+  background:none;border:0.5px solid var(--ink);color:var(--ink);cursor:none;
+  padding:11px 30px;transition:background 0.3s,color 0.3s,border-color 0.3s;
+  position:relative;
+}
+.tab-btn::after{content:'';position:absolute;top:4px;left:4px;right:-4px;bottom:-4px;border:0.5px solid var(--gold-20);pointer-events:none;transition:opacity 0.3s;opacity:0;}
+.tab-btn:hover{border-color:var(--gold);color:var(--gold-text);}
+.tab-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.tab-btn.active::after{opacity:1;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;animation:fade 0.35s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+
+.share-row{text-align:center;margin-bottom:2rem;}
+.share-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:var(--ink-muted);background:none;border:0.5px solid var(--gold-20);padding:9px 18px;cursor:none;transition:color 0.3s,border-color 0.3s;text-decoration:none;}
+.share-btn:hover{color:#25D366;border-color:#25D366;}
+.share-btn svg{width:14px;height:14px;fill:currentColor;flex-shrink:0;}
+
+.group-card{background:var(--paper-soft);border:0.5px solid var(--gold-20);padding:2.8rem clamp(1.4rem,5vw,3.4rem);}
+.group-price{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,54px);letter-spacing:3px;color:var(--gold-text);margin:0 0 0.3rem;}
+.group-price span{font-size:0.36em;letter-spacing:3px;color:var(--ink-faint);display:block;margin-top:0.5rem;font-family:'Outfit',sans-serif;text-transform:uppercase;}
+.gcat{margin-bottom:1.8rem;}
+.gcat:last-child{margin-bottom:0;}
+.gcat-label{font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:2.5px;color:var(--gold-text);text-transform:uppercase;margin:0 0 0.7rem;text-align:center;}
+.gdish{text-align:center;font-size:15px;line-height:1.75;color:var(--ink);}
+.group-note{text-align:center;font-size:12.5px;color:var(--ink-faint);margin-top:1.6rem;}
+
+.drinks-block{margin-top:2.4rem;padding-top:2.2rem;border-top:0.5px solid var(--gold-20);}
+.drinks-eyebrow{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:2.5px;color:var(--ink);text-transform:uppercase;margin:0 0 1.6rem;}
+.pack-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:0.4rem;}
+@media(max-width:640px){.pack-grid{grid-template-columns:1fr;}}
+.pack-card{background:var(--paper);border:0.5px solid var(--gold-20);padding:1.6rem 1.5rem;}
+.pack-card.premium{border-color:var(--gold);position:relative;}
+.pack-card.premium::before{content:'';position:absolute;top:5px;left:5px;right:-5px;bottom:-5px;border:0.5px solid var(--gold-20);pointer-events:none;}
+.pack-name{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2.5px;color:var(--gold-text);text-transform:uppercase;margin:0 0 1.1rem;}
+.pack-row{display:flex;align-items:baseline;justify-content:space-between;gap:0.6rem;padding:0.55rem 0;border-bottom:0.5px dotted var(--gold-40);}
+.pack-row:last-of-type{border-bottom:none;}
+.pack-row-label{font-size:13.5px;color:var(--ink);line-height:1.4;}
+.pack-row-price{font-family:'Outfit',sans-serif;font-weight:500;font-size:14.5px;color:var(--gold-text);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.pack-row-unit{font-family:'Outfit',sans-serif;font-weight:300;font-size:0.62em;color:var(--ink-faint);margin-left:2px;}
+.pack-row-price-text{font-size:12.5px;font-style:italic;color:var(--ink-muted);}
+.pack-note{text-align:center;font-size:11px;color:var(--ink-faint);font-style:italic;margin:1rem 0 0;}
+.allergen-note{max-width:480px;margin:2.4rem auto 0;padding-top:1.8rem;border-top:0.5px solid var(--gold-20);text-align:center;}
+.allergen-title{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2.5px;color:var(--gold-text);text-transform:uppercase;margin:0 0 0.7rem;}
+.allergen-note p:not(.allergen-title){font-size:12.5px;line-height:1.7;color:var(--ink-faint);}
+
+/* footer */
+footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid rgba(180,147,86,0.1);flex-wrap:wrap;gap:1rem;}
+.footer-logo svg{height:16px;display:block;}
+.footer-copy{font-family:'Outfit',sans-serif;font-weight:300;font-size:12px;color:rgba(255,253,248,0.8);letter-spacing:1px;}
+.footer-ra{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:rgba(180,147,86,0.95);}
+.footer-legal{font-family:'Outfit',sans-serif;font-weight:300;font-size:11px;color:rgba(255,253,248,0.55);letter-spacing:0.5px;}
+.footer-legal a{color:inherit;text-decoration:none;transition:color 0.3s;}
+.footer-legal a:hover{color:var(--gold);}
+
+#cookies{position:fixed;bottom:1rem;left:1rem;right:1rem;max-width:580px;margin:0 auto;background:var(--ink);color:var(--paper);padding:1rem 1.2rem;z-index:9998;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;box-shadow:0 8px 24px rgba(0,0,0,0.25);border:0.5px solid var(--gold-40);}
+#cookies p{font-size:12px;line-height:1.5;flex:1;min-width:200px;}
+#cookies a{color:var(--gold);text-decoration:underline;}
+#cookies button{background:var(--gold);color:var(--ink);border:none;padding:10px 18px;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;cursor:none;}
+@media(max-width:860px){ #cookies button{cursor:pointer;} }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <span class="loader-word" id="lw-ramis">RAMIS</span>
+  <span class="loader-word" id="lw-company">COMPANY</span>
+  <span id="loader-raco">RACO</span>
+</div>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo" aria-label="Volver a inicio" style="cursor:none;">
+    <svg viewBox="0 0 141.732 141.732" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Raco">
+      <path fill="#1C1C0E" d="M 19.035156 75.347656 C 24.667969 75.347656 27.910156 78.929688 27.910156 85.074219 L 27.910156 125.191406 C 27.910156 130.824219 28.25 134.75 28.933594 137.480469 L 32.691406 137.480469 C 31.835938 134.238281 31.492188 130.480469 31.492188 125.191406 L 31.492188 85.074219 C 31.492188 79.101562 29.617188 75.6875 25.007812 73.640625 C 29.273438 71.078125 31.664062 67.324219 31.664062 62.371094 L 31.664062 27.890625 C 31.664062 19.699219 26.886719 14.917969 19.203125 14.917969 L 6.402344 14.917969 L 6.402344 137.480469 L 9.988281 137.480469 L 9.988281 75.347656 Z M 28.082031 62.371094 C 28.082031 68.519531 24.835938 72.101562 19.203125 72.101562 L 9.988281 72.101562 L 9.988281 18.164062 L 19.203125 18.164062 C 24.835938 18.164062 28.082031 21.746094 28.082031 27.890625 Z M 35.078125 137.480469 L 38.492188 137.480469 L 42.929688 93.609375 L 58.292969 93.609375 L 62.730469 137.480469 L 66.144531 137.480469 L 53.171875 14.917969 L 48.050781 14.917969 Z M 50.441406 21.578125 L 50.78125 21.578125 L 53.511719 47.863281 L 57.949219 90.367188 L 43.269531 90.367188 L 47.710938 47.863281 Z M 93.96875 26.355469 C 93.96875 18.675781 89.015625 13.554688 81.675781 13.554688 C 74.335938 13.554688 69.214844 18.675781 69.214844 26.355469 L 69.214844 126.042969 C 69.214844 133.726562 74.335938 138.847656 81.675781 138.847656 C 89.015625 138.847656 93.96875 133.726562 93.96875 126.042969 L 93.96875 89.683594 L 90.554688 89.683594 L 90.554688 126.042969 C 90.554688 132.019531 87.140625 135.601562 81.675781 135.601562 C 76.214844 135.601562 72.800781 132.019531 72.800781 126.042969 L 72.800781 26.355469 C 72.800781 20.382812 76.214844 16.796875 81.675781 16.796875 C 87.140625 16.796875 90.554688 20.382812 90.554688 26.355469 L 90.554688 60.664062 L 93.96875 60.664062 Z M 112.230469 13.554688 C 104.890625 13.554688 99.429688 19.015625 99.429688 26.527344 L 99.429688 125.871094 C 99.429688 133.382812 104.890625 138.847656 112.230469 138.847656 C 119.570312 138.847656 125.03125 133.382812 125.03125 125.871094 L 125.03125 26.527344 C 125.03125 19.015625 119.570312 13.554688 112.230469 13.554688 M 112.230469 16.796875 C 117.691406 16.796875 121.449219 20.550781 121.449219 26.527344 L 121.449219 125.871094 C 121.449219 131.847656 117.691406 135.601562 112.230469 135.601562 C 106.769531 135.601562 103.011719 131.847656 103.011719 125.871094 L 103.011719 26.527344 C 103.011719 20.550781 106.769531 16.796875 112.230469 16.796875"/>
+      <path fill="#B49356" d="M 135.0625 27.785156 L 135.0625 2.617188 L 109.554688 2.617188 L 109.554688 5.871094 L 131.46875 5.871094 L 131.46875 27.785156 Z"/>
+    </svg>
+  </a>
+  <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="/#nosotros" data-es="Nosotros" data-ca="Nosaltres" data-en="About">Nosotros</a>
+    <a href="/carta/" class="on" data-es="Carta" data-ca="Carta" data-en="Menu">Carta</a>
+    <a href="/#bebidas" data-es="Bebidas" data-ca="Begudes" data-en="Drinks">Bebidas</a>
+    <a href="/#reservas" data-es="Reservas" data-ca="Reserves" data-en="Reservations">Reservas</a>
+    <a href="/#contacto" data-es="Contacto" data-ca="Contacte" data-en="Contact">Contacto</a>
+    <div class="nav-lang">
+      <span class="on" onclick="setLang('es',this)">ES</span>
+      <span onclick="setLang('ca',this)">CA</span>
+      <span onclick="setLang('en',this)">EN</span>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="page-hero reveal">
+    <p class="page-hero-eyebrow">Raco &middot; Blanquerna, Palma</p>
+    <h1 data-es="La Carta" data-ca="La Carta" data-en="The Menu">La Carta</h1>
+    <p data-es="Desayunos, tapas, arroces, carnes y pescados — y menús cerrados para grupos, con precio por persona. Cocina de producto, con lo que trae el mercado cada semana."
+       data-ca="Desayunos, tapas, arroces, carnes y pescados — y menús cerrados para grupos, con precio por persona. Cocina de producto, con lo que trae el mercado cada semana."
+       data-en="Desayunos, tapas, arroces, carnes y pescados — y menús cerrados para grupos, con precio por persona. Cocina de producto, con lo que trae el mercado cada semana.">Desayunos, tapas, arroces, carnes y pescados — y menús cerrados para grupos, con precio por persona. Cocina de producto, con lo que trae el mercado cada semana.</p>
+    <div class="rule-diamond"><span class="rd-line"></span><span class="rd-dot"></span><span class="rd-line"></span></div>
+  </section>
+
+  <section class="menu-section reveal" id="desayunos">
+    <div class="section-head">
+      <span class="section-num">I</span>
+      <h2 class="section-title" data-es="Desayunos" data-ca="Berenars" data-en="Breakfasts">Desayunos</h2>
+    </div>
+    <a class="pdf-link" href="/carta-desayunos.pdf" target="_blank" rel="noopener">Descargar en PDF ↓</a>
+    <p class="allergen-hint">El PDF incluye el desglose completo de alérgenos por plato</p>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Tostas" data-ca="Torrades" data-en="Toasts">Tostas</p>
+      <div class="dish"><span class="dish-name" data-es="Tosta con tomate y aceite de oliva" data-ca="Torrada amb tomàtiga i oli d’oliva" data-en="Toast with olive oil and tomato">Tosta con tomate y aceite de oliva</span><span class="dish-leader"></span><span class="dish-price">3,70&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta con mantequilla" data-ca="Torrada amb mantenga" data-en="Toast with butter">Tosta con mantequilla</span><span class="dish-leader"></span><span class="dish-price">3,70&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de salmón ahumado y queso Philadelphia" data-ca="Torrada de salmó fumat i formatge Philadelphia" data-en="Toast with smoked salmon and Philadelphia cream cheese">Tosta de salmón ahumado y queso Philadelphia</span><span class="dish-leader"></span><span class="dish-price">8,90&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de aguacate y huevo escalfado" data-ca="Torrada d’alvocat i ou escalfat" data-en="Toast with avocado and poached egg">Tosta de aguacate y huevo escalfado</span><span class="dish-leader"></span><span class="dish-price">8,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta con tomate, huevos fritos y bacon" data-ca="Torrada amb tomàtiga, ous frits i bacon" data-en="Toast with tomato, fried eggs and bacon">Tosta con tomate, huevos fritos y bacon</span><span class="dish-leader"></span><span class="dish-price">8,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta con burrata, aguacate y tomates cherry" data-ca="Torrada de burrata amb alvocat i tomàtigues cherry" data-en="Toast with burrata, avocado and cherry tomatoes">Tosta con burrata, aguacate y tomates cherry</span><span class="dish-leader"></span><span class="dish-price">9,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de jamón serrano y tomate" data-ca="Torrada de pernil salat amb tomàtiga" data-en="Toast with serrano ham and tomato">Tosta de jamón serrano y tomate</span><span class="dish-leader"></span><span class="dish-price">5,90&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de queso mahonés y tomate" data-ca="Torrada de formatge mahonès i tomàtiga" data-en="Toast with Mahón cheese and tomato">Tosta de queso mahonés y tomate</span><span class="dish-leader"></span><span class="dish-price">5,90&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de camaiot" data-ca="Torrada de camaiot" data-en="Toast with camaiot">Tosta de camaiot</span><span class="dish-leader"></span><span class="dish-price">8,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de lomo y queso" data-ca="Torrada de llom i formatge" data-en="Toast with pork loin and cheese">Tosta de lomo y queso</span><span class="dish-leader"></span><span class="dish-price">8,00&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Bollería y sándwiches" data-ca="Brioxeria i sandvitxos" data-en="Bakery and sandwiches">Bollería y sándwiches</p>
+      <div class="dish"><span class="dish-name">Croissant</span><span class="dish-leader"></span><span class="dish-price">2,30&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Croissant con Nutella" data-ca="Croissant amb Nutella" data-en="Croissant with Nutella">Croissant con Nutella</span><span class="dish-leader"></span><span class="dish-price">2,90&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Croissant tostado de jamón y queso" data-ca="Croissant torrat de pernil i formatge" data-en="Toasted croissant with ham and cheese">Croissant tostado de jamón y queso</span><span class="dish-leader"></span><span class="dish-price">3,20&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Bocata de la semana" data-ca="Entrepà de la setmana" data-en="Weekly special sandwich">Bocata de la semana</span><span class="dish-leader"></span><span class="dish-price">5,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Sándwich tostado de jamón y queso" data-ca="Sandvitx torrat de pernil i formatge" data-en="Toasted ham and cheese sandwich">Sándwich tostado de jamón y queso</span><span class="dish-leader"></span><span class="dish-price">5,20&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Sándwich de atún, tomate y mayonesa" data-ca="Sandvitx de tonyina, tomàtiga i maionesa" data-en="Tuna, tomato and mayonnaise sandwich">Sándwich de atún, tomate y mayonesa</span><span class="dish-leader"></span><span class="dish-price">5,20&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Club sándwich · pollo, queso, bacon, tomate, lechuga y mayonesa" data-ca="Club sandvitx · pollastre rostit, formatge, bacon, tomàtiga, enciam i maonesa" data-en="Club sandwich · roasted chicken, cheese, bacon, tomato, lettuce and mayonnaise">Club sándwich · pollo, queso, bacon, tomate, lechuga y mayonesa</span><span class="dish-leader"></span><span class="dish-price">12,50&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Fruta, yogur y cereales" data-ca="Fruita, iogurt i cereals" data-en="Fruit, yogurt and cereals">Fruta, yogur y cereales</p>
+      <div class="dish"><span class="dish-name" data-es="Ensalada de fruta fresca" data-ca="Bol de fruita tallada" data-en="Fresh fruit salad">Ensalada de fruta fresca</span><span class="dish-leader"></span><span class="dish-price">3,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Ensalada de fruta fresca con yogur" data-ca="Bol de fruita tallada amb iogurt" data-en="Fresh fruit salad with yogurt">Ensalada de fruta fresca con yogur</span><span class="dish-leader"></span><span class="dish-price">4,20&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Ensalada de fruta fresca, yogur y granola" data-ca="Bol de fruita tallada amb iogurt i granola" data-en="Fresh fruit, yogurt and granola salad">Ensalada de fruta fresca, yogur y granola</span><span class="dish-leader"></span><span class="dish-price">4,50&euro;</span></div>
+    </div>
+  </section>
+
+  <div class="section-gap"></div>
+
+  <section class="menu-section reveal" id="carta-general">
+    <div class="section-head">
+      <span class="section-num">II</span>
+      <h2 class="section-title" data-es="Carta" data-ca="Carta" data-en="Menu">Carta</h2>
+    </div>
+    <a class="pdf-link" href="/carta-comida-cena.pdf" target="_blank" rel="noopener">Descargar en PDF ↓</a>
+    <p class="allergen-hint">El PDF incluye el desglose completo de alérgenos por plato</p>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Entrantes" data-ca="Entrants" data-en="Starters">Entrantes</p>
+      <div class="dish"><span class="dish-name" data-es="Ceviche de pescado blanco con ají amarillo y crujiente" data-ca="Ceviche de peix blanc amb ají groc i cruixent" data-en="White fish ceviche with crispy Peruvian yellow chili">Ceviche de pescado blanco con ají amarillo y crujiente</span><span class="dish-leader"></span><span class="dish-price">21,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tiradito de lubina, salsa de yuzu, kimchi y trufa laminada" data-ca="Tiradito de llobarro, amb salsa de yuzu, kimchi i tòfona laminada" data-en="Thinly sliced raw sea bass with yuzu sauce, kimchi and shaved truffle">Tiradito de lubina, salsa de yuzu, kimchi y trufa laminada</span><span class="dish-leader"></span><span class="dish-price">19,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Croqueta melosa de pollo con velo de papada" data-ca="Croqueta melosa de pollastre amb vel de papada" data-en="Creamy chicken croquette with pork jowl veil">Croqueta melosa de pollo con velo de papada</span><span class="dish-leader"></span><span class="dish-price">14,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Pani puri de tartar de gambas, aguacate y huevo de codorniz (2 u)" data-ca="Pani puri de tartar de gambes, alvocat i ou de guàtlera (2 u)" data-en="Pani puri filled with prawn tartare, avocado and quail egg (2 pcs)">Pani puri de tartar de gambas, aguacate y huevo de codorniz (2 u)</span><span class="dish-leader"></span><span class="dish-price">15,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Carpaccio de vaca con queso mahonés y miel · +6€ con trufa" data-ca="Carpaccio de vaca amb formatge maonès i mel · +6€ amb tòfona" data-en="Beef carpaccio with Mahón cheese and honey · +6€ for truffle">Carpaccio de vaca con queso mahonés y miel · +6€ con trufa</span><span class="dish-leader"></span><span class="dish-price">21,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Brioche de carrillera, mayo ahumada picante y cebolla encurtida (2 u)" data-ca="Brioche de galtes amb maionesa fumada picant i ceba encurtida (2 u)" data-en="Beef cheek brioche with spicy smoked mayo and pickled onion (2 pcs)">Brioche de carrillera, mayo ahumada picante y cebolla encurtida (2 u)</span><span class="dish-leader"></span><span class="dish-price">14,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Alcachofas a la plancha, huevo a baja temperatura y espuma de jamón ibérico" data-ca="Carxofes a la planxa amb ou a baixa temperatura i escuma de pernil ibèric" data-en="Grilled artichokes with low-temperature egg and Iberian ham foam">Alcachofas a la plancha, huevo a baja temperatura y espuma de jamón ibérico</span><span class="dish-leader"></span><span class="dish-price">16,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Patatas paja con huevos y gambón al ajillo" data-ca="Patates palla amb ous i gamba amb allada" data-en="Shoestring fries with eggs and garlic king prawns">Patatas paja con huevos y gambón al ajillo</span><span class="dish-leader"></span><span class="dish-price">19,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Jamón ibérico (90 g)" data-ca="Pernil ibèric (90 g)" data-en="Iberian ham (90 g)">Jamón ibérico (90 g)</span><span class="dish-leader"></span><span class="dish-price">25,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Steak tartar de solomillo" data-ca="Steak tartar de rellom de vedella" data-en="Beef tenderloin steak tartare">Steak tartar de solomillo</span><span class="dish-leader"></span><span class="dish-price">28,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Canelón de osobuco con demi-glace y pistacho" data-ca="Caneló d’ossobuco amb demi-glace i festucs" data-en="Ossobuco cannelloni with demi-glace and pistachio">Canelón de osobuco con demi-glace y pistacho</span><span class="dish-leader"></span><span class="dish-price">21,95&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Ensaladas" data-ca="Amanides" data-en="Salads">Ensaladas</p>
+      <div class="dish"><span class="dish-name" data-es="Nuestra ensalada César con palomitas de pollo crujientes" data-ca="La nostra amanida Cèsar amb crispetes de pollastre cruixent" data-en="Our Caesar salad with crispy chicken popcorn">Nuestra ensalada César con palomitas de pollo crujientes</span><span class="dish-leader"></span><span class="dish-price">16,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Burrata, aceite de kalamata, nueces caramelizadas y helado de albahaca" data-ca="Burrata amb oli de kalamata, nous caramel·litzades i gelat d’alfabeguera" data-en="Burrata with Kalamata oil, caramelized walnuts and basil ice cream">Burrata, aceite de kalamata, nueces caramelizadas y helado de albahaca</span><span class="dish-leader"></span><span class="dish-price">18,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Queso de cabra, vinagreta de sobrasada y piñones" data-ca="Formatge de cabra amb vinagreta de sobrassada i pinyons" data-en="Goat cheese salad with Mallorcan sobrasada vinaigrette and pine nuts">Queso de cabra, vinagreta de sobrasada y piñones</span><span class="dish-leader"></span><span class="dish-price">18,50&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Principales" data-ca="Principals" data-en="Main courses">Principales</p>
+      <div class="dish"><span class="dish-name" data-es="Cordero a baja temperatura, salsa de vino mallorquín y ajo tierno" data-ca="Xot a baixa temperatura amb salsa de vi mallorquí i all tendre" data-en="Low-temperature lamb with Mallorcan wine sauce and spring garlic">Cordero a baja temperatura, salsa de vino mallorquín y ajo tierno</span><span class="dish-leader"></span><span class="dish-price">31,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Magret de pato a la naranja con risotto de trigo sarraceno" data-ca="Magret d’ànec a la taronja amb risotto de blat sarraí" data-en="Duck magret à l’orange with our buckwheat risotto">Magret de pato a la naranja con risotto de trigo sarraceno</span><span class="dish-leader"></span><span class="dish-price">32,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Solomillo de ternera, duxelle de setas, patata y bimis" data-ca="Rellom de vedella amb duxelle de bolets, patata i bimis" data-en="Beef tenderloin with mushroom duxelles, potato and broccolini">Solomillo de ternera, duxelle de setas, patata y bimis</span><span class="dish-leader"></span><span class="dish-price">34,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Lomo de lubina, tartaleta de verduras y salsa de piquillo" data-ca="Llom de llobarro amb cassoleta de verdures i salsa de pebre de piquillo" data-en="Sea bass loin with vegetable tartlet and piquillo pepper sauce">Lomo de lubina, tartaleta de verduras y salsa de piquillo</span><span class="dish-leader"></span><span class="dish-price">34,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Bacalao con espárragos blancos y salsa marmolada de hierbas" data-ca="Bacallà amb espàrrecs blancs i salsa marbrejada d’herbes" data-en="Cod with white asparagus and marbled herb sauce">Bacalao con espárragos blancos y salsa marmolada de hierbas</span><span class="dish-leader"></span><span class="dish-price">32,00&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Arroces y pastas" data-ca="Arrossos i pastes" data-en="Rice and pasta">Arroces y pastas</p>
+      <div class="dish"><span class="dish-name" data-es="Arroz a la llauna de pulpo, alcachofa y alioli de azafrán" data-ca="Arròs a la llauna de pop amb carxofa i allioli de safrà" data-en="Arroz a la llauna with octopus, artichoke and saffron aioli">Arroz a la llauna de pulpo, alcachofa y alioli de azafrán</span><span class="dish-leader"></span><span class="dish-price">27,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Arroz a la llauna de secreto ibérico y foie" data-ca="Arròs a la llauna de secret ibèric i foie" data-en="Arroz a la llauna with Iberian pork secreto and foie gras">Arroz a la llauna de secreto ibérico y foie</span><span class="dish-leader"></span><span class="dish-price">29,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Fideuá a la llauna con bacalao en tempura" data-ca="Fideuà a la llauna amb bacallà en tempura" data-en="Fideuà a la llauna with tempura cod">Fideuá a la llauna con bacalao en tempura</span><span class="dish-leader"></span><span class="dish-price">28,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tagliatelle, puntas de solomillo, setas y salsa de trufa" data-ca="Tagliatelle amb puntes de rellom de vedella, bolets i salsa de tòfona" data-en="Tagliatelle with beef tenderloin tips, mushrooms and truffle sauce">Tagliatelle, puntas de solomillo, setas y salsa de trufa</span><span class="dish-leader"></span><span class="dish-price">25,00&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Postres" data-ca="Postres" data-en="Desserts">Postres</p>
+      <div class="dish"><span class="dish-name" data-es="Tarta fina clásica de manzana con helado" data-ca="Pastís fi clàssic de poma amb gelat" data-en="Classic thin apple tart with ice cream">Tarta fina clásica de manzana con helado</span><span class="dish-leader"></span><span class="dish-price">9,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Coulant de dulce de leche con helado" data-ca="Coulant de dulce de leche amb gelat" data-en="Dulce de leche coulant with ice cream">Coulant de dulce de leche con helado</span><span class="dish-leader"></span><span class="dish-price">9,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tarta cremosa de queso" data-ca="Pastís cremós de formatge" data-en="Creamy cheesecake">Tarta cremosa de queso</span><span class="dish-leader"></span><span class="dish-price">9,00&euro;</span></div>
+      <div class="dish"><span class="dish-name">Lemon Pie</span><span class="dish-leader"></span><span class="dish-price">9,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Milhojas de chocolate" data-ca="Pasta fullada de xocolata" data-en="Chocolate mille-feuille">Milhojas de chocolate</span><span class="dish-leader"></span><span class="dish-price">9,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Huevo de chocolate blanco y mango" data-ca="Ou de xocolata blanca i mango" data-en="White chocolate and mango egg">Huevo de chocolate blanco y mango</span><span class="dish-leader"></span><span class="dish-price">9,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tiramisú hecho en cafetera" data-ca="Tiramisú fet dins cafetera" data-en="Tiramisu served in a coffee maker">Tiramisú hecho en cafetera</span><span class="dish-leader"></span><span class="dish-price">9,00&euro;</span></div>
+    </div>
+  </section>
+
+  <div class="section-gap"></div>
+
+  <section class="menu-section reveal" id="grupos">
+    <div class="section-head">
+      <span class="section-num">III</span>
+      <h2 class="section-title">Menú de grupos</h2>
+    </div>
+    <p class="section-note" data-es="Precio cerrado por persona · consulta disponibilidad al reservar" data-ca="Preu tancat per persona · consulta disponibilitat en reservar" data-en="Fixed price per person · check availability when booking">Precio cerrado por persona · consulta disponibilidad al reservar</p>
+
+    <div class="tabs" role="tablist" aria-label="Precio del menú de grupos">
+      <button class="tab-btn active" data-tab="t45" type="button" role="tab" aria-selected="true">45&euro;</button>
+      <button class="tab-btn" data-tab="t55" type="button" role="tab" aria-selected="false">55&euro;</button>
+      <button class="tab-btn" data-tab="t70" type="button" role="tab" aria-selected="false">70&euro;</button>
+    </div>
+
+    <div class="share-row">
+      <a class="share-btn" id="whatsapp-share" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.99.583 3.845 1.588 5.401L2 22l4.716-1.556A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.2a8.17 8.17 0 0 1-4.418-1.294l-.317-.19-3.087 1.018 1.03-3.017-.207-.31A8.169 8.169 0 0 1 3.8 12c0-4.529 3.671-8.2 8.2-8.2 4.529 0 8.2 3.671 8.2 8.2 0 4.529-3.671 8.2-8.2 8.2z"/></svg>
+        Compartir por WhatsApp
+      </a>
+    </div>
+
+    <div class="group-card">
+      <div class="tab-panel active" id="t45">
+        <p class="group-price">45&euro;<span data-es="por persona" data-ca="per persona" data-en="per person">por persona</span></p>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Entrantes · para compartir" data-ca="Entrants · per a compartir" data-en="Starters · to share">Entrantes · para compartir</p>
+          <p class="gdish" data-es="Croquetas melosas de pollo con velo de papada ibérica y alioli de romero" data-ca="Croquetes meloses de pollastre amb vel de papada ibèrica i allioli de romaní" data-en="Creamy chicken croquettes topped with Iberian pork jowl veil and rosemary alioli">Croquetas melosas de pollo con velo de papada ibérica y alioli de romero</p>
+          <p class="gdish" data-es="Gazpacho tradicional (chupito individual)" data-ca="Gaspatxo tradicional (xarrup individual)" data-en="Traditional gazpacho (individual shooter)">Gazpacho tradicional (chupito individual)</p>
+          <p class="gdish" data-es="Huevos rotos con texturas de jamón" data-ca="Ous romputs amb textures de pernil" data-en="Broken eggs with textures of Iberian cured ham">Huevos rotos con texturas de jamón</p>
+          <p class="gdish" data-es="Ensaladilla RACÓ" data-ca="Ensaladilla RACÓ" data-en="RACÓ house potato salad">Ensaladilla RACÓ</p>
+        </div>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Principales · a elegir" data-ca="Principals · a triar" data-en="Main courses · choice of">Principales · a elegir</p>
+          <p class="gdish" data-es="Arroz de verduras de temporada en tempura" data-ca="Arròs de verdures de temporada en tempura" data-en="Seasonal vegetables in tempura over savoury rice">Arroz de verduras de temporada en tempura</p>
+          <p class="gdish" data-es="Arroz negro meloso de bacalao" data-ca="Arròs negre melós de bacallà" data-en="Creamy black rice with cod">Arroz negro meloso de bacalao</p>
+        </div>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Postres · a elegir" data-ca="Postres · a triar" data-en="Desserts · choice of">Postres · a elegir</p>
+          <p class="gdish" data-es="Tarta cremosa de queso caramelizada" data-ca="Pastís cremós de formatge caramel·litzat" data-en="Creamy caramelized cheesecake">Tarta cremosa de queso caramelizada</p>
+          <p class="gdish" data-es="Brownie bañado en salsa de toffee con helado" data-ca="Brownie banyat en salsa de toffee amb gelat" data-en="Chocolate brownie glazed with toffee sauce and ice cream">Brownie bañado en salsa de toffee con helado</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="t55">
+        <p class="group-price">55&euro;<span data-es="por persona" data-ca="per persona" data-en="per person">por persona</span></p>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Entrantes · para compartir" data-ca="Entrants · per a compartir" data-en="Starters · to share">Entrantes · para compartir</p>
+          <p class="gdish" data-es="Croquetas melosas de pollo con velo de papada ibérica y alioli de romero" data-ca="Croquetes meloses de pollastre amb vel de papada ibèrica i allioli de romaní" data-en="Creamy chicken croquettes topped with Iberian pork jowl veil and rosemary alioli">Croquetas melosas de pollo con velo de papada ibérica y alioli de romero</p>
+          <p class="gdish" data-es="Gazpacho tradicional (chupito individual)" data-ca="Gaspatxo tradicional (xarrup individual)" data-en="Traditional gazpacho (individual shooter)">Gazpacho tradicional (chupito individual)</p>
+          <p class="gdish" data-es="Huevos perdidos (peces platino crujientes con huevos fritos)" data-ca="Ous perduts (peix platí arrebossat amb ous ferrits)" data-en="“Huevos perdidos” (crispy small whitebait with sunny-side-up eggs)">Huevos perdidos (peces platino crujientes con huevos fritos)</p>
+          <p class="gdish" data-es="Brioche de carrillera con mayonesa ahumada picante y cebolla encurtida (individual)" data-ca="Brioche de galta amb maionesa fumada picant i ceba envinagrada (individual)" data-en="Braised pork cheek brioche with spicy smoked mayo and pickled red onion (individual)">Brioche de carrillera con mayonesa ahumada picante y cebolla encurtida (individual)</p>
+          <p class="gdish" data-es="Burrata con aceite de Kalamata, nueces caramelizadas y helado de albahaca" data-ca="Burrata amb oli de Kalamata, nous caramel·litzades i gelat d’alfàbrega" data-en="Burrata with Kalamata olive oil, caramelized walnuts, and basil ice cream">Burrata con aceite de Kalamata, nueces caramelizadas y helado de albahaca</p>
+        </div>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Principales · a elegir" data-ca="Principals · a triar" data-en="Main courses · choice of">Principales · a elegir</p>
+          <p class="gdish" data-es="Entrecot con patató y miniverduras de temporada" data-ca="Entrecot amb patató i miniverdures de temporada" data-en="Grilled entrecôte with roasted Mallorcan baby potatoes and seasonal mini vegetables">Entrecot con patató y miniverduras de temporada</p>
+          <p class="gdish" data-es="Salmón a la plancha sobre puré de patata verde con zanahorias asadas" data-ca="Salmó a la planxa sobre puré de patata verda amb pastanagues rostides" data-en="Grilled salmon fillet on green herb potato purée with roasted carrots">Salmón a la plancha sobre puré de patata verde con zanahorias asadas</p>
+        </div>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Postres · a elegir" data-ca="Postres · a triar" data-en="Desserts · choice of">Postres · a elegir</p>
+          <p class="gdish" data-es="Tarta de queso caramelizada" data-ca="Pastís de formatge caramel·litzat" data-en="Caramelized cheesecake">Tarta de queso caramelizada</p>
+          <p class="gdish" data-es="Coulant de dulce de leche con helado" data-ca="Coulant de dolç de llet amb gelat" data-en="Dulce de leche coulant (lava cake) with ice cream">Coulant de dulce de leche con helado</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="t70">
+        <p class="group-price">70&euro;<span data-es="por persona" data-ca="per persona" data-en="per person">por persona</span></p>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Entrantes · para compartir" data-ca="Entrants · per a compartir" data-en="Starters · to share">Entrantes · para compartir</p>
+          <p class="gdish" data-es="Patatas paja con huevos y gambón al ajillo" data-ca="Patates palla amb ous i gambot a l’allet" data-en="Crispy shoestring potatoes with fried eggs and garlic king prawns">Patatas paja con huevos y gambón al ajillo</p>
+          <p class="gdish" data-es="Brioche de carrillera con mayonesa ahumada picante y cebolla encurtida (individual)" data-ca="Brioche de galta amb maionesa fumada picant i ceba envinagrada (individual)" data-en="Braised pork cheek brioche with spicy smoked mayo and pickled red onion (individual)">Brioche de carrillera con mayonesa ahumada picante y cebolla encurtida (individual)</p>
+          <p class="gdish" data-es="Ceviche de pescado blanco con ají amarillo y crujiente de boniato" data-ca="Ceviche de peix blanc amb ají groc i cruixent de moniato" data-en="White fish ceviche with yellow chili marinade (ají amarillo) and sweet potato crisp">Ceviche de pescado blanco con ají amarillo y crujiente de boniato</p>
+          <p class="gdish" data-es="Croquetas melosas de pollo con velo de papada ibérica y alioli de romero" data-ca="Croquetes meloses de pollastre amb vel de papada ibèrica i allioli de romaní" data-en="Creamy chicken croquettes topped with Iberian pork jowl veil and rosemary alioli">Croquetas melosas de pollo con velo de papada ibérica y alioli de romero</p>
+        </div>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Principales · a elegir" data-ca="Principals · a triar" data-en="Main courses · choice of">Principales · a elegir</p>
+          <p class="gdish" data-es="Cordero a baja temperatura con salsa de vino mallorquín, verduras salteadas de temporada y ajetes tiernos" data-ca="Me a baixa temperatura amb reducció de vi mallorquí, verdures saltejades de temporada i alls tendres" data-en="Slow-cooked Mallorcan lamb in red wine reduction with sautéed seasonal vegetables and young garlic">Cordero a baja temperatura con salsa de vino mallorquín, verduras salteadas de temporada y ajetes tiernos</p>
+          <p class="gdish" data-es="Corvina con salsa beurre blanc, espárragos y chalotas confitadas" data-ca="Corball amb mantega blanca (beurre blanc), espàrrecs i escalunyes confitades" data-en="Pan-seared corvina (meagre) with beurre blanc sauce, asparagus, and confit shallots">Corvina con salsa beurre blanc, espárragos y chalotas confitadas</p>
+          <p class="gdish" data-es="Tagliatelle con puntas de solomillo, setas y salsa de trufa" data-ca="Tagliatelle amb puntes de filet, bolets i salsa de tòfona" data-en="Tagliatelle pasta with beef tenderloin tips, wild mushrooms, and truffle sauce">Tagliatelle con puntas de solomillo, setas y salsa de trufa</p>
+        </div>
+        <div class="gcat">
+          <p class="gcat-label" data-es="Postres · a elegir" data-ca="Postres · a triar" data-en="Desserts · choice of">Postres · a elegir</p>
+          <p class="gdish" data-es="Tarta de queso caramelizada" data-ca="Pastís de formatge caramel·litzat" data-en="Caramelized cheesecake">Tarta de queso caramelizada</p>
+          <p class="gdish" data-es="Milhojas de chocolate" data-ca="Milfulls de xocolata" data-en="Chocolate mille-feuille">Milhojas de chocolate</p>
+        </div>
+      </div>
+
+      <div class="drinks-block">
+        <p class="drinks-eyebrow" data-es="Bebidas · válido hasta el postre" data-ca="Begudes · vàlid fins al postre" data-en="Drinks · valid until dessert">Bebidas · válido hasta el postre</p>
+
+        <div class="gcat">
+          <p class="gcat-label" data-es="Incluido en el menú" data-ca="Inclòs en el menú" data-en="Included in the menu">Incluido en el menú</p>
+          <p class="gdish" data-es="1 botella de vino tinto o blanco Magnum de la casa (1 por cada 4 personas)" data-ca="1 ampolla de vi negre o blanc Magnum de la casa (1 per cada 4 persones)" data-en="1 Magnum bottle of house red or white wine (1 per every 4 guests)">1 botella de vino tinto o blanco Magnum de la casa (1 por cada 4 personas)</p>
+          <p class="gdish" data-es="Agua, café o infusiones" data-ca="Aigua, cafè o infusions" data-en="Water, coffee or tea">Agua, café o infusiones</p>
+        </div>
+
+        <div class="pack-grid">
+          <div class="pack-card">
+            <p class="pack-name" data-es="Barra libre" data-ca="Barra lliure" data-en="Open bar">Barra libre</p>
+            <div class="pack-row">
+              <span class="pack-row-label" data-es="Cerveza (caña) o refresco" data-ca="Cervesa (canya) o refresc" data-en="Draft beer or soft drink">Cerveza (caña) o refresco</span>
+              <span class="pack-row-price">5&euro;<span class="pack-row-unit" data-es="/pers." data-ca="/pers." data-en="/guest">/pers.</span></span>
+            </div>
+            <div class="pack-row">
+              <span class="pack-row-label" data-es="Combinados" data-ca="Combinats" data-en="Mixed drinks">Combinados</span>
+              <span class="pack-row-price">7,5&euro;<span class="pack-row-unit" data-es="/pers." data-ca="/pers." data-en="/guest">/pers.</span></span>
+            </div>
+            <p class="pack-note" data-es="Marcas comerciales · consultar disponibilidad" data-ca="Marques comercials · consultar disponibilitat" data-en="Standard brands · ask about availability">Marcas comerciales · consultar disponibilidad</p>
+          </div>
+
+          <div class="pack-card premium">
+            <p class="pack-name" data-es="Pack Premium" data-ca="Pack Premium" data-en="Premium Pack">Pack Premium</p>
+            <div class="pack-row">
+              <span class="pack-row-label" data-es="Cerveza (botellín o caña) o refresco" data-ca="Cervesa (botellí o canya) o refresc" data-en="Bottled or draft beer, or soft drink">Cerveza (botellín o caña) o refresco</span>
+              <span class="pack-row-price">6,5&euro;<span class="pack-row-unit" data-es="/pers." data-ca="/pers." data-en="/guest">/pers.</span></span>
+            </div>
+            <div class="pack-row">
+              <span class="pack-row-label" data-es="Combinados premium" data-ca="Combinats prèmium" data-en="Premium mixed drinks">Combinados premium</span>
+              <span class="pack-row-price">9&euro;<span class="pack-row-unit" data-es="/pers." data-ca="/pers." data-en="/guest">/pers.</span></span>
+            </div>
+            <div class="pack-row">
+              <span class="pack-row-label" data-es="Vinos premium" data-ca="Vins prèmium" data-en="Premium wines">Vinos premium</span>
+              <span class="pack-row-price pack-row-price-text" data-es="Según demanda" data-ca="Segons demanda" data-en="Upon request">Según demanda</span>
+            </div>
+            <p class="pack-note" data-es="Pregunta por las marcas disponibles" data-ca="Demana per les marques disponibles" data-en="Ask us about available brands">Pregunta por las marcas disponibles</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="group-note">Precios por persona, IVA incluido · grupo mínimo a consultar</p>
+
+    <div class="allergen-note">
+      <p class="allergen-title" data-es="Alérgenos e intolerancias" data-ca="Al·lèrgens i intoleràncies" data-en="Allergens &amp; dietary requirements">Alérgenos e intolerancias</p>
+      <p data-es="Rogamos nos comuniquen cualquier tipo de alergia, intolerancia o preferencia alimentaria (celiaquía, vegetarianos, etc.) con un mínimo de 48/72 horas de antelación a la fecha del evento para poder ofrecer una alternativa adaptada en cocina. Disponemos de la ficha técnica de alérgenos a su disposición."
+         data-ca="Us pregam que ens comuniqueu qualsevol tipus d’al·lèrgia, intolerància o preferència alimentària (celiaquia, vegetarians, etc.) amb un mínim de 48/72 hores d’antelació a la data de l’esdeveniment per poder oferir una alternativa adaptada a cuina. Tenim a la vostra disposició la fitxa tècnica d’al·lèrgens."
+         data-en="Please inform us of any food allergies, intolerances, or dietary preferences (coeliac, vegetarian, etc.) at least 48–72 hours prior to your event so we can tailor alternative dishes for you. Full allergen information is available upon request.">Rogamos nos comuniquen cualquier tipo de alergia, intolerancia o preferencia alimentaria (celiaquía, vegetarianos, etc.) con un mínimo de 48/72 horas de antelación a la fecha del evento para poder ofrecer una alternativa adaptada en cocina. Disponemos de la ficha técnica de alérgenos a su disposición.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <svg class="footer-logo" height="32" viewBox="0 0 141.732 141.732" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#B49356" d="M 19.035156 75.347656 C 24.667969 75.347656 27.910156 78.929688 27.910156 85.074219 L 27.910156 125.191406 C 27.910156 130.824219 28.25 134.75 28.933594 137.480469 L 32.691406 137.480469 C 31.835938 134.238281 31.492188 130.480469 31.492188 125.191406 L 31.492188 85.074219 C 31.492188 79.101562 29.617188 75.6875 25.007812 73.640625 C 29.273438 71.078125 31.664062 67.324219 31.664062 62.371094 L 31.664062 27.890625 C 31.664062 19.699219 26.886719 14.917969 19.203125 14.917969 L 6.402344 14.917969 L 6.402344 137.480469 L 9.988281 137.480469 L 9.988281 75.347656 Z M 28.082031 62.371094 C 28.082031 68.519531 24.835938 72.101562 19.203125 72.101562 L 9.988281 72.101562 L 9.988281 18.164062 L 19.203125 18.164062 C 24.835938 18.164062 28.082031 21.746094 28.082031 27.890625 Z M 35.078125 137.480469 L 38.492188 137.480469 L 42.929688 93.609375 L 58.292969 93.609375 L 62.730469 137.480469 L 66.144531 137.480469 L 53.171875 14.917969 L 48.050781 14.917969 Z M 50.441406 21.578125 L 50.78125 21.578125 L 53.511719 47.863281 L 57.949219 90.367188 L 43.269531 90.367188 L 47.710938 47.863281 Z M 93.96875 26.355469 C 93.96875 18.675781 89.015625 13.554688 81.675781 13.554688 C 74.335938 13.554688 69.214844 18.675781 69.214844 26.355469 L 69.214844 126.042969 C 69.214844 133.726562 74.335938 138.847656 81.675781 138.847656 C 89.015625 138.847656 93.96875 133.726562 93.96875 126.042969 L 93.96875 89.683594 L 90.554688 89.683594 L 90.554688 126.042969 C 90.554688 132.019531 87.140625 135.601562 81.675781 135.601562 C 76.214844 135.601562 72.800781 132.019531 72.800781 126.042969 L 72.800781 26.355469 C 72.800781 20.382812 76.214844 16.796875 81.675781 16.796875 C 87.140625 16.796875 90.554688 20.382812 90.554688 26.355469 L 90.554688 60.664062 L 93.96875 60.664062 Z M 112.230469 13.554688 C 104.890625 13.554688 99.429688 19.015625 99.429688 26.527344 L 99.429688 125.871094 C 99.429688 133.382812 104.890625 138.847656 112.230469 138.847656 C 119.570312 138.847656 125.03125 133.382812 125.03125 125.871094 L 125.03125 26.527344 C 125.03125 19.015625 119.570312 13.554688 112.230469 13.554688 M 112.230469 16.796875 C 117.691406 16.796875 121.449219 20.550781 121.449219 26.527344 L 121.449219 125.871094 C 121.449219 131.847656 117.691406 135.601562 112.230469 135.601562 C 106.769531 135.601562 103.011719 131.847656 103.011719 125.871094 L 103.011719 26.527344 C 103.011719 20.550781 106.769531 16.796875 112.230469 16.796875"/>
+    <path fill="#B49356" d="M 135.0625 27.785156 L 135.0625 2.617188 L 109.554688 2.617188 L 109.554688 5.871094 L 131.46875 5.871094 L 131.46875 27.785156 Z"/>
+  </svg>
+  <span class="footer-copy">© 2026 · Palma de Mallorca</span>
+  <span class="footer-ra">Ra + Co</span>
+  <span class="footer-legal"><a href="/aviso-legal.html">Aviso legal</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/cookies.html">Cookies</a></span>
+</footer>
+
+<div id="cookies" style="display:none;">
+  <p>Usamos cookies técnicas necesarias. No usamos analítica ni publicidad. <a href="/cookies.html">Más info</a>.</p>
+  <button onclick="acceptCookies()">Entendido</button>
+</div>
+
+<script>
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+// ── IDIOMA (solo textos con traducción real, tomados de vuestros PDF) ──
+function setLang(lang, el){
+  document.querySelectorAll('.nav-lang span').forEach(s => s.classList.remove('on'));
+  el.classList.add('on');
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-' + lang + ']').forEach(node => {
+    node.textContent = node.dataset[lang];
+  });
+}
+
+// ── LOADER ──
+(function(){
+  const loader = document.getElementById('loader');
+  if(!loader) return;
+  const isMobile = window.innerWidth <= 768;
+  const t1 = isMobile ? 200 : 400;
+  const t2 = isMobile ? 600 : 1100;
+  const t3 = isMobile ? 1100 : 2000;
+  const ramis = document.getElementById('lw-ramis');
+  const company = document.getElementById('lw-company');
+  const raco = document.getElementById('loader-raco');
+  ramis.style.color = 'rgba(22,30,20,0.85)';
+  setTimeout(() => { company.style.color = 'rgba(22,30,20,0.85)'; }, t1);
+  setTimeout(() => {
+    ramis.style.transition = 'color 0.4s ease';
+    company.style.transition = 'color 0.4s ease';
+    ramis.style.color = 'transparent';
+    company.style.color = 'transparent';
+    setTimeout(() => { raco.style.animation = 'loaderExpand 0.7s cubic-bezier(0.16,1,0.3,1) forwards'; }, 250);
+  }, t2);
+  setTimeout(() => {
+    loader.style.transition = 'opacity 0.4s ease';
+    loader.style.opacity = '0';
+    loader.style.pointerEvents = 'none';
+    setTimeout(() => loader.remove(), 400);
+  }, t3);
+})();
+
+// ── CURSOR ──
+(function(){
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+  document.addEventListener('mousemove', e => {
+    const x = e.clientX, y = e.clientY;
+    dot.style.transform = `translate(${x-4}px,${y-4}px)`;
+    ring.style.transform = `translate(${x-16}px,${y-16}px)`;
+  }, {passive: true});
+  const HOVER_SEL = 'a, button, input, textarea, select, label';
+  document.body.addEventListener('mouseover', e => { if (e.target.closest(HOVER_SEL)) document.body.classList.add('hovering'); });
+  document.body.addEventListener('mouseout', e => { if (e.target.closest(HOVER_SEL)) document.body.classList.remove('hovering'); });
+})();
+
+// ── REVEAL AL HACER SCROLL ──
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }, 2500);
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── COOKIES ──
+function acceptCookies(){ localStorage.setItem('raco_cookies','1'); document.getElementById('cookies').style.display='none'; }
+if(!localStorage.getItem('raco_cookies')){ document.getElementById('cookies').style.display='flex'; }
+
+// ── MENÚ MÓVIL ──
+(function(){
+  const toggle = document.getElementById('menu-toggle');
+  const links = document.getElementById('nav-links');
+  if(toggle && links){
+    toggle.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('open');
+      toggle.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+})();
+
+// ── MENÚ DE GRUPOS: pestañas + compartir por WhatsApp ──
+(function(){
+  const GROUP_SHARE = {
+    t45: "*Menú de grupos Raco — 45€/persona*\n\n*Entrantes* (para compartir):\n· Croquetas melosas de pollo con velo de papada ibérica y alioli de romero\n· Gazpacho tradicional (chupito individual)\n· Huevos rotos con texturas de jamón\n· Ensaladilla RACÓ\n\n*Principales* (a elegir):\n· Arroz de verduras de temporada en tempura\n· Arroz negro meloso de bacalao\n\n*Postres* (a elegir):\n· Tarta cremosa de queso caramelizada\n· Brownie bañado en salsa de toffee con helado\n\n*Bebidas* (hasta el postre):\nIncluido: vino Magnum de la casa (1 botella/4 pers.), agua, café o infusiones\n\n*Barra libre*\n· Cerveza/refresco: 5€/pers.\n· Combinados: 7,5€/pers.\n\n*Pack Premium*\n· Cerveza/refresco: 6,5€/pers.\n· Combinados premium: 9€/pers.\n· Vinos premium: según demanda\n\nMás info y reservas: https://racorestaurant.com/carta/#grupos",
+    t55: "*Menú de grupos Raco — 55€/persona*\n\n*Entrantes* (para compartir):\n· Croquetas melosas de pollo con velo de papada ibérica y alioli de romero\n· Gazpacho tradicional (chupito individual)\n· Huevos perdidos (peces platino crujientes con huevos fritos)\n· Brioche de carrillera con mayonesa ahumada picante y cebolla encurtida (individual)\n· Burrata con aceite de Kalamata, nueces caramelizadas y helado de albahaca\n\n*Principales* (a elegir):\n· Entrecot con patató y miniverduras de temporada\n· Salmón a la plancha sobre puré de patata verde con zanahorias asadas\n\n*Postres* (a elegir):\n· Tarta de queso caramelizada\n· Coulant de dulce de leche con helado\n\n*Bebidas* (hasta el postre):\nIncluido: vino Magnum de la casa (1 botella/4 pers.), agua, café o infusiones\n\n*Barra libre*\n· Cerveza/refresco: 5€/pers.\n· Combinados: 7,5€/pers.\n\n*Pack Premium*\n· Cerveza/refresco: 6,5€/pers.\n· Combinados premium: 9€/pers.\n· Vinos premium: según demanda\n\nMás info y reservas: https://racorestaurant.com/carta/#grupos",
+    t70: "*Menú de grupos Raco — 70€/persona*\n\n*Entrantes* (para compartir):\n· Patatas paja con huevos y gambón al ajillo\n· Brioche de carrillera con mayonesa ahumada picante y cebolla encurtida (individual)\n· Ceviche de pescado blanco con ají amarillo y crujiente de boniato\n· Croquetas melosas de pollo con velo de papada ibérica y alioli de romero\n\n*Principales* (a elegir):\n· Cordero a baja temperatura con salsa de vino mallorquín, verduras salteadas de temporada y ajetes tiernos\n· Corvina con salsa beurre blanc, espárragos y chalotas confitadas\n· Tagliatelle con puntas de solomillo, setas y salsa de trufa\n\n*Postres* (a elegir):\n· Tarta de queso caramelizada\n· Milhojas de chocolate\n\n*Bebidas* (hasta el postre):\nIncluido: vino Magnum de la casa (1 botella/4 pers.), agua, café o infusiones\n\n*Barra libre*\n· Cerveza/refresco: 5€/pers.\n· Combinados: 7,5€/pers.\n\n*Pack Premium*\n· Cerveza/refresco: 6,5€/pers.\n· Combinados premium: 9€/pers.\n· Vinos premium: según demanda\n\nMás info y reservas: https://racorestaurant.com/carta/#grupos"
+  };
+  const shareLink = document.getElementById('whatsapp-share');
+  function updateShare(tabId){
+    if (shareLink) shareLink.href = 'https://wa.me/?text=' + encodeURIComponent(GROUP_SHARE[tabId]);
+  }
+  updateShare('t45');
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+      updateShare(tab.dataset.tab);
+    });
+  });
+})();
+</script>
+</body>
+</html>
