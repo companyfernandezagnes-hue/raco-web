@@ -133,6 +133,17 @@
 
   window.racoCookies = { open: showBanner };
 
+  // Medición de clics en teléfono y email (solo se envía a Google si el visitante ha aceptado)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="tel:"], a[href^="mailto:"]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href');
+    gtag('event', href.indexOf('tel:') === 0 ? 'llamada_click' : 'email_click', {
+      link_url: href.split('?')[0],
+      link_text: (a.textContent || '').trim().slice(0, 100)
+    });
+  });
+
   function init() {
     var st = document.createElement('style');
     st.textContent = css;
