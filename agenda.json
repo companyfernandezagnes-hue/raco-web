@@ -1,5 +1,5 @@
 {
-  "_como_editar": "Para anunciar un Jueves de Bodega, copia el bloque de _ejemplo_fecha dentro de la lista 'fechas' (entre los corchetes) y cambia los datos. Separa cada fecha con una coma. Las fechas pasadas desaparecen solas de la web.",
+  "_como_editar": "Para anunciar un Jueves de Bodega, copia el bloque de _ejemplo_fecha dentro de la lista 'fechas' y cambia los datos. Separa cada fecha con una coma. Los campos hora, precio, zona, con y nota son opcionales. Para desvelar una bodega sorpresa, cambia su 'bodega' por el nombre. Las fechas pasadas desaparecen solas de la web.",
   "_ejemplo_fecha": {
     "fecha": "2026-10-16",
     "hora": "20:30",
@@ -7,18 +7,111 @@
     "zona": "D.O. Binissalem",
     "con": "Nombre del bodeguero",
     "precio": 35,
-    "nota": { "es": "Cuatro vinos con cuatro platos", "ca": "Quatre vins amb quatre plats", "en": "Four wines, four dishes" },
+    "nota": {
+      "es": "Cuatro vinos con cuatro platos",
+      "ca": "Quatre vins amb quatre plats",
+      "en": "Four wines, four dishes"
+    },
     "completo": false
   },
-
   "navidad": {
     "mostrar_desde": "2026-10-01",
     "mostrar_hasta": "2026-12-31",
     "aviso_hasta": "2026-12-20",
-    "precios": [45, 55, 70]
+    "precios": [
+      45,
+      55,
+      70
+    ]
   },
-
   "jueves_bodega": {
-    "fechas": []
+    "fechas": [
+      {
+        "fecha": "2026-10-08",
+        "bodega": "Santa Catarina"
+      },
+      {
+        "fecha": "2026-10-15",
+        "bodega": "Vins Nadal"
+      },
+      {
+        "fecha": "2026-10-22",
+        "bodega": {
+          "es": "Bodega sorpresa",
+          "ca": "Celler sorpresa",
+          "en": "Surprise winery"
+        },
+        "nota": {
+          "es": "La desvelamos esa misma semana en Instagram",
+          "ca": "La desvetllam aquella mateixa setmana a Instagram",
+          "en": "Revealed that same week on Instagram"
+        }
+      },
+      {
+        "fecha": "2026-10-29",
+        "bodega": {
+          "es": "Bodega sorpresa",
+          "ca": "Celler sorpresa",
+          "en": "Surprise winery"
+        },
+        "nota": {
+          "es": "La desvelamos esa misma semana en Instagram",
+          "ca": "La desvetllam aquella mateixa setmana a Instagram",
+          "en": "Revealed that same week on Instagram"
+        }
+      },
+      {
+        "fecha": "2026-11-05",
+        "bodega": {
+          "es": "Bodega sorpresa",
+          "ca": "Celler sorpresa",
+          "en": "Surprise winery"
+        },
+        "nota": {
+          "es": "La desvelamos esa misma semana en Instagram",
+          "ca": "La desvetllam aquella mateixa setmana a Instagram",
+          "en": "Revealed that same week on Instagram"
+        }
+      },
+      {
+        "fecha": "2026-11-12",
+        "bodega": {
+          "es": "Bodega sorpresa",
+          "ca": "Celler sorpresa",
+          "en": "Surprise winery"
+        },
+        "nota": {
+          "es": "La desvelamos esa misma semana en Instagram",
+          "ca": "La desvetllam aquella mateixa setmana a Instagram",
+          "en": "Revealed that same week on Instagram"
+        }
+      },
+      {
+        "fecha": "2026-11-19",
+        "bodega": {
+          "es": "Bodega sorpresa",
+          "ca": "Celler sorpresa",
+          "en": "Surprise winery"
+        },
+        "nota": {
+          "es": "La desvelamos esa misma semana en Instagram",
+          "ca": "La desvetllam aquella mateixa setmana a Instagram",
+          "en": "Revealed that same week on Instagram"
+        }
+      },
+      {
+        "fecha": "2026-11-26",
+        "bodega": {
+          "es": "Bodega sorpresa",
+          "ca": "Celler sorpresa",
+          "en": "Surprise winery"
+        },
+        "nota": {
+          "es": "La desvelamos esa misma semana en Instagram",
+          "ca": "La desvetllam aquella mateixa setmana a Instagram",
+          "en": "Revealed that same week on Instagram"
+        }
+      }
+    ]
   }
 }

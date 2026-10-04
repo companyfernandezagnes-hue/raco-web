@@ -50,7 +50,7 @@
       xLabel: 'Christmas 2026', xTitle: 'Celebrate the season at Raco',
       xText: 'Company, family or friends’ lunches and dinners. Three set menus for groups, with our product-led cooking and our wines.',
       pp: 'per person', xSee: 'See the menus', xAsk: 'Request a quote',
-      xNote: 'December’s best dates go fast — book early.',
+      xNote: 'December’s best dates go fast, so book early.',
       fDate: 'Date', fPax: 'Guests', fMenu: 'Menu', fAny: 'Not sure yet',
       xMailSubj: 'Christmas at Raco · group', xMailBody: 'Hello, we would like a quote for a Christmas group booking.',
       jLabel: 'Winery Thursdays', jTitle: 'Meet the winemaker',
@@ -129,19 +129,53 @@
     '#agenda .ag-empty{margin-top:1.4rem;padding:1.4rem;border:1px dashed var(--gold-40,rgba(180,147,86,.4));text-align:center}' +
     '#agenda .ag-empty p{margin-bottom:.8rem}' +
     '#agenda .ag-j .ag-b.o{border-color:var(--ink,#161E14)}' +
-    /* Aviso flotante */
-    '#ag-pop{position:fixed;right:16px;bottom:16px;z-index:99990;width:340px;max-width:calc(100vw - 32px);background:var(--ink,#161E14);color:var(--paper,#FFFDF8);' +
-    'border:1px solid var(--gold,#B49356);box-shadow:0 12px 34px rgba(0,0,0,.28);padding:1.1rem 1.2rem 1.2rem;font-family:Outfit,sans-serif;' +
-    'transform:translateY(130%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}' +
-    '#ag-pop.on{transform:none}' +
-    '#ag-pop .k{font-family:"Bebas Neue",sans-serif;letter-spacing:.3em;font-size:11px;color:var(--gold,#B49356)}' +
-    '#ag-pop .t{font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:.04em;line-height:1.05;margin:.3rem 0 .4rem}' +
-    '#ag-pop .s{font-weight:300;font-size:13px;line-height:1.5;opacity:.85;margin:0 0 .9rem}' +
-    '#ag-pop a.go{display:inline-block;font-family:"Bebas Neue",sans-serif;letter-spacing:.18em;font-size:13px;padding:9px 16px;background:var(--gold,#B49356);color:var(--ink,#161E14);text-decoration:none}' +
-    '#ag-pop button.x{position:absolute;top:6px;right:8px;background:none;border:0;color:inherit;font-size:22px;line-height:1;opacity:.7;padding:4px 6px}' +
-    '#ag-pop button.x:hover{opacity:1}' +
-    '@media (max-width:520px){#ag-pop{right:8px;left:8px;bottom:8px;width:auto;max-width:none}}' +
-    '#agenda a:focus-visible,#agenda button:focus-visible,#agenda input:focus-visible,#agenda select:focus-visible,#ag-pop a:focus-visible,#ag-pop button:focus-visible{outline:2px solid var(--gold,#B49356);outline-offset:2px}';
+    /* Ventana emergente (modal) */
+    '#ag-modal{position:fixed;inset:0;z-index:99995;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .35s ease}' +
+    '#ag-modal.on{opacity:1}' +
+    '#ag-modal .bg{position:absolute;inset:0;background:rgba(22,30,20,.62);backdrop-filter:blur(2px)}' +
+    '#ag-modal .card{position:relative;width:min(860px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--paper,#FFFDF8);color:var(--ink,#161E14);' +
+    'border:1px solid var(--gold,#B49356);box-shadow:0 24px 60px rgba(0,0,0,.35);transform:translateY(18px) scale(.98);transition:transform .45s cubic-bezier(.2,.8,.2,1)}' +
+    '#ag-modal.on .card{transform:none}' +
+    '#ag-modal .x{position:absolute;top:8px;right:10px;z-index:2;background:none;border:0;font-size:28px;line-height:1;padding:4px 8px;color:inherit;opacity:.75}' +
+    '#ag-modal .x:hover{opacity:1}' +
+    '#ag-modal .hd{text-align:center;padding:1.8rem 1.5rem 1.2rem}' +
+    '#ag-modal .k{font-family:"Bebas Neue",sans-serif;letter-spacing:.3em;font-size:12px;color:var(--gold-text,#8C6A2E)}' +
+    '#ag-modal h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(30px,4.6vw,44px);letter-spacing:.04em;margin:.3rem 0 0;line-height:1}' +
+    '#ag-modal .gr{display:grid;grid-template-columns:1fr 1fr}' +
+    '@media (max-width:720px){#ag-modal .gr{grid-template-columns:1fr}#ag-modal{align-items:flex-end;padding:0}#ag-modal .card{max-height:92vh;border-left:0;border-right:0;border-bottom:0}}' +
+    '#ag-modal .px{background:var(--ink,#161E14);color:var(--paper,#FFFDF8);padding:1.8rem 1.8rem 2rem;position:relative}' +
+    '#ag-modal .px:before{content:"";position:absolute;inset:8px;border:1px solid var(--gold-20,rgba(180,147,86,.3));pointer-events:none}' +
+    '#ag-modal .px .k{color:var(--gold,#B49356)}' +
+    '#ag-modal .pj{padding:1.8rem 1.8rem 2rem;border-top:1px solid var(--gold-40,rgba(180,147,86,.4))}' +
+    '@media (min-width:721px){#ag-modal .pj{border-top:0}}' +
+    '#ag-modal h3{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:28px;letter-spacing:.04em;margin:.4rem 0 .6rem;line-height:1.05}' +
+    '#ag-modal p{font:300 14px/1.6 Outfit,sans-serif;margin:0 0 1rem}' +
+    '#ag-modal .pr{display:flex;border-top:1px solid var(--gold-40,rgba(180,147,86,.4));border-bottom:1px solid var(--gold-40,rgba(180,147,86,.4));margin:1rem 0 1.2rem}' +
+    '#ag-modal .pr div{flex:1;text-align:center;padding:.7rem 0}' +
+    '#ag-modal .pr div+div{border-left:1px solid var(--gold-20,rgba(180,147,86,.3))}' +
+    '#ag-modal .pr b{display:block;font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:34px;line-height:1;color:var(--gold,#B49356)}' +
+    '#ag-modal .pr small{font:300 10px Outfit,sans-serif;letter-spacing:.08em;opacity:.7}' +
+    '#ag-modal .ls{list-style:none;margin:.8rem 0 1.2rem;padding:0}' +
+    '#ag-modal .ls li{display:grid;grid-template-columns:58px 1fr;gap:.9rem;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--ink-10,rgba(22,30,20,.08))}' +
+    '#ag-modal .ls .d{text-align:center;border-right:1px solid var(--gold-40,rgba(180,147,86,.4));padding-right:.8rem}' +
+    '#ag-modal .ls .d b{display:block;font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:32px;line-height:.9;color:var(--gold-text,#8C6A2E)}' +
+    '#ag-modal .ls .d span{font-family:"Bebas Neue",sans-serif;letter-spacing:.18em;font-size:11px}' +
+    '#ag-modal .ls .n{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:.04em;line-height:1.1}' +
+    '#ag-modal .ls .n small{display:block;font:300 12px Outfit,sans-serif;letter-spacing:0;color:var(--ink-30,rgba(22,30,20,.75))}' +
+    '#ag-modal .bt{display:flex;gap:.6rem;flex-wrap:wrap}' +
+    '#ag-modal .b{display:inline-block;font-family:"Bebas Neue",sans-serif;letter-spacing:.18em;font-size:13px;padding:11px 16px;text-decoration:none;border:1px solid var(--gold,#B49356);background:var(--gold,#B49356);color:var(--ink,#161E14)}' +
+    '#ag-modal .b.o{background:transparent;color:inherit}' +
+    '#ag-modal .pj .b.o{border-color:var(--ink,#161E14)}' +
+    /* Pestaña fija para volver a abrir la agenda */
+    '#ag-pill{position:fixed;right:14px;bottom:14px;z-index:99980;display:flex;align-items:center;gap:8px;background:var(--ink,#161E14);color:var(--paper,#FFFDF8);' +
+    'border:1px solid var(--gold,#B49356);padding:9px 14px 9px 12px;font-family:"Bebas Neue",sans-serif;letter-spacing:.2em;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.2);' +
+    'transform:translateY(160%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}' +
+    '#ag-pill.on{transform:none}' +
+    '#ag-pill i{width:7px;height:7px;border-radius:50%;background:var(--gold,#B49356);box-shadow:0 0 0 0 rgba(180,147,86,.7);animation:agp 2.2s infinite}' +
+    '@keyframes agp{0%{box-shadow:0 0 0 0 rgba(180,147,86,.6)}70%{box-shadow:0 0 0 8px rgba(180,147,86,0)}100%{box-shadow:0 0 0 0 rgba(180,147,86,0)}}' +
+    '@media (prefers-reduced-motion:reduce){#ag-modal,#ag-modal .card,#ag-pill{transition:none}#ag-pill i{animation:none}}' +
+    '#ag-modal a:focus-visible,#ag-modal button:focus-visible,#ag-pill:focus-visible{outline:2px solid var(--gold,#B49356);outline-offset:2px}' +
+    '#agenda a:focus-visible,#agenda button:focus-visible,#agenda input:focus-visible,#agenda select:focus-visible{outline:2px solid var(--gold,#B49356);outline-offset:2px}';
 
   var data = null;
 
@@ -172,7 +206,7 @@
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Raco//Agenda//ES', 'BEGIN:VEVENT',
       'UID:raco-' + d + '@racorestaurant.com',
       'DTSTART;TZID=Europe/Madrid:' + start, 'DTEND;TZID=Europe/Madrid:' + end,
-      'SUMMARY:' + t.jLabel + ' · ' + (e.bodega || 'Raco'),
+      'SUMMARY:' + t.jLabel + ' · ' + (tx(e.bodega) || 'Raco'),
       'LOCATION:Raco · Wine Bar · Palma de Mallorca',
       'URL:https://racorestaurant.com/#agenda',
       'END:VEVENT', 'END:VCALENDAR'
@@ -217,7 +251,7 @@
         '<div class="ag-btns"><a class="ag-b" href="#" data-ag="jbook" data-i="' + i + '">' + t.jBook + '</a>' +
         '<a class="ag-b o" href="' + ics(e) + '" download="raco-' + esc(e.fecha) + '.ics" data-ag="jcal">' + t.jCal + '</a></div>';
       return '<div class="ag-e"><div class="ag-d"><b>' + d.getDate() + '</b><span>' + MONTHS[lang()][d.getMonth()] + '</span></div>' +
-        '<div><h4>' + esc(e.bodega || t.jLabel) + '</h4>' +
+        '<div><h4>' + esc(tx(e.bodega) || t.jLabel) + '</h4>' +
         (meta ? '<div class="ag-meta">' + meta + '</div>' : '') +
         (note ? '<p style="font-size:14px;margin:0 0 .7rem">' + esc(note) + '</p>' : '') +
         actions + '</div></div>';
@@ -273,7 +307,7 @@
   // Clicks: presupuesto Navidad, reservar Jueves, analítica
   document.addEventListener('click', function (ev) {
     var el = ev.target.closest ? ev.target.closest('[data-ag]') : null;
-    if (!el) return;
+    if (!el || el.closest('#ag-modal')) return;
     var t = T[lang()], k = el.getAttribute('data-ag');
     track('agenda_click', k);
     if (k === 'xask') {
@@ -290,65 +324,135 @@
       var e = upcoming()[+el.getAttribute('data-i')];
       if (!e) return;
       location.href = mailto(t.jMailSubj + ' · ' + fmtDate(e.fecha),
-        t.jMailBody + ' (' + fmtDate(e.fecha) + (e.bodega ? ', ' + e.bodega : '') + ').\n\n' + t.jPeople);
+        t.jMailBody + ' (' + fmtDate(e.fecha) + (tx(e.bodega) ? ', ' + tx(e.bodega) : '') + ').\n\n' + t.jPeople);
     } else if (k === 'jnotify') {
       ev.preventDefault();
       var inp = document.getElementById('nl-email');
       if (inp) { inp.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { inp.focus(); }, 600); }
-    } else if (k === 'pop') {
-      closePop(true);
     }
   });
 
-  // Aviso flotante: una vez por visita, sin tapar el banner de cookies
+  // Ventana emergente: se abre sola una vez por visita y luego queda la pestaña "Agenda"
   var POP_KEY = 'raco_agenda_pop';
-  function popItem() {
-    var t = T[lang()], next = upcoming().filter(function (e) { return !e.completo; })[0];
-    var soon = next && (parse(next.fecha) - today()) / 864e5 <= 6;
-    if (soon) return { id: 'j' + next.fecha, k: t.jLabel + ' · ' + fmtDate(next.fecha), t: next.bodega || t.jTitle, s: t.jText };
-    var x = data && data.navidad;
-    if (x && xmasActive() && today() <= parse(x.aviso_hasta)) {
-      var pr = (x.precios || []).map(function (p) { return p + '€'; }).join(' · ');
-      return { id: 'xmas', k: t.xLabel, t: t.xTitle, s: (pr ? pr + ' ' + t.pp + '. ' : '') + t.xNote };
-    }
-    return null;
+  var lastFocus = null;
+  function hasContent() { return xmasActive() || upcoming().length > 0; }
+
+  function modalHTML(t) {
+    var x = data.navidad, showX = xmasActive() && today() <= parse(x.aviso_hasta || x.mostrar_hasta);
+    var list = upcoming().slice(0, 3);
+    var left = showX ?
+      '<div class="px"><span class="k">' + t.xLabel + '</span><h3>' + t.xTitle + '</h3>' +
+      '<p>' + t.xText + '</p>' +
+      '<div class="pr">' + (x.precios || []).map(function (p) { return '<div><b>' + esc(p) + '€</b><small>' + t.pp + '</small></div>'; }).join('') + '</div>' +
+      '<div class="bt"><a class="b" href="#agenda" data-ag="mx">' + t.xAsk + '</a><a class="b o" href="' + MENUS_URL + '" data-ag="xsee">' + t.xSee + '</a></div></div>' : '';
+    var items = list.map(function (e, i) {
+      var d = parse(e.fecha);
+      var sub = [e.hora ? e.hora + ' h' : '', e.precio ? e.precio + ' €' : '', e.completo ? t.jFull : ''].filter(Boolean).join(' · ');
+      return '<li><div class="d"><b>' + d.getDate() + '</b><span>' + MONTHS[lang()][d.getMonth()] + '</span></div>' +
+        '<div class="n">' + esc(tx(e.bodega) || t.jLabel) + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</div></li>';
+    }).join('');
+    var right = '<div class="pj"><span class="k">' + t.jLabel + '</span><h3>' + t.jTitle + '</h3>' +
+      '<p>' + t.jText + '</p>' +
+      (items ? '<ul class="ls">' + items + '</ul>' : '<p><em>' + t.jEmpty + '</em></p>') +
+      '<div class="bt"><a class="b o" href="#agenda" data-ag="pop">' + t.jBook + '</a></div></div>';
+    return '<div class="bg" data-ag="close"></div><div class="card">' +
+      '<button class="x" type="button" data-ag="close" aria-label="' + t.close + '">×</button>' +
+      '<div class="hd"><span class="k">' + t.label + '</span><h2 id="ag-m-t">' + t.title + '</h2></div>' +
+      '<div class="gr"' + (left ? '' : ' style="grid-template-columns:1fr"') + '>' + left + right + '</div></div>';
   }
-  function closePop(seen) {
-    var p = document.getElementById('ag-pop');
-    if (!p) return;
-    p.classList.remove('on');
-    setTimeout(function () { if (p.parentNode) p.parentNode.removeChild(p); }, 600);
-  }
-  function showPop() {
-    var it = popItem();
-    if (!it) return;
-    try { if (sessionStorage.getItem(POP_KEY)) return; sessionStorage.setItem(POP_KEY, it.id); } catch (e) {}
+
+  function openModal(auto) {
+    if (!hasContent() || document.getElementById('ag-modal')) return;
     var t = T[lang()];
-    var p = document.createElement('div');
-    p.id = 'ag-pop';
-    p.setAttribute('role', 'dialog');
-    p.setAttribute('aria-label', it.k);
-    p.innerHTML = '<button class="x" type="button" aria-label="' + t.close + '">×</button>' +
-      '<div class="k">' + esc(it.k) + '</div><div class="t">' + esc(it.t) + '</div>' +
-      '<p class="s">' + esc(it.s) + '</p><a class="go" href="#agenda" data-ag="pop">' + t.more + '</a>';
-    p.querySelector('.x').onclick = function () { track('agenda_pop_close', it.id); closePop(true); };
-    document.body.appendChild(p);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { p.classList.add('on'); }); });
-    track('agenda_pop_show', it.id);
+    lastFocus = document.activeElement;
+    var m = document.createElement('div');
+    m.id = 'ag-modal';
+    m.setAttribute('role', 'dialog');
+    m.setAttribute('aria-modal', 'true');
+    m.setAttribute('aria-labelledby', 'ag-m-t');
+    m.innerHTML = modalHTML(t);
+    document.body.appendChild(m);
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(function () { requestAnimationFrame(function () { m.classList.add('on'); }); });
+    var x = m.querySelector('.x'); if (x) x.focus();
+    pill(false);
+    track(auto ? 'agenda_modal_auto' : 'agenda_modal_open', lang());
   }
-  function schedulePop() {
-    var started = Date.now(), done = false;
-    function ready() {
-      if (done) return;
-      var sec = document.getElementById('agenda');
-      var cookieOpen = !!document.getElementById('raco-ck');
-      var scrolled = window.scrollY > window.innerHeight * 0.6;
-      var nearAgenda = sec && sec.getBoundingClientRect().top < window.innerHeight; // ya la está viendo
-      if (cookieOpen || nearAgenda) return;
-      if (Date.now() - started > 6000 && scrolled) { done = true; showPop(); }
+  function closeModal(then) {
+    var m = document.getElementById('ag-modal');
+    if (!m) { if (then) then(); return; }
+    m.classList.remove('on');
+    document.documentElement.style.overflow = '';
+    setTimeout(function () {
+      if (m.parentNode) m.parentNode.removeChild(m);
+      pill(true);
+      if (then) then(); else if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }, 320);
+  }
+  function goSection(focusForm) {
+    var sec = document.getElementById('agenda');
+    if (!sec) return;
+    window.scrollTo({ top: sec.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+    if (focusForm) setTimeout(function () { var i = sec.querySelector('.ag-form input'); if (i) i.focus({ preventScroll: true }); }, 700);
+  }
+
+  function pill(show) {
+    var p = document.getElementById('ag-pill');
+    if (!p) {
+      if (!show || !hasContent()) return;
+      p = document.createElement('button');
+      p.id = 'ag-pill';
+      p.type = 'button';
+      p.onclick = function () { openModal(false); };
+      document.body.appendChild(p);
     }
-    window.addEventListener('scroll', ready, { passive: true });
-    setInterval(ready, 1500);
+    p.innerHTML = '<i></i>' + T[lang()].nav;
+    var cookieOpen = !!document.getElementById('raco-ck');
+    if (show && cookieOpen) setTimeout(function () { if (!document.getElementById('ag-modal')) pill(true); }, 1200);
+    var hide = !show || cookieOpen;
+    if (hide) p.classList.remove('on');
+    else requestAnimationFrame(function () { p.classList.add('on'); });
+  }
+
+  document.addEventListener('click', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('#ag-modal [data-ag]') : null;
+    if (!el) return;
+    var k = el.getAttribute('data-ag');
+    if (k === 'close') { ev.preventDefault(); track('agenda_modal_close', ''); closeModal(); }
+    else if (k === 'pop') { ev.preventDefault(); closeModal(function () { goSection(false); }); }
+    else if (k === 'mx') { ev.preventDefault(); closeModal(function () { goSection(true); }); }
+    else if (k === 'xsee') { closeModal(); }
+  });
+  document.addEventListener('keydown', function (ev) {
+    var m = document.getElementById('ag-modal');
+    if (!m) return;
+    if (ev.key === 'Escape') { closeModal(); return; }
+    if (ev.key === 'Tab') {
+      var f = m.querySelectorAll('a,button,input,select');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    }
+  });
+
+  function schedulePop() {
+    var seen = false;
+    try { seen = !!sessionStorage.getItem(POP_KEY); } catch (e) {}
+    if (seen || location.hash === '#agenda') { pill(true); return; }
+    var start = Date.now(), done = false;
+    var iv = setInterval(function () {
+      if (done) return;
+      var loader = document.getElementById('loader');
+      var loaderOn = loader && loader.offsetParent !== null && getComputedStyle(loader).opacity !== '0' && getComputedStyle(loader).visibility !== 'hidden';
+      var cookieOpen = !!document.getElementById('raco-ck');
+      if (cookieOpen) { pill(false); return; }
+      if (loaderOn && Date.now() - start < 9000) return;
+      if (Date.now() - start < 3500) return;
+      done = true; clearInterval(iv);
+      try { sessionStorage.setItem(POP_KEY, '1'); } catch (e) {}
+      openModal(true);
+    }, 700);
   }
 
   function init() {
@@ -362,7 +466,7 @@
       if (location.hash === '#agenda') document.getElementById('agenda').scrollIntoView();
       schedulePop();
       if (window.MutationObserver) {
-        new MutationObserver(function () { render(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+        new MutationObserver(function () { render(); var m = document.getElementById('ag-modal'); if (m) { m.innerHTML = modalHTML(T[lang()]); } var p = document.getElementById('ag-pill'); if (p) p.innerHTML = '<i></i>' + T[lang()].nav; }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
       }
     }).catch(function () {});
   }
