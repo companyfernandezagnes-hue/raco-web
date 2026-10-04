@@ -1,0 +1,24 @@
+{
+  "_como_editar": "Para anunciar un Jueves de Bodega, copia el bloque de _ejemplo_fecha dentro de la lista 'fechas' (entre los corchetes) y cambia los datos. Separa cada fecha con una coma. Las fechas pasadas desaparecen solas de la web.",
+  "_ejemplo_fecha": {
+    "fecha": "2026-10-16",
+    "hora": "20:30",
+    "bodega": "Nombre de la bodega",
+    "zona": "D.O. Binissalem",
+    "con": "Nombre del bodeguero",
+    "precio": 35,
+    "nota": { "es": "Cuatro vinos con cuatro platos", "ca": "Quatre vins amb quatre plats", "en": "Four wines, four dishes" },
+    "completo": false
+  },
+
+  "navidad": {
+    "mostrar_desde": "2026-10-01",
+    "mostrar_hasta": "2026-12-31",
+    "aviso_hasta": "2026-12-20",
+    "precios": [45, 55, 70]
+  },
+
+  "jueves_bodega": {
+    "fechas": []
+  }
+}
