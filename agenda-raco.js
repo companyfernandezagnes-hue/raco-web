@@ -319,6 +319,7 @@
         t.fDate + ': ' + (d ? d.split('-').reverse().join('/') : '—') + '\n' +
         t.fPax + ': ' + (p || '—') + '\n' +
         t.fMenu + ': ' + (m ? m + ' €' : t.fAny) + '\n\n' + t.contact;
+      try { if (window.gtag) gtag('event', 'email_click', { link_url: 'mailto:' + EMAIL, link_text: 'Agenda · ' + t.xAsk }); } catch (e2) {}
       location.href = mailto(t.xMailSubj, body);
     } else if (k === 'jnotify') {
       ev.preventDefault();
