@@ -1,12 +1,15 @@
-/* RACO · Google Analytics 4 + banner de cookies (ES / CA / EN)
+/* RACO · Google Analytics 4 + Google Tag Manager + banner de cookies (ES / CA / EN)
    Instalación: <script src="/cookies-raco.js"></script> justo después de <head>.
-   - Google Analytics NO se carga hasta que el visitante pulsa "Aceptar".
+   - Google Analytics y Google Tag Manager NO se cargan hasta que el visitante pulsa "Aceptar".
+   - IMPORTANTE: GA4 ya se carga desde aquí. NO crear una etiqueta "Google Analytics" dentro de GTM
+     o las visitas se contarán dos veces. GTM es para otras etiquetas (Meta, Google Ads...).
    - El banner sigue el idioma de la web (atributo lang de <html>), también al cambiarlo sin recargar.
    - Oculta el aviso antiguo (#cookies) que decía que no había analítica.
    - Botón "Cookies" abajo a la izquierda para cambiar la elección; también racoCookies.open().
 */
 (function () {
   var GA_ID = 'G-DCR5HRVHTH';
+  var GTM_ID = 'GTM-MPQ2497N';
   var KEY = 'raco_consent';              // 'accepted' | 'rejected'
   var POLICY_URL = '/cookies.html';
 
@@ -32,6 +35,18 @@
     document.head.appendChild(s);
     gtag('js', new Date());
     gtag('config', GA_ID);
+    loadGTM();
+  }
+
+  var gtmLoaded = false;
+  function loadGTM() {
+    if (gtmLoaded || !GTM_ID) return;
+    gtmLoaded = true;
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var g = document.createElement('script');
+    g.async = true;
+    g.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    document.head.appendChild(g);
   }
   if (choice === 'accepted') loadGA();
 
