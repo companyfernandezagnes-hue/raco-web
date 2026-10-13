@@ -1,0 +1,39 @@
+# Raco · Restaurante y Wine Bar en Palma de Mallorca
+
+> Raco es un restaurante y wine bar independiente en la calle Blanquerna 12, en el centro de Palma de Mallorca. Proyecto de dos familias (Ramis y Company: RA + CO). Desayunos, menú de mediodía semanal, carta de comida y cena con cocina mediterránea de producto, menús cerrados para grupos y una bodega con decenas de referencias, vinos por copa y vinos de Mallorca. Abierto todos los días.
+
+## Datos básicos
+
+- Nombre: Raco (también "Raco Blanquerna")
+- Tipo: restaurante y wine bar, cocina mediterránea y española de producto
+- Dirección: Carrer de Blanquerna 12, 07003 Palma de Mallorca, Illes Balears, España
+- Barrio: Blanquerna / Bulevar de Blanquerna, centro de Palma
+- Horario: lunes a sábado de 9:30 a 00:00; domingo de 9:30 a 17:00
+- Teléfono: +34 660 38 80 61
+- Email: hola@racorestaurant.com
+- Reservas online: https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20
+- Google Maps: https://maps.google.com/?cid=12909914309890559513
+- Instagram: https://www.instagram.com/racoblanquerna/
+- Idiomas de atención y web: español, catalán e inglés
+- Precio: €€ (principales entre 25 y 34 €; desayunos desde 2,30 €)
+
+## Qué ofrecemos
+
+- Desayunos (sin reserva): tostas, bollería, sándwiches, fruta, yogur y granola. Ej.: tosta de aguacate y huevo escalfado 8,50 €, croissant 2,30 €.
+- Menú de mediodía: cambia cada semana con producto de temporada. Se puede recibir por email cada lunes desde la web.
+- Carta de comida y cena: entrantes, ensaladas, arroces a la llauna, pastas, carnes, pescados y postres caseros. Ej.: arroz a la llauna de pulpo y alcachofa, steak tartar de solomillo, cordero a baja temperatura con salsa de vino mallorquín, canelón de osobuco, tarta cremosa de queso.
+- Menús de grupo: precio cerrado por persona de 45 €, 55 € y 70 €, con vino, agua y café incluidos; opciones de barra libre. Ideales para comidas y cenas de empresa y de Navidad.
+- Bodega: decenas de referencias de vinos del mundo y de Mallorca, vinos por copa, cerveza de tirador y cócteles clásicos y de autor.
+- Jueves de Bodega: catas los jueves en las que el bodeguero viene a Raco a explicar sus vinos copa a copa, con plazas limitadas.
+- Alérgenos: ficha completa de alérgenos por plato (en los PDF de la carta). En menús de grupo se ofrecen alternativas para celiaquía, vegetarianos y otras preferencias avisando con 48 a 72 horas de antelación.
+
+## Páginas
+
+- [Inicio](https://racorestaurant.com/): quiénes somos, carta, bebidas, reservas y contacto
+- [Carta completa con precios](https://racorestaurant.com/carta/): desayunos, carta de comida y cena y menús de grupo
+- [Carta de comida y cena en PDF](https://racorestaurant.com/carta-comida-cena.pdf)
+- [Carta de desayunos en PDF](https://racorestaurant.com/carta-desayunos.pdf)
+
+## English summary
+
+Raco is an independent restaurant and wine bar at Blanquerna 12, central Palma de Mallorca (Spain), run by two local families. Breakfast, a weekly lunch menu, Mediterranean product-driven lunch and dinner, set group menus (45, 55 and 70 EUR per person) and a wine list with dozens of labels, wines by the glass and Mallorcan wines. Thursday winemaker tastings ("Jueves de Bodega"). Open Monday to Saturday 9:30 to midnight, Sunday 9:30 to 17:00. Book online: https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20 · Phone +34 660 38 80 61.
