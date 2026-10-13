@@ -7,7 +7,7 @@
 - Nombre: Raco (también "Raco Blanquerna")
 - Tipo: restaurante y wine bar, cocina mediterránea y española de producto
 - Dirección: Carrer de Blanquerna 12, 07003 Palma de Mallorca, Illes Balears, España
-- Barrio: Blanquerna / Bulevar de Blanquerna, centro de Palma
+- Zona: calle Blanquerna, centro de Palma
 - Horario: lunes a sábado de 9:30 a 00:00; domingo de 9:30 a 17:00
 - Teléfono: +34 660 38 80 61
 - Email: hola@racorestaurant.com
