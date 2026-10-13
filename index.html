@@ -5,15 +5,15 @@
 <script src="/agenda-raco.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raco — Wine Bar · Palma de Mallorca</title>
-<meta name="description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
+<title>Raco · Restaurante y Wine Bar en Palma de Mallorca | Blanquerna</title>
+<meta name="description" content="Raco, restaurante y wine bar en Blanquerna, Palma de Mallorca. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
 <link rel="canonical" href="https://racorestaurant.com/">
 
 <!-- Open Graph / redes sociales -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Raco">
-<meta property="og:title" content="Raco — Wine Bar · Palma de Mallorca">
-<meta property="og:description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
+<meta property="og:title" content="Raco · Restaurante y Wine Bar en Palma de Mallorca | Blanquerna">
+<meta property="og:description" content="Raco, restaurante y wine bar en Blanquerna, Palma de Mallorca. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor. Reserva tu mesa.">
 <meta property="og:url" content="https://racorestaurant.com/">
 <meta property="og:image" content="https://racorestaurant.com/og-plato.jpg">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:locale:alternate" content="ca_ES">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Raco — Wine Bar · Palma de Mallorca">
-<meta name="twitter:description" content="Raco, wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor.">
+<meta name="twitter:title" content="Raco · Restaurante y Wine Bar en Palma de Mallorca | Blanquerna">
+<meta name="twitter:description" content="Raco, restaurante y wine bar en Blanquerna, Palma. Desayunos, menú de mediodía, carta de cena y una selección de vinos hecha con amor.">
 <meta name="twitter:image" content="https://racorestaurant.com/og-plato.jpg">
 
 <!-- Datos estructurados para Google (horario, dirección, precio) -->
@@ -31,13 +31,29 @@
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": "https://racorestaurant.com/#restaurant",
   "name": "Raco",
+  "alternateName": "Raco Blanquerna",
+  "description": "Restaurante y wine bar en Blanquerna, Palma de Mallorca. Desayunos, menú de mediodía, carta de cena y una selección de vinos.",
   "image": "https://racorestaurant.com/og-plato.jpg",
+  "logo": "https://racorestaurant.com/favicon.png",
   "url": "https://racorestaurant.com/",
   "telephone": "+34660388061",
   "priceRange": "€€",
   "servesCuisine": ["Mediterranean", "Spanish"],
   "menu": "https://racorestaurant.com/carta/",
+  "acceptsReservations": "https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20",
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20",
+      "inLanguage": ["es", "ca", "en"],
+      "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+    },
+    "result": { "@type": "FoodEstablishmentReservation", "name": "Reserva en Raco" }
+  },
+  "hasMap": "https://maps.google.com/?cid=12909914309890559513",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Blanquerna 12",
@@ -51,13 +67,24 @@
     "latitude": 39.579014,
     "longitude": 2.6507664
   },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "09:30",
-    "closes": "00:00"
-  },
-  "sameAs": ["https://www.instagram.com/racoblanquerna/"]
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "09:30",
+      "closes": "23:59"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "09:30",
+      "closes": "17:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/racoblanquerna/",
+    "https://maps.google.com/?cid=12909914309890559513"
+  ]
 }
 </script>
 
@@ -434,6 +461,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
 
 <!-- HERO -->
 <section class="hero">
+  <h1 class="hero-pre" data-i18n="hero-h1">Restaurante y Wine Bar · Palma de Mallorca</h1>
   <div class="hero-logo-wrap">
     <svg viewBox="0 0 141.732 141.732" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Raco">
       <path fill="#B49356" d="M 19.035156 75.347656 C 24.667969 75.347656 27.910156 78.929688 27.910156 85.074219 L 27.910156 125.191406 C 27.910156 130.824219 28.25 134.75 28.933594 137.480469 L 32.691406 137.480469 C 31.835938 134.238281 31.492188 130.480469 31.492188 125.191406 L 31.492188 85.074219 C 31.492188 79.101562 29.617188 75.6875 25.007812 73.640625 C 29.273438 71.078125 31.664062 67.324219 31.664062 62.371094 L 31.664062 27.890625 C 31.664062 19.699219 26.886719 14.917969 19.203125 14.917969 L 6.402344 14.917969 L 6.402344 137.480469 L 9.988281 137.480469 L 9.988281 75.347656 Z M 28.082031 62.371094 C 28.082031 68.519531 24.835938 72.101562 19.203125 72.101562 L 9.988281 72.101562 L 9.988281 18.164062 L 19.203125 18.164062 C 24.835938 18.164062 28.082031 21.746094 28.082031 27.890625 Z M 35.078125 137.480469 L 38.492188 137.480469 L 42.929688 93.609375 L 58.292969 93.609375 L 62.730469 137.480469 L 66.144531 137.480469 L 53.171875 14.917969 L 48.050781 14.917969 Z M 50.441406 21.578125 L 50.78125 21.578125 L 53.511719 47.863281 L 57.949219 90.367188 L 43.269531 90.367188 L 47.710938 47.863281 Z M 93.96875 26.355469 C 93.96875 18.675781 89.015625 13.554688 81.675781 13.554688 C 74.335938 13.554688 69.214844 18.675781 69.214844 26.355469 L 69.214844 126.042969 C 69.214844 133.726562 74.335938 138.847656 81.675781 138.847656 C 89.015625 138.847656 93.96875 133.726562 93.96875 126.042969 L 93.96875 89.683594 L 90.554688 89.683594 L 90.554688 126.042969 C 90.554688 132.019531 87.140625 135.601562 81.675781 135.601562 C 76.214844 135.601562 72.800781 132.019531 72.800781 126.042969 L 72.800781 26.355469 C 72.800781 20.382812 76.214844 16.796875 81.675781 16.796875 C 87.140625 16.796875 90.554688 20.382812 90.554688 26.355469 L 90.554688 60.664062 L 93.96875 60.664062 Z M 112.230469 13.554688 C 104.890625 13.554688 99.429688 19.015625 99.429688 26.527344 L 99.429688 125.871094 C 99.429688 133.382812 104.890625 138.847656 112.230469 138.847656 C 119.570312 138.847656 125.03125 133.382812 125.03125 125.871094 L 125.03125 26.527344 C 125.03125 19.015625 119.570312 13.554688 112.230469 13.554688 M 112.230469 16.796875 C 117.691406 16.796875 121.449219 20.550781 121.449219 26.527344 L 121.449219 125.871094 C 121.449219 131.847656 117.691406 135.601562 112.230469 135.601562 C 106.769531 135.601562 103.011719 131.847656 103.011719 125.871094 L 103.011719 26.527344 C 103.011719 20.550781 106.769531 16.796875 112.230469 16.796875"/>
@@ -448,7 +476,6 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   <a href="#reservas" class="hero-cta" data-i18n="hero-cta">Reservar mesa</a>
 </section>
 
-<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Raco — Wine Bar en Palma de Mallorca. Desayunos, carta de comida y cena, vinos y reservas en Blanquerna.</h1>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
@@ -582,7 +609,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
     <span class="s-label" data-i18n="con-label">Dónde estamos</span>
     <h2 class="s-title" data-i18n="con-title">Blanquerna,<br>Palma</h2>
     <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-dir-l">Dirección</span><span class="ubic-val">Blanquerna 12, 07003 · Palma de Mallorca</span></div>
-    <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-hor-l">Horario</span><span class="ubic-val" data-i18n="con-hor-v">Todos los días · 9:30 – 00:00</span></div>
+    <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-hor-l">Horario</span><span class="ubic-val" data-i18n="con-hor-v">Lunes a sábado · 9:30 – 00:00<br>Domingo · 9:30 – 17:00</span></div>
     <div class="ubic-row"><span class="ubic-lbl">Teléfono</span><a href="tel:+34660388061" class="ubic-val-link">+34 660 38 80 61</a></div>
     <div class="ubic-row"><span class="ubic-lbl">Email</span><a href="mailto:hola@racorestaurant.com" class="ubic-val-link">hola@racorestaurant.com</a></div>
     <div class="ubic-row"><span class="ubic-lbl">Instagram</span><a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener" class="ubic-val-link">@racoblanquerna →</a></div>
@@ -639,6 +666,7 @@ window.scrollTo(0, 0);
 const i18n = {
   es: {
     'nav-nosotros':'Nosotros','nav-carta':'Carta','nav-bebidas':'Bebidas','nav-reservas':'Reservas','nav-contacto':'Contacto',
+    'hero-h1':'Restaurante y Wine Bar · Palma de Mallorca',
     'hero-cta':'Reservar mesa',
     'nos-label':'01 · Nosotros',
     'ig-cap':'El día a día · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Las dos familias · Antes de Raco','nos-b1-label':'Origen','nos-b1-text':'Crecimos entre mesas y recetas familiares.','nos-b1-body':'Soñábamos con un rincón donde el producto mediterráneo fuera el único protagonista. Así nace Raco, en el centro de Palma.<br><br>El nombre es nuestra esencia: la suma de <strong>Ra</strong>mis y <strong>Co</strong>mpany. Dos familias que se vuelven una para ofrecerte lo que mejor sabemos hacer: cocina auténtica, vinos con historia y un ambiente donde te sientas como en casa.',
@@ -652,7 +680,7 @@ const i18n = {
     'beb-label':'03 · Bebidas','beb-title':'Una bodega para perderse.','beb-body':'Hemos seleccionado cada botella con mimo — vinos del mundo y de la isla, referencias para descubrir. Ven, siéntate, y deja que el equipo te cuente la historia detrás de cada copa.','beb-aside':'Pregunta siempre al equipo · Hay vinos por copa',
     'bcat1':'Vinos','bcat1d':'Decenas de referencias','bcat2':'Cervezas','bcat2d':'De tirador','bcat3':'Cócteles','bcat3d':'Clásicos y de autor','bcat4':'Refrescos','bcat4d':'Lo sencillo también tiene lugar',
     'res-label':'Reservas','res-title':'Reserva tu mesa','res-btn1':'Reservar ahora','res-btn2':'Llámanos · 660 38 80 61','res-note':'Cocina con horarios · Te recomendamos reservar',
-    'con-label':'Dónde estamos','con-title':'Blanquerna,<br>Palma','con-dir-l':'Dirección','con-hor-l':'Horario','con-hor-v':'Todos los días · 9:30 – 00:00','con-ter-l':'Terraza','con-ter-v':'Reserva online disponible',
+    'con-label':'Dónde estamos','con-title':'Blanquerna,<br>Palma','con-dir-l':'Dirección','con-hor-l':'Horario','con-hor-v':'Lunes a sábado · 9:30 – 00:00<br>Domingo · 9:30 – 17:00','con-ter-l':'Terraza','con-ter-v':'Reserva online disponible',
     'emp-label':'Trabaja con nosotros','emp-title':'Buscamos personas con ganas.','emp-sub':'Si te apasiona el vino y la hospitalidad, cuéntanos quién eres',
     'emp-p1':'Nombre completo','emp-p2':'Puesto que buscas','emp-p3':'Experiencia — breve resumen','emp-p4':'Teléfono','emp-p5':'Email','emp-cv':'¿Tienes CV? Envíalo por email a <a href="mailto:hola@racorestaurant.com">hola@racorestaurant.com</a> tras enviar este formulario.',
     'emp-btn':'Enviar candidatura','emp-ok':'Recibido. Nos ponemos en contacto contigo.',
@@ -660,6 +688,7 @@ const i18n = {
   },
   ca: {
     'nav-nosotros':'Nosaltres','nav-carta':'Carta','nav-bebidas':'Begudes','nav-reservas':'Reserves','nav-contacto':'Contacte',
+    'hero-h1':'Restaurant i Wine Bar · Palma de Mallorca',
     'hero-cta':'Reservar taula',
     'nos-label':'01 · Nosaltres',
     'ig-cap':'El dia a dia · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Les dues famílies · Abans de Raco','nos-b1-label':'Origen','nos-b1-text':'Vam créixer entre taules i receptes familiars.','nos-b1-body':'Somiàvem amb un racó on el producte mediterrani fos l\'únic protagonista. Així neix Raco, al centre de Palma.<br><br>El nom és la nostra essència: la suma de <strong>Ra</strong>mis i <strong>Co</strong>mpany. Dues famílies que es tornen una per oferir-te el que millor sabem fer: cuina autèntica, vins amb història i un ambient on et sentis com a casa.',
@@ -673,7 +702,7 @@ const i18n = {
     'beb-label':'03 · Begudes','beb-title':'Per a cada moment, la seva copa.','beb-body':'Construïm el nostre petit celler amb amor — seleccionant cada ampolla com si fos per a nosaltres mateixos.','beb-aside':'Pregunta sempre a l\'equip · Hi ha vins per copa',
     'bcat1':'Vins','bcat1d':'Per copa i ampolla','bcat2':'Cerveses','bcat2d':'De tirador','bcat3':'Còctels','bcat3d':'Clàssics i d\'autor','bcat4':'Refrescos','bcat4d':'El senzill també té lloc',
     'res-label':'Reserves','res-title':'Reserva la teva taula','res-btn1':'Reservar ara','res-btn2':'Truca\'ns · 660 38 80 61','res-note':'Cuina amb horaris · Et recomanem reservar',
-    'con-label':'On som','con-title':'Blanquerna,<br>Palma','con-dir-l':'Adreça','con-hor-l':'Horari','con-hor-v':'Tots els dies · 9:30 – 00:00','con-ter-l':'Terrassa','con-ter-v':'Reserva en línia disponible',
+    'con-label':'On som','con-title':'Blanquerna,<br>Palma','con-dir-l':'Adreça','con-hor-l':'Horari','con-hor-v':'Dilluns a dissabte · 9:30 – 00:00<br>Diumenge · 9:30 – 17:00','con-ter-l':'Terrassa','con-ter-v':'Reserva en línia disponible',
     'emp-label':'Treballa amb nosaltres','emp-title':'Busquem persones amb ganes.','emp-sub':'Si t\'apassiona el vi i l\'hospitalitat, explica\'ns qui ets',
     'emp-p1':'Nom complet','emp-p2':'Lloc que busques','emp-p3':'Experiència — breu resum','emp-p4':'Telèfon','emp-p5':'Email','emp-cv':'Tens CV? Envia\'l per email a <a href="mailto:hola@racorestaurant.com">hola@racorestaurant.com</a> després d\'enviar aquest formulari.',
     'emp-btn':'Enviar candidatura','emp-ok':'Rebut. Ens posem en contacte amb tu.',
@@ -681,6 +710,7 @@ const i18n = {
   },
   en: {
     'nav-nosotros':'About','nav-carta':'Menu','nav-bebidas':'Drinks','nav-reservas':'Reservations','nav-contacto':'Contact',
+    'hero-h1':'Restaurant &amp; Wine Bar · Palma de Mallorca',
     'hero-cta':'Book a table',
     'nos-label':'01 · About us',
     'ig-cap':'Day by day · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'The two families · Before Raco','nos-b1-label':'Origin','nos-b1-text':'We grew up between tables and family recipes.','nos-b1-body':'We dreamed of a corner where Mediterranean produce would be the only protagonist. That\'s how Raco was born, in the heart of Palma.<br><br>The name is our essence: the sum of <strong>Ra</strong>mis and <strong>Co</strong>mpany. Two families becoming one to offer you what we do best: honest cooking, wines with stories, and a place where you feel at home.',
@@ -694,7 +724,7 @@ const i18n = {
     'beb-label':'03 · Drinks','beb-title':'The right glass for every moment.','beb-body':'We built our small cellar with love — choosing every bottle as if it were for ourselves.','beb-aside':'Always ask the team · Wines available by the glass',
     'bcat1':'Wines','bcat1d':'By glass & bottle','bcat2':'Beers','bcat2d':'On tap','bcat3':'Cocktails','bcat3d':'Classic & house','bcat4':'Soft drinks','bcat4d':'Simple pleasures deserve a place too',
     'res-label':'Reservations','res-title':'Book your table','res-btn1':'Book now','res-btn2':'Call us · +34 660 38 80 61','res-note':'Kitchen has set hours · Booking recommended',
-    'con-label':'Find us','con-title':'Blanquerna,<br>Palma','con-dir-l':'Address','con-hor-l':'Hours','con-hor-v':'Every day · 9:30 – 00:00','con-ter-l':'Terrace','con-ter-v':'Online booking available',
+    'con-label':'Find us','con-title':'Blanquerna,<br>Palma','con-dir-l':'Address','con-hor-l':'Hours','con-hor-v':'Monday to Saturday · 9:30 – 00:00<br>Sunday · 9:30 – 17:00','con-ter-l':'Terrace','con-ter-v':'Online booking available',
     'emp-label':'Join the team','emp-title':'We\'re looking for people with passion.','emp-sub':'If you love wine and hospitality, tell us who you are',
     'emp-p1':'Full name','emp-p2':'Role you\'re looking for','emp-p3':'Experience — brief summary','emp-p4':'Phone','emp-p5':'Email','emp-cv':'Have a CV? Email it to <a href="mailto:hola@racorestaurant.com">hola@racorestaurant.com</a> after submitting this form.',
     'emp-btn':'Send application','emp-ok':'Received. We\'ll be in touch.',
