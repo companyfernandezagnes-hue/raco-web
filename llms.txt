@@ -12,6 +12,7 @@
 - Teléfono: +34 660 38 80 61
 - Email: hola@racorestaurant.com
 - Reservas online: https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20
+- TheFork: https://www.thefork.es/restaurante/raco-r868613
 - Google Maps: https://maps.google.com/?cid=12909914309890559513
 - Instagram: https://www.instagram.com/racoblanquerna/
 - Idiomas de atención y web: español, catalán e inglés
@@ -23,7 +24,7 @@
 - Menús de grupo cerrados de 45 €, 55 € y 70 € por persona, con vino, agua y café incluidos, y opción de barra libre.
 - Para grupos de más de 70 personas: menús de finger food con barra libre.
 - Cenas de empresa, comidas y cenas de Navidad, cumpleaños, celebraciones y eventos privados.
-- Presupuestos: hola@racorestaurant.com o +34 660 38 80 61. Menús completos: https://racorestaurant.com/carta/#grupos
+- Presupuestos: hola@racorestaurant.com o +34 660 38 80 61. Toda la información: https://racorestaurant.com/grupos/
 
 ## Qué ofrecemos
 
@@ -39,6 +40,7 @@
 ## Páginas
 
 - [Inicio](https://racorestaurant.com/): quiénes somos, carta, bebidas, reservas y contacto
+- [Comidas y cenas de grupo, cenas de empresa y eventos](https://racorestaurant.com/grupos/): espacios, menús de 45, 55 y 70 €, finger food con barra libre para más de 70 personas y presupuestos
 - [Carta completa con precios](https://racorestaurant.com/carta/): desayunos, carta de comida y cena y menús de grupo
 - [Carta de comida y cena en PDF](https://racorestaurant.com/carta-comida-cena.pdf)
 - [Carta de desayunos en PDF](https://racorestaurant.com/carta-desayunos.pdf)
