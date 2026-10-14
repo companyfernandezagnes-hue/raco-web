@@ -198,9 +198,9 @@
 
   function ics(e) {
     var d = e.fecha.replace(/-/g, '');
-    var hm = (e.hora || '20:30').split(':');
+    var hm = (e.hora || '19:00').split(':');
     var start = d + 'T' + ('0' + hm[0]).slice(-2) + ('0' + (hm[1] || '0')).slice(-2) + '00';
-    var endH = ('0' + Math.min(23, (+hm[0] + 3))).slice(-2);
+    var endH = ('0' + Math.min(23, (+hm[0] + 1))).slice(-2);
     var end = d + 'T' + endH + ('0' + (hm[1] || '0')).slice(-2) + '00';
     var t = T[lang()];
     var lines = [
@@ -245,7 +245,7 @@
     var list = upcoming().slice(0, 4);
     var items = list.map(function (e, i) {
       var d = parse(e.fecha);
-      var meta = [e.zona, e.con ? t.jWith + ' ' + e.con : '', e.hora ? e.hora + ' h' : '', e.precio ? e.precio + ' €' : '']
+      var meta = [e.zona, e.con ? t.jWith + ' ' + e.con : '', (e.hora || '19:00') + ' h', e.precio ? e.precio + ' €' : '']
         .filter(Boolean).map(esc).join(' · ');
       var note = tx(e.nota);
       var actions = e.completo ? '<span class="ag-full">' + t.jFull + '</span>' :
@@ -343,7 +343,7 @@
       '<div class="bt"><a class="b" href="#agenda" data-ag="mx">' + t.xAsk + '</a><a class="b o" href="' + MENUS_URL + '" data-ag="xsee">' + t.xSee + '</a></div></div>' : '';
     var items = list.map(function (e, i) {
       var d = parse(e.fecha);
-      var sub = [e.hora ? e.hora + ' h' : '', e.precio ? e.precio + ' €' : '', e.completo ? t.jFull : ''].filter(Boolean).join(' · ');
+      var sub = [(e.hora || '19:00') + ' h', e.precio ? e.precio + ' €' : '', e.completo ? t.jFull : ''].filter(Boolean).join(' · ');
       return '<li><div class="d"><b>' + d.getDate() + '</b><span>' + MONTHS[lang()][d.getMonth()] + '</span></div>' +
         '<div class="n">' + esc(tx(e.bodega) || t.jLabel) + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</div></li>';
     }).join('');
@@ -470,10 +470,10 @@
     var graph = list.slice(0, 12).map(function (e) {
       var bodega = txEs(e.bodega);
       var sorpresa = !bodega || /sorpresa/i.test(bodega);
-      var hm = (e.hora || '20:30').split(':');
+      var hm = (e.hora || '19:00').split(':');
       var hh = ('0' + hm[0]).slice(-2), mm = ('0' + (hm[1] || '0')).slice(-2);
       var off = tzOffset(e.fecha);
-      var endH = ('0' + Math.min(23, (+hm[0] + 3))).slice(-2);
+      var endH = ('0' + Math.min(23, (+hm[0] + 1))).slice(-2);
       var ev = {
         '@type': 'Event',
         name: sorpresa ? 'Jueves de Bodega en Raco: cata con bodega sorpresa' : 'Jueves de Bodega en Raco: ' + bodega,
