@@ -7,7 +7,7 @@
   var EMAIL = 'hola@racorestaurant.com';
   var TEL = '+34660388061';
   var TEL_TXT = '660 388 061';
-  var MENUS_URL = '/carta/#grupos';
+  var MENUS_URL = '/grupos/';
   var BOOK_URL = 'https://www.thefork.es/restaurante/raco-r868613';
 
   var T = {
@@ -452,12 +452,63 @@
     }, 700);
   }
 
+  // Datos para Google: cada Jueves de Bodega futuro aparece como "evento" (se actualiza solo desde agenda.json)
+  function tzOffset(fecha) {
+    try {
+      var n = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Madrid', timeZoneName: 'longOffset' })
+        .formatToParts(new Date(fecha + 'T12:00:00Z')).filter(function (p) { return p.type === 'timeZoneName'; })[0].value;
+      var m = n.match(/GMT([+-]\d{2}:\d{2})/); return m ? m[1] : '+01:00';
+    } catch (e) { return '+01:00'; }
+  }
+  function txEs(v) { return v && typeof v === 'object' ? (v.es || '') : (v || ''); }
+  function eventsLD() {
+    var list = upcoming(); if (!list.length) return;
+    var place = {
+      '@type': 'Place', name: 'Raco', url: 'https://racorestaurant.com/',
+      address: { '@type': 'PostalAddress', streetAddress: 'Blanquerna 12', addressLocality: 'Palma de Mallorca', postalCode: '07003', addressRegion: 'Illes Balears', addressCountry: 'ES' }
+    };
+    var graph = list.slice(0, 12).map(function (e) {
+      var bodega = txEs(e.bodega);
+      var sorpresa = !bodega || /sorpresa/i.test(bodega);
+      var hm = (e.hora || '20:30').split(':');
+      var hh = ('0' + hm[0]).slice(-2), mm = ('0' + (hm[1] || '0')).slice(-2);
+      var off = tzOffset(e.fecha);
+      var endH = ('0' + Math.min(23, (+hm[0] + 3))).slice(-2);
+      var ev = {
+        '@type': 'Event',
+        name: sorpresa ? 'Jueves de Bodega en Raco: cata con bodega sorpresa' : 'Jueves de Bodega en Raco: ' + bodega,
+        description: (txEs(e.nota) ? txEs(e.nota) + '. ' : '') + 'Cata de vinos en Raco (Blanquerna, Palma): el bodeguero viene a explicar sus vinos copa a copa. Plazas limitadas.',
+        startDate: e.fecha + 'T' + hh + ':' + mm + ':00' + off,
+        endDate: e.fecha + 'T' + endH + ':' + mm + ':00' + off,
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: place,
+        image: ['https://racorestaurant.com/og-plato.jpg'],
+        organizer: { '@type': 'Organization', name: 'Raco', url: 'https://racorestaurant.com/' },
+        offers: {
+          '@type': 'Offer', url: BOOK_URL,
+          availability: e.completo ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock'
+        }
+      };
+      if (e.precio) { ev.offers.price = String(e.precio); ev.offers.priceCurrency = 'EUR'; }
+      if (!sorpresa) ev.performer = { '@type': 'Organization', name: bodega };
+      return ev;
+    });
+    var sc = document.createElement('script');
+    sc.type = 'application/ld+json';
+    sc.id = 'raco-events-ld';
+    sc.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+    var old = document.getElementById('raco-events-ld'); if (old) old.remove();
+    document.head.appendChild(sc);
+  }
+
   function init() {
     var st = document.createElement('style');
     st.textContent = css;
     document.head.appendChild(st);
     fetch(DATA_URL, { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
       data = j;
+      try { eventsLD(); } catch (e) {}
       if (!xmasActive() && !upcoming().length && !(data.jueves_bodega)) return;
       render();
       if (location.hash === '#agenda') document.getElementById('agenda').scrollIntoView();
