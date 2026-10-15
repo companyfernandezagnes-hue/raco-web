@@ -316,8 +316,8 @@
       var f = document.querySelector('#agenda .ag-form');
       var d = f && f.d.value, p = f && f.p.value, m = f && f.m.value;
       var body = t.xMailBody + '\n\n' +
-        t.fDate + ': ' + (d ? d.split('-').reverse().join('/') : '—') + '\n' +
-        t.fPax + ': ' + (p || '—') + '\n' +
+        t.fDate + ': ' + (d ? d.split('-').reverse().join('/') : '') + '\n' +
+        t.fPax + ': ' + (p || '') + '\n' +
         t.fMenu + ': ' + (m ? m + ' €' : t.fAny) + '\n\n' + t.contact;
       try { if (window.gtag) gtag('event', 'email_click', { link_url: 'mailto:' + EMAIL, link_text: 'Agenda · ' + t.xAsk }); } catch (e2) {}
       location.href = mailto(t.xMailSubj, body);
