@@ -38,31 +38,15 @@
       },
       {
         "fecha": "2026-10-22",
-        "bodega": {
-          "es": "Bodega sorpresa",
-          "ca": "Celler sorpresa",
-          "en": "Surprise winery"
-        },
-        "nota": {
-          "es": "La desvelamos esa misma semana en Instagram",
-          "ca": "La desvetllam aquella mateixa setmana a Instagram",
-          "en": "Revealed that same week on Instagram"
-        },
-        "precio": 18
+        "bodega": "Can Vidalet",
+        "precio": 18,
+        "zona": "Pollença · Mallorca"
       },
       {
         "fecha": "2026-10-29",
-        "bodega": {
-          "es": "Bodega sorpresa",
-          "ca": "Celler sorpresa",
-          "en": "Surprise winery"
-        },
-        "nota": {
-          "es": "La desvelamos esa misma semana en Instagram",
-          "ca": "La desvetllam aquella mateixa setmana a Instagram",
-          "en": "Revealed that same week on Instagram"
-        },
-        "precio": 18
+        "bodega": "Son Puig",
+        "precio": 18,
+        "zona": "Puigpunyent · Mallorca"
       },
       {
         "fecha": "2026-11-05",
