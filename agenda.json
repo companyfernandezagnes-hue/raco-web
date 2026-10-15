@@ -32,7 +32,9 @@
       },
       {
         "fecha": "2026-10-15",
-        "bodega": "Vins Nadal"
+        "bodega": "Vins Nadal",
+        "precio": 18,
+        "zona": "D.O. Binissalem"
       },
       {
         "fecha": "2026-10-22",
@@ -45,7 +47,8 @@
           "es": "La desvelamos esa misma semana en Instagram",
           "ca": "La desvetllam aquella mateixa setmana a Instagram",
           "en": "Revealed that same week on Instagram"
-        }
+        },
+        "precio": 18
       },
       {
         "fecha": "2026-10-29",
@@ -58,7 +61,8 @@
           "es": "La desvelamos esa misma semana en Instagram",
           "ca": "La desvetllam aquella mateixa setmana a Instagram",
           "en": "Revealed that same week on Instagram"
-        }
+        },
+        "precio": 18
       },
       {
         "fecha": "2026-11-05",
@@ -71,7 +75,8 @@
           "es": "La desvelamos esa misma semana en Instagram",
           "ca": "La desvetllam aquella mateixa setmana a Instagram",
           "en": "Revealed that same week on Instagram"
-        }
+        },
+        "precio": 18
       },
       {
         "fecha": "2026-11-12",
@@ -84,7 +89,8 @@
           "es": "La desvelamos esa misma semana en Instagram",
           "ca": "La desvetllam aquella mateixa setmana a Instagram",
           "en": "Revealed that same week on Instagram"
-        }
+        },
+        "precio": 18
       },
       {
         "fecha": "2026-11-19",
@@ -97,7 +103,8 @@
           "es": "La desvelamos esa misma semana en Instagram",
           "ca": "La desvetllam aquella mateixa setmana a Instagram",
           "en": "Revealed that same week on Instagram"
-        }
+        },
+        "precio": 18
       },
       {
         "fecha": "2026-11-26",
@@ -110,7 +117,8 @@
           "es": "La desvelamos esa misma semana en Instagram",
           "ca": "La desvetllam aquella mateixa setmana a Instagram",
           "en": "Revealed that same week on Instagram"
-        }
+        },
+        "precio": 18
       }
     ]
   }
