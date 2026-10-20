@@ -8,7 +8,7 @@
   var TEL = '+34660388061';
   var TEL_TXT = '660 388 061';
   var MENUS_URL = '/grupos/';
-  var BOOK_URL = 'https://www.thefork.es/restaurante/raco-r868613';
+  var BOOK_URL = 'https://entradium.com/events/jueves-de-bodegas';
 
   var T = {
     es: {
