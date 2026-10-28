@@ -29,62 +29,73 @@
 <!-- Datos estructurados para Google (horario, dirección, precio) -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "@id": "https://racorestaurant.com/#restaurant",
-  "name": "Raco",
-  "alternateName": "Raco Blanquerna",
-  "description": "Restaurante y wine bar en Blanquerna, Palma de Mallorca. Desayunos, menú de mediodía, carta de cena y una selección de vinos.",
-  "image": "https://racorestaurant.com/og-plato.jpg",
-  "logo": "https://racorestaurant.com/favicon.png",
-  "url": "https://racorestaurant.com/",
-  "telephone": "+34660388061",
-  "priceRange": "€€",
-  "servesCuisine": ["Mediterranean", "Spanish"],
-  "menu": "https://racorestaurant.com/carta/",
-  "acceptsReservations": "https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20",
-  "potentialAction": {
-    "@type": "ReserveAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20",
-      "inLanguage": ["es", "ca", "en"],
-      "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
-    },
-    "result": { "@type": "FoodEstablishmentReservation", "name": "Reserva en Raco" }
-  },
-  "hasMap": "https://maps.google.com/?cid=12909914309890559513",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Blanquerna 12",
-    "addressLocality": "Palma de Mallorca",
-    "postalCode": "07003",
-    "addressRegion": "Illes Balears",
-    "addressCountry": "ES"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 39.579014,
-    "longitude": 2.6507664
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "09:30",
-      "closes": "23:59"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Sunday",
-      "opens": "09:30",
-      "closes": "17:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/racoblanquerna/",
-    "https://maps.google.com/?cid=12909914309890559513"
-  ]
+"@context": "https://schema.org",
+"@type": "Restaurant",
+"@id": "https://racorestaurant.com/#restaurant",
+"name": "Raco",
+"alternateName": "Raco Blanquerna",
+"legalName": "Racoblanquerna SL",
+"description": "Restaurante y wine bar en Blanquerna, Palma de Mallorca. Desayunos, menú de mediodía, carta de cena, más de 70 vinos, Jueves de Bodega y comidas y cenas de grupo. Terraza todo el año.",
+"image": "https://racorestaurant.com/og-plato.jpg",
+"logo": "https://racorestaurant.com/favicon.png",
+"url": "https://racorestaurant.com/",
+"telephone": "+34660388061",
+"email": "hola@racorestaurant.com",
+"priceRange": "€€",
+"currenciesAccepted": "EUR",
+"servesCuisine": ["Mediterranean", "Spanish"],
+"knowsLanguage": ["es", "ca", "en"],
+"menu": "https://racorestaurant.com/carta/",
+"acceptsReservations": "https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20",
+"potentialAction": {
+"@type": "ReserveAction",
+"target": {
+"@type": "EntryPoint",
+"urlTemplate": "https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20",
+"inLanguage": ["es", "ca", "en"],
+"actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+},
+"result": { "@type": "FoodEstablishmentReservation", "name": "Reserva en Raco" }
+},
+"hasMap": "https://maps.google.com/?cid=12909914309890559513",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Carrer de Blanquerna, 12",
+"addressLocality": "Palma",
+"postalCode": "07003",
+"addressRegion": "Illes Balears",
+"addressCountry": "ES"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 39.579014,
+"longitude": 2.6507664
+},
+"openingHoursSpecification": [
+{
+"@type": "OpeningHoursSpecification",
+"dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+"opens": "09:30",
+"closes": "23:59"
+},
+{
+"@type": "OpeningHoursSpecification",
+"dayOfWeek": "Sunday",
+"opens": "09:30",
+"closes": "17:00"
+}
+],
+"amenityFeature": [
+{ "@type": "LocationFeatureSpecification", "name": "Terraza abierta todo el año", "value": true },
+{ "@type": "LocationFeatureSpecification", "name": "Se admiten perros en la terraza y la zona de cafetería", "value": true },
+{ "@type": "LocationFeatureSpecification", "name": "Tronas para niños", "value": true },
+{ "@type": "LocationFeatureSpecification", "name": "Menús para grupos y eventos privados", "value": true },
+{ "@type": "LocationFeatureSpecification", "name": "Vinos por copa", "value": true }
+],
+"sameAs": [
+"https://www.instagram.com/racoblanquerna/",
+"https://maps.google.com/?cid=12909914309890559513"
+]
 }
 </script>
 
@@ -681,7 +692,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   <div class="contacto-info">
     <span class="s-label" data-i18n="con-label">Dónde estamos</span>
     <h2 class="s-title" data-i18n="con-title">Blanquerna,<br>Palma</h2>
-    <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-dir-l">Dirección</span><span class="ubic-val">Blanquerna 12, 07003 · Palma de Mallorca</span></div>
+    <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-dir-l">Dirección</span><span class="ubic-val">C/ de Blanquerna, 12 · 07003 Palma</span></div>
     <div class="ubic-row"><span class="ubic-lbl" data-i18n="con-hor-l">Horario</span><span class="ubic-val" data-i18n="con-hor-v">Lunes a sábado de 9:30 a 00:00<br>Domingo de 9:30 a 17:00</span></div>
     <div class="ubic-row"><span class="ubic-lbl">Teléfono</span><a href="tel:+34660388061" class="ubic-val-link">+34 660 38 80 61</a></div>
     <div class="ubic-row"><span class="ubic-lbl">Email</span><a href="mailto:hola@racorestaurant.com" class="ubic-val-link">hola@racorestaurant.com</a></div>
