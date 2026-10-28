@@ -465,7 +465,7 @@
     var list = upcoming(); if (!list.length) return;
     var place = {
       '@type': 'Place', name: 'Raco', url: 'https://racorestaurant.com/',
-      address: { '@type': 'PostalAddress', streetAddress: 'Blanquerna 12', addressLocality: 'Palma de Mallorca', postalCode: '07003', addressRegion: 'Illes Balears', addressCountry: 'ES' }
+      address: { '@type': 'PostalAddress', streetAddress: 'Carrer de Blanquerna, 12', addressLocality: 'Palma', postalCode: '07003', addressRegion: 'Illes Balears', addressCountry: 'ES' }
     };
     var graph = list.slice(0, 12).map(function (e) {
       var bodega = txEs(e.bodega);
