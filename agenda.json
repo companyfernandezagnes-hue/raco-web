@@ -50,16 +50,7 @@
       },
       {
         "fecha": "2026-11-05",
-        "bodega": {
-          "es": "Bodega sorpresa",
-          "ca": "Celler sorpresa",
-          "en": "Surprise winery"
-        },
-        "nota": {
-          "es": "La desvelamos esa misma semana en Instagram",
-          "ca": "La desvetllam aquella mateixa setmana a Instagram",
-          "en": "Revealed that same week on Instagram"
-        },
+        "bodega": "Tomeu Llabrés",
         "precio": 18
       },
       {
