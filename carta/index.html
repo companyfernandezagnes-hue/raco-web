@@ -141,6 +141,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 
 .cat{margin:2.2rem 0;}
 .cat-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold-text);text-transform:uppercase;margin:0 0 0.9rem;text-align:center;}
+.cat-note{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2.5px;color:var(--ink-faint);margin:-0.5rem 0 0.9rem;}
+.dish-sep{margin:0 0.45em;color:var(--ink-faint);}
 
 .dish{display:flex;align-items:baseline;gap:0.5rem;padding:0.6rem 0;border-bottom:0.5px solid var(--gold-20);}
 .dish:last-child{border-bottom:none;}
@@ -265,39 +267,55 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
       <span class="section-num">I</span>
       <h2 class="section-title" data-es="Desayunos" data-ca="Berenars" data-en="Breakfasts">Desayunos</h2>
     </div>
-    <a class="pdf-link" href="/carta-desayunos.pdf" target="_blank" rel="noopener">Descargar en PDF ↓</a>
-    <p class="allergen-hint">El PDF incluye el desglose completo de alérgenos por plato</p>
+    <p class="allergen-hint" data-es="Pregunta a nuestro equipo por los alérgenos de cada plato" data-ca="Pregunta al nostre equip pels al·lèrgens de cada plat" data-en="Ask our team about the allergens in each dish">Pregunta a nuestro equipo por los alérgenos de cada plato</p>
 
     <div class="cat">
       <p class="cat-label" data-es="Tostas" data-ca="Torrades" data-en="Toasts">Tostas</p>
-      <div class="dish"><span class="dish-name" data-es="Tosta con tomate y aceite de oliva" data-ca="Torrada amb tomàtiga i oli d’oliva" data-en="Toast with olive oil and tomato">Tosta con tomate y aceite de oliva</span><span class="dish-leader"></span><span class="dish-price">3,70&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta con mantequilla" data-ca="Torrada amb mantenga" data-en="Toast with butter">Tosta con mantequilla</span><span class="dish-leader"></span><span class="dish-price">3,70&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta de salmón ahumado y queso Philadelphia" data-ca="Torrada de salmó fumat i formatge Philadelphia" data-en="Toast with smoked salmon and Philadelphia cream cheese">Tosta de salmón ahumado y queso Philadelphia</span><span class="dish-leader"></span><span class="dish-price">8,90&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta de aguacate y huevo escalfado" data-ca="Torrada d’alvocat i ou escalfat" data-en="Toast with avocado and poached egg">Tosta de aguacate y huevo escalfado</span><span class="dish-leader"></span><span class="dish-price">8,50&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta con tomate, huevos fritos y bacon" data-ca="Torrada amb tomàtiga, ous frits i bacon" data-en="Toast with tomato, fried eggs and bacon">Tosta con tomate, huevos fritos y bacon</span><span class="dish-leader"></span><span class="dish-price">8,50&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta con burrata, aguacate y tomates cherry" data-ca="Torrada de burrata amb alvocat i tomàtigues cherry" data-en="Toast with burrata, avocado and cherry tomatoes">Tosta con burrata, aguacate y tomates cherry</span><span class="dish-leader"></span><span class="dish-price">9,50&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta de jamón serrano y tomate" data-ca="Torrada de pernil salat amb tomàtiga" data-en="Toast with serrano ham and tomato">Tosta de jamón serrano y tomate</span><span class="dish-leader"></span><span class="dish-price">5,90&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta de queso mahonés y tomate" data-ca="Torrada de formatge mahonès i tomàtiga" data-en="Toast with Mahón cheese and tomato">Tosta de queso mahonés y tomate</span><span class="dish-leader"></span><span class="dish-price">5,90&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta de camaiot" data-ca="Torrada de camaiot" data-en="Toast with camaiot">Tosta de camaiot</span><span class="dish-leader"></span><span class="dish-price">8,00&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Tosta de lomo y queso" data-ca="Torrada de llom i formatge" data-en="Toast with pork loin and cheese">Tosta de lomo y queso</span><span class="dish-leader"></span><span class="dish-price">8,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de aguacate, salmón y queso crema" data-ca="Torrada d’alvocat, salmó i formatge cremós" data-en="Avocado, salmon and cream cheese toast">Tosta de aguacate, salmón y queso crema</span><span class="dish-leader"></span><span class="dish-price">11,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Tosta de aguacate y burrata" data-ca="Torrada d’alvocat i burrata" data-en="Avocado and burrata toast">Tosta de aguacate y burrata</span><span class="dish-leader"></span><span class="dish-price">10,50&euro;</span></div>
     </div>
 
     <div class="cat">
-      <p class="cat-label" data-es="Bollería y sándwiches" data-ca="Brioxeria i sandvitxos" data-en="Bakery and sandwiches">Bollería y sándwiches</p>
-      <div class="dish"><span class="dish-name">Croissant</span><span class="dish-leader"></span><span class="dish-price">2,30&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Croissant con Nutella" data-ca="Croissant amb Nutella" data-en="Croissant with Nutella">Croissant con Nutella</span><span class="dish-leader"></span><span class="dish-price">2,90&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Croissant tostado de jamón y queso" data-ca="Croissant torrat de pernil i formatge" data-en="Toasted croissant with ham and cheese">Croissant tostado de jamón y queso</span><span class="dish-leader"></span><span class="dish-price">3,20&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Bocata de la semana" data-ca="Entrepà de la setmana" data-en="Weekly special sandwich">Bocata de la semana</span><span class="dish-leader"></span><span class="dish-price">5,00&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Sándwich tostado de jamón y queso" data-ca="Sandvitx torrat de pernil i formatge" data-en="Toasted ham and cheese sandwich">Sándwich tostado de jamón y queso</span><span class="dish-leader"></span><span class="dish-price">5,20&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Sándwich de atún, tomate y mayonesa" data-ca="Sandvitx de tonyina, tomàtiga i maionesa" data-en="Tuna, tomato and mayonnaise sandwich">Sándwich de atún, tomate y mayonesa</span><span class="dish-leader"></span><span class="dish-price">5,20&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Club sándwich · pollo, queso, bacon, tomate, lechuga y mayonesa" data-ca="Club sandvitx · pollastre rostit, formatge, bacon, tomàtiga, enciam i maonesa" data-en="Club sandwich · roasted chicken, cheese, bacon, tomato, lettuce and mayonnaise">Club sándwich · pollo, queso, bacon, tomate, lechuga y mayonesa</span><span class="dish-leader"></span><span class="dish-price">12,50&euro;</span></div>
+      <p class="cat-label" data-es="Bocadillos fríos" data-ca="Entrepans freds" data-en="Cold sandwiches">Bocadillos fríos</p>
+      <p class="cat-note" data-es="Medio · entero" data-ca="Mig · sencer" data-en="Half · whole">Medio · entero</p>
+      <div class="dish"><span class="dish-name" data-es="Jamón serrano" data-ca="Pernil salat" data-en="Serrano ham">Jamón serrano</span><span class="dish-leader"></span><span class="dish-price">3,00&euro;<span class="dish-sep">·</span>5,10&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Jamón serrano y queso" data-ca="Pernil salat i formatge" data-en="Serrano ham and cheese">Jamón serrano y queso</span><span class="dish-leader"></span><span class="dish-price">3,50&euro;<span class="dish-sep">·</span>5,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Jamón york" data-ca="Pernil dolç" data-en="Cooked ham">Jamón york</span><span class="dish-leader"></span><span class="dish-price">2,50&euro;<span class="dish-sep">·</span>4,10&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Jamón york y queso" data-ca="Pernil dolç i formatge" data-en="Cooked ham and cheese">Jamón york y queso</span><span class="dish-leader"></span><span class="dish-price">2,70&euro;<span class="dish-sep">·</span>4,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Queso manchego" data-ca="Formatge manxec" data-en="Manchego cheese">Queso manchego</span><span class="dish-leader"></span><span class="dish-price">2,80&euro;<span class="dish-sep">·</span>4,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Salchichón ibérico" data-ca="Llonganissa ibèrica" data-en="Iberian cured sausage">Salchichón ibérico</span><span class="dish-leader"></span><span class="dish-price">2,80&euro;<span class="dish-sep">·</span>4,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Chorizo ibérico" data-ca="Xoriço ibèric" data-en="Iberian chorizo">Chorizo ibérico</span><span class="dish-leader"></span><span class="dish-price">2,80&euro;<span class="dish-sep">·</span>4,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Sobrasada" data-ca="Sobrassada" data-en="Balearic sobrasada">Sobrasada</span><span class="dish-leader"></span><span class="dish-price">2,50&euro;<span class="dish-sep">·</span>4,20&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Atún con tomate" data-ca="Tonyina amb tomàtiga" data-en="Tuna with tomato">Atún con tomate</span><span class="dish-leader"></span><span class="dish-price">2,80&euro;<span class="dish-sep">·</span>4,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Atún con ensalada" data-ca="Tonyina amb amanida" data-en="Tuna with salad">Atún con ensalada</span><span class="dish-leader"></span><span class="dish-price">3,30&euro;<span class="dish-sep">·</span>5,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Pollo con mayonesa" data-ca="Pollastre amb maionesa" data-en="Chicken with mayonnaise">Pollo con mayonesa</span><span class="dish-leader"></span><span class="dish-price">3,80&euro;<span class="dish-sep">·</span>6,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Camaiot" data-ca="Camaiot" data-en="Balearic camaiot">Camaiot</span><span class="dish-leader"></span><span class="dish-price">3,00&euro;<span class="dish-sep">·</span>5,10&euro;</span></div>
     </div>
 
     <div class="cat">
-      <p class="cat-label" data-es="Fruta, yogur y cereales" data-ca="Fruita, iogurt i cereals" data-en="Fruit, yogurt and cereals">Fruta, yogur y cereales</p>
-      <div class="dish"><span class="dish-name" data-es="Ensalada de fruta fresca" data-ca="Bol de fruita tallada" data-en="Fresh fruit salad">Ensalada de fruta fresca</span><span class="dish-leader"></span><span class="dish-price">3,50&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Ensalada de fruta fresca con yogur" data-ca="Bol de fruita tallada amb iogurt" data-en="Fresh fruit salad with yogurt">Ensalada de fruta fresca con yogur</span><span class="dish-leader"></span><span class="dish-price">4,20&euro;</span></div>
-      <div class="dish"><span class="dish-name" data-es="Ensalada de fruta fresca, yogur y granola" data-ca="Bol de fruita tallada amb iogurt i granola" data-en="Fresh fruit, yogurt and granola salad">Ensalada de fruta fresca, yogur y granola</span><span class="dish-leader"></span><span class="dish-price">4,50&euro;</span></div>
+      <p class="cat-label" data-es="Bocadillos calientes" data-ca="Entrepans calents" data-en="Hot sandwiches">Bocadillos calientes</p>
+      <p class="cat-note" data-es="Medio · entero" data-ca="Mig · sencer" data-en="Half · whole">Medio · entero</p>
+      <div class="dish"><span class="dish-name" data-es="Lomo a la plancha" data-ca="Llom a la planxa" data-en="Grilled pork loin">Lomo a la plancha</span><span class="dish-leader"></span><span class="dish-price">3,80&euro;<span class="dish-sep">·</span>6,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Lomo con queso" data-ca="Llom amb formatge" data-en="Pork loin and cheese">Lomo con queso</span><span class="dish-leader"></span><span class="dish-price">3,30&euro;<span class="dish-sep">·</span>7,10&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Lomo, bacon y queso" data-ca="Llom, bacó i formatge" data-en="Pork loin, bacon and cheese">Lomo, bacon y queso</span><span class="dish-leader"></span><span class="dish-price">3,80&euro;<span class="dish-sep">·</span>7,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Bacon" data-ca="Bacó" data-en="Bacon">Bacon</span><span class="dish-leader"></span><span class="dish-price">2,80&euro;<span class="dish-sep">·</span>4,80&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Bacon con queso" data-ca="Bacó amb formatge" data-en="Bacon and cheese">Bacon con queso</span><span class="dish-leader"></span><span class="dish-price">3,00&euro;<span class="dish-sep">·</span>5,20&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Serranito" data-ca="Llom, tomàtiga i pebrot" data-en="Pork loin, tomato and pepper">Serranito</span><span class="dish-leader"></span><span class="dish-price">4,10&euro;<span class="dish-sep">·</span>7,90&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Extras" data-ca="Extres" data-en="Extras">Extras</p>
+      <div class="dish"><span class="dish-name" data-es="Bacon · huevo · cebolla caramelizada" data-ca="Bacó · ou · ceba caramel·litzada" data-en="Bacon · egg · caramelised onion">Bacon · huevo · cebolla caramelizada</span><span class="dish-leader"></span><span class="dish-price">+1,00&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Aguacate extra" data-ca="Alvocat extra" data-en="Extra avocado">Aguacate extra</span><span class="dish-leader"></span><span class="dish-price">+3,00&euro;</span></div>
+    </div>
+
+    <div class="cat">
+      <p class="cat-label" data-es="Bollería y sándwiches" data-ca="Brioixeria i sàndvitxos" data-en="Pastries and sandwiches">Bollería y sándwiches</p>
+      <div class="dish"><span class="dish-name" data-es="Croissant" data-ca="Croissant" data-en="Croissant">Croissant</span><span class="dish-leader"></span><span class="dish-price">2,10&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Croissant con Nutella" data-ca="Croissant amb Nutella" data-en="Nutella croissant">Croissant con Nutella</span><span class="dish-leader"></span><span class="dish-price">2,90&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Croissant tostado de jamón y queso" data-ca="Croissant torrat de pernil i formatge" data-en="Toasted ham and cheese croissant">Croissant tostado de jamón y queso</span><span class="dish-leader"></span><span class="dish-price">3,50&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Sándwich tostado de jamón y queso" data-ca="Sàndvitx torrat de pernil i formatge" data-en="Toasted ham and cheese sandwich">Sándwich tostado de jamón y queso</span><span class="dish-leader"></span><span class="dish-price">4,90&euro;</span></div>
+      <div class="dish"><span class="dish-name" data-es="Sándwich tostado de atún, tomate y mayonesa" data-ca="Sàndvitx torrat de tonyina, tomàquet i maionesa" data-en="Toasted tuna, tomato and mayo sandwich">Sándwich tostado de atún, tomate y mayonesa</span><span class="dish-leader"></span><span class="dish-price">5,50&euro;</span></div>
     </div>
   </section>
 
