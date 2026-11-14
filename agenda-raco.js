@@ -18,6 +18,7 @@
       xText: 'Comidas y cenas de empresa, familia o amigos. Tres menús cerrados para grupos, con nuestra cocina de producto y nuestros vinos.',
       pp: 'por persona', xSee: 'Ver los menús', xAsk: 'Pedir presupuesto',
       xNote: 'Las mejores fechas de diciembre vuelan: reserva con tiempo.',
+      xDay: 'Menús del 25 y del 31 de diciembre',
       fDate: 'Fecha', fPax: 'Personas', fMenu: 'Menú', fAny: 'Aún no lo sé',
       xMailSubj: 'Navidad en Raco · grupo', xMailBody: 'Hola, queremos pedir presupuesto para un grupo en Navidad.',
       jLabel: 'Jueves de Bodega', jTitle: 'El bodeguero, en la mesa',
@@ -35,6 +36,7 @@
       xText: "Dinars i sopars d'empresa, família o amics. Tres menús tancats per a grups, amb la nostra cuina de producte i els nostres vins.",
       pp: 'per persona', xSee: 'Veure els menús', xAsk: 'Demanar pressupost',
       xNote: 'Les millors dates de desembre volen: reserva amb temps.',
+      xDay: 'Menús del 25 i del 31 de desembre',
       fDate: 'Data', fPax: 'Persones', fMenu: 'Menú', fAny: 'Encara no ho sé',
       xMailSubj: 'Nadal a Raco · grup', xMailBody: 'Hola, volem demanar pressupost per a un grup per Nadal.',
       jLabel: 'Dijous de Celler', jTitle: 'El seller, a taula',
@@ -52,6 +54,7 @@
       xText: 'Company, family or friends’ lunches and dinners. Three set menus for groups, with our product-led cooking and our wines.',
       pp: 'per person', xSee: 'See the menus', xAsk: 'Request a quote',
       xNote: 'December’s best dates go fast, so book early.',
+      xDay: 'Menus for 25 and 31 December',
       fDate: 'Date', fPax: 'Guests', fMenu: 'Menu', fAny: 'Not sure yet',
       xMailSubj: 'Christmas at Raco · group', xMailBody: 'Hello, we would like a quote for a Christmas group booking.',
       jLabel: 'Winery Thursdays', jTitle: 'Meet the winemaker',
@@ -94,6 +97,8 @@
     '@media (max-width:860px){#agenda .ag-grid{grid-template-columns:1fr}#agenda{padding:4rem 1rem}}' +
     /* Navidad: panel oscuro */
     '#agenda .ag-x{background:var(--ink,#161E14);color:var(--paper,#FFFDF8);padding:2.4rem 2.2rem;position:relative;border:1px solid var(--gold-40,rgba(180,147,86,.4))}' +
+    '#agenda .ag-xd{display:inline-block;margin:0 0 1.1rem;font-family:"Bebas Neue",sans-serif;letter-spacing:.2em;font-size:13px;color:var(--gold,#B49356);text-decoration:none;border-bottom:1px solid var(--gold-40,rgba(180,147,86,.4));padding-bottom:3px}' +
+    '#agenda .ag-xd:hover{border-bottom-color:var(--gold,#B49356)}' +
     '#agenda .ag-x:before{content:"";position:absolute;inset:8px;border:1px solid var(--gold-20,rgba(180,147,86,.3));pointer-events:none}' +
     '#agenda .ag-k{font-family:"Bebas Neue",sans-serif;letter-spacing:.3em;font-size:12px;color:var(--gold,#B49356)}' +
     '#agenda h3{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(28px,3.4vw,38px);letter-spacing:.04em;margin:.5rem 0 .8rem;line-height:1.05}' +
@@ -227,6 +232,7 @@
       '<span class="ag-k">' + t.xLabel + '</span>' +
       '<h3>' + t.xTitle + '</h3>' +
       '<p>' + t.xText + '</p>' +
+      '<a class="ag-xd" href="/navidad/">' + t.xDay + ' →</a>' +
       (prices ? '<div class="ag-prices">' + prices + '</div>' : '') +
       '<form class="ag-form" onsubmit="return false">' +
       '<label>' + t.fDate + '<input type="date" name="d" min="' + new Date().toISOString().slice(0, 10) + '"></label>' +
