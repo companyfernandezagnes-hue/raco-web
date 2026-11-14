@@ -61,31 +61,15 @@
       },
       {
         "fecha": "2026-11-19",
-        "bodega": {
-          "es": "Bodega sorpresa",
-          "ca": "Celler sorpresa",
-          "en": "Surprise winery"
-        },
-        "nota": {
-          "es": "La desvelamos esa misma semana en Instagram",
-          "ca": "La desvetllam aquella mateixa setmana a Instagram",
-          "en": "Revealed that same week on Instagram"
-        },
-        "precio": 18
+        "bodega": "Matarromera",
+        "precio": 18,
+        "zona": "Ribera del Duero · Valladolid"
       },
       {
         "fecha": "2026-11-26",
-        "bodega": {
-          "es": "Bodega sorpresa",
-          "ca": "Celler sorpresa",
-          "en": "Surprise winery"
-        },
-        "nota": {
-          "es": "La desvelamos esa misma semana en Instagram",
-          "ca": "La desvetllam aquella mateixa setmana a Instagram",
-          "en": "Revealed that same week on Instagram"
-        },
-        "precio": 18
+        "bodega": "Mesquida Mora",
+        "precio": 18,
+        "zona": "Porreres · Mallorca"
       }
     ]
   }
