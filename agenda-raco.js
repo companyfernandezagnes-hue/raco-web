@@ -493,11 +493,12 @@
         organizer: { '@type': 'Organization', name: 'Raco', url: 'https://racorestaurant.com/' },
         offers: {
           '@type': 'Offer', url: BOOK_URL,
-          availability: e.completo ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock'
+          availability: e.completo ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+validFrom: '2026-11-01T09:00:00+01:00'
         }
       };
       if (e.precio) { ev.offers.price = String(e.precio); ev.offers.priceCurrency = 'EUR'; }
-      if (!sorpresa) ev.performer = { '@type': 'Organization', name: bodega };
+      ev.performer = { '@type': 'Organization', name: sorpresa ? 'Raco' : bodega };
       return ev;
     });
     var sc = document.createElement('script');
