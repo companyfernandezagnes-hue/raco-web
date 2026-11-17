@@ -1,56 +1,56 @@
-# Raco · Restaurante y Wine Bar en Palma de Mallorca
+# Raco | Restaurante y Wine Bar en Palma de Mallorca
 
-> Raco es un restaurante y wine bar independiente y amplio en la calle Blanquerna 12, en el centro de Palma de Mallorca, especializado en comidas y cenas de grupo y eventos privados. Proyecto de dos familias (Ramis y Company: RA + CO). Comedor central, terraza todo el año y zona de cafetería. Desayunos, menú del día de lunes a viernes, carta de comida y cena con cocina mediterránea de producto, menús de grupo de 45, 55 y 70 € y más de 70 referencias de vino. Cata con el bodeguero todos los jueves (Jueves de Bodega). Abierto todos los días.
+> Raco es un restaurante y wine bar independiente y amplio en la calle Blanquerna 12, en el centro de Palma de Mallorca, especializado en comidas y cenas de grupo y eventos privados. Proyecto de dos familias (Ramis y Company: RA + CO). Comedor central, terraza abierta los 365 dias y zona de cafeteria. Desayunos, menu del dia de lunes a viernes, carta de comida y cena con cocina mediterranea de producto, menus de grupo de 45, 55 y 70 EUR y mas de 70 referencias de vino. Cata con el bodeguero todos los jueves (Jueves de Bodega). Abierto todos los dias.
 
-## Datos básicos
+## Datos basicos
 
-- Nombre: Raco (también "Raco Blanquerna")
-- Tipo: restaurante y wine bar, cocina mediterránea y española de producto
-- Dirección: Carrer de Blanquerna 12, 07003 Palma de Mallorca, Illes Balears, España
+- Nombre: Raco (tambien "Raco Blanquerna")
+- Tipo: restaurante y wine bar, cocina mediterranea y espanola de producto
+- Direccion: Carrer de Blanquerna 12, 07003 Palma de Mallorca, Illes Balears, Espana
 - Zona: calle Blanquerna, centro de Palma
-- Horario: todos los días de 9:30 a 00:00
-- Teléfono: +34 660 38 80 61
+- Horario: todos los dias de 9:30 a 00:00
+- Telefono: +34 660 38 80 61
 - Email: hola@racorestaurant.com
 - Reservas online: https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20
 - TheFork: https://www.thefork.es/restaurante/raco-r868613
 - Google Maps: https://maps.google.com/?cid=12909914309890559513
-- Reconocimiento: Restaurant Guru 2026, distinción "Recommended" (https://restaurantguru.com/Raco-Palma)
+- Reconocimiento: Restaurant Guru 2026, distincion "Recommended" (https://restaurantguru.com/Raco-Palma)
 - Instagram: https://www.instagram.com/racoblanquerna/
-- Idiomas de atención y web: español, catalán e inglés
-- Precio: €€ (principales entre 25 y 34 €; desayunos desde 2,30 €)
+- Idiomas de atencion y web: espanol, catalan e ingles
+- Precio: medio (principales entre 25 y 34 EUR; desayunos desde 2,30 EUR)
 
 ## Grupos y eventos (nuestra especialidad)
 
-- Local amplio en el centro de Palma con comedor central, terraza todo el año y zona de cafetería: ideal para grupos grandes.
-- Menús de grupo cerrados de 45 €, 55 € y 70 € por persona, con vino, agua y café incluidos, y opción de barra libre.
-- Para grupos de más de 70 personas: menús de finger food con barra libre.
-- Cenas de empresa, comidas y cenas de Navidad, cumpleaños, celebraciones y eventos privados.
-- Presupuestos: hola@racorestaurant.com o +34 660 38 80 61. Toda la información: https://racorestaurant.com/grupos/
+- Local amplio en el centro de Palma con comedor central, terraza abierta los 365 dias y zona de cafeteria: ideal para grupos grandes.
+- Menus de grupo cerrados de 45 EUR, 55 EUR y 70 EUR por persona, con vino, agua y cafe incluidos, y opcion de barra libre.
+- Para grupos de mas de 70 personas: menus de finger food con barra libre.
+- Cenas de empresa, comidas y cenas de Navidad, cumpleanos, celebraciones y eventos privados.
+- Presupuestos: hola@racorestaurant.com o +34 660 38 80 61. Toda la informacion: https://racorestaurant.com/grupos/
 
-## Qué ofrecemos
+## Que ofrecemos
 
-- Desayunos (sin reserva): tostas, bollería, sándwiches, fruta, yogur y granola. Ej.: tosta de aguacate y huevo escalfado 8,50 €, croissant 2,30 €.
-- Menú del día: de lunes a viernes a mediodía, 25 € (medio menú 18 €), con agua, refresco y pan incluidos. Cambia cada semana con producto de temporada; se publica en Instagram y en la app Menú de Hoy, y se puede recibir por email cada lunes desde la web.
-- Carta de comida y cena: entrantes, ensaladas, arroces a la llauna, pastas, carnes, pescados y postres caseros. Ej.: arroz a la llauna de pulpo y alcachofa, steak tartar de solomillo, cordero a baja temperatura con salsa de vino mallorquín, canelón de osobuco, tarta cremosa de queso.
-- Bodega: más de 70 referencias que van rotando, desde vinos de la casa hasta vinos especiales, de Mallorca y del mundo; vinos por copa, cerveza de tirador y cócteles clásicos y de autor.
+- Desayunos (sin reserva): tostas, bolleria, sandwiches, fruta, yogur y granola. Ej.: tosta de aguacate y huevo escalfado 8,50 EUR, croissant 2,30 EUR.
+- Menu del dia: de lunes a viernes a mediodia, 25 EUR (medio menu 18 EUR), con agua, refresco y pan incluidos. Cambia cada semana con producto de temporada; se publica en Instagram y en la app Menu de Hoy, y se puede recibir por email cada lunes desde la web.
+- Carta de comida y cena: entrantes, ensaladas, arroces a la llauna, pastas, carnes, pescados y postres caseros. Ej.: arroz a la llauna de pulpo y alcachofa, steak tartar de solomillo, cordero a baja temperatura con salsa de vino mallorquin, canelon de osobuco, tarta cremosa de queso.
+- Bodega: mas de 70 referencias que van rotando, desde vinos de la casa hasta vinos especiales, de Mallorca y del mundo; vinos por copa, cerveza de tirador y cocteles clasicos y de autor.
 - Jueves de Bodega: cata de vinos de una hora todos los jueves a las 19:00, en la que el bodeguero viene a Raco a explicar sus vinos copa a copa, con plazas limitadas.
 - Entradas Jueves de Bodega: https://entradium.com/events/jueves-de-bodegas
-- Terraza abierta todo el año. Perros bienvenidos en la terraza y en la zona de cafetería (no en el comedor central); en ambas se puede comer y cenar.
-- Niños bienvenidos, con tronas. Sin menú infantil, pero se les prepara algo a su gusto (por ejemplo pasta boloñesa o croquetas de pollo).
-- Alérgenos: ficha completa de alérgenos por plato (en los PDF de la carta). En menús de grupo se ofrecen alternativas para celiaquía, vegetarianos y otras preferencias avisando con 48 a 72 horas de antelación.
+- Terraza abierta los 365 dias. Perros bienvenidos en la terraza y en la zona de cafeteria (no en el comedor central); en ambas se puede comer y cenar.
+- Ninos bienvenidos, con tronas. Sin menu infantil, pero se les prepara algo a su gusto (por ejemplo pasta bolonesa o croquetas de pollo).
+- Alergenos: ficha completa de alergenos por plato (en los PDF de la carta). En menus de grupo se ofrecen alternativas para celiaquia, vegetarianos y otras preferencias avisando con 48 a 72 horas de antelacion.
 
-## Páginas
+## Paginas
 
-- [Inicio](https://racorestaurant.com/): quiénes somos, carta, bebidas, reservas y contacto
-- [Comidas y cenas de grupo, cenas de empresa y eventos](https://racorestaurant.com/grupos/): espacios, menús de 45, 55 y 70 €, finger food con barra libre para más de 70 personas y presupuestos
-- [Carta completa con precios](https://racorestaurant.com/carta/): desayunos, carta de comida y cena y menús de grupo
+- [Inicio](https://racorestaurant.com/): quienes somos, carta, bebidas, reservas y contacto
+- [Comidas y cenas de grupo, cenas de empresa y eventos](https://racorestaurant.com/grupos/): espacios, menus de 45, 55 y 70 EUR, finger food con barra libre para mas de 70 personas y presupuestos
+- [Carta completa con precios](https://racorestaurant.com/carta/): desayunos, carta de comida y cena y menus de grupo
 - [Carta de comida y cena en PDF](https://racorestaurant.com/carta-comida-cena.pdf)
 - [Carta de desayunos en PDF](https://racorestaurant.com/carta-desayunos.pdf)
 
 ## Navidad y Nochevieja 2026
 
-- [Menús de Navidad y Nochevieja](https://racorestaurant.com/navidad/): el 24, 25 y 26 de diciembre abrimos solo a mediodía (cocina hasta las 16:00, abiertos hasta las 18:00, sin cena). 25 de diciembre: menú de Navidad cerrado, 55 € por persona. 31 de diciembre: cena de Nochevieja con menú cerrado, 190 € por persona, con cotillón, cava y las doce uvas, y después fiesta con barra libre. Reservas por teléfono en el 660 388 061.
+- [Menus de Navidad y Nochevieja](https://racorestaurant.com/navidad/): el 24, 25 y 26 de diciembre abrimos solo a mediodia (cocina hasta las 16:00, abiertos hasta las 18:00, sin cena). 25 de diciembre: menu de Navidad cerrado, 55 EUR por persona. 31 de diciembre: cena de Nochevieja con menu cerrado, 190 EUR por persona, con cotillon, cava y las doce uvas, y despues fiesta con barra libre. Reservas por telefono en el 660 388 061.
 
 ## English summary
 
-Raco is a spacious, independent restaurant and wine bar at Blanquerna 12, central Palma de Mallorca (Spain), run by two local families and specialised in group lunches, dinners and private events: set group menus at 45, 55 and 70 EUR per person with wine included, and finger food with open bar for groups of more than 70. Main dining room, year round terrace (dogs welcome on the terrace and café area) and high chairs for children. Breakfast every day, set lunch menu Monday to Friday (25 EUR, half menu 18 EUR), Mediterranean product-driven lunch and dinner, and over 70 wines, including by the glass and from Mallorca. One hour wine tasting with the winemaker every Thursday at 7 pm ("Jueves de Bodega"). Open every day 9:30 to midnight. Awarded "Recommended" by Restaurant Guru 2026. Book online: https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20 · Phone +34 660 38 80 61. Christmas 2026: open for lunch only on 24, 25 and 26 December (kitchen until 4 pm, open until 6 pm, no dinner). 25 December set menu 55 EUR per person. New Year's Eve dinner 190 EUR per person with party favours, cava and the twelve grapes, followed by an open bar party. Details: https://racorestaurant.com/navidad/
+Raco is a spacious, independent restaurant and wine bar at Blanquerna 12, central Palma de Mallorca (Spain), run by two local families and specialised in group lunches, dinners and private events: set group menus at 45, 55 and 70 EUR per person with wine included, and finger food with open bar for groups of more than 70. Main dining room, year round terrace (dogs welcome on the terrace and cafe area) and high chairs for children. Breakfast every day, set lunch menu Monday to Friday (25 EUR, half menu 18 EUR), Mediterranean product-driven lunch and dinner, and over 70 wines, including by the glass and from Mallorca. One hour wine tasting with the winemaker every Thursday at 7 pm ("Jueves de Bodega"). Open every day 9:30 to midnight. Awarded "Recommended" by Restaurant Guru 2026. Book online: https://widget.thefork.com/38bb6301-fcef-4f3e-940a-534e3a823f20 | Phone +34 660 38 80 61. Christmas 2026: open for lunch only on 24, 25 and 26 December (kitchen until 4 pm, open until 6 pm, no dinner). 25 December set menu 55 EUR per person. New Year's Eve dinner 190 EUR per person with party favours, cava and the twelve grapes, followed by an open bar party. Details: https://racorestaurant.com/navidad/
