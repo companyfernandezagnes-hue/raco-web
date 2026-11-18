@@ -163,6 +163,7 @@ textarea{min-height:96px;resize:vertical;line-height:1.5}
       </div>
       <div id="destFields">
         <label for="destMail" id="lDest"></label><input id="destMail" type="email" autocomplete="off">
+        <label for="destMail2" id="lDest2" style="margin-top:12px"></label><input id="destMail2" type="email" autocomplete="off">
       </div>
     </div>
 
@@ -225,7 +226,7 @@ es:{
   menuLi:["Menú degustación de producto de mercado","Los platos cambian según el mercado y la temporada"],
   freeName:"Importe libre", freeLi:["Para consumir en RACO","Tú eliges la cantidad, de 10 a 1.000 €"], amtLbl:"Otro importe (en euros)", amtErr:"El importe debe estar entre 10 y 1.000 €.",
   one:"persona", many:"personas", lTo:"Para", lFrom:"De parte de", lMsg:"Mensaje",
-  tRec:"Directamente a quien la recibe", tBuy:"A mí, y yo la entrego", lDest:"Correo de quien la recibe", lBuyer:"Nombre y apellidos", lBuyerMail:"Correo (aquí llega el recibo)",
+  tRec:"Directamente a quien la recibe", tBuy:"A mí, y yo la entrego", lDest:"Correo de quien la recibe",lDest2:"Repite el correo de quien la recibe",mismatch:"Los dos correos de quien la recibe no coinciden. Revísalos para que la tarjeta llegue bien.", lBuyer:"Nombre y apellidos", lBuyerMail:"Correo (aquí llega el recibo)",
   condT:"Condiciones de la tarjeta",
   cond:["Válida 1 año desde la compra.","Código de un solo uso: se canjea una vez, en una sola visita y por el total de la tarjeta.","Si el consumo es menor, la diferencia no se acumula ni se devuelve.","Imprescindible reservar antes: en racorestaurant.com o en el 660 38 80 61.","No válida con el menú del día.","No válida en festivos ni en fechas señaladas de máxima afluencia.","Válida solo en RACO. No se puede cambiar por dinero.","@@LINK@@"],
   accept:"He leído y acepto las {c} y la {p}. Al aceptar, se dan por leídas.",acceptC:"condiciones completas de la tarjeta",acceptP:"política de privacidad",pdfLink:"Descargar las condiciones completas (PDF)",
@@ -243,7 +244,7 @@ ca:{
   menuLi:["Menú degustació de producte de mercat","Els plats canvien segons el mercat i la temporada"],
   freeName:"Import lliure", freeLi:["Per consumir a RACO","Tu tries la quantitat, de 10 a 1.000 €"], amtLbl:"Un altre import (en euros)", amtErr:"L'import ha de ser entre 10 i 1.000 €.",
   one:"persona", many:"persones", lTo:"Per a", lFrom:"De part de", lMsg:"Missatge",
-  tRec:"Directament a qui la rep", tBuy:"A mi, i jo la lliuro", lDest:"Correu de qui la rep", lBuyer:"Nom i cognoms", lBuyerMail:"Correu (aquí arriba el rebut)",
+  tRec:"Directament a qui la rep", tBuy:"A mi, i jo la lliuro", lDest:"Correu de qui la rep",lDest2:"Repeteix el correu de qui la rep",mismatch:"Els dos correus de qui la rep no coincideixen. Revisa'ls perquè la targeta arribi bé.", lBuyer:"Nom i cognoms", lBuyerMail:"Correu (aquí arriba el rebut)",
   condT:"Condicions de la targeta",
   cond:["Vàlida 1 any des de la compra.","Codi d'un sol ús: es bescanvia una vegada, en una sola visita i pel total de la targeta.","Si el consum és menor, la diferència no s'acumula ni es retorna.","Imprescindible reservar abans: a racorestaurant.com o al 660 38 80 61.","No vàlida amb el menú del dia.","No vàlida en festius ni en dates assenyalades de màxima afluència.","Vàlida només a RACO. No es pot canviar per diners.","@@LINK@@"],
   accept:"He llegit i accepto les {c} i la {p}. En acceptar, es donen per llegides.",acceptC:"condicions completes de la targeta",acceptP:"política de privacitat",pdfLink:"Descarregar les condicions completes (PDF)",
@@ -261,7 +262,7 @@ en:{
   menuLi:["Tasting menu of market produce","Dishes change with the market and the season"],
   freeName:"Free amount", freeLi:["To spend at RACO","You choose the amount, from €10 to €1,000"], amtLbl:"Another amount (in euros)", amtErr:"The amount must be between €10 and €1,000.",
   one:"guest", many:"guests", lTo:"For", lFrom:"From", lMsg:"Message",
-  tRec:"Straight to the person receiving it", tBuy:"To me, and I hand it over", lDest:"Email of the person receiving it", lBuyer:"Full name", lBuyerMail:"Email (your receipt arrives here)",
+  tRec:"Straight to the person receiving it", tBuy:"To me, and I hand it over", lDest:"Email of the person receiving it",lDest2:"Repeat the email of the person receiving it",mismatch:"The two recipient emails do not match. Please check them so the card arrives correctly.", lBuyer:"Full name", lBuyerMail:"Email (your receipt arrives here)",
   condT:"Gift card terms",
   cond:["Valid for 1 year from purchase.","Single use code: redeemed once, in a single visit and for the full value of the card.","If the amount spent is lower, the difference is neither carried over nor refunded.","Booking is required in advance: at racorestaurant.com or on 660 38 80 61.","Not valid with the set lunch menu.","Not valid on public holidays or on special peak dates.","Valid only at RACO. It cannot be exchanged for cash.","@@LINK@@"],
   accept:"I have read and accept the {c} and the {p}. By accepting, they are deemed read.",acceptC:"full gift card terms",acceptP:"privacy policy",pdfLink:"Download the full terms (PDF)",
@@ -362,7 +363,7 @@ function setLang(l){
   [["st1","h2a",1],["st2","h2b",2],["st3","h2c",3],["st4","h2d",4],["st5","h2e",5]].forEach(function(x){$(x[0]).textContent=t.st+x[2];$(x[1]).textContent=t[x[1]];});
   $("hintB").textContent=t.hintB;
   $("lTo").textContent=t.lTo;$("lFrom").textContent=t.lFrom;$("lMsg").textContent=t.lMsg;
-  $("tRec").textContent=t.tRec;$("tBuy").textContent=t.tBuy;$("lDest").textContent=t.lDest;
+  $("tRec").textContent=t.tRec;$("tBuy").textContent=t.tBuy;$("lDest").textContent=t.lDest;$("lDest2").textContent=t.lDest2;
   $("lBuyer").textContent=t.lBuyer;$("lBuyerMail").textContent=t.lBuyerMail;
   $("condT").textContent=t.condT;$("condL").innerHTML=t.cond.map(function(c){return c==="@@LINK@@"?"<li style=\"list-style:none;margin-left:-18px;margin-top:8px\"><a href=\""+PDFS[st.lang]+"\" target=\"_blank\" rel=\"noopener\" download><b>"+t.pdfLink+"</b></a></li>":"<li>"+c+"</li>";}).join("");
   $("acceptT").innerHTML=t.accept.replace("{c}","<a href=\""+PDFS[st.lang]+"\" target=\"_blank\" rel=\"noopener\">"+t.acceptC+"</a>").replace("{p}","<a href=\"/privacidad.html\" target=\"_blank\" rel=\"noopener\">"+t.acceptP+"</a>");$("lCard").textContent=t.lCard;$("cFromL").textContent=t.cFrom;$("cCodeL").textContent=t.code;
@@ -429,6 +430,7 @@ $("pay").onclick=function(){
   var name=$("buyer").value.trim(),mail=$("buyerMail").value.trim(),dest=$("destMail").value.trim();
   var mailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!name||!mailRe.test(mail)||(st.to==="recipient"&&!mailRe.test(dest))){showErr(t.missing);return;}
+  if(st.to==="recipient"&&dest.toLowerCase()!==$("destMail2").value.trim().toLowerCase()){showErr(t.mismatch);return;}
   var body={menu_type:"importe",amount_eur:total(),language:st.lang,buyer_name:name,buyer_email:mail,
     recipient_name:$("to").value.trim()||undefined,
     recipient_email:st.to==="recipient"?dest:undefined,
