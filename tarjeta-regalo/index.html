@@ -70,6 +70,8 @@ textarea{min-height:96px;resize:vertical;line-height:1.5}
 .conds b{color:var(--ink);font-weight:500}
 .conds ul{margin:6px 0 0 18px}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-70);margin-top:16px;line-height:1.5}
+.check a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+.conds a{color:var(--ink)}
 .check input{width:18px;height:18px;margin-top:1px;flex:none;accent-color:var(--ink)}
 .aside{position:sticky;top:20px}
 .aside .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:12px;display:flex;justify-content:space-between}
@@ -223,8 +225,8 @@ es:{
   one:"persona", many:"personas", lTo:"Para", lFrom:"De parte de", lMsg:"Mensaje",
   tRec:"Directamente a quien la recibe", tBuy:"A mí, y yo la entrego", lDest:"Correo de quien la recibe", lBuyer:"Nombre y apellidos", lBuyerMail:"Correo (aquí llega el recibo)",
   condT:"Condiciones de la tarjeta",
-  cond:["Válida 1 año desde la compra.","Código de un solo uso: se canjea una vez, en una sola visita y por el total de la tarjeta.","Si el consumo es menor, la diferencia no se acumula ni se devuelve.","Imprescindible reservar antes: en racorestaurant.com o en el 660 38 80 61.","No válida con el menú del día.","No válida en festivos ni en fechas señaladas de máxima afluencia.","Válida solo en RACO. No se puede cambiar por dinero.","Recibirás las condiciones completas por correo, junto con el PDF."],
-  accept:"He leído y acepto las condiciones de la tarjeta y la política de privacidad.",
+  cond:["Válida 1 año desde la compra.","Código de un solo uso: se canjea una vez, en una sola visita y por el total de la tarjeta.","Si el consumo es menor, la diferencia no se acumula ni se devuelve.","Imprescindible reservar antes: en racorestaurant.com o en el 660 38 80 61.","No válida con el menú del día.","No válida en festivos ni en fechas señaladas de máxima afluencia.","Válida solo en RACO. No se puede cambiar por dinero.","@@LINK@@"],
+  accept:"He leído y acepto las {c} y la {p}. Al aceptar, se dan por leídas.",acceptC:"condiciones completas de la tarjeta",acceptP:"política de privacidad",pdfLink:"Descargar las condiciones completas (PDF)",
   lCard:"Tu tarjeta", cardTitle:"Para ", cFrom:"De parte de", valid:"Válida hasta el ", code:"Código", free:"Importe libre",
   pay:"Pagar", secure:"Pago seguro con CaixaBank. La web nunca ve los datos de tu tarjeta.", mCard:"Tarjeta",
   sending:"Un momento…", errGen:"No hemos podido iniciar el pago. Inténtalo de nuevo en unos minutos o escríbenos a hola@racorestaurant.com.",
@@ -241,8 +243,8 @@ ca:{
   one:"persona", many:"persones", lTo:"Per a", lFrom:"De part de", lMsg:"Missatge",
   tRec:"Directament a qui la rep", tBuy:"A mi, i jo la lliuro", lDest:"Correu de qui la rep", lBuyer:"Nom i cognoms", lBuyerMail:"Correu (aquí arriba el rebut)",
   condT:"Condicions de la targeta",
-  cond:["Vàlida 1 any des de la compra.","Codi d'un sol ús: es bescanvia una vegada, en una sola visita i pel total de la targeta.","Si el consum és menor, la diferència no s'acumula ni es retorna.","Imprescindible reservar abans: a racorestaurant.com o al 660 38 80 61.","No vàlida amb el menú del dia.","No vàlida en festius ni en dates assenyalades de màxima afluència.","Vàlida només a RACO. No es pot canviar per diners.","Rebràs les condicions completes per correu, juntament amb el PDF."],
-  accept:"He llegit i accepto les condicions de la targeta i la política de privacitat.",
+  cond:["Vàlida 1 any des de la compra.","Codi d'un sol ús: es bescanvia una vegada, en una sola visita i pel total de la targeta.","Si el consum és menor, la diferència no s'acumula ni es retorna.","Imprescindible reservar abans: a racorestaurant.com o al 660 38 80 61.","No vàlida amb el menú del dia.","No vàlida en festius ni en dates assenyalades de màxima afluència.","Vàlida només a RACO. No es pot canviar per diners.","@@LINK@@"],
+  accept:"He llegit i accepto les {c} i la {p}. En acceptar, es donen per llegides.",acceptC:"condicions completes de la targeta",acceptP:"política de privacitat",pdfLink:"Descarregar les condicions completes (PDF)",
   lCard:"La teva targeta", cardTitle:"Per a ", cFrom:"De part de", valid:"Vàlida fins al ", code:"Codi", free:"Import lliure",
   pay:"Pagar", secure:"Pagament segur amb CaixaBank. El web mai veu les dades de la teva targeta.", mCard:"Targeta",
   sending:"Un moment…", errGen:"No hem pogut iniciar el pagament. Torna-ho a provar d'aquí a uns minuts o escriu-nos a hola@racorestaurant.com.",
@@ -259,8 +261,8 @@ en:{
   one:"guest", many:"guests", lTo:"For", lFrom:"From", lMsg:"Message",
   tRec:"Straight to the person receiving it", tBuy:"To me, and I hand it over", lDest:"Email of the person receiving it", lBuyer:"Full name", lBuyerMail:"Email (your receipt arrives here)",
   condT:"Gift card terms",
-  cond:["Valid for 1 year from purchase.","Single use code: redeemed once, in a single visit and for the full value of the card.","If the amount spent is lower, the difference is neither carried over nor refunded.","Booking is required in advance: at racorestaurant.com or on 660 38 80 61.","Not valid with the set lunch menu.","Not valid on public holidays or on special peak dates.","Valid only at RACO. It cannot be exchanged for cash.","You will receive the full terms by email, together with the PDF."],
-  accept:"I have read and accept the gift card terms and the privacy policy.",
+  cond:["Valid for 1 year from purchase.","Single use code: redeemed once, in a single visit and for the full value of the card.","If the amount spent is lower, the difference is neither carried over nor refunded.","Booking is required in advance: at racorestaurant.com or on 660 38 80 61.","Not valid with the set lunch menu.","Not valid on public holidays or on special peak dates.","Valid only at RACO. It cannot be exchanged for cash.","@@LINK@@"],
+  accept:"I have read and accept the {c} and the {p}. By accepting, they are deemed read.",acceptC:"full gift card terms",acceptP:"privacy policy",pdfLink:"Download the full terms (PDF)",
   lCard:"Your card", cardTitle:"For ", cFrom:"From", valid:"Valid until ", code:"Code", free:"Free amount",
   pay:"Pay", secure:"Secure payment with CaixaBank. This website never sees your card details.", mCard:"Card",
   sending:"One moment…", errGen:"We could not start the payment. Please try again in a few minutes or write to hola@racorestaurant.com.",
@@ -338,6 +340,7 @@ var DESIGNS={
 var ORDER=["clasico","navidad","cumple","amor","sanvalentin","padre","madre"];
 
 var $=function(id){return document.getElementById(id)};
+var PDFS={es:"/tarjeta-regalo/condiciones-tarjeta-regalo-es.pdf",ca:"/tarjeta-regalo/condiciones-tarjeta-regalo-ca.pdf",en:"/tarjeta-regalo/condiciones-tarjeta-regalo-en.pdf"};
 var st={amount:100,custom:false,dz:"clasico",to:"recipient",lang:"es"};
 
 function fmtEur(n){return Number(n).toLocaleString("es-ES",{maximumFractionDigits:2})+" €";}
@@ -359,8 +362,8 @@ function setLang(l){
   $("lTo").textContent=t.lTo;$("lFrom").textContent=t.lFrom;$("lMsg").textContent=t.lMsg;
   $("tRec").textContent=t.tRec;$("tBuy").textContent=t.tBuy;$("lDest").textContent=t.lDest;
   $("lBuyer").textContent=t.lBuyer;$("lBuyerMail").textContent=t.lBuyerMail;
-  $("condT").textContent=t.condT;$("condL").innerHTML=t.cond.map(function(c){return "<li>"+c+"</li>";}).join("");
-  $("acceptT").textContent=t.accept;$("lCard").textContent=t.lCard;$("cFromL").textContent=t.cFrom;$("cCodeL").textContent=t.code;
+  $("condT").textContent=t.condT;$("condL").innerHTML=t.cond.map(function(c){return c==="@@LINK@@"?"<li style=\"list-style:none;margin-left:-18px;margin-top:8px\"><a href=\""+PDFS[st.lang]+"\" target=\"_blank\" rel=\"noopener\" download><b>"+t.pdfLink+"</b></a></li>":"<li>"+c+"</li>";}).join("");
+  $("acceptT").innerHTML=t.accept.replace("{c}","<a href=\""+PDFS[st.lang]+"\" target=\"_blank\" rel=\"noopener\">"+t.acceptC+"</a>").replace("{p}","<a href=\"/privacidad.html\" target=\"_blank\" rel=\"noopener\">"+t.acceptP+"</a>");$("lCard").textContent=t.lCard;$("cFromL").textContent=t.cFrom;$("cCodeL").textContent=t.code;
   $("amtLbl").textContent=t.amtLbl;$("amtErr").textContent=t.amtErr;$("secure").textContent=t.secure;$("mCard").textContent=t.mCard;
   renderMenus();renderDesigns();renderChips();
   if(!$("msg").dataset.touched){$("msg").value=DESIGNS[st.dz].msgs[l][0];}
