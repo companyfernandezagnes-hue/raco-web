@@ -148,6 +148,14 @@
         "@type": "Answer",
         "text": "Sí: menús cerrados desde 45 € por persona con vino incluido y, para más de 70 personas, finger food con barra libre. Todos los detalles en nuestra página de grupos."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tenéis tarjetas regalo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, de 50 €, 100 € o 150 €, o del importe que quieras entre 10 y 1.000 €. Se compran online en racorestaurant.com/tarjeta-regalo, llegan al instante por correo y son válidas un año. Se canjean una sola vez en RACO, reservando antes. No valen con el menú del día ni en festivos y fechas de máxima afluencia."
+      }
     }
   ]
 }
@@ -347,6 +355,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 .bcat-name{font-family:'Outfit',sans-serif;font-weight:200;font-size:20px;color:rgba(255,253,248,0.98);}
 .bcat-desc{font-family:'Outfit',sans-serif;font-weight:300;font-size:12px;color:rgba(255,253,248,0.8);margin-top:4px;letter-spacing:0.05em;}
 
+/* REGALA + NAVIDAD */
+.nav-links a.nav-hot{color:var(--gold-text);}
+.nav-links a.nav-hot::before{content:"\2726\00a0";font-size:10px;vertical-align:1px;}
+.gift-section{background:var(--paper);padding:8rem 5vw;text-align:center;border-top:0.5px solid var(--gold-20);}
+.gift-section .s-title{max-width:640px;margin:0 auto 1.5rem;}
+.gift-section .s-body{max-width:560px;margin:0 auto;}
+.gift-art{width:min(280px,70vw);aspect-ratio:1.42/1;margin:0 auto 2.8rem;background:var(--paper-soft,#F7F1E4);border:0.5px solid var(--gold);box-shadow:0 18px 40px rgba(22,30,20,0.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transform:rotate(-3deg);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);position:relative;}
+.gift-art::after{content:"";position:absolute;inset:7px;border:0.5px solid var(--gold-20);pointer-events:none;}
+.gift-art img{height:54px;width:auto;display:block;}
+.gift-art span{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:5px;color:var(--gold-text);}
+.gift-section:hover .gift-art{transform:rotate(0deg) translateY(-4px);}
+.gift-amounts{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,4vw,36px);letter-spacing:3px;color:var(--gold-text);margin:2.2rem 0 0.6rem;line-height:1.2;}
+.gift-note{font-family:'Outfit',sans-serif;font-weight:300;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-50);margin-bottom:2.2rem;}
+.xmas-section{background:#1F3D2E;color:var(--paper);padding:8rem 5vw;text-align:center;position:relative;overflow:hidden;}
+.xmas-section::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,253,248,0.6) 1px,transparent 1.6px),radial-gradient(circle,rgba(255,253,248,0.35) 1.5px,transparent 2.2px);background-size:90px 90px,150px 150px;background-position:0 0,45px 70px;opacity:0.45;animation:xsnow 26s linear infinite;pointer-events:none;}
+@keyframes xsnow{to{background-position:0 90px,45px 220px;}}
+.xmas-inner{position:relative;z-index:1;}
+.xmas-star{font-size:18px;color:var(--gold);display:block;margin-bottom:1rem;animation:xtw 3.2s ease-in-out infinite;}
+@keyframes xtw{0%,100%{opacity:0.45;transform:scale(0.9);}50%{opacity:1;transform:scale(1.15);}}
+.xmas-section .s-label{color:var(--gold);font-weight:400;}
+.xmas-section .s-title{color:var(--paper);max-width:680px;margin:0 auto 1.5rem;}
+.xmas-section .s-body{color:rgba(255,253,248,0.88);max-width:520px;margin:0 auto;}
+.xmas-facts{display:flex;justify-content:center;gap:3rem;margin:2.4rem auto;flex-wrap:wrap;}
+.xmas-facts span{display:block;font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:2px;color:var(--gold);line-height:1;}
+.xmas-facts small{display:block;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:2px;color:rgba(255,253,248,0.82);margin-top:8px;text-transform:uppercase;}
+.xmas-btn{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;padding:15px 40px;text-decoration:none;cursor:none;background:var(--gold);color:#161E14;transition:all 0.3s;}
+.xmas-btn:hover{background:var(--paper);}
+@media (prefers-reduced-motion:reduce){.xmas-section::before,.xmas-star{animation:none;}}
 /* RESERVAS */
 .grp-section{background:var(--paper-soft,#F7F1E4);padding:8rem 5vw;text-align:center;border-top:0.5px solid var(--gold-20);}
 .grp-section .s-title{max-width:640px;margin:0 auto 1.5rem;}
@@ -529,6 +565,8 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
     <a href="#nosotros" data-i18n="nav-nosotros">Nosotros</a>
     <a href="/carta/" data-i18n="nav-carta">Carta</a>
     <a href="#bebidas" data-i18n="nav-bebidas">Bebidas</a>
+    <a href="/navidad/" class="nav-hot" data-i18n="nav-navidad">Navidad</a>
+    <a href="/tarjeta-regalo/" data-i18n="nav-regala">Regala</a>
     <a href="#reservas" data-i18n="nav-reservas">Reservas</a>
     <a href="#contacto" data-i18n="nav-contacto">Contacto</a>
     <div class="nav-lang">
@@ -671,6 +709,32 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   </div>
 </section>
 
+<!-- TARJETAS REGALO -->
+<section id="regala" class="gift-section reveal">
+  <div class="gift-art" aria-hidden="true"><img src="/tarjeta-regalo/logo-raco.png" alt=""><span data-i18n="gift-art">TARJETA REGALO</span></div>
+  <span class="s-label" data-i18n="gift-label">Tarjetas regalo</span>
+  <h2 class="s-title" data-i18n="gift-title">Regala una mesa en RACO.</h2>
+  <p class="s-body" data-i18n="gift-body">Una tarjeta regalo para quien más quieres. La eliges, la pagas online y le llega al instante por correo, lista para imprimir o enseñar desde el móvil.</p>
+  <p class="gift-amounts" data-i18n="gift-amounts">50 € · 100 € · 150 € · o el importe que quieras</p>
+  <p class="gift-note" data-i18n="gift-note">Válida un año · Solo en RACO</p>
+  <div class="res-btns"><a href="/tarjeta-regalo/" class="res-btn primary" data-i18n="gift-cta">Regalar RACO</a></div>
+</section>
+
+<!-- NAVIDAD -->
+<section id="navidad" class="xmas-section reveal">
+  <div class="xmas-inner">
+    <span class="xmas-star" aria-hidden="true">&#10022;</span>
+    <span class="s-label" data-i18n="xmas-label">Navidad 2026</span>
+    <h2 class="s-title" data-i18n="xmas-title">Navidad y Nochevieja en RACO.</h2>
+    <p class="s-body" data-i18n="xmas-body">Menú de Navidad el 25 de diciembre y cena de Nochevieja el 31, con cotillón, cava y las doce uvas.</p>
+    <div class="xmas-facts">
+      <div><span>55 €</span><small data-i18n="xmas-f1">Navidad · 25 dic</small></div>
+      <div><span>190 €</span><small data-i18n="xmas-f2">Nochevieja · 31 dic</small></div>
+    </div>
+    <a href="/navidad/" class="xmas-btn" data-i18n="xmas-cta">Ver los menús →</a>
+  </div>
+</section>
+
 <!-- RESERVAS -->
 <section id="reservas" class="res-section reveal">
   <span class="s-label" data-i18n="res-label">Reservas</span>
@@ -712,6 +776,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
     <details class="faq-item"><summary data-i18n="faq-q4">¿Tenéis información de alérgenos?</summary><p data-i18n="faq-a4">Sí, la ficha de alérgenos de cada plato está en los PDF de la carta y el equipo te ayuda a elegir. Para menús de grupo, avísanos con 48 a 72 horas y preparamos una alternativa.</p></details>
     <details class="faq-item"><summary data-i18n="faq-q5">¿Hace falta reservar para desayunar?</summary><p data-i18n="faq-a5">No, los desayunos son sin reserva, todos los días desde las 9:30.</p></details>
     <details class="faq-item"><summary data-i18n="faq-q6">¿Organizáis comidas y cenas de grupo?</summary><p data-i18n="faq-a6">Sí: menús cerrados desde 45 € por persona con vino incluido y, para más de 70 personas, finger food con barra libre. Todos los detalles en nuestra <a href="/grupos/">página de grupos</a>.</p></details>
+    <details class="faq-item"><summary data-i18n="faq-q7">¿Tenéis tarjetas regalo?</summary><p data-i18n="faq-a7">Sí, de 50 €, 100 € o 150 €, o del importe que quieras entre 10 y 1.000 €. Se compran online, llegan al instante por correo y son válidas un año. Se canjean una sola vez en RACO, reservando antes. No valen con el menú del día ni en festivos y fechas de máxima afluencia.</p></details>
   </div>
 </section>
 
@@ -745,7 +810,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   </svg>
   <span class="footer-copy">© 2026 · Palma de Mallorca</span>
   <span class="footer-ra">Ra + Co</span>
-  <span class="footer-legal"><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></span>
+  <span class="footer-legal"><a href="/tarjeta-regalo/" data-i18n="f-gift">Tarjetas regalo</a> · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></span>
 </footer>
 
 
@@ -759,7 +824,7 @@ window.scrollTo(0, 0);
 // ── TRADUCCIONES ──
 const i18n = {
   es: {
-    'nav-nosotros':'Nosotros','nav-carta':'Carta','nav-bebidas':'Bebidas','nav-reservas':'Reservas','nav-contacto':'Contacto',
+    'nav-nosotros':'Nosotros','nav-carta':'Carta','nav-bebidas':'Bebidas','nav-reservas':'Reservas','nav-navidad':'Navidad','nav-regala':'Regala','nav-contacto':'Contacto',
     'hero-h1':'Restaurante y Wine Bar · Palma de Mallorca',
     'hero-cta':'Reservar mesa',
     'nos-label':'01 · Nosotros',
@@ -789,6 +854,9 @@ const i18n = {
     'faq-a5':'No, los desayunos son sin reserva, todos los días desde las 9:30.',
     'faq-q6':'¿Organizáis comidas y cenas de grupo?',
     'faq-a6':'Sí: menús cerrados desde 45 € por persona con vino incluido y, para más de 70 personas, finger food con barra libre. Todos los detalles en nuestra <a href="/grupos/">página de grupos</a>.',
+    'gift-art':'TARJETA REGALO','gift-label':'Tarjetas regalo','gift-title':'Regala una mesa en RACO.','gift-body':'Una tarjeta regalo para quien más quieres. La eliges, la pagas online y le llega al instante por correo, lista para imprimir o enseñar desde el móvil.','gift-amounts':'50 € · 100 € · 150 € · o el importe que quieras','gift-note':'Válida un año · Solo en RACO','gift-cta':'Regalar RACO',
+    'xmas-label':'Navidad 2026','xmas-title':'Navidad y Nochevieja en RACO.','xmas-body':'Menú de Navidad el 25 de diciembre y cena de Nochevieja el 31, con cotillón, cava y las doce uvas.','xmas-f1':'Navidad · 25 dic','xmas-f2':'Nochevieja · 31 dic','xmas-cta':'Ver los menús →','f-gift':'Tarjetas regalo',
+    'faq-q7':'¿Tenéis tarjetas regalo?','faq-a7':'Sí, de 50 €, 100 € o 150 €, o del importe que quieras entre 10 y 1.000 €. Se compran online, llegan al instante por correo y son válidas un año. Se canjean una sola vez en RACO, reservando antes. No valen con el menú del día ni en festivos y fechas de máxima afluencia.',
     'grp-pp':'por persona',
     'nl-placeholder':'Tu email','nl-btn':'Apuntarme al menú','nl-ok':'Perfecto, te escribimos el lunes.',
     'beb-label':'03 · Bebidas','beb-title':'Una bodega para perderse.','beb-body':'Hemos seleccionado cada botella con mimo: vinos del mundo y de la isla, referencias para descubrir. Ven, siéntate, y deja que el equipo te cuente la historia detrás de cada copa.','beb-aside':'Pregunta siempre al equipo · Hay vinos por copa',
@@ -801,7 +869,7 @@ const i18n = {
     'mq1':'Wine Bar','mq2':'Desayunos','mq3':'Menú de Mediodía','mq4':'Cocina de Producto','mq5':'Proyecto Familiar'
   },
   ca: {
-    'nav-nosotros':'Nosaltres','nav-carta':'Carta','nav-bebidas':'Begudes','nav-reservas':'Reserves','nav-contacto':'Contacte',
+    'nav-nosotros':'Nosaltres','nav-carta':'Carta','nav-bebidas':'Begudes','nav-reservas':'Reserves','nav-navidad':'Nadal','nav-regala':'Regala','nav-contacto':'Contacte',
     'hero-h1':'Restaurant i Wine Bar · Palma de Mallorca',
     'hero-cta':'Reservar taula',
     'nos-label':'01 · Nosaltres',
@@ -831,6 +899,9 @@ const i18n = {
     'faq-a5':'No, els berenars són sense reserva, cada dia des de les 9:30.',
     'faq-q6':'Organitzau dinars i sopars de grup?',
     'faq-a6':'Sí: menús tancats des de 45 € per persona amb vi inclòs i, per a més de 70 persones, finger food amb barra lliure. Tots els detalls a la nostra <a href="/grupos/">pàgina de grups</a>.',
+    'gift-art':'TARGETA REGAL','gift-label':'Targetes regal','gift-title':'Regala una taula a RACO.','gift-body':'Una targeta regal per a qui més estimes. La tries, la pagues en línia i li arriba a l\'instant per correu, llesta per imprimir o ensenyar des del mòbil.','gift-amounts':'50 € · 100 € · 150 € · o l\'import que vulguis','gift-note':'Vàlida un any · Només a RACO','gift-cta':'Regalar RACO',
+    'xmas-label':'Nadal 2026','xmas-title':'Nadal i Cap d\'Any a RACO.','xmas-body':'Menú de Nadal el 25 de desembre i sopar de Cap d\'Any el 31, amb cotilló, cava i el raïm de les dotze.','xmas-f1':'Nadal · 25 des','xmas-f2':'Cap d\'Any · 31 des','xmas-cta':'Veure els menús →','f-gift':'Targetes regal',
+    'faq-q7':'Teniu targetes regal?','faq-a7':'Sí, de 50 €, 100 € o 150 €, o de l\'import que vulguis entre 10 i 1.000 €. Es compren en línia, arriben a l\'instant per correu i són vàlides un any. Es bescanvien una sola vegada a RACO, reservant abans. No valen amb el menú del dia ni en festius i dates de màxima afluència.',
     'grp-pp':'per persona',
     'nl-placeholder':'El teu email','nl-btn':'Apuntar-me al menú','nl-ok':'Perfecte, t\'escrivim el dilluns.',
     'beb-label':'03 · Begudes','beb-title':'Per a cada moment, la seva copa.','beb-body':'Construïm el nostre petit celler amb amor, seleccionant cada ampolla com si fos per a nosaltres mateixos.','beb-aside':'Pregunta sempre a l\'equip · Hi ha vins per copa',
@@ -843,7 +914,7 @@ const i18n = {
     'mq1':'Wine Bar','mq2':'Berenars','mq3':'Menú de Migdia','mq4':'Cuina de Producte','mq5':'Projecte Familiar'
   },
   en: {
-    'nav-nosotros':'About','nav-carta':'Menu','nav-bebidas':'Drinks','nav-reservas':'Reservations','nav-contacto':'Contact',
+    'nav-nosotros':'About','nav-carta':'Menu','nav-bebidas':'Drinks','nav-reservas':'Reservations','nav-navidad':'Christmas','nav-regala':'Gift cards','nav-contacto':'Contact',
     'hero-h1':'Restaurant &amp; Wine Bar · Palma de Mallorca',
     'hero-cta':'Book a table',
     'nos-label':'01 · About us',
@@ -873,6 +944,9 @@ const i18n = {
     'faq-a5':'No, breakfast needs no booking, every day from 9:30.',
     'faq-q6':'Do you host group lunches and dinners?',
     'faq-a6':'Yes: set menus from 45 EUR per person with wine included and, for more than 70 guests, finger food with open bar. Full details on our <a href="/grupos/">groups page</a>.',
+    'gift-art':'GIFT CARD','gift-label':'Gift cards','gift-title':'Give a table at RACO.','gift-body':'A gift card for someone you love. Choose it, pay online and it reaches them instantly by email, ready to print or show from a phone.','gift-amounts':'50 € · 100 € · 150 € · or any amount you like','gift-note':'Valid for one year · Only at RACO','gift-cta':'Give RACO',
+    'xmas-label':'Christmas 2026','xmas-title':'Christmas and New Year\'s Eve at RACO.','xmas-body':'Christmas menu on 25 December and New Year\'s Eve dinner on the 31st, with party favours, cava and the twelve grapes.','xmas-f1':'Christmas · 25 Dec','xmas-f2':'New Year\'s Eve · 31 Dec','xmas-cta':'See the menus →','f-gift':'Gift cards',
+    'faq-q7':'Do you sell gift cards?','faq-a7':'Yes, for 50 €, 100 € or 150 €, or any amount you choose between 10 and 1,000 €. They are bought online, reach the recipient instantly by email and are valid for one year. They are redeemed once at RACO, booking first. Not valid with the set lunch menu or on public holidays and peak dates.',
     'grp-pp':'per person',
     'nl-placeholder':'Your email','nl-btn':'Subscribe to the menu','nl-ok':'Perfect, we\'ll write on Monday.',
     'beb-label':'03 · Drinks','beb-title':'The right glass for every moment.','beb-body':'We built our small cellar with love, choosing every bottle as if it were for ourselves.','beb-aside':'Always ask the team · Wines available by the glass',
