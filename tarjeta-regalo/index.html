@@ -11,6 +11,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--paper);font-family:Outfit,sans-serif;font-weight:300;color:var(--ink)}
 .demo{background:var(--ink);color:var(--paper);text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:8px 16px}
+.logo-link{display:block;line-height:0}
+.logo-link img{height:48px;width:auto;display:block}
 header.top{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(16px,4vw,48px);border-bottom:1px solid var(--gold-20);gap:16px}
 .wordmark{font-family:"Bebas Neue";font-size:30px;letter-spacing:.16em;line-height:1}
 .wordmark small{display:block;font-family:Outfit;font-size:9px;letter-spacing:.28em;color:var(--gold-text);margin-top:2px}
@@ -104,7 +106,7 @@ textarea{min-height:96px;resize:vertical;line-height:1.5}
 <body>
 <div class="demo" id="demo"></div>
 <header class="top">
-  <div class="wordmark">RACO<small>BLANQUERNA · PALMA</small></div>
+  <a href="https://racorestaurant.com/" class="logo-link" aria-label="RACO"><img src="/tarjeta-regalo/logo-raco.png" alt="RACO" width="46" height="48"></a>
   <div class="right">
     <div class="langs" id="langs">
       <button data-l="es">ES</button><button data-l="ca">CA</button><button data-l="en">EN</button>
