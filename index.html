@@ -389,6 +389,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 .xmas-lights b:nth-child(3n){animation-delay:-1.6s;}
 @keyframes xtw{0%,100%{opacity:0.25;}50%{opacity:1;}}
 @media (prefers-reduced-motion:reduce){.xmas-word span{animation:none;opacity:1;}.xmas-sm,.gift-shine,.xmas-lights b{animation:none;}}
+.xmas-flake{position:absolute;top:-20px;border-radius:50%;background:rgba(255,253,248,0.9);pointer-events:none;z-index:1;animation:xfall linear infinite;will-change:transform;}
+@keyframes xfall{0%{transform:translate3d(0,-30px,0);opacity:0;}10%{opacity:var(--o,0.8);}50%{transform:translate3d(var(--dx,20px),170px,0);}100%{transform:translate3d(calc(var(--dx,20px) * -1),380px,0);opacity:0;}}
+@media (prefers-reduced-motion:reduce){.xmas-flake{display:none;}}
 /* RESERVAS */
 .grp-section{background:var(--paper-soft,#F7F1E4);padding:8rem 5vw;text-align:center;border-top:0.5px solid var(--gold-20);}
 .grp-section .s-title{max-width:640px;margin:0 auto 1.5rem;}
@@ -1100,6 +1103,12 @@ function submitEmp(){
     });
   });
 })();
+</script>
+<script>
+(function(){var l=document.querySelector('.xmas-link');if(!l||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+for(var i=0;i<34;i++){var f=document.createElement('i');f.className='xmas-flake';var z=2+Math.random()*7;
+f.style.cssText='left:'+(Math.random()*100)+'%;width:'+z+'px;height:'+z+'px;filter:blur('+(z>6?2.4:z>4?1.4:0.5)+'px);animation-duration:'+(7+Math.random()*9)+'s;animation-delay:'+(-Math.random()*14)+'s;--dx:'+((Math.random()*60)-30)+'px;--o:'+(0.35+Math.random()*0.5);
+f.setAttribute('aria-hidden','true');l.appendChild(f);}})();
 </script>
 </body>
 </html>
