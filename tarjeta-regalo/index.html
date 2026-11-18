@@ -192,7 +192,7 @@ textarea{min-height:96px;resize:vertical;line-height:1.5}
         <div class="c-msg" id="cMsg"></div>
         <div class="c-foot">
           <div><span id="cFromL"></span> <span id="cFrom"></span><br><span id="cValid"></span></div>
-          <div class="c-code"><small id="cCodeL"></small>7K4P 9QWX 3M2D</div>
+          <div class="c-code"><small id="cCodeL"></small><span id="cCode">7K4P 9QWX 3M2D</span></div>
         </div>
       </div>
     </div>
@@ -204,6 +204,7 @@ textarea{min-height:96px;resize:vertical;line-height:1.5}
   </aside>
 </main>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 // ---- Configuracion ----
 var CFG = {
@@ -222,7 +223,7 @@ es:{
   one:"persona", many:"personas", lTo:"Para", lFrom:"De parte de", lMsg:"Mensaje",
   tRec:"Directamente a quien la recibe", tBuy:"A mí, y yo la entrego", lDest:"Correo de quien la recibe", lBuyer:"Nombre y apellidos", lBuyerMail:"Correo (aquí llega el recibo)",
   condT:"Condiciones de la tarjeta",
-  cond:["Válida 1 año desde la compra.","Código de un solo uso: se canjea una vez, en una sola visita y por el total de la tarjeta.","Si el consumo es menor, la diferencia no se acumula ni se devuelve.","Imprescindible reservar antes: por TheFork en racorestaurant.com o en el 660 38 80 61.","No válida con el menú del día.","No válida en festivos ni en fechas señaladas de máxima afluencia.","Válida solo en RACO. No se puede cambiar por dinero.","Recibirás las condiciones completas por correo, junto con el PDF."],
+  cond:["Válida 1 año desde la compra.","Código de un solo uso: se canjea una vez, en una sola visita y por el total de la tarjeta.","Si el consumo es menor, la diferencia no se acumula ni se devuelve.","Imprescindible reservar antes: en racorestaurant.com o en el 660 38 80 61.","No válida con el menú del día.","No válida en festivos ni en fechas señaladas de máxima afluencia.","Válida solo en RACO. No se puede cambiar por dinero.","Recibirás las condiciones completas por correo, junto con el PDF."],
   accept:"He leído y acepto las condiciones de la tarjeta y la política de privacidad.",
   lCard:"Tu tarjeta", cardTitle:"Para ", cFrom:"De parte de", valid:"Válida hasta el ", code:"Código", free:"Importe libre",
   pay:"Pagar", secure:"Pago seguro con CaixaBank. La web nunca ve los datos de tu tarjeta.", mCard:"Tarjeta",
@@ -240,7 +241,7 @@ ca:{
   one:"persona", many:"persones", lTo:"Per a", lFrom:"De part de", lMsg:"Missatge",
   tRec:"Directament a qui la rep", tBuy:"A mi, i jo la lliuro", lDest:"Correu de qui la rep", lBuyer:"Nom i cognoms", lBuyerMail:"Correu (aquí arriba el rebut)",
   condT:"Condicions de la targeta",
-  cond:["Vàlida 1 any des de la compra.","Codi d'un sol ús: es bescanvia una vegada, en una sola visita i pel total de la targeta.","Si el consum és menor, la diferència no s'acumula ni es retorna.","Imprescindible reservar abans: per TheFork a racorestaurant.com o al 660 38 80 61.","No vàlida amb el menú del dia.","No vàlida en festius ni en dates assenyalades de màxima afluència.","Vàlida només a RACO. No es pot canviar per diners.","Rebràs les condicions completes per correu, juntament amb el PDF."],
+  cond:["Vàlida 1 any des de la compra.","Codi d'un sol ús: es bescanvia una vegada, en una sola visita i pel total de la targeta.","Si el consum és menor, la diferència no s'acumula ni es retorna.","Imprescindible reservar abans: a racorestaurant.com o al 660 38 80 61.","No vàlida amb el menú del dia.","No vàlida en festius ni en dates assenyalades de màxima afluència.","Vàlida només a RACO. No es pot canviar per diners.","Rebràs les condicions completes per correu, juntament amb el PDF."],
   accept:"He llegit i accepto les condicions de la targeta i la política de privacitat.",
   lCard:"La teva targeta", cardTitle:"Per a ", cFrom:"De part de", valid:"Vàlida fins al ", code:"Codi", free:"Import lliure",
   pay:"Pagar", secure:"Pagament segur amb CaixaBank. El web mai veu les dades de la teva targeta.", mCard:"Targeta",
@@ -258,7 +259,7 @@ en:{
   one:"guest", many:"guests", lTo:"For", lFrom:"From", lMsg:"Message",
   tRec:"Straight to the person receiving it", tBuy:"To me, and I hand it over", lDest:"Email of the person receiving it", lBuyer:"Full name", lBuyerMail:"Email (your receipt arrives here)",
   condT:"Gift card terms",
-  cond:["Valid for 1 year from purchase.","Single use code: redeemed once, in a single visit and for the full value of the card.","If the amount spent is lower, the difference is neither carried over nor refunded.","Booking is required in advance: through TheFork at racorestaurant.com or on 660 38 80 61.","Not valid with the set lunch menu.","Not valid on public holidays or on special peak dates.","Valid only at RACO. It cannot be exchanged for cash.","You will receive the full terms by email, together with the PDF."],
+  cond:["Valid for 1 year from purchase.","Single use code: redeemed once, in a single visit and for the full value of the card.","If the amount spent is lower, the difference is neither carried over nor refunded.","Booking is required in advance: at racorestaurant.com or on 660 38 80 61.","Not valid with the set lunch menu.","Not valid on public holidays or on special peak dates.","Valid only at RACO. It cannot be exchanged for cash.","You will receive the full terms by email, together with the PDF."],
   accept:"I have read and accept the gift card terms and the privacy policy.",
   lCard:"Your card", cardTitle:"For ", cFrom:"From", valid:"Valid until ", code:"Code", free:"Free amount",
   pay:"Pay", secure:"Secure payment with CaixaBank. This website never sees your card details.", mCard:"Card",
@@ -429,15 +430,29 @@ $("pay").onclick=function(){
     deliver_to:st.to==="recipient"?"recipient":"buyer",
     message:$("msg").value.trim()||undefined,occasion:st.dz,accept_terms:true};
   var btn=$("pay");btn.disabled=true;btn.textContent=t.sending;
-  fetch(CFG.API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)})
+  var post=function(b){return fetch(CFG.API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(b)});};
+  var withTimeout=function(pr,ms){return Promise.race([pr,new Promise(function(_,rej){setTimeout(function(){rej(new Error("timeout"));},ms);})]);};
+  post(body)
     .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
     .then(function(x){
       if(!x.ok||!x.j.url){throw new Error("create");}
-      try{sessionStorage.setItem("raco_gift_lang",st.lang);}catch(e){}
-      var f=document.createElement("form");f.method="POST";f.action=x.j.url;
-      ["Ds_SignatureVersion","Ds_MerchantParameters","Ds_Signature"].forEach(function(k){
-        var i=document.createElement("input");i.type="hidden";i.name=k;i.value=x.j[k];f.appendChild(i);});
-      document.body.appendChild(f);f.submit();
+      // Imagen de la tarjeta tal como la ve el comprador, con su codigo real (si falla, el PDF usa un diseno de reserva)
+      var snap=Promise.resolve();
+      if(window.html2canvas&&x.j.code){
+        $("cCode").textContent=x.j.code.replace(/(.{4})(?=.)/g,"$1 ");
+        snap=withTimeout((document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
+          return html2canvas($("card"),{scale:3,backgroundColor:null,useCORS:true,logging:false});
+        }).then(function(cv){
+          return post({action:"attach_image",order_ref:x.j.order_ref,card_image:cv.toDataURL("image/png")});
+        }),20000).catch(function(){});
+      }
+      return snap.then(function(){
+        try{sessionStorage.setItem("raco_gift_lang",st.lang);}catch(e){}
+        var f=document.createElement("form");f.method="POST";f.action=x.j.url;
+        ["Ds_SignatureVersion","Ds_MerchantParameters","Ds_Signature"].forEach(function(k){
+          var i=document.createElement("input");i.type="hidden";i.name=k;i.value=x.j[k];f.appendChild(i);});
+        document.body.appendChild(f);f.submit();
+      });
     })
     .catch(function(){showErr(t.errGen);render();});
 };
