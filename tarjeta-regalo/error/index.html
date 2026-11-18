@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pago no completado · RACO</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#FFFDF8;color:#161E14;font-family:Outfit,sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column}
+header{padding:18px clamp(16px,4vw,48px);border-bottom:1px solid rgba(180,147,86,.3)}
+.wm{font-family:"Bebas Neue";font-size:30px;letter-spacing:.16em;line-height:1}
+.wm small{display:block;font-family:Outfit;font-size:9px;letter-spacing:.28em;color:#8C6A2E;margin-top:2px}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 20px;text-align:center}
+.box{max-width:560px}
+.k{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#8C6A2E}
+h1{font-family:"Bebas Neue";font-weight:400;font-size:clamp(42px,8vw,68px);letter-spacing:.03em;line-height:.95;margin-top:12px}
+p{font-size:16px;line-height:1.65;color:rgba(22,30,20,.75);margin-top:16px}
+a.btn{display:inline-block;margin-top:28px;padding:15px 28px;background:#161E14;color:#FFFDF8;text-decoration:none;letter-spacing:.05em;font-size:15px}
+</style>
+</head>
+<body>
+<header><div class="wm">RACO<small>BLANQUERNA · PALMA</small></div></header>
+<main><div class="box">
+  <div class="k" id="k"></div>
+  <h1 id="h"></h1>
+  <p id="p1"></p>
+  <a class="btn" id="b" href="/tarjeta-regalo/"></a>
+</div></main>
+<script>
+var T={
+es:{k:"Pago no completado",h:"No se ha cobrado nada",p1:"El pago no se ha completado, así que no se ha hecho ningún cargo. Puedes volver a intentarlo cuando quieras. Si el problema continúa, escríbenos a hola@racorestaurant.com.",b:"Volver a intentarlo"},
+ca:{k:"Pagament no completat",h:"No s'ha cobrat res",p1:"El pagament no s'ha completat, així que no s'ha fet cap càrrec. Pots tornar-ho a provar quan vulguis. Si el problema continua, escriu-nos a hola@racorestaurant.com.",b:"Tornar-ho a provar"},
+en:{k:"Payment not completed",h:"Nothing has been charged",p1:"The payment was not completed, so no charge has been made. You can try again whenever you like. If the problem continues, write to hola@racorestaurant.com.",b:"Try again"}
+};
+var l="es";try{l=sessionStorage.getItem("raco_gift_lang")||(navigator.language||"es").slice(0,2);}catch(e){}
+if(!T[l])l="es";
+document.documentElement.lang=l;
+["k","h","p1","b"].forEach(function(id){document.getElementById(id).textContent=T[l][id];});
+</script>
+</body>
+</html>

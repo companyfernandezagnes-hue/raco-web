@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gracias · RACO</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#FFFDF8;color:#161E14;font-family:Outfit,sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column}
+header{padding:18px clamp(16px,4vw,48px);border-bottom:1px solid rgba(180,147,86,.3)}
+.wm{font-family:"Bebas Neue";font-size:30px;letter-spacing:.16em;line-height:1}
+.wm small{display:block;font-family:Outfit;font-size:9px;letter-spacing:.28em;color:#8C6A2E;margin-top:2px}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 20px;text-align:center}
+.box{max-width:560px}
+.k{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#8C6A2E}
+h1{font-family:"Bebas Neue";font-weight:400;font-size:clamp(42px,8vw,68px);letter-spacing:.03em;line-height:.95;margin-top:12px}
+p{font-size:16px;line-height:1.65;color:rgba(22,30,20,.75);margin-top:16px}
+a.btn{display:inline-block;margin-top:28px;padding:15px 28px;background:#161E14;color:#FFFDF8;text-decoration:none;letter-spacing:.05em;font-size:15px}
+</style>
+</head>
+<body>
+<header><div class="wm">RACO<small>BLANQUERNA · PALMA</small></div></header>
+<main><div class="box">
+  <div class="k" id="k"></div>
+  <h1 id="h"></h1>
+  <p id="p1"></p>
+  <p id="p2"></p>
+  <a class="btn" id="b" href="https://racorestaurant.com/"></a>
+</div></main>
+<script>
+var T={
+es:{k:"Pago recibido",h:"Gracias por tu regalo",p1:"En unos instantes recibirás la tarjeta regalo por correo, con el PDF adjunto y todas las condiciones de uso.",p2:"Si no la ves, mira en la carpeta de correo no deseado o escríbenos a hola@racorestaurant.com.",b:"Volver a la web"},
+ca:{k:"Pagament rebut",h:"Gràcies pel teu regal",p1:"D'aquí a uns instants rebràs la targeta regal per correu, amb el PDF adjunt i totes les condicions d'ús.",p2:"Si no la veus, mira a la carpeta de correu brossa o escriu-nos a hola@racorestaurant.com.",b:"Tornar a la web"},
+en:{k:"Payment received",h:"Thank you for your gift",p1:"In a few moments you will receive the gift card by email, with the PDF attached and the full terms of use.",p2:"If you cannot see it, check your spam folder or write to hola@racorestaurant.com.",b:"Back to the website"}
+};
+var l="es";try{l=sessionStorage.getItem("raco_gift_lang")||(navigator.language||"es").slice(0,2);}catch(e){}
+if(!T[l])l="es";
+document.documentElement.lang=l;
+["k","h","p1","p2","b"].forEach(function(id){document.getElementById(id).textContent=T[l][id];});
+</script>
+</body>
+</html>

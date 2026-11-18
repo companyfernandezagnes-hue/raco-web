@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tarjeta regalo RACO</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFFDF8;--ink:#161E14;--gold:#B49356;--gold-text:#8C6A2E;--gold-20:rgba(180,147,86,.3);--ink-70:rgba(22,30,20,.72);--soft:#F6F1E6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);font-family:Outfit,sans-serif;font-weight:300;color:var(--ink)}
+.demo{background:var(--ink);color:var(--paper);text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:8px 16px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(16px,4vw,48px);border-bottom:1px solid var(--gold-20);gap:16px}
+.wordmark{font-family:"Bebas Neue";font-size:30px;letter-spacing:.16em;line-height:1}
+.wordmark small{display:block;font-family:Outfit;font-size:9px;letter-spacing:.28em;color:var(--gold-text);margin-top:2px}
+.right{display:flex;align-items:center;gap:22px}
+header.top a{font-size:13px;color:var(--ink-70);text-decoration:none;letter-spacing:.04em}
+.langs{display:flex;gap:2px}
+.langs button{border:1px solid var(--gold-20);background:#fff;font:inherit;font-size:12px;letter-spacing:.1em;padding:6px 10px;cursor:pointer;color:var(--ink-70)}
+.langs button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hero{text-align:center;padding:56px 16px 44px}
+.kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-text)}
+.hero h1{font-family:"Bebas Neue";font-weight:400;font-size:clamp(42px,7vw,72px);letter-spacing:.03em;line-height:.95;margin-top:12px}
+.hero p{max-width:540px;margin:16px auto 0;font-size:16px;line-height:1.65;color:var(--ink-70)}
+.layout{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 80px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:56px;align-items:start}
+@media(max-width:980px){.layout{grid-template-columns:1fr}.aside{position:static!important;order:-1}}
+.block{padding:30px 0;border-top:1px solid var(--gold-20)}
+.block:first-child{border-top:0;padding-top:0}
+.step{font-size:11px;letter-spacing:.2em;color:var(--gold-text);text-transform:uppercase;font-weight:500}
+h2{font-family:"Bebas Neue";font-weight:400;font-size:30px;letter-spacing:.04em;margin-top:4px}
+.hint{font-size:14px;color:var(--ink-70);margin-top:4px;line-height:1.5}
+.menus{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:18px}
+.menu{display:flex;flex-direction:column;justify-content:flex-start;border:1px solid var(--gold-20);padding:22px 20px;cursor:pointer;position:relative;background:#fff;text-align:left;font:inherit;color:inherit}
+.menu:hover{border-color:var(--gold)}
+.menu[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:-2px}
+.menu h3{font-family:"Bebas Neue";font-weight:400;font-size:24px;letter-spacing:.05em}
+.menu .price{font-family:"Bebas Neue";font-size:40px;line-height:1;margin-top:8px}
+.menu .price small{font-family:Outfit;font-size:12px;color:var(--ink-70)}
+.menu ul{list-style:none;margin-top:12px;font-size:14px;line-height:1.6;color:var(--ink-70)}
+.menu li:before{content:"·  ";color:var(--gold)}
+.dot{position:absolute;top:16px;right:16px;width:18px;height:18px;border-radius:50%;border:1px solid var(--gold)}
+.menu[aria-pressed=true] .dot{background:var(--ink);border-color:var(--ink);box-shadow:inset 0 0 0 4px #fff}
+.qty{display:inline-flex;align-items:center;margin-top:16px;border:1px solid var(--gold-20);background:#fff}
+.qty button{width:46px;height:46px;border:0;background:none;font-size:20px;cursor:pointer;color:var(--ink)}
+.qty span{min-width:130px;text-align:center;font-size:15px}
+.amount{margin-top:16px;max-width:260px}
+.designs{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px;margin-top:18px}
+.dz{border:0;background:none;cursor:pointer;font:inherit;color:inherit;text-align:center}
+.dz .sw{height:76px;border:1px solid var(--gold-20);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.dz .sw svg{width:100%;height:100%;position:absolute;inset:0}
+.dz .sw b{position:relative;font-family:"Bebas Neue";font-weight:400;font-size:18px;letter-spacing:.14em}
+.dz span{display:block;font-size:13px;margin-top:7px;color:var(--ink-70)}
+.dz[aria-pressed=true] .sw{outline:2px solid var(--ink);outline-offset:2px}
+.dz[aria-pressed=true] span{color:var(--ink);font-weight:400}
+label{display:block;font-size:13px;color:var(--ink-70);margin:16px 0 6px}
+input,textarea{width:100%;padding:12px 13px;border:1px solid var(--gold-20);background:#fff;font:inherit;font-size:15px;color:var(--ink);border-radius:0}
+input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:-1px}
+textarea{min-height:96px;resize:vertical;line-height:1.5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+@media(max-width:520px){.two{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{border:1px solid var(--gold-20);background:#fff;padding:7px 11px;font:inherit;font-size:12.5px;cursor:pointer;color:var(--ink-70);text-align:left}
+.chip:hover{border-color:var(--gold);color:var(--ink)}
+.count{font-size:12px;color:var(--ink-70);text-align:right;margin-top:4px}
+.toggle{display:flex;margin-top:16px;border:1px solid var(--gold-20);background:#fff}
+.toggle button{flex:1;padding:12px 8px;border:0;background:none;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+.toggle button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.conds{background:var(--soft);padding:18px 20px;font-size:13.5px;line-height:1.7;color:var(--ink-70)}
+.conds b{color:var(--ink);font-weight:500}
+.conds ul{margin:6px 0 0 18px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-70);margin-top:16px;line-height:1.5}
+.check input{width:18px;height:18px;margin-top:1px;flex:none;accent-color:var(--ink)}
+.aside{position:sticky;top:20px}
+.aside .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin-bottom:12px;display:flex;justify-content:space-between}
+.card{--bg:#FFFDF8;--fg:#161E14;--ac:#B49356;--mu:rgba(22,30,20,.7);background:var(--bg);color:var(--fg);aspect-ratio:1.42/1;position:relative;overflow:hidden;box-shadow:0 18px 44px rgba(22,30,20,.18)}
+.card .art{position:absolute;inset:0;pointer-events:none}
+.card .frame{position:absolute;inset:12px;border:1px solid var(--ac);opacity:.7}
+.card .c-in{position:absolute;inset:0;padding:26px 28px;display:flex;flex-direction:column}
+.c-head{display:flex;justify-content:space-between;align-items:flex-start}
+.c-logo{font-family:"Bebas Neue";font-size:28px;letter-spacing:.16em;line-height:1}
+.c-logo small{display:block;font-family:Outfit;font-size:7.5px;letter-spacing:.3em;color:var(--ac);margin-top:2px}
+.c-occ{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);text-align:right}
+.c-title{font-family:"Bebas Neue";font-size:clamp(24px,3.2vw,34px);letter-spacing:.04em;line-height:1;margin-top:auto}
+.c-menu{font-size:12px;color:var(--mu);margin-top:4px}
+.c-msg{font-size:12.5px;font-style:italic;line-height:1.45;margin-top:10px;max-height:3.1em;overflow:hidden}
+.c-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px;font-size:10px;color:var(--mu);letter-spacing:.04em}
+.c-code{font-family:"Bebas Neue";font-size:20px;letter-spacing:.12em;line-height:1;text-align:right;border:1px solid var(--ac);padding:6px 10px 4px}
+.c-code small{display:block;font-family:Outfit;font-size:7.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);margin-bottom:2px}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;padding-top:18px;border-top:1px solid var(--gold-20)}
+.total .t{font-family:"Bebas Neue";font-size:42px;line-height:1}
+.total .s{font-size:13px;color:var(--ink-70);text-align:right}
+.pay{width:100%;margin-top:14px;padding:17px;background:var(--ink);color:var(--paper);border:0;font:inherit;font-size:16px;letter-spacing:.05em;cursor:pointer}
+.pay:disabled{opacity:.35;cursor:not-allowed}
+.methods{display:flex;justify-content:center;gap:8px;margin-top:10px;font-size:12px;color:var(--ink-70)}
+.methods span{border:1px solid var(--gold-20);padding:4px 9px;background:#fff}
+.secure{font-size:12px;color:var(--ink-70);text-align:center;margin-top:8px}
+.err{display:none;margin-top:12px;padding:12px 14px;background:#fbeaea;border-left:3px solid #b3261e;font-size:13.5px;line-height:1.5;color:#5c1410}
+.fielderr{font-size:12px;color:#b3261e;margin-top:6px;display:none}
+</style>
+</head>
+<body>
+<div class="demo" id="demo"></div>
+<header class="top">
+  <div class="wordmark">RACO<small>BLANQUERNA · PALMA</small></div>
+  <div class="right">
+    <div class="langs" id="langs">
+      <button data-l="es">ES</button><button data-l="ca">CA</button><button data-l="en">EN</button>
+    </div>
+    <a href="https://racorestaurant.com/" id="back"></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="kicker" id="kicker"></div>
+  <h1 id="h1"></h1>
+  <p id="lead"></p>
+</section>
+
+<main class="layout">
+  <div>
+    <div class="block">
+      <div class="step" id="st1"></div>
+      <h2 id="h2a"></h2>
+      <div class="menus" id="menus"></div>
+      <div class="amount" id="amtBox">
+        <label for="amt" id="amtLbl"></label>
+        <input id="amt" type="number" inputmode="decimal" min="10" max="1000" step="1" value="" placeholder="75">
+        <div class="fielderr" id="amtErr"></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="step" id="st2"></div>
+      <h2 id="h2b"></h2>
+      <p class="hint" id="hintB"></p>
+      <div class="designs" id="designs"></div>
+    </div>
+
+    <div class="block">
+      <div class="step" id="st3"></div>
+      <h2 id="h2c"></h2>
+      <div class="two">
+        <div><label for="to" id="lTo"></label><input id="to" maxlength="40"></div>
+        <div><label for="from" id="lFrom"></label><input id="from" maxlength="40"></div>
+      </div>
+      <label for="msg" id="lMsg"></label>
+      <textarea id="msg" maxlength="160"></textarea>
+      <div class="count"><span id="cnt">0</span> / 160</div>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="block">
+      <div class="step" id="st4"></div>
+      <h2 id="h2d"></h2>
+      <div class="toggle" id="sendToggle">
+        <button type="button" aria-pressed="true" data-to="recipient" id="tRec"></button>
+        <button type="button" aria-pressed="false" data-to="buyer" id="tBuy"></button>
+      </div>
+      <div id="destFields">
+        <label for="destMail" id="lDest"></label><input id="destMail" type="email" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="step" id="st5"></div>
+      <h2 id="h2e"></h2>
+      <div class="two">
+        <div><label for="buyer" id="lBuyer"></label><input id="buyer" autocomplete="name" maxlength="80"></div>
+        <div><label for="buyerMail" id="lBuyerMail"></label><input id="buyerMail" type="email" autocomplete="email"></div>
+      </div>
+      <div class="conds" style="margin-top:22px">
+        <b id="condT"></b>
+        <ul id="condL"></ul>
+      </div>
+      <label class="check"><input type="checkbox" id="accept"><span id="acceptT"></span></label>
+    </div>
+  </div>
+
+  <aside class="aside">
+    <div class="lbl"><span id="lCard"></span><span id="dzName"></span></div>
+    <div class="card" id="card">
+      <svg class="art" id="art" viewBox="0 0 426 300" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="frame"></div>
+      <div class="c-in">
+        <div class="c-head">
+          <div class="c-logo">RACO<small>BLANQUERNA · PALMA</small></div>
+          <div class="c-occ" id="cOcc"></div>
+        </div>
+        <div class="c-title" id="cTitle"></div>
+        <div class="c-menu" id="cMenu"></div>
+        <div class="c-msg" id="cMsg"></div>
+        <div class="c-foot">
+          <div><span id="cFromL"></span> <span id="cFrom"></span><br><span id="cValid"></span></div>
+          <div class="c-code"><small id="cCodeL"></small>7K4P 9QWX 3M2D</div>
+        </div>
+      </div>
+    </div>
+    <div class="total"><div class="t" id="total"></div><div class="s" id="totalSub"></div></div>
+    <button class="pay" id="pay" type="button" disabled></button>
+    <div class="err" id="err"></div>
+    <div class="methods"><span id="mCard"></span><span>Bizum</span></div>
+    <div class="secure" id="secure"></div>
+  </aside>
+</main>
+
+<script>
+// ---- Configuracion ----
+var CFG = {
+  API: "https://torgtlggdnvvdarsogqu.supabase.co/functions/v1/gift-create",
+  TEST: true // pasar a false al activar el entorno real
+};
+
+var T = {
+es:{
+  demo:"Entorno de pruebas · no se cobra nada real", back:"Volver a la web", kicker:"Tarjeta regalo", h1:"Regala una mesa en Raco",
+  lead:"Regala una experiencia en RACO, para disfrutar sin prisa en el corazón de Blanquerna. Elige el importe, el diseño y escribe tu mensaje.",
+  st:"Paso ", h2a:"Elige el importe", h2b:"Elige el diseño", hintB:"La tarjeta se ve a la derecha tal como la recibirá.", h2c:"Personalízala", h2d:"¿Cómo la enviamos?", h2e:"Tus datos",
+  menuName:"Menú degustación", menuSub:"Producto de mercado", per:"por persona",
+  menuLi:["Menú degustación de producto de mercado","Los platos cambian según el mercado y la temporada"],
+  freeName:"Importe libre", freeLi:["Para consumir en RACO","Tú eliges la cantidad, de 10 a 1.000 €"], amtLbl:"Otro importe (en euros)", amtErr:"El importe debe estar entre 10 y 1.000 €.",
+  one:"persona", many:"personas", lTo:"Para", lFrom:"De parte de", lMsg:"Mensaje",
+  tRec:"Directamente a quien la recibe", tBuy:"A mí, y yo la entrego", lDest:"Correo de quien la recibe", lBuyer:"Nombre y apellidos", lBuyerMail:"Correo (aquí llega el recibo)",
+  condT:"Condiciones de la tarjeta",
+  cond:["Válida 1 año desde la compra.","Código de un solo uso: se canjea una vez, en una sola visita y por el total de la tarjeta.","Si el consumo es menor, la diferencia no se acumula ni se devuelve.","Imprescindible reservar antes: por TheFork en racorestaurant.com o en el 660 38 80 61.","No válida con el menú del día.","No válida en festivos ni en fechas señaladas de máxima afluencia.","Válida solo en RACO. No se puede cambiar por dinero.","Recibirás las condiciones completas por correo, junto con el PDF."],
+  accept:"He leído y acepto las condiciones de la tarjeta y la política de privacidad.",
+  lCard:"Tu tarjeta", cardTitle:"Para ", cFrom:"De parte de", valid:"Válida hasta el ", code:"Código", free:"Importe libre",
+  pay:"Pagar", secure:"Pago seguro con CaixaBank. La web nunca ve los datos de tu tarjeta.", mCard:"Tarjeta",
+  sending:"Un momento…", errGen:"No hemos podido iniciar el pago. Inténtalo de nuevo en unos minutos o escríbenos a hola@racorestaurant.com.",
+  missing:"Completa tu nombre, tu correo y, si la enviamos a otra persona, su correo.",
+  cardLabel:"Tarjeta regalo", sub:" × "
+},
+ca:{
+  demo:"Entorn de proves · no es cobra res real", back:"Tornar a la web", kicker:"Targeta regal", h1:"Regala una taula a Raco",
+  lead:"Regala una experiència a RACO, per gaudir sense pressa al cor de Blanquerna. Tria l'import, el disseny i escriu el teu missatge.",
+  st:"Pas ", h2a:"Tria l'import", h2b:"Tria el disseny", hintB:"La targeta es veu a la dreta tal com la rebrà.", h2c:"Personalitza-la", h2d:"Com l'enviem?", h2e:"Les teves dades",
+  menuName:"Menú degustació", menuSub:"Producte de mercat", per:"per persona",
+  menuLi:["Menú degustació de producte de mercat","Els plats canvien segons el mercat i la temporada"],
+  freeName:"Import lliure", freeLi:["Per consumir a RACO","Tu tries la quantitat, de 10 a 1.000 €"], amtLbl:"Un altre import (en euros)", amtErr:"L'import ha de ser entre 10 i 1.000 €.",
+  one:"persona", many:"persones", lTo:"Per a", lFrom:"De part de", lMsg:"Missatge",
+  tRec:"Directament a qui la rep", tBuy:"A mi, i jo la lliuro", lDest:"Correu de qui la rep", lBuyer:"Nom i cognoms", lBuyerMail:"Correu (aquí arriba el rebut)",
+  condT:"Condicions de la targeta",
+  cond:["Vàlida 1 any des de la compra.","Codi d'un sol ús: es bescanvia una vegada, en una sola visita i pel total de la targeta.","Si el consum és menor, la diferència no s'acumula ni es retorna.","Imprescindible reservar abans: per TheFork a racorestaurant.com o al 660 38 80 61.","No vàlida amb el menú del dia.","No vàlida en festius ni en dates assenyalades de màxima afluència.","Vàlida només a RACO. No es pot canviar per diners.","Rebràs les condicions completes per correu, juntament amb el PDF."],
+  accept:"He llegit i accepto les condicions de la targeta i la política de privacitat.",
+  lCard:"La teva targeta", cardTitle:"Per a ", cFrom:"De part de", valid:"Vàlida fins al ", code:"Codi", free:"Import lliure",
+  pay:"Pagar", secure:"Pagament segur amb CaixaBank. El web mai veu les dades de la teva targeta.", mCard:"Targeta",
+  sending:"Un moment…", errGen:"No hem pogut iniciar el pagament. Torna-ho a provar d'aquí a uns minuts o escriu-nos a hola@racorestaurant.com.",
+  missing:"Completa el teu nom, el teu correu i, si l'enviem a una altra persona, el seu correu.",
+  cardLabel:"Targeta regal", sub:" × "
+},
+en:{
+  demo:"Test environment · nothing is actually charged", back:"Back to the website", kicker:"Gift card", h1:"Give a table at Raco",
+  lead:"Give an experience at RACO, to enjoy without rushing in the heart of Blanquerna. Choose the amount, the design and write your message.",
+  st:"Step ", h2a:"Choose the amount", h2b:"Choose the design", hintB:"The card on the right is shown as it will be received.", h2c:"Make it personal", h2d:"How do we send it?", h2e:"Your details",
+  menuName:"Tasting menu", menuSub:"Market produce", per:"per person",
+  menuLi:["Tasting menu of market produce","Dishes change with the market and the season"],
+  freeName:"Free amount", freeLi:["To spend at RACO","You choose the amount, from €10 to €1,000"], amtLbl:"Another amount (in euros)", amtErr:"The amount must be between €10 and €1,000.",
+  one:"guest", many:"guests", lTo:"For", lFrom:"From", lMsg:"Message",
+  tRec:"Straight to the person receiving it", tBuy:"To me, and I hand it over", lDest:"Email of the person receiving it", lBuyer:"Full name", lBuyerMail:"Email (your receipt arrives here)",
+  condT:"Gift card terms",
+  cond:["Valid for 1 year from purchase.","Single use code: redeemed once, in a single visit and for the full value of the card.","If the amount spent is lower, the difference is neither carried over nor refunded.","Booking is required in advance: through TheFork at racorestaurant.com or on 660 38 80 61.","Not valid with the set lunch menu.","Not valid on public holidays or on special peak dates.","Valid only at RACO. It cannot be exchanged for cash.","You will receive the full terms by email, together with the PDF."],
+  accept:"I have read and accept the gift card terms and the privacy policy.",
+  lCard:"Your card", cardTitle:"For ", cFrom:"From", valid:"Valid until ", code:"Code", free:"Free amount",
+  pay:"Pay", secure:"Secure payment with CaixaBank. This website never sees your card details.", mCard:"Card",
+  sending:"One moment…", errGen:"We could not start the payment. Please try again in a few minutes or write to hola@racorestaurant.com.",
+  missing:"Please fill in your name, your email and, if we send it to someone else, their email.",
+  cardLabel:"Gift card", sub:" × "
+}};
+
+var DESIGNS={
+  clasico:{id:"clasico",bg:"#FFFDF8",fg:"#161E14",ac:"#B49356",mu:"rgba(22,30,20,.7)",
+    name:{es:"Clásico",ca:"Clàssic",en:"Classic"},occ:{es:"Tarjeta regalo",ca:"Targeta regal",en:"Gift card"},
+    msgs:{es:["Para que lo disfrutes sin prisa.","Un regalo para compartir mesa.","Porque te lo mereces."],
+          ca:["Per gaudir-ne sense pressa.","Un regal per compartir taula.","Perquè t'ho mereixes."],
+          en:["To enjoy without rushing.","A gift to share a table.","Because you deserve it."]},
+    art:''},
+  navidad:{id:"navidad",off:"translate(0,0)",bg:"#16301F",fg:"#FFFDF8",ac:"#D9B56A",mu:"rgba(255,253,248,.72)",
+    name:{es:"Navidad",ca:"Nadal",en:"Christmas"},occ:{es:"Feliz Navidad",ca:"Bon Nadal",en:"Merry Christmas"},
+    msgs:{es:["Feliz Navidad. Brindamos juntos en Raco.","Que el año nuevo empiece con una buena mesa.","Bon Nadal i bon any nou."],
+          ca:["Feliç Nadal. Brindem junts a Raco.","Que l'any nou comenci amb una bona taula.","Bon Nadal i bon any nou."],
+          en:["Merry Christmas. Let's raise a glass at Raco.","May the new year begin with a good table.","Merry Christmas and a happy new year."]},
+    art:(function(){var s='',cx=340,g='#D9B56A';
+      for(var i=0;i<40;i++){s+='<circle cx="'+(240+(i*53)%180)+'" cy="'+(48+(i*37)%180)+'" r="'+(0.8+(i%3)*.45)+'" fill="#FFFDF8" opacity="'+(.2+(i%4)*.1)+'"/>';}
+      [[70,118,34],[100,158,47],[135,206,60]].forEach(function(t){s+='<path d="M'+cx+' '+t[0]+' L'+(cx+t[2])+' '+t[1]+' L'+(cx-t[2])+' '+t[1]+'Z" fill="#2E6B45"/><path d="M'+cx+' '+t[0]+' L'+(cx+t[2])+' '+t[1]+' L'+cx+' '+t[1]+'Z" fill="#245A39"/>';});
+      s+='<rect x="'+(cx-7)+'" y="206" width="14" height="14" fill="#7A5A33"/>';
+      [[92,112,25],[128,152,37],[166,198,50]].forEach(function(r){s+='<path d="M'+(cx-r[2])+' '+r[1]+' Q'+cx+' '+(r[0]+18)+' '+(cx+r[2]*.7)+' '+(r[0]+4)+'" stroke="'+g+'" stroke-width="1.4" fill="none"/>';});
+      var L=[[328,106,'#E9573F'],[348,98,'#FFE6A3'],[316,144,'#FFE6A3'],[340,138,'#E9573F'],[362,130,'#FFE6A3'],[304,188,'#E9573F'],[330,180,'#FFE6A3'],[356,172,'#E9573F'],[378,164,'#FFE6A3'],[318,199,'#FFE6A3'],[370,194,'#FFE6A3']];
+      L.forEach(function(l){s+='<circle cx="'+l[0]+'" cy="'+l[1]+'" r="6" fill="'+l[2]+'" opacity=".22"/><circle cx="'+l[0]+'" cy="'+l[1]+'" r="2.6" fill="'+l[2]+'"/>';});
+      var st='';for(var k=0;k<10;k++){var rr=k%2?5:12,a=(k*36-90)*Math.PI/180;st+=(k?'L':'M')+(cx+rr*Math.cos(a)).toFixed(1)+' '+(60+rr*Math.sin(a)).toFixed(1);}
+      s+='<circle cx="'+cx+'" cy="60" r="18" fill="'+g+'" opacity=".15"/><path d="'+st+'Z" fill="'+g+'"/>';
+      return s;})()},
+  cumple:{id:"cumple",bg:"#F3E3D3",fg:"#3A1E12",ac:"#C4572E",mu:"rgba(58,30,18,.72)",
+    name:{es:"Cumpleaños",ca:"Aniversari",en:"Birthday"},occ:{es:"Feliz cumpleaños",ca:"Feliç aniversari",en:"Happy birthday"},
+    msgs:{es:["¡Feliz cumpleaños! Esta cena la pago yo.","Un año más, una mesa más. ¡Felicidades!","Para celebrarlo como se merece."],
+          ca:["Feliç aniversari! Aquest sopar el pago jo.","Un any més, una taula més. Felicitats!","Per celebrar-ho com es mereix."],
+          en:["Happy birthday! Dinner is on me.","One more year, one more table. Congratulations!","To celebrate it the way it deserves."]},
+    art:(function(){var c=['#C4572E','#B49356','#3A1E12','#E08D5B'],s='';for(var i=0;i<26;i++){var x=230+((i*53)%190),y=14+((i*37)%120),col=c[i%4];s+=(i%3?'<circle cx="'+x+'" cy="'+y+'" r="'+(2+i%3)+'" fill="'+col+'" opacity=".8"/>':'<rect x="'+x+'" y="'+y+'" width="9" height="3" fill="'+col+'" transform="rotate('+(i*29%180)+' '+x+' '+y+')" opacity=".8"/>');}return s;})()},
+  amor:{id:"amor",bg:"#5A1A24",fg:"#FFF6EE",ac:"#E2B98A",mu:"rgba(255,246,238,.72)",
+    name:{es:"Aniversario",ca:"Aniversari de parella",en:"Anniversary"},occ:{es:"Para nosotros",ca:"Per a nosaltres",en:"For us"},
+    msgs:{es:["Por muchos años más. Te quiero.","Una cena para los dos, sin prisa.","Brindemos por nosotros."],
+          ca:["Per molts anys més. T'estimo.","Un sopar per als dos, sense pressa.","Brindem per nosaltres."],
+          en:["Here's to many more years. I love you.","A dinner for two, no rush.","Let's raise a glass to us."]},
+    art:'<g fill="none" stroke="#E2B98A" stroke-width="1.4" opacity=".8"><path d="M330 40 q0 34 18 40 v34 m-12 0 h24 M348 80 q18 -6 18 -40 z"/><path d="M368 48 q0 34 18 40 v34 m-12 0 h24 M386 88 q18 -6 18 -40 z"/></g>'},
+  sanvalentin:{id:"sanvalentin",bg:"#F5DADB",fg:"#4A0E1C",ac:"#B8283E",mu:"rgba(74,14,28,.72)",
+    name:{es:"San Valentín",ca:"Sant Valentí",en:"Valentine's Day"},occ:{es:"San Valentín",ca:"Sant Valentí",en:"Valentine's Day"},
+    msgs:{es:["Feliz San Valentín. Esta noche, tú y yo en Raco.","Contigo, siempre a la mejor mesa.","Te quiero. Reservamos para dos."],
+          ca:["Feliç Sant Valentí. Aquesta nit, tu i jo a Raco.","Amb tu, sempre a la millor taula.","T'estimo. Reservem per a dos."],
+          en:["Happy Valentine's Day. Tonight, you and me at Raco.","With you, always at the best table.","I love you. Let's book for two."]},
+    art:(function(){var s='',h=function(x,y,r,c,o,a){return '<path transform="translate('+x+' '+y+') rotate('+a+') scale('+r+')" d="M0 3 C-6 -3 -10 -8 -5 -11 C-2 -13 0 -10 0 -8 C0 -10 2 -13 5 -11 C10 -8 6 -3 0 3Z" fill="'+c+'" opacity="'+o+'"/>';};
+      s+=h(360,80,4.2,'#B8283E',1,-8)+h(318,40,2.2,'#E07A88',.9,14)+h(404,30,1.6,'#B8283E',.8,-18)+h(286,96,1.3,'#B8283E',.7,10)+h(410,126,1.8,'#E07A88',.9,20)+h(250,40,1,'#B8283E',.6,-10);
+      for(var i=0;i<12;i++){s+=h(230+(i*61)%185,10+(i*29)%110,.55+(i%3)*.2,i%2?'#E07A88':'#B8283E',.35,i*23);}
+      return s;})()},
+  padre:{id:"padre",off:"translate(0,0)",bg:"#22303D",fg:"#F6F1E6",ac:"#C9A46A",mu:"rgba(246,241,230,.72)",
+    name:{es:"Día del Padre",ca:"Dia del Pare",en:"Father's Day"},occ:{es:"Para papá",ca:"Per al pare",en:"For Dad"},
+    msgs:{es:["Feliz Día del Padre. Hoy invitamos nosotros.","Papá, esta mesa es para ti.","Gracias por todo, papá. Brindamos juntos."],
+          ca:["Feliç Dia del Pare. Avui convidem nosaltres.","Pare, aquesta taula és per a tu.","Gràcies per tot, pare. Brindem junts."],
+          en:["Happy Father's Day. Today it's on us.","Dad, this table is for you.","Thanks for everything, Dad. Cheers together."]},
+    art:(function(){var s='',g='#C9A46A';
+      s+='<g fill="none" stroke="'+g+'" stroke-width="1.6" stroke-linejoin="round">';
+      s+='<path d="M318 60 h14 v26 c0 8 14 14 14 34 v86 c0 6 -4 8 -8 8 h-26 c-4 0 -8 -2 -8 -8 v-86 c0 -20 14 -26 14 -34 z"/>';
+      s+='<rect x="314" y="140" width="22" height="34" fill="'+g+'" fill-opacity=".18"/>';
+      s+='<path d="M368 120 c0 30 10 44 24 46 c14 -2 24 -16 24 -46 z"/><path d="M392 166 v42 m-16 0 h32"/>';
+      s+='<path d="M370 140 c8 4 36 4 44 0" stroke-opacity=".6"/></g>';
+      s+='<path d="M372 146 c10 4 30 4 40 0 c-2 12 -10 19 -20 19 c-10 0 -18 -7 -20 -19z" fill="#8E2C3A" opacity=".85"/>';
+      return s;})()},
+  madre:{id:"madre",bg:"#F1E8EE",fg:"#3A2236",ac:"#A0668F",mu:"rgba(58,34,54,.72)",
+    name:{es:"Día de la Madre",ca:"Dia de la Mare",en:"Mother's Day"},occ:{es:"Para mamá",ca:"Per a la mare",en:"For Mum"},
+    msgs:{es:["Para la mejor madre del mundo. Gracias por todo.","Feliz Día de la Madre. Hoy invitamos nosotros.","Mamá, esta mesa es para ti."],
+          ca:["Per a la millor mare del món. Gràcies per tot.","Feliç Dia de la Mare. Avui convidem nosaltres.","Mare, aquesta taula és per a tu."],
+          en:["For the best mum in the world. Thank you for everything.","Happy Mother's Day. Today it's on us.","Mum, this table is for you."]},
+    art:(function(){var s='',f=function(x,y,r,c,cc){var t='<g transform="translate('+x+' '+y+')">';for(var k=0;k<6;k++){t+='<ellipse cx="0" cy="'+(-r)+'" rx="'+(r*.55)+'" ry="'+r+'" fill="'+c+'" transform="rotate('+k*60+')"/>';}return t+'<circle r="'+(r*.45)+'" fill="'+cc+'"/></g>';};
+      s+='<path d="M352 140 C350 110 340 90 330 70 M352 140 C358 112 372 96 392 84 M352 140 C352 118 360 70 366 50" stroke="#6E8A5C" stroke-width="1.6" fill="none"/>';
+      s+='<ellipse cx="340" cy="112" rx="9" ry="3.6" fill="#6E8A5C" transform="rotate(-50 340 112)"/><ellipse cx="368" cy="114" rx="9" ry="3.6" fill="#6E8A5C" transform="rotate(40 368 114)"/>';
+      s+=f(330,66,11,'#D9A3B8','#E8C26A')+f(392,82,9,'#B57AA6','#E8C26A')+f(366,46,12,'#E7BFCB','#C99A3A')+f(300,40,5,'#D9A3B8','#E8C26A')+f(410,40,4,'#B57AA6','#E8C26A');
+      return s;})()}
+};
+var ORDER=["clasico","navidad","cumple","amor","sanvalentin","padre","madre"];
+
+var $=function(id){return document.getElementById(id)};
+var st={amount:100,custom:false,dz:"clasico",to:"recipient",lang:"es"};
+
+function fmtEur(n){return Number(n).toLocaleString("es-ES",{maximumFractionDigits:2})+" €";}
+function validUntil(){var d=new Date();d.setFullYear(d.getFullYear()+1);
+  return ("0"+d.getDate()).slice(-2)+"/"+("0"+(d.getMonth()+1)).slice(-2)+"/"+d.getFullYear();}
+function customValue(){var v=parseFloat(String($("amt").value).replace(",","."));return isFinite(v)?v:NaN;}
+function customOk(){var v=customValue();return isFinite(v)&&v>=10&&v<=1000;}
+function total(){if(st.custom){return customOk()?customValue():0;}return st.amount;}
+
+function setLang(l){
+  st.lang=l;var t=T[l];
+  document.documentElement.lang=l;
+  document.title=t.cardLabel+" RACO";
+  document.querySelectorAll("#langs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===l);});
+  $("demo").textContent=t.demo;$("demo").style.display=CFG.TEST?"block":"none";
+  $("back").textContent=t.back;$("kicker").textContent=t.kicker;$("h1").textContent=t.h1;$("lead").textContent=t.lead;
+  [["st1","h2a",1],["st2","h2b",2],["st3","h2c",3],["st4","h2d",4],["st5","h2e",5]].forEach(function(x){$(x[0]).textContent=t.st+x[2];$(x[1]).textContent=t[x[1]];});
+  $("hintB").textContent=t.hintB;
+  $("lTo").textContent=t.lTo;$("lFrom").textContent=t.lFrom;$("lMsg").textContent=t.lMsg;
+  $("tRec").textContent=t.tRec;$("tBuy").textContent=t.tBuy;$("lDest").textContent=t.lDest;
+  $("lBuyer").textContent=t.lBuyer;$("lBuyerMail").textContent=t.lBuyerMail;
+  $("condT").textContent=t.condT;$("condL").innerHTML=t.cond.map(function(c){return "<li>"+c+"</li>";}).join("");
+  $("acceptT").textContent=t.accept;$("lCard").textContent=t.lCard;$("cFromL").textContent=t.cFrom;$("cCodeL").textContent=t.code;
+  $("amtLbl").textContent=t.amtLbl;$("amtErr").textContent=t.amtErr;$("secure").textContent=t.secure;$("mCard").textContent=t.mCard;
+  renderMenus();renderDesigns();renderChips();
+  if(!$("msg").dataset.touched){$("msg").value=DESIGNS[st.dz].msgs[l][0];}
+  render();
+}
+
+function renderMenus(){
+  var w=$("menus");w.innerHTML="";
+  [50,100,150].forEach(function(a){
+    var b=document.createElement("button");b.type="button";b.className="menu";b.setAttribute("aria-pressed",(!st.custom&&st.amount===a));
+    b.innerHTML='<span class="dot"></span><div class="price">'+a+' €</div>';
+    b.onclick=function(){st.custom=false;st.amount=a;$("amt").value="";renderMenus();render();};
+    w.appendChild(b);
+  });
+}
+
+function renderDesigns(){
+  var w=$("designs");w.innerHTML="";
+  ORDER.forEach(function(k){var d=DESIGNS[k];
+    var b=document.createElement("button");b.type="button";b.className="dz";b.setAttribute("aria-pressed",k===st.dz);
+    b.innerHTML='<div class="sw" style="background:'+d.bg+';color:'+d.fg+'"><svg viewBox="0 0 426 300" preserveAspectRatio="xMidYMid slice">'+d.art+'</svg><b>RACO</b></div><span>'+d.name[st.lang]+'</span>';
+    b.onclick=function(){st.dz=k;if(!$("msg").dataset.touched){$("msg").value=d.msgs[st.lang][0];}renderDesigns();renderChips();render();};
+    w.appendChild(b);});
+}
+
+function renderChips(){var d=DESIGNS[st.dz];$("chips").innerHTML="";
+  d.msgs[st.lang].forEach(function(m){var c=document.createElement("button");c.type="button";c.className="chip";c.textContent=m;
+    c.onclick=function(){$("msg").value=m;$("msg").dataset.touched="";render();};$("chips").appendChild(c);});}
+
+function render(){
+  var t=T[st.lang],d=DESIGNS[st.dz],card=$("card");
+  card.style.setProperty("--bg",d.bg);card.style.setProperty("--fg",d.fg);card.style.setProperty("--ac",d.ac);card.style.setProperty("--mu",d.mu);
+  $("art").innerHTML='<g transform="'+(d.off||"translate(-6,40)")+'">'+d.art+'</g>';
+  $("dzName").textContent=d.name[st.lang];$("cOcc").textContent=d.occ[st.lang];
+  $("cTitle").textContent=t.cardTitle+($("to").value||"…");$("cFrom").textContent=$("from").value||"…";
+  $("cMenu").textContent=t.cardLabel+" · "+fmtEur(total()||st.amount);
+  $("cMsg").textContent=$("msg").value;$("cnt").textContent=$("msg").value.length;
+  $("cValid").textContent=t.valid+validUntil();
+  var tot=total();
+  $("total").textContent=tot?fmtEur(tot):"—";
+  $("totalSub").innerHTML=t.cardLabel+"<br>RACO";
+  $("pay").textContent=t.pay+(tot?" "+fmtEur(tot):"");
+  $("amtErr").style.display=(st.custom&&!customOk())?"block":"none";
+  $("pay").disabled=!($("accept").checked&&tot>0);
+}
+
+// ---- Eventos ----
+["to","from"].forEach(function(id){$(id).oninput=render;});
+$("amt").oninput=function(){st.custom=($("amt").value!=="");renderMenus();render();};
+$("msg").oninput=function(){$("msg").dataset.touched="1";render();};
+$("accept").onchange=render;
+document.querySelectorAll("#langs button").forEach(function(b){b.onclick=function(){setLang(b.dataset.l);};});
+document.querySelectorAll("#sendToggle button").forEach(function(b){b.onclick=function(){
+  document.querySelectorAll("#sendToggle button").forEach(function(x){x.setAttribute("aria-pressed",x===b);});
+  st.to=b.dataset.to;$("destFields").style.display=st.to==="recipient"?"block":"none";};});
+
+function showErr(m){var e=$("err");e.textContent=m;e.style.display="block";}
+
+$("pay").onclick=function(){
+  var t=T[st.lang];$("err").style.display="none";
+  var name=$("buyer").value.trim(),mail=$("buyerMail").value.trim(),dest=$("destMail").value.trim();
+  var mailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!name||!mailRe.test(mail)||(st.to==="recipient"&&!mailRe.test(dest))){showErr(t.missing);return;}
+  var body={menu_type:"importe",amount_eur:total(),language:st.lang,buyer_name:name,buyer_email:mail,
+    recipient_name:$("to").value.trim()||undefined,
+    recipient_email:st.to==="recipient"?dest:undefined,
+    deliver_to:st.to==="recipient"?"recipient":"buyer",
+    message:$("msg").value.trim()||undefined,occasion:st.dz,accept_terms:true};
+  var btn=$("pay");btn.disabled=true;btn.textContent=t.sending;
+  fetch(CFG.API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+    .then(function(x){
+      if(!x.ok||!x.j.url){throw new Error("create");}
+      try{sessionStorage.setItem("raco_gift_lang",st.lang);}catch(e){}
+      var f=document.createElement("form");f.method="POST";f.action=x.j.url;
+      ["Ds_SignatureVersion","Ds_MerchantParameters","Ds_Signature"].forEach(function(k){
+        var i=document.createElement("input");i.type="hidden";i.name=k;i.value=x.j[k];f.appendChild(i);});
+      document.body.appendChild(f);f.submit();
+    })
+    .catch(function(){showErr(t.errGen);render();});
+};
+
+var qs=new URLSearchParams(location.search).get("lang");
+var nav=(navigator.language||"es").slice(0,2);
+setLang(["es","ca","en"].indexOf(qs)>-1?qs:(["es","ca","en"].indexOf(nav)>-1?nav:"es"));
+</script>
+</body>
+</html>
