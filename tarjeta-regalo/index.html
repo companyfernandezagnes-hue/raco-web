@@ -372,7 +372,8 @@ var DESIGNS={
 };
 var XM=(function(){var n=new Date(),m=n.getMonth(),d=n.getDate();return (m===10&&d>=20)||m===11||(m===0&&d<=6);})();
 DESIGNS.navidad.art=ART.navidad;
-var ORDER=XM?["navidad","clasico","cumple","amor","sanvalentin","padre","madre"]:["clasico","navidad","cumple","amor","sanvalentin","padre","madre"];
+DESIGNS.cumple.off="translate(0,0)";DESIGNS.clasico.off="translate(0,0)";
+var ORDER=XM?["navidad","clasico","cumple","sanvalentin","padre","madre"]:["clasico","navidad","cumple","sanvalentin","padre","madre"];
 
 var $=function(id){return document.getElementById(id)};
 var PDFS={es:"/tarjeta-regalo/condiciones-tarjeta-regalo-es.pdf",ca:"/tarjeta-regalo/condiciones-tarjeta-regalo-ca.pdf",en:"/tarjeta-regalo/condiciones-tarjeta-regalo-en.pdf"};
