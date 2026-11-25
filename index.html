@@ -222,6 +222,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 .hero.xm .veil{display:block;position:absolute;inset:0;background:linear-gradient(rgba(31,61,46,.78),rgba(31,61,46,.5) 45%,rgba(31,61,46,.85));z-index:1}
 .hero.xm>:not(.bgv):not(.veil){position:relative;z-index:2}
 .hero.xm .hero-pre{color:#E4CF9E}
+.hero-xm{display:none;margin-top:1rem}
+.hero.xm .hero-xm{display:inline-block}
 .hero.xm .hero-cta{color:#FFFDF8;border-color:rgba(255,253,248,.7)}
 @media (prefers-reduced-motion:reduce){.hero.xm .bgv{display:none}}
 
@@ -629,6 +631,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
     <div class="hero-rule-line"></div>
   </div>
   <a href="#reservas" class="hero-cta" data-i18n="hero-cta">Reservar mesa</a>
+  <a href="/navidad/" class="hero-cta hero-xm" data-i18n="hero-xm">Menús de Navidad</a>
 </section>
 
 
@@ -754,19 +757,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
   </a>
 </section>
 
-<!-- NAVIDAD -->
-<section id="navidad" class="xmas-section reveal">
-  <h2 class="rg-sr" data-i18n="xmas-title">Navidad y Nochevieja en RACO.</h2>
-  <a href="/navidad/" class="xmas-link" aria-label="Menús de Navidad y Nochevieja">
-    <div class="xmas-aur xa1"></div><div class="xmas-aur xa2"></div><div class="xmas-aur xa3"></div>
-    <div class="xmas-sm xs1"></div><div class="xmas-sm xs2"></div><div class="xmas-sm xs3"></div><div class="xmas-sm xs4"></div>
-    <div class="xmas-frame" aria-hidden="true"></div><span class="xmas-corner xc1" aria-hidden="true">&#10022;</span><span class="xmas-corner xc2" aria-hidden="true">&#10022;</span><span class="xmas-corner xc3" aria-hidden="true">&#10022;</span><span class="xmas-corner xc4" aria-hidden="true">&#10022;</span>
-    <div class="xmas-garland" id="xgar" aria-hidden="true"></div>
-    <div class="xmas-pines" aria-hidden="true"><svg viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><g fill="#0a1a12" opacity=".95"><path d="M0 120V84l18-30 12 16 14-44 16 40 12-14 16 34 20-48 18 46 14-18 18 36 20-52 16 50 14-20 20 40 18-56 16 54 12-18 22 38 16-46 18 48 14-24 20 42 16-54 18 56 14-16 20 34 16-44 18 46 12-20 22 40 16-50 18 52 14-18 20 36 16-46 18 48 14-22 20 40 16-54 18 56 14-16 20 34V120z"/></g><g fill="#12281c" opacity=".9"><path d="M0 120V100l24-24 14 20 16-32 16 30 14-16 18 26 18-34 16 32 16-14 20 28 18-36 16 34 14-16 22 26 16-32 18 30 16-14 20 28 18-36 16 34 14-16 22 26 16-32 18 30 16-14 20 28 18-36 16 34 14-16 22 26 16-32V120z"/></g></svg></div>
-    <div class="xmas-shoot" aria-hidden="true"></div>
-    <div class="xmas-word" id="xword" aria-hidden="true" data-i18n="xmas-word"><span style="animation-delay:0.72s">N</span><span style="animation-delay:0.60s">a</span><span style="animation-delay:0.48s">v</span><span style="animation-delay:0.36s">i</span><span class="g" style="animation-delay:0.24s,0s">d</span><span class="g" style="animation-delay:0.12s,0s">a</span><span class="g" style="animation-delay:0.00s,0s">d</span></div>
-  </a>
-</section>
+
 
 <!-- RESERVAS -->
 <section id="reservas" class="res-section reveal">
@@ -859,7 +850,7 @@ const i18n = {
   es: {
     'nav-nosotros':'Nosotros','nav-carta':'Carta','nav-bebidas':'Bebidas','nav-reservas':'Reservas','nav-navidad':'Navidad','nav-regala':'Regala','nav-contacto':'Contacto',
     'hero-h1':'Restaurante y Wine Bar · Palma de Mallorca',
-    'hero-cta':'Reservar mesa',
+    'hero-cta':'Reservar mesa','hero-xm':'Menús de Navidad',
     'nos-label':'01 · Nosotros',
     'ig-cap':'El día a día · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Las dos familias · Antes de Raco','nos-b1-label':'Origen','nos-b1-text':'Crecimos entre mesas y recetas familiares.','nos-b1-body':'Soñábamos con un rincón donde el producto mediterráneo fuera el único protagonista. Así nace Raco, en el centro de Palma.<br><br>El nombre es nuestra esencia: la suma de <strong>Ra</strong>mis y <strong>Co</strong>mpany. Dos familias que se vuelven una para ofrecerte lo que mejor sabemos hacer: cocina auténtica, vinos con historia y un ambiente donde te sientas como en casa.',
     'nos-b2-label':'El lugar y la filosofía','nos-b2-text':'Raco no es el restaurante de un hotel. Un proyecto propio en Blanquerna.','nos-b2-body':'Un lugar donde desayunar sin prisa, comer bien o quedarte hasta tarde con una copa que vale la pena. Una selección de vinos hecha con amor, una carta que cambia con el mercado y un proyecto de familia hecho con las manos.',
@@ -904,7 +895,7 @@ const i18n = {
   ca: {
     'nav-nosotros':'Nosaltres','nav-carta':'Carta','nav-bebidas':'Begudes','nav-reservas':'Reserves','nav-navidad':'Nadal','nav-regala':'Regala','nav-contacto':'Contacte',
     'hero-h1':'Restaurant i Wine Bar · Palma de Mallorca',
-    'hero-cta':'Reservar taula',
+    'hero-cta':'Reservar taula','hero-xm':'Menús de Nadal',
     'nos-label':'01 · Nosaltres',
     'ig-cap':'El dia a dia · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'Les dues famílies · Abans de Raco','nos-b1-label':'Origen','nos-b1-text':'Vam créixer entre taules i receptes familiars.','nos-b1-body':'Somiàvem amb un racó on el producte mediterrani fos l\'únic protagonista. Així neix Raco, al centre de Palma.<br><br>El nom és la nostra essència: la suma de <strong>Ra</strong>mis i <strong>Co</strong>mpany. Dues famílies que es tornen una per oferir-te el que millor sabem fer: cuina autèntica, vins amb història i un ambient on et sentis com a casa.',
     'nos-b2-label':'El lloc i la filosofia','nos-b2-text':'Raco no és el restaurant d\'un hotel. Un projecte propi a Blanquerna.','nos-b2-body':'Un lloc on esmorzar sense pressa, dinar bé o quedar-se fins tard amb una copa que val la pena. Una selecció de vins feta amb amor, una carta que canvia amb el mercat i un projecte de família fet amb les mans.',
@@ -949,7 +940,7 @@ const i18n = {
   en: {
     'nav-nosotros':'About','nav-carta':'Menu','nav-bebidas':'Drinks','nav-reservas':'Reservations','nav-navidad':'Christmas','nav-regala':'Gift cards','nav-contacto':'Contact',
     'hero-h1':'Restaurant &amp; Wine Bar · Palma de Mallorca',
-    'hero-cta':'Book a table',
+    'hero-cta':'Book a table','hero-xm':'Christmas menus',
     'nos-label':'01 · About us',
     'ig-cap':'Day by day · <a href="https://www.instagram.com/racoblanquerna/" target="_blank" rel="noopener">@racoblanquerna</a>','nos-cap1':'The two families · Before Raco','nos-b1-label':'Origin','nos-b1-text':'We grew up between tables and family recipes.','nos-b1-body':'We dreamed of a corner where Mediterranean produce would be the only protagonist. That\'s how Raco was born, in the heart of Palma.<br><br>The name is our essence: the sum of <strong>Ra</strong>mis and <strong>Co</strong>mpany. Two families becoming one to offer you what we do best: honest cooking, wines with stories, and a place where you feel at home.',
     'nos-b2-label':'The place & the philosophy','nos-b2-text':'Raco is not a hotel restaurant. A project of its own in Blanquerna.','nos-b2-body':'A place to have breakfast without rushing, eat well at lunch, or stay late over a glass worth lingering on. A wine list built with love, a menu that changes with the market, and a family project made by hand.',
