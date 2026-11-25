@@ -115,6 +115,14 @@ textarea{min-height:96px;resize:vertical;line-height:1.5}
 .hero h1,h2,.menu h3,.c-title,.c-logo,.wordmark,.dz .sw b{text-transform:uppercase}
 .hero h1,h2,.c-title{font-weight:200;letter-spacing:.08em}
 .hero h1{font-size:clamp(38px,6vw,64px)}
+.pil{font-family:Antonio;font-weight:300;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-text);margin-top:16px}
+.xl{display:inline-block;margin-top:14px;font-family:Antonio;font-weight:300;letter-spacing:.2em;text-transform:uppercase;font-size:13px;color:#E6CF9A;text-decoration:none;border-bottom:.5px solid #E6CF9A}
+.xm .hero{background:#1F3D2E;color:#FFFDF8;padding-bottom:44px}
+.xm .hero h1{color:#FFFDF8}
+.xm .hero .kicker{color:#E6CF9A}
+.xm .hero p{color:rgba(255,253,248,.85)}
+.xm .pil{color:#E6CF9A}
+.gar{display:block;width:100%;max-width:760px;margin:0 auto 18px;height:auto}
 </style>
 </head>
 <body>
@@ -287,18 +295,32 @@ en:{
   cardLabel:"Gift card", sub:" × "
 }};
 
+var RG='<defs><filter id="rg" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>';
+function BL(c,o,x,y,rx,ry){return '<ellipse cx="'+x+'" cy="'+y+'" rx="'+rx+'" ry="'+ry+'" fill="'+c+'" opacity="'+o+'"/>';}
+function GR(ink,inner){return RG+'<g filter="url(#rg)" fill="none" stroke="'+ink+'" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">'+inner+'</g>';}
+function HE(x,y,s,f){return '<g transform="translate('+x+' '+y+') scale('+s+')"><path d="M0 12C-24-10-28-34-11-41C-3-44 0-37 0-33C0-37 3-44 11-41C28-34 24-10 0 12Z" fill="'+f+'"/></g>';}
+function SP(x,y,r){return '<path d="M'+x+' '+(y-r)+'V'+(y+r)+'M'+(x-r)+' '+y+'H'+(x+r)+'"/>';}
+var GL='<path d="M-24 0Q-27 50 0 64Q27 50 24 0Z"/><path d="M-25 14Q0 22 25 14" stroke-width="1.6"/><path d="M0 64V108M-17 112Q0 104 17 112"/>';
+function FL(x,y,c){return '<circle cx="'+x+'" cy="'+y+'" r="12" fill="'+c+'" fill-opacity=".85"/><path d="M'+(x-4)+' '+y+'Q'+x+' '+(y-5)+' '+(x+4)+' '+y+'Q'+x+' '+(y+5)+' '+(x-2)+' '+(y+1)+'" stroke-width="1.5"/>';}
+var ART={};
+ART.clasico=BL('#B49356','.16',338,138,66,76)+GR('#161E14','<path d="M303 72Q300 138 335 152Q370 138 367 72Z"/><path d="M303.5 100Q335 112 366.5 100Q364 138 335 151Q306 138 303.5 100Z" fill="#B49356" fill-opacity=".35" stroke="none"/><path d="M303 100Q335 112 367 100" stroke-width="1.6"/><path d="M335 152V206M312 210Q335 200 358 210"/><path d="M392 150Q402 120 388 92M392 140Q404 134 408 124M390 120Q378 116 374 106M388 100Q398 96 402 86"/>'+SP(286,66,8)+SP(398,60,6));
+ART.cumple=BL('#C98A1E','.22',344,172,58,62)+GR('#161E14','<path d="M328 112V140M342 112V140M328 140Q328 152 312 158M342 140Q342 152 358 158M312 158V224Q312 230 318 230H352Q358 230 358 224V158"/><path d="M318 176H352V206H318ZM323 187H347M323 195H340" stroke-width="1.6"/><path d="M322 112L335 58L348 112Z" fill="#C98A1E" fill-opacity=".85"/><path d="M326 98H344M329 84H341" stroke-width="1.6"/><circle cx="335" cy="53" r="6"/><path d="M285 90l8 6M300 62l-4 9M382 70l8-5M394 112l-9 3M282 140l9-2M390 150l8 5"/><circle cx="372" cy="92" r="3.2" fill="#C98A1E" stroke="none"/><circle cx="296" cy="116" r="3" fill="#C98A1E" stroke="none"/><circle cx="384" cy="188" r="3.2" fill="#C98A1E" stroke="none"/>');
+ART.amor=BL('#7A2B38','.55',340,122,64,70)+GR('#E2B98A','<g transform="translate(326 78) rotate(20)">'+GL+'</g><g transform="translate(350 78) rotate(-20)">'+GL+'</g><path d="M338 36V54M327 45H349M330 37L346 53M346 37L330 53" stroke-width="1.8"/>'+SP(392,120,6)+SP(284,110,5));
+ART.sanvalentin=BL('#E8A39A','.4',340,120,62,66)+GR('#161E14','<g transform="translate(335 132) scale(.8)">'+GL+'</g><path d="M305 84Q316 112 335 132M366 63Q354 100 336 132" stroke-width="1.6"/>'+HE(305,70,1,'#C0392F')+HE(366,52,.75,'#E8A39A')+SP(398,130,6)+SP(280,150,5));
+ART.padre=BL('#35495C','.85',340,142,64,82)+GR('#C9A46A','<path d="M324 62H346V72H324Z"/><path d="M326 72V118M344 72V118M326 118Q326 134 304 142M344 118Q344 134 366 142M304 142V226Q304 232 310 232H360Q366 232 366 226V142"/><circle cx="322" cy="164" r="10"/><circle cx="348" cy="164" r="10"/><path d="M332 164H338M312 164L304 160M358 164L366 160M324 188Q335 198 346 188"/><path d="M335 124L318 116V132ZM335 124L352 116V132Z" fill="#C9A46A" fill-opacity=".8"/>'+SP(392,92,6)+SP(282,120,5)+SP(396,190,4));
+ART.madre=BL('#F2B8AE','.55',338,104,66,62)+GR('#161E14','<path d="M328 168V190M342 168V190M326 166H344M328 190Q328 200 312 204M342 190Q342 200 358 204M312 204V228Q312 233 318 233H352Q358 233 358 228V204"/><path d="M335 166Q330 130 300 94M335 166Q335 120 335 72M335 166Q340 130 372 96M335 166Q322 140 316 114M335 166Q350 140 354 114"/>'+FL(298,84,'#D4574A')+FL(335,58,'#D4574A')+FL(374,86,'#D4574A')+FL(314,102,'#F2B8AE')+FL(356,104,'#F2B8AE')+SP(398,150,5)+SP(284,160,5));
 var DESIGNS={
   clasico:{id:"clasico",bg:"#FFFDF8",fg:"#161E14",ac:"#B49356",mu:"rgba(22,30,20,.7)",
     name:{es:"Clásico",ca:"Clàssic",en:"Classic"},occ:{es:"Tarjeta regalo",ca:"Targeta regal",en:"Gift card"},
     msgs:{es:["Para que lo disfrutes sin prisa.","Un regalo para compartir mesa.","Porque te lo mereces."],
           ca:["Per gaudir-ne sense pressa.","Un regal per compartir taula.","Perquè t'ho mereixes."],
           en:["To enjoy without rushing.","A gift to share a table.","Because you deserve it."]},
-    art:''},
+    art:ART.clasico},
   navidad:{id:"navidad",off:"translate(0,0)",bg:"#16301F",fg:"#FFFDF8",ac:"#D9B56A",mu:"rgba(255,253,248,.72)",
     name:{es:"Navidad",ca:"Nadal",en:"Christmas"},occ:{es:"Feliz Navidad",ca:"Bon Nadal",en:"Merry Christmas"},
-    msgs:{es:["Feliz Navidad. Brindamos juntos en Raco.","Que el año nuevo empiece con una buena mesa.","Bon Nadal i bon any nou."],
-          ca:["Feliç Nadal. Brindem junts a Raco.","Que l'any nou comenci amb una bona taula.","Bon Nadal i bon any nou."],
-          en:["Merry Christmas. Let's raise a glass at Raco.","May the new year begin with a good table.","Merry Christmas and a happy new year."]},
+    msgs:{es:["Feliz Navidad. Brindamos juntos en Raco.","Que esta Navidad os encuentre en buena mesa.","Bon Nadal i bon any nou."],
+          ca:["Feliç Nadal. Brindem junts a Raco.","Que aquest Nadal us trobi a bona taula.","Bon Nadal i bon any nou."],
+          en:["Merry Christmas. Let's raise a glass at Raco.","May this Christmas find you at a good table.","Merry Christmas and a happy new year."]},
     art:(function(){var s='',g='#D9B56A';
       s+='<g fill="none" stroke="'+g+'" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">';
       s+='<rect x="337" y="50" width="16" height="14"/><path d="M339 64V104M351 64V104M339 104Q339 118 326 124M351 104Q351 118 364 124M326 124V214Q326 220 332 220H358Q364 220 364 214V124"/>';
@@ -312,50 +334,36 @@ var DESIGNS={
       [[282,170],[292,176],[286,182]].forEach(function(b){s+='<circle cx="'+b[0]+'" cy="'+b[1]+'" r="3.4" fill="#C23B3B"/>';});
       for(var k=0;k<14;k++){s+='<circle cx="'+(250+(k*61)%200)+'" cy="'+(40+(k*47)%190)+'" r="'+(0.8+(k%3)*.4)+'" fill="#FFFDF8" opacity="'+(.2+(k%4)*.1)+'"/>';}
       return s;})()},
-  cumple:{id:"cumple",bg:"#F3E3D3",fg:"#3A1E12",ac:"#C4572E",mu:"rgba(58,30,18,.72)",
+  cumple:{id:"cumple",bg:"#FFF4DC",fg:"#161E14",ac:"#C98A1E",mu:"rgba(22,30,20,.7)",
     name:{es:"Cumpleaños",ca:"Aniversari",en:"Birthday"},occ:{es:"Feliz cumpleaños",ca:"Feliç aniversari",en:"Happy birthday"},
     msgs:{es:["¡Feliz cumpleaños! Esta cena la pago yo.","Un año más, una mesa más. ¡Felicidades!","Para celebrarlo como se merece."],
           ca:["Feliç aniversari! Aquest sopar el pago jo.","Un any més, una taula més. Felicitats!","Per celebrar-ho com es mereix."],
           en:["Happy birthday! Dinner is on me.","One more year, one more table. Congratulations!","To celebrate it the way it deserves."]},
-    art:(function(){var c=['#C4572E','#B49356','#3A1E12','#E08D5B'],s='';for(var i=0;i<26;i++){var x=230+((i*53)%190),y=14+((i*37)%120),col=c[i%4];s+=(i%3?'<circle cx="'+x+'" cy="'+y+'" r="'+(2+i%3)+'" fill="'+col+'" opacity=".8"/>':'<rect x="'+x+'" y="'+y+'" width="9" height="3" fill="'+col+'" transform="rotate('+(i*29%180)+' '+x+' '+y+')" opacity=".8"/>');}return s;})()},
+    art:ART.cumple},
   amor:{id:"amor",bg:"#5A1A24",fg:"#FFF6EE",ac:"#E2B98A",mu:"rgba(255,246,238,.72)",
     name:{es:"Aniversario",ca:"Aniversari de parella",en:"Anniversary"},occ:{es:"Para nosotros",ca:"Per a nosaltres",en:"For us"},
     msgs:{es:["Por muchos años más. Te quiero.","Una cena para los dos, sin prisa.","Brindemos por nosotros."],
           ca:["Per molts anys més. T'estimo.","Un sopar per als dos, sense pressa.","Brindem per nosaltres."],
           en:["Here's to many more years. I love you.","A dinner for two, no rush.","Let's raise a glass to us."]},
-    art:'<g fill="none" stroke="#E2B98A" stroke-width="1.4" opacity=".8"><path d="M330 40 q0 34 18 40 v34 m-12 0 h24 M348 80 q18 -6 18 -40 z"/><path d="M368 48 q0 34 18 40 v34 m-12 0 h24 M386 88 q18 -6 18 -40 z"/></g>'},
-  sanvalentin:{id:"sanvalentin",bg:"#F5DADB",fg:"#4A0E1C",ac:"#B8283E",mu:"rgba(74,14,28,.72)",
+    art:ART.amor},
+  sanvalentin:{id:"sanvalentin",bg:"#FBE9E4",fg:"#161E14",ac:"#C0392F",mu:"rgba(22,30,20,.7)",
     name:{es:"San Valentín",ca:"Sant Valentí",en:"Valentine's Day"},occ:{es:"San Valentín",ca:"Sant Valentí",en:"Valentine's Day"},
     msgs:{es:["Feliz San Valentín. Esta noche, tú y yo en Raco.","Contigo, siempre a la mejor mesa.","Te quiero. Reservamos para dos."],
           ca:["Feliç Sant Valentí. Aquesta nit, tu i jo a Raco.","Amb tu, sempre a la millor taula.","T'estimo. Reservem per a dos."],
           en:["Happy Valentine's Day. Tonight, you and me at Raco.","With you, always at the best table.","I love you. Let's book for two."]},
-    art:(function(){var s='',h=function(x,y,r,c,o,a){return '<path transform="translate('+x+' '+y+') rotate('+a+') scale('+r+')" d="M0 3 C-6 -3 -10 -8 -5 -11 C-2 -13 0 -10 0 -8 C0 -10 2 -13 5 -11 C10 -8 6 -3 0 3Z" fill="'+c+'" opacity="'+o+'"/>';};
-      s+=h(360,80,4.2,'#B8283E',1,-8)+h(318,40,2.2,'#E07A88',.9,14)+h(404,30,1.6,'#B8283E',.8,-18)+h(286,96,1.3,'#B8283E',.7,10)+h(410,126,1.8,'#E07A88',.9,20)+h(250,40,1,'#B8283E',.6,-10);
-      for(var i=0;i<12;i++){s+=h(230+(i*61)%185,10+(i*29)%110,.55+(i%3)*.2,i%2?'#E07A88':'#B8283E',.35,i*23);}
-      return s;})()},
+    art:ART.sanvalentin},
   padre:{id:"padre",off:"translate(0,0)",bg:"#22303D",fg:"#F6F1E6",ac:"#C9A46A",mu:"rgba(246,241,230,.72)",
     name:{es:"Día del Padre",ca:"Dia del Pare",en:"Father's Day"},occ:{es:"Para papá",ca:"Per al pare",en:"For Dad"},
     msgs:{es:["Feliz Día del Padre. Hoy invitamos nosotros.","Papá, esta mesa es para ti.","Gracias por todo, papá. Brindamos juntos."],
           ca:["Feliç Dia del Pare. Avui convidem nosaltres.","Pare, aquesta taula és per a tu.","Gràcies per tot, pare. Brindem junts."],
           en:["Happy Father's Day. Today it's on us.","Dad, this table is for you.","Thanks for everything, Dad. Cheers together."]},
-    art:(function(){var s='',g='#C9A46A';
-      s+='<g fill="none" stroke="'+g+'" stroke-width="1.6" stroke-linejoin="round">';
-      s+='<path d="M318 60 h14 v26 c0 8 14 14 14 34 v86 c0 6 -4 8 -8 8 h-26 c-4 0 -8 -2 -8 -8 v-86 c0 -20 14 -26 14 -34 z"/>';
-      s+='<rect x="314" y="140" width="22" height="34" fill="'+g+'" fill-opacity=".18"/>';
-      s+='<path d="M368 120 c0 30 10 44 24 46 c14 -2 24 -16 24 -46 z"/><path d="M392 166 v42 m-16 0 h32"/>';
-      s+='<path d="M370 140 c8 4 36 4 44 0" stroke-opacity=".6"/></g>';
-      s+='<path d="M372 146 c10 4 30 4 40 0 c-2 12 -10 19 -20 19 c-10 0 -18 -7 -20 -19z" fill="#8E2C3A" opacity=".85"/>';
-      return s;})()},
-  madre:{id:"madre",bg:"#F1E8EE",fg:"#3A2236",ac:"#A0668F",mu:"rgba(58,34,54,.72)",
+    art:ART.padre},
+  madre:{id:"madre",bg:"#FDF0EC",fg:"#161E14",ac:"#D4574A",mu:"rgba(22,30,20,.7)",
     name:{es:"Día de la Madre",ca:"Dia de la Mare",en:"Mother's Day"},occ:{es:"Para mamá",ca:"Per a la mare",en:"For Mum"},
     msgs:{es:["Para la mejor madre del mundo. Gracias por todo.","Feliz Día de la Madre. Hoy invitamos nosotros.","Mamá, esta mesa es para ti."],
           ca:["Per a la millor mare del món. Gràcies per tot.","Feliç Dia de la Mare. Avui convidem nosaltres.","Mare, aquesta taula és per a tu."],
           en:["For the best mum in the world. Thank you for everything.","Happy Mother's Day. Today it's on us.","Mum, this table is for you."]},
-    art:(function(){var s='',f=function(x,y,r,c,cc){var t='<g transform="translate('+x+' '+y+')">';for(var k=0;k<6;k++){t+='<ellipse cx="0" cy="'+(-r)+'" rx="'+(r*.55)+'" ry="'+r+'" fill="'+c+'" transform="rotate('+k*60+')"/>';}return t+'<circle r="'+(r*.45)+'" fill="'+cc+'"/></g>';};
-      s+='<path d="M352 140 C350 110 340 90 330 70 M352 140 C358 112 372 96 392 84 M352 140 C352 118 360 70 366 50" stroke="#6E8A5C" stroke-width="1.6" fill="none"/>';
-      s+='<ellipse cx="340" cy="112" rx="9" ry="3.6" fill="#6E8A5C" transform="rotate(-50 340 112)"/><ellipse cx="368" cy="114" rx="9" ry="3.6" fill="#6E8A5C" transform="rotate(40 368 114)"/>';
-      s+=f(330,66,11,'#D9A3B8','#E8C26A')+f(392,82,9,'#B57AA6','#E8C26A')+f(366,46,12,'#E7BFCB','#C99A3A')+f(300,40,5,'#D9A3B8','#E8C26A')+f(410,40,4,'#B57AA6','#E8C26A');
-      return s;})()}
+    art:ART.madre}
 };
 var XM=(function(){var n=new Date(),m=n.getMonth(),d=n.getDate();return (m===10&&d>=20)||m===11||(m===0&&d<=6);})();
 var ORDER=XM?["navidad","clasico","cumple","amor","sanvalentin","padre","madre"]:["clasico","navidad","cumple","amor","sanvalentin","padre","madre"];
@@ -363,6 +371,13 @@ var ORDER=XM?["navidad","clasico","cumple","amor","sanvalentin","padre","madre"]
 var $=function(id){return document.getElementById(id)};
 var PDFS={es:"/tarjeta-regalo/condiciones-tarjeta-regalo-es.pdf",ca:"/tarjeta-regalo/condiciones-tarjeta-regalo-ca.pdf",en:"/tarjeta-regalo/condiciones-tarjeta-regalo-en.pdf"};
 var st={amount:100,custom:false,dz:ORDER[0],to:"recipient",lang:"es"};
+var GARLAND='<svg class="gar" viewBox="0 0 680 70" aria-hidden="true"><path d="M0 14Q85 62 170 22T340 22T510 22T680 14" fill="none" stroke="#B49356" stroke-width="1.2"/><circle cx="42" cy="37" r="7" fill="#B49356"/><circle cx="105" cy="45" r="7" fill="#C23B3B"/><circle cx="170" cy="22" r="7" fill="#FFFDF8"/><circle cx="235" cy="36" r="7" fill="#B49356"/><circle cx="300" cy="28" r="7" fill="#C23B3B"/><circle cx="365" cy="26" r="7" fill="#FFFDF8"/><circle cx="430" cy="38" r="7" fill="#B49356"/><circle cx="495" cy="30" r="7" fill="#C23B3B"/><circle cx="560" cy="32" r="7" fill="#FFFDF8"/><circle cx="625" cy="40" r="7" fill="#B49356"/></svg>';
+var PIL={es:"Elegancia · Buen producto · Buen vino",ca:"Elegància · Bon producte · Bon vi",en:"Elegance · Fine produce · Fine wine"};
+var XL={es:"Ver los menús de Navidad →",ca:"Veure els menús de Nadal →",en:"See the Christmas menus →"};
+function PX(){var l=st.lang||"es",e=document.getElementById("pil"),x=document.getElementById("xl");if(e)e.textContent=PIL[l];if(x)x.textContent=XL[l];}
+(function(){var hr=document.querySelector(".hero");if(!hr)return;var pe=document.createElement("div");pe.id="pil";pe.className="pil";hr.appendChild(pe);
+if(XM){document.body.classList.add("xm");hr.insertAdjacentHTML("afterbegin",GARLAND);var xe=document.createElement("a");xe.id="xl";xe.className="xl";xe.href="/navidad/";hr.appendChild(xe);}
+PX();setTimeout(PX,300);var lg=document.getElementById("langs");if(lg)lg.addEventListener("click",function(){setTimeout(PX,0);});})();
 
 function fmtEur(n){return Number(n).toLocaleString("es-ES",{maximumFractionDigits:2})+" €";}
 function validUntil(){var d=new Date();d.setFullYear(d.getFullYear()+1);
