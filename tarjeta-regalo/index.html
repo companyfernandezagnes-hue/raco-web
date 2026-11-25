@@ -370,6 +370,7 @@ var DESIGNS={
     art:ART.madre}
 };
 var XM=(function(){var n=new Date(),m=n.getMonth(),d=n.getDate();return (m===10&&d>=20)||m===11||(m===0&&d<=6);})();
+DESIGNS.navidad.art=ART.navidad;
 var ORDER=XM?["navidad","clasico","cumple","amor","sanvalentin","padre","madre"]:["clasico","navidad","cumple","amor","sanvalentin","padre","madre"];
 
 var $=function(id){return document.getElementById(id)};
