@@ -1150,5 +1150,6 @@ var w=document.getElementById('xword');if(w&&!small){l.addEventListener('mousemo
 })();
 </script>
 <script>(function(){var d=new Date(),m=d.getMonth()+1,y=d.getDate();if((m==11&&y>=20)||m==12||(m==1&&y<=6)){var h=document.querySelector(".hero");if(h)h.classList.add("xm");}})();</script>
+<script>(function(){var d=new Date(),m=d.getMonth()+1,y=d.getDate();var on=(m==11&&y>=20)||m==12||(m==1&&y<=6);if(!on){var h=document.querySelector(".hero");if(h)h.classList.remove("xm");document.querySelectorAll('a[href="/navidad/"],#navidad').forEach(function(e){var li=e.closest("li");(li||e).style.display="none";});}})();</script>
 </body>
 </html>
