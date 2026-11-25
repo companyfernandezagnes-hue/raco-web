@@ -216,6 +216,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5vw;height:72px;di
 
 /* HERO */
 .hero{min-height:100vh;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 5vw 3rem;position:relative;overflow:hidden;}
+.hero .bgv,.hero .veil{display:none}
+.hero.xm{background:#1F3D2E url(/navidad/hero-navidad.jpg) center/cover no-repeat}
+.hero.xm .bgv{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 55%;z-index:0}
+.hero.xm .veil{display:block;position:absolute;inset:0;background:linear-gradient(rgba(31,61,46,.78),rgba(31,61,46,.5) 45%,rgba(31,61,46,.85));z-index:1}
+.hero.xm>:not(.bgv):not(.veil){position:relative;z-index:2}
+.hero.xm .hero-pre{color:#E4CF9E}
+.hero.xm .hero-cta{color:#FFFDF8;border-color:rgba(255,253,248,.7)}
+@media (prefers-reduced-motion:reduce){.hero.xm .bgv{display:none}}
+
 .hero-pre{font-family:'Outfit',sans-serif;font-weight:400;font-size:12px;letter-spacing:4px;color:var(--gold-text);text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease 0.2s forwards;animation-fill-mode:forwards;}
 .hero-logo-wrap{opacity:0;animation:fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;margin-bottom:2.5rem;display:flex;justify-content:center;}
 .hero-logo-wrap svg{width:min(260px,52vw);display:block;}
@@ -606,6 +615,7 @@ footer{background:var(--ink);padding:2.5rem 5vw;display:flex;align-items:center;
 
 <!-- HERO -->
 <section class="hero">
+  <video class="bgv" autoplay muted loop playsinline preload="metadata" poster="/navidad/hero-navidad.jpg" aria-hidden="true"><source src="/navidad/hero-navidad.mp4" type="video/mp4"></video><div class="veil"></div>
   <h1 class="hero-pre" data-i18n="hero-h1">Restaurante y Wine Bar · Palma de Mallorca</h1>
   <div class="hero-logo-wrap">
     <svg viewBox="0 0 141.732 141.732" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Raco">
@@ -1139,5 +1149,6 @@ for(var q=0;q<(small?6:14);q++){var bk=document.createElement('i');bk.className=
 var w=document.getElementById('xword');if(w&&!small){l.addEventListener('mousemove',function(e){var r=l.getBoundingClientRect(),dx=(e.clientX-r.left)/r.width-0.5,dy=(e.clientY-r.top)/r.height-0.5;w.style.transform='translate('+(dx*-14)+'px,'+(dy*-8)+'px)';});l.addEventListener('mouseleave',function(){w.style.transform='';});}
 })();
 </script>
+<script>(function(){var d=new Date(),m=d.getMonth()+1,y=d.getDate();if((m==11&&y>=20)||m==12||(m==1&&y<=6)){var h=document.querySelector(".hero");if(h)h.classList.add("xm");}})();</script>
 </body>
 </html>
