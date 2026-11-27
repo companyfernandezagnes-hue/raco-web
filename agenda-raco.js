@@ -15,7 +15,7 @@
       nav: 'Agenda', label: 'Agenda',
       title: 'Lo que viene en Raco',
       xLabel: 'Navidad 2026', xTitle: 'Celebra las fiestas en Raco',
-      xText: 'Comidas y cenas de empresa, familia o amigos. Tres menús cerrados para grupos, con nuestra cocina de producto y nuestros vinos.',
+      xText: 'Comidas y cenas de empresa, familia o amigos. Tres menús cerrados para grupos de mínimo 15 personas, con nuestra cocina de producto y nuestros vinos.',
       pp: 'por persona', xSee: 'Ver los menús', xAsk: 'Pedir presupuesto',
       xNote: 'Las mejores fechas de diciembre vuelan: reserva con tiempo.',
       xDay: 'Menús del 25 y del 31 de diciembre',
@@ -34,7 +34,7 @@
       nav: 'Agenda', label: 'Agenda',
       title: 'El que ve a Raco',
       xLabel: 'Nadal 2026', xTitle: 'Celebra les festes a Raco',
-      xText: "Dinars i sopars d'empresa, família o amics. Tres menús tancats per a grups, amb la nostra cuina de producte i els nostres vins.",
+      xText: "Dinars i sopars d'empresa, família o amics. Tres menús tancats per a grups de mínim 15 persones, amb la nostra cuina de producte i els nostres vins.",
       pp: 'per persona', xSee: 'Veure els menús', xAsk: 'Demanar pressupost',
       xNote: 'Les millors dates de desembre volen: reserva amb temps.',
       xDay: 'Menús del 25 i del 31 de desembre',
@@ -53,7 +53,7 @@
       nav: 'Events', label: 'Events',
       title: 'Coming up at Raco',
       xLabel: 'Christmas 2026', xTitle: 'Celebrate the season at Raco',
-      xText: 'Company, family or friends’ lunches and dinners. Three set menus for groups, with our product-led cooking and our wines.',
+      xText: 'Company, family or friends’ lunches and dinners. Three set menus for groups of 15 or more, with our product-led cooking and our wines.',
       pp: 'per person', xSee: 'See the menus', xAsk: 'Request a quote',
       xNote: 'December’s best dates go fast, so book early.',
       xDay: 'Menus for 25 and 31 December',
@@ -422,7 +422,6 @@
   }
 
   function pill(show) {
-    return; /* sin boton flotante: la agenda solo sale como banner al entrar */
     var p = document.getElementById('ag-pill');
     if (!p) {
       if (!show || !hasContent()) return;
