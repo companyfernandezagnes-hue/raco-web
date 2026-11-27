@@ -24,7 +24,8 @@
       jLabel: 'Jueves de Bodega', jTitle: 'El bodeguero, en la mesa',
       jText: 'Los jueves de bodega, quien hace el vino viene a Raco y lo explica copa a copa. Plazas limitadas.',
       jWith: 'con', jBook: 'Reservar plaza', jCal: 'Añadir al calendario', jFull: 'Completo',
-      jEmpty: 'Estamos cerrando las próximas bodegas.', jNotify: 'Avísame por email',
+      jEmpty: 'Estamos cerrando las próximas bodegas.',
+      gLabel: 'Tarjeta regalo', gTitle: 'Regala una mesa en Raco', gText: 'Una experiencia en la mesa para quien tú quieras. Ideal para Navidad y para cualquier día del año.', gBtn: 'Ver tarjetas regalo', jNotify: 'Avísame por email',
       jMailSubj: 'Jueves de Bodega', jMailBody: 'Hola, quiero reservar plaza para el Jueves de Bodega',
       jPeople: 'Somos ___ personas. Nombre y teléfono: ', contact: 'Nombre y teléfono: ',
       call: 'o llámanos al', close: 'Cerrar', more: 'Ver más'
@@ -42,7 +43,8 @@
       jLabel: 'Dijous de Celler', jTitle: 'El seller, a taula',
       jText: "Els dijous de celler, qui fa el vi ve a Raco i l'explica copa a copa. Places limitades.",
       jWith: 'amb', jBook: 'Reservar plaça', jCal: 'Afegir al calendari', jFull: 'Complet',
-      jEmpty: 'Estam tancant els propers cellers.', jNotify: "Avisa'm per email",
+      jEmpty: 'Estam tancant els propers cellers.',
+      gLabel: 'Targeta regal', gTitle: 'Regala una taula a Raco', gText: 'Una experiència a taula per a qui tu vulguis. Ideal per a Nadal i per a qualsevol dia de l’any.', gBtn: 'Veure targetes regal', jNotify: "Avisa'm per email",
       jMailSubj: 'Dijous de Celler', jMailBody: 'Hola, vull reservar plaça per al Dijous de Celler',
       jPeople: 'Som ___ persones. Nom i telèfon: ', contact: 'Nom i telèfon: ',
       call: 'o truca’ns al', close: 'Tancar', more: 'Veure més'
@@ -60,7 +62,8 @@
       jLabel: 'Winery Thursdays', jTitle: 'Meet the winemaker',
       jText: 'On Winery Thursdays, the people who make the wine come to Raco and talk you through it glass by glass. Limited seats.',
       jWith: 'with', jBook: 'Book a seat', jCal: 'Add to calendar', jFull: 'Sold out',
-      jEmpty: 'We are lining up the next wineries.', jNotify: 'Let me know by email',
+      jEmpty: 'We are lining up the next wineries.',
+      gLabel: 'Gift card', gTitle: 'Give a table at Raco', gText: 'A meal at the table for someone you love. Perfect for Christmas, or any day of the year.', gBtn: 'See gift cards', jNotify: 'Let me know by email',
       jMailSubj: 'Winery Thursday', jMailBody: 'Hello, I would like to book a seat for the Winery Thursday',
       jPeople: 'We are ___ people. Name and phone: ', contact: 'Name and phone: ',
       call: 'or call us on', close: 'Close', more: 'See more'
@@ -247,8 +250,18 @@
       '</div>';
   }
 
+  function giftHTML(t, cls) {
+    var dark = cls === 'x';
+    return '<div class="' + (dark ? 'ag-x' : 'ag-j') + '">' +
+      '<span class="ag-k">' + t.gLabel + '</span>' +
+      '<h3>' + t.gTitle + '</h3>' +
+      '<p>' + t.gText + '</p>' +
+      '<div class="ag-btns"><a class="ag-b" href="/tarjeta-regalo/" data-ag="gift">' + t.gBtn + '</a></div></div>';
+  }
+
   function juevesHTML(t) {
     var list = upcoming().slice(0, 4);
+    if (!list.length) return giftHTML(t, 'x');
     var items = list.map(function (e, i) {
       var d = parse(e.fecha);
       var meta = [e.zona, e.con ? t.jWith + ' ' + e.con : '', (e.hora || '19:00') + ' h', e.precio ? e.precio + ' €' : '']
@@ -357,6 +370,11 @@
       '<p>' + t.jText + '</p>' +
       (items ? '<ul class="ls">' + items + '</ul>' : '<p><em>' + t.jEmpty + '</em></p>') +
       '<div class="bt"><a class="b" href="' + BOOK_URL + '" target="_blank" rel="noopener" data-ag="mbook">' + t.jBook + '</a><a class="b o" href="#agenda" data-ag="pop">' + t.more + '</a></div></div>';
+    if (!list.length) {
+      right = '<div class="pj"><span class="k">' + t.gLabel + '</span><h3>' + t.gTitle + '</h3>' +
+        '<p>' + t.gText + '</p>' +
+        '<div class="bt"><a class="b" href="/tarjeta-regalo/" data-ag="gift">' + t.gBtn + '</a></div></div>';
+    }
     return '<div class="bg" data-ag="close"></div><div class="card">' +
       '<button class="x" type="button" data-ag="close" aria-label="' + t.close + '">×</button>' +
       '<div class="hd"><span class="k">' + t.label + '</span><h2 id="ag-m-t">' + t.title + '</h2></div>' +
