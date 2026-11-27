@@ -534,7 +534,7 @@ validFrom: '2026-11-01T09:00:00+01:00'
     fetch(DATA_URL, { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
       data = j;
       try { eventsLD(); } catch (e) {}
-      if (!xmasActive() && !upcoming().length && !(data.jueves_bodega)) return;
+      return; /* Agenda oculta: quitar esta linea para volver a mostrarla */
       render();
       if (location.hash === '#agenda') document.getElementById('agenda').scrollIntoView();
       schedulePop();
