@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Canje tarjeta regalo · RACO personal</title>
+<style>
+:root{--paper:#FFFDF8;--ink:#161E14;--gold:#B49356;--gold-text:#8C6A2E;--gold-20:rgba(180,147,86,.3);--ink-70:rgba(22,30,20,.72);--soft:#F6F1E6;--ok:#2F6B3A;--bad:#9B2C2C;--warn:#8A5A12}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);font-family:Helvetica,Arial,sans-serif;color:var(--ink);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px 16px 48px}
+img.logo{height:54px;width:auto;margin:8px 0 6px}
+.kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-text);margin-bottom:22px}
+main{width:100%;max-width:440px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:26px;text-align:center;margin-bottom:18px}
+label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-text);margin:14px 0 6px}
+input{width:100%;font:inherit;font-size:20px;padding:14px;border:1px solid var(--gold-20);background:#fff;color:var(--ink);border-radius:0;letter-spacing:.12em}
+input.code{text-transform:uppercase;text-align:center;font-size:24px;letter-spacing:.2em}
+input.name{font-size:16px;letter-spacing:0}
+button{width:100%;margin-top:16px;padding:16px;border:0;background:var(--ink);color:var(--paper);font:inherit;font-size:14px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+button.gold{background:var(--gold)}
+button.ghost{background:none;color:var(--ink-70);border:1px solid var(--gold-20)}
+button:disabled{opacity:.5}
+.msg{margin-top:12px;font-size:14px;color:var(--bad);text-align:center;min-height:18px}
+.card{margin-top:22px;border:2px solid var(--gold-20);background:#fff;padding:22px 20px;text-align:center}
+.card.valid{border-color:var(--ok)}
+.card.bad{border-color:var(--bad)}
+.card.warn{border-color:var(--warn)}
+.status{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:bold}
+.valid .status{color:var(--ok)}.bad .status{color:var(--bad)}.warn .status{color:var(--warn)}
+.amount{font-family:Georgia,serif;font-size:52px;margin:10px 0 4px}
+.row{font-size:14px;color:var(--ink-70);line-height:1.7}
+.testbadge{display:inline-block;background:var(--bad);color:#fff;font-size:11px;letter-spacing:.14em;padding:4px 10px;margin-bottom:10px}
+.hint{font-size:13px;color:var(--ink-70);margin-top:14px;line-height:1.5;text-align:center}
+.top{display:flex;justify-content:flex-end;width:100%;max-width:440px}
+.top a{font-size:12px;color:var(--ink-70);cursor:pointer;text-decoration:underline}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<img class="logo" src="/tarjeta-regalo/logo-raco.png" alt="RACO">
+<div class="kicker">Solo personal</div>
+
+<main>
+  <section id="login">
+    <h1>Entrar</h1>
+    <label for="pin">PIN del equipo</label>
+    <input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="••••">
+    <button id="btnLogin">Entrar</button>
+    <div class="msg" id="loginMsg"></div>
+  </section>
+
+  <section id="app" hidden>
+    <div class="top"><a id="logout">Salir</a></div>
+    <h1>Canjear tarjeta regalo</h1>
+    <label for="code">Código de la tarjeta</label>
+    <input id="code" class="code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX XXXX XXXX">
+    <label for="by">Quién canjea</label>
+    <input id="by" class="name" type="text" autocomplete="off" maxlength="40" placeholder="Tu nombre">
+    <button id="btnCheck">Comprobar</button>
+    <div class="msg" id="appMsg"></div>
+    <div id="result"></div>
+  </section>
+</main>
+
+<script>
+const API = "https://torgtlggdnvvdarsogqu.supabase.co/functions/v1/gift-redeem";
+const $ = (id) => document.getElementById(id);
+let PIN = "";
+try { PIN = sessionStorage.getItem("raco_pin") || ""; } catch (e) {}
+
+const eur = (c) => (c / 100).toLocaleString("es-ES", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + " €";
+const fdate = (iso) => iso ? new Date(iso).toLocaleDateString("es-ES", { timeZone: "Europe/Madrid", day: "2-digit", month: "2-digit", year: "numeric" }) : "";
+const fdt = (iso) => iso ? new Date(iso).toLocaleString("es-ES", { timeZone: "Europe/Madrid", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+async function call(payload) {
+  const res = await fetch(API, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ pin: PIN, ...payload }) });
+  let data = {};
+  try { data = await res.json(); } catch (e) {}
+  return { status: res.status, data };
+}
+
+function showApp() {
+  $("login").hidden = true; $("app").hidden = false;
+  try { $("by").value = localStorage.getItem("raco_by") || ""; } catch (e) {}
+}
+
+async function login() {
+  PIN = $("pin").value.trim();
+  $("loginMsg").textContent = "";
+  if (!/^\d{4,8}$/.test(PIN)) { $("loginMsg").textContent = "PIN no válido"; return; }
+  $("btnLogin").disabled = true;
+  const { status, data } = await call({ action: "auth" });
+  $("btnLogin").disabled = false;
+  if (status === 200 && data.ok) { try { sessionStorage.setItem("raco_pin", PIN); } catch (e) {} showApp(); }
+  else $("loginMsg").textContent = status === 401 ? "PIN incorrecto" : "No se pudo conectar. Inténtalo de nuevo.";
+}
+
+function render(state, c) {
+  const test = c && c.test ? '<div class="testbadge">TARJETA DE PRUEBA, NO ES REAL</div><br>' : "";
+  const who = c && c.recipient_name ? `<div class="row">Para: ${esc(c.recipient_name)}</div>` : "";
+  let cls = "bad", title = "", body = "", btn = "";
+  if (state === "not_found") {
+    return `<div class="card bad"><div class="status">Código no encontrado</div><div class="row" style="margin-top:10px">Revisa que esté bien escrito.</div></div>`;
+  }
+  if (state === "valid") {
+    cls = "valid"; title = "Válida";
+    body = `<div class="amount">${eur(c.amount_cents)}</div>${who}<div class="row">Caduca el ${fdate(c.expires_at)}</div>`;
+    btn = c.test ? "" : `<button id="btnRedeem" class="gold">Canjear ahora</button><div class="hint">Canjéala solo cuando vayáis a cobrar. Descuenta el importe de la cuenta. Un solo uso: si la cuenta es menor, el resto no se acumula.</div>`;
+  } else if (state === "just_redeemed") {
+    cls = "valid"; title = "Canjeada correctamente";
+    body = `<div class="amount">${eur(c.amount_cents)}</div><div class="row">Descuéntala de la cuenta.</div><div class="row">${fdt(c.redeemed_at)} · ${esc(c.redeemed_by)}</div>`;
+  } else if (state === "redeemed") {
+    title = "Ya canjeada";
+    body = `<div class="amount">${eur(c.amount_cents)}</div><div class="row">Se canjeó el ${fdt(c.redeemed_at)}${c.redeemed_by ? " · " + esc(c.redeemed_by) : ""}</div><div class="row">No se puede usar otra vez.</div>`;
+  } else if (state === "expired") {
+    cls = "warn"; title = "Caducada";
+    body = `<div class="amount">${eur(c.amount_cents)}</div><div class="row">Caducó el ${fdate(c.expires_at)}.</div><div class="row">Avisa a la dirección antes de decir nada al cliente.</div>`;
+  } else {
+    cls = "warn"; title = "Pago no completado";
+    body = `<div class="row" style="margin-top:10px">Esta tarjeta no consta como pagada. No la aceptes y avisa a la dirección.</div>`;
+  }
+  return `<div class="card ${cls}">${test}<div class="status">${title}</div>${body}</div>${btn}`;
+}
+
+async function check() {
+  $("appMsg").textContent = ""; $("result").innerHTML = "";
+  const code = $("code").value;
+  if (code.replace(/[^A-Za-z0-9]/g, "").length < 12) { $("appMsg").textContent = "El código tiene 12 caracteres"; return; }
+  $("btnCheck").disabled = true;
+  const { status, data } = await call({ action: "lookup", code });
+  $("btnCheck").disabled = false;
+  if (status === 401) { logout(); return; }
+  if (status !== 200) { $("appMsg").textContent = "Error de conexión. Inténtalo de nuevo."; return; }
+  $("result").innerHTML = render(data.state, data.card);
+  const b = $("btnRedeem");
+  if (b) b.onclick = () => redeem(code);
+}
+
+async function redeem(code) {
+  const by = $("by").value.trim();
+  if (!by) { $("appMsg").textContent = "Escribe tu nombre antes de canjear"; $("by").focus(); return; }
+  try { localStorage.setItem("raco_by", by); } catch (e) {}
+  if (!confirm("¿Canjear esta tarjeta ahora? No se puede deshacer.")) return;
+  const b = $("btnRedeem"); if (b) b.disabled = true;
+  const { status, data } = await call({ action: "redeem", code, by });
+  if (status === 401) { logout(); return; }
+  if (status !== 200) { $("appMsg").textContent = "No se pudo canjear. Comprueba antes de volver a intentarlo."; if (b) b.disabled = false; return; }
+  $("result").innerHTML = render(data.state, data.card);
+}
+
+function logout() {
+  PIN = ""; try { sessionStorage.removeItem("raco_pin"); } catch (e) {}
+  $("app").hidden = true; $("login").hidden = false; $("pin").value = ""; $("result").innerHTML = "";
+}
+
+$("btnLogin").onclick = login;
+$("pin").addEventListener("keydown", (e) => { if (e.key === "Enter") login(); });
+$("btnCheck").onclick = check;
+$("code").addEventListener("keydown", (e) => { if (e.key === "Enter") check(); });
+$("logout").onclick = logout;
+if (PIN) { call({ action: "auth" }).then(({ status, data }) => { if (status === 200 && data.ok) showApp(); else logout(); }); }
+</script>
+</body>
+</html>
