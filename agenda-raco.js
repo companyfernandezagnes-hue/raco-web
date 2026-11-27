@@ -364,7 +364,7 @@
       '<div class="px"><span class="k">' + t.xLabel + '</span><h3>' + t.xTitle + '</h3>' +
       '<p>' + t.xText + '</p>' +
       '<div class="pr">' + (x.precios || []).map(function (p) { return '<div><b>' + esc(p) + '€</b><small>' + t.pp + '</small></div>'; }).join('') + '</div>' +
-      '<div class="bt"><a class="b" href="#agenda" data-ag="mx">' + t.xAsk + '</a><a class="b o" href="' + MENUS_URL + '" data-ag="xsee">' + t.xSee + '</a></div></div>' : '';
+      '<div class="bt"><a class="b" href="' + mailto(t.xMailSubj, t.xMailBody) + '">' + t.xAsk + '</a><a class="b o" href="' + MENUS_URL + '" data-ag="xsee">' + t.xSee + '</a></div></div>' : '';
     var items = list.map(function (e, i) {
       var d = parse(e.fecha);
       var sub = [(e.hora || '19:00') + ' h', e.precio ? e.precio + ' €' : '', e.completo ? t.jFull : ''].filter(Boolean).join(' · ');
@@ -422,6 +422,7 @@
   }
 
   function pill(show) {
+    return; /* sin boton flotante: la agenda solo sale como banner al entrar */
     var p = document.getElementById('ag-pill');
     if (!p) {
       if (!show || !hasContent()) return;
@@ -543,11 +544,9 @@ validFrom: '2026-11-01T09:00:00+01:00'
       data = j;
       try { eventsLD(); } catch (e) {}
       if (!xmasActive() && !upcoming().length && !(data.jueves_bodega)) return;
-      render();
-      if (location.hash === '#agenda') document.getElementById('agenda').scrollIntoView();
       schedulePop();
       if (window.MutationObserver) {
-        new MutationObserver(function () { render(); var m = document.getElementById('ag-modal'); if (m) { m.innerHTML = modalHTML(T[lang()]); } var p = document.getElementById('ag-pill'); if (p) p.innerHTML = '<i></i>' + T[lang()].nav; }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+        new MutationObserver(function () { var m = document.getElementById('ag-modal'); if (m) { m.innerHTML = modalHTML(T[lang()]); } var p = document.getElementById('ag-pill'); if (p) p.innerHTML = '<i></i>' + T[lang()].nav; }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
       }
     }).catch(function () {});
   }
