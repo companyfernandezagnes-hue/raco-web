@@ -25,7 +25,7 @@
       jText: 'Los jueves de bodega, quien hace el vino viene a Raco y lo explica copa a copa. Plazas limitadas.',
       jWith: 'con', jBook: 'Reservar plaza', jCal: 'Añadir al calendario', jFull: 'Completo',
       jEmpty: 'Estamos cerrando las próximas bodegas.',
-      gLabel: 'Tarjeta regalo', gTitle: 'Regala una mesa en Raco', gText: 'Una experiencia en la mesa para quien tú quieras. Ideal para Navidad y para cualquier día del año.', gBtn: 'Ver tarjetas regalo', cSub: 'Descubre lo que vamos a cocinar para ti.', cBtn: 'Descubrir los menús', jNotify: 'Avísame por email',
+      gLabel: 'Tarjeta regalo', gTitle: 'Regala una mesa en Raco', gText: 'Una experiencia en la mesa para quien tú quieras. Ideal para Navidad y para cualquier día del año.', gBtn: 'Ver tarjetas regalo', cSub: 'Descubre lo que vamos a cocinar para ti.', cBtn: 'Descubrir los menús', minG: 'Mínimo 15 personas', jNotify: 'Avísame por email',
       jMailSubj: 'Jueves de Bodega', jMailBody: 'Hola, quiero reservar plaza para el Jueves de Bodega',
       jPeople: 'Somos ___ personas. Nombre y teléfono: ', contact: 'Nombre y teléfono: ',
       call: 'o llámanos al', close: 'Cerrar', more: 'Ver más'
@@ -44,7 +44,7 @@
       jText: "Els dijous de celler, qui fa el vi ve a Raco i l'explica copa a copa. Places limitades.",
       jWith: 'amb', jBook: 'Reservar plaça', jCal: 'Afegir al calendari', jFull: 'Complet',
       jEmpty: 'Estam tancant els propers cellers.',
-      gLabel: 'Targeta regal', gTitle: 'Regala una taula a Raco', gText: 'Una experiència a taula per a qui tu vulguis. Ideal per a Nadal i per a qualsevol dia de l’any.', gBtn: 'Veure targetes regal', cSub: 'Descobreix què cuinarem per a tu.', cBtn: 'Descobrir els menús', jNotify: "Avisa'm per email",
+      gLabel: 'Targeta regal', gTitle: 'Regala una taula a Raco', gText: 'Una experiència a taula per a qui tu vulguis. Ideal per a Nadal i per a qualsevol dia de l’any.', gBtn: 'Veure targetes regal', cSub: 'Descobreix què cuinarem per a tu.', cBtn: 'Descobrir els menús', minG: 'Mínim 15 persones', jNotify: "Avisa'm per email",
       jMailSubj: 'Dijous de Celler', jMailBody: 'Hola, vull reservar plaça per al Dijous de Celler',
       jPeople: 'Som ___ persones. Nom i telèfon: ', contact: 'Nom i telèfon: ',
       call: 'o truca’ns al', close: 'Tancar', more: 'Veure més'
@@ -63,7 +63,7 @@
       jText: 'On Winery Thursdays, the people who make the wine come to Raco and talk you through it glass by glass. Limited seats.',
       jWith: 'with', jBook: 'Book a seat', jCal: 'Add to calendar', jFull: 'Sold out',
       jEmpty: 'We are lining up the next wineries.',
-      gLabel: 'Gift card', gTitle: 'Give a table at Raco', gText: 'A meal at the table for someone you love. Perfect for Christmas, or any day of the year.', gBtn: 'See gift cards', cSub: 'Discover what we will be cooking for you.', cBtn: 'Discover the menus', jNotify: 'Let me know by email',
+      gLabel: 'Gift card', gTitle: 'Give a table at Raco', gText: 'A meal at the table for someone you love. Perfect for Christmas, or any day of the year.', gBtn: 'See gift cards', cSub: 'Discover what we will be cooking for you.', cBtn: 'Discover the menus', minG: 'Minimum 15 guests', jNotify: 'Let me know by email',
       jMailSubj: 'Winery Thursday', jMailBody: 'Hello, I would like to book a seat for the Winery Thursday',
       jPeople: 'We are ___ people. Name and phone: ', contact: 'Name and phone: ',
       call: 'or call us on', close: 'Close', more: 'See more'
@@ -364,6 +364,7 @@
       '<div class="px"><span class="k">' + t.xLabel + '</span><h3>' + t.xTitle + '</h3>' +
       '<p>' + t.xText + '</p>' +
       '<div class="pr">' + (x.precios || []).map(function (p) { return '<div><b>' + esc(p) + '€</b><small>' + t.pp + '</small></div>'; }).join('') + '</div>' +
+      '<div style="text-align:center;margin:.1rem 0 1.1rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:.24em;font-size:16px;color:var(--gold,#B49356)">✦ ' + t.minG + ' ✦</div>' +
       '<div class="bt"><a class="b" href="' + mailto(t.xMailSubj, t.xMailBody) + '">' + t.xAsk + '</a><a class="b o" href="' + MENUS_URL + '" data-ag="xsee">' + t.xSee + '</a></div></div>' : '';
     var items = list.map(function (e, i) {
       var d = parse(e.fecha);
