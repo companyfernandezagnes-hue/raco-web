@@ -25,7 +25,7 @@
       jText: 'Los jueves de bodega, quien hace el vino viene a Raco y lo explica copa a copa. Plazas limitadas.',
       jWith: 'con', jBook: 'Reservar plaza', jCal: 'Añadir al calendario', jFull: 'Completo',
       jEmpty: 'Estamos cerrando las próximas bodegas.',
-      gLabel: 'Tarjeta regalo', gTitle: 'Regala una mesa en Raco', gText: 'Una experiencia en la mesa para quien tú quieras. Ideal para Navidad y para cualquier día del año.', gBtn: 'Ver tarjetas regalo', jNotify: 'Avísame por email',
+      gLabel: 'Tarjeta regalo', gTitle: 'Regala una mesa en Raco', gText: 'Una experiencia en la mesa para quien tú quieras. Ideal para Navidad y para cualquier día del año.', gBtn: 'Ver tarjetas regalo', cSub: 'Descubre lo que vamos a cocinar para ti.', cBtn: 'Descubrir los menús', jNotify: 'Avísame por email',
       jMailSubj: 'Jueves de Bodega', jMailBody: 'Hola, quiero reservar plaza para el Jueves de Bodega',
       jPeople: 'Somos ___ personas. Nombre y teléfono: ', contact: 'Nombre y teléfono: ',
       call: 'o llámanos al', close: 'Cerrar', more: 'Ver más'
@@ -44,7 +44,7 @@
       jText: "Els dijous de celler, qui fa el vi ve a Raco i l'explica copa a copa. Places limitades.",
       jWith: 'amb', jBook: 'Reservar plaça', jCal: 'Afegir al calendari', jFull: 'Complet',
       jEmpty: 'Estam tancant els propers cellers.',
-      gLabel: 'Targeta regal', gTitle: 'Regala una taula a Raco', gText: 'Una experiència a taula per a qui tu vulguis. Ideal per a Nadal i per a qualsevol dia de l’any.', gBtn: 'Veure targetes regal', jNotify: "Avisa'm per email",
+      gLabel: 'Targeta regal', gTitle: 'Regala una taula a Raco', gText: 'Una experiència a taula per a qui tu vulguis. Ideal per a Nadal i per a qualsevol dia de l’any.', gBtn: 'Veure targetes regal', cSub: 'Descobreix què cuinarem per a tu.', cBtn: 'Descobrir els menús', jNotify: "Avisa'm per email",
       jMailSubj: 'Dijous de Celler', jMailBody: 'Hola, vull reservar plaça per al Dijous de Celler',
       jPeople: 'Som ___ persones. Nom i telèfon: ', contact: 'Nom i telèfon: ',
       call: 'o truca’ns al', close: 'Tancar', more: 'Veure més'
@@ -63,7 +63,7 @@
       jText: 'On Winery Thursdays, the people who make the wine come to Raco and talk you through it glass by glass. Limited seats.',
       jWith: 'with', jBook: 'Book a seat', jCal: 'Add to calendar', jFull: 'Sold out',
       jEmpty: 'We are lining up the next wineries.',
-      gLabel: 'Gift card', gTitle: 'Give a table at Raco', gText: 'A meal at the table for someone you love. Perfect for Christmas, or any day of the year.', gBtn: 'See gift cards', jNotify: 'Let me know by email',
+      gLabel: 'Gift card', gTitle: 'Give a table at Raco', gText: 'A meal at the table for someone you love. Perfect for Christmas, or any day of the year.', gBtn: 'See gift cards', cSub: 'Discover what we will be cooking for you.', cBtn: 'Discover the menus', jNotify: 'Let me know by email',
       jMailSubj: 'Winery Thursday', jMailBody: 'Hello, I would like to book a seat for the Winery Thursday',
       jPeople: 'We are ___ people. Name and phone: ', contact: 'Name and phone: ',
       call: 'or call us on', close: 'Close', more: 'See more'
@@ -250,6 +250,11 @@
       '</div>';
   }
 
+  function xmasCTA(t) {
+    return '<a class="ag-cta" href="/navidad/" data-ag="xsee2"><small>✦ ' + t.xLabel + ' ✦</small>' +
+      '<b>' + t.xDay + '</b><span>' + t.cSub + '</span><em>' + t.cBtn + ' →</em></a>';
+  }
+
   function giftHTML(t, cls) {
     var dark = cls === 'x';
     return '<div class="' + (dark ? 'ag-x' : 'ag-j') + '">' +
@@ -358,7 +363,6 @@
     var left = showX ?
       '<div class="px"><span class="k">' + t.xLabel + '</span><h3>' + t.xTitle + '</h3>' +
       '<p>' + t.xText + '</p>' +
-      '<a href="/navidad/" style="display:inline-block;margin:.2rem 0 .4rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:.12em;font-size:15px;color:var(--gold,#B49356);text-decoration:none">' + t.xDay + ' →</a>' +
       '<div class="pr">' + (x.precios || []).map(function (p) { return '<div><b>' + esc(p) + '€</b><small>' + t.pp + '</small></div>'; }).join('') + '</div>' +
       '<div class="bt"><a class="b" href="#agenda" data-ag="mx">' + t.xAsk + '</a><a class="b o" href="' + MENUS_URL + '" data-ag="xsee">' + t.xSee + '</a></div></div>' : '';
     var items = list.map(function (e, i) {
@@ -374,7 +378,7 @@
     if (!list.length) {
       right = '<div class="pj"><span class="k">' + t.gLabel + '</span><h3>' + t.gTitle + '</h3>' +
         '<p>' + t.gText + '</p>' +
-        '<div class="bt"><a class="b" href="/tarjeta-regalo/" data-ag="gift">' + t.gBtn + '</a></div></div>';
+        '<div class="bt"><a class="b" href="/tarjeta-regalo/" data-ag="gift">' + t.gBtn + '</a></div>' + (showX ? xmasCTA(t) : '') + '</div>';
     }
     return '<div class="bg" data-ag="close"></div><div class="card">' +
       '<button class="x" type="button" data-ag="close" aria-label="' + t.close + '">×</button>' +
@@ -532,6 +536,9 @@ validFrom: '2026-11-01T09:00:00+01:00'
     var st = document.createElement('style');
     st.textContent = css;
     document.head.appendChild(st);
+    var st2 = document.createElement('style');
+    st2.textContent = ".ag-cta{display:block;position:relative;overflow:hidden;margin-top:1.5rem;padding:1.3rem 1.5rem 1.2rem;background:linear-gradient(135deg,#1F3D2E,#14261c);border:1px solid #B49356;border-top:3px solid #A3282F;color:#FFFDF8;text-decoration:none;transition:transform .35s,box-shadow .35s}.ag-cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(31,61,46,.35)}.ag-cta:before{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(180,147,86,.38),transparent);transform:skewX(-20deg);animation:agcs 3.6s infinite}@keyframes agcs{0%{left:-60%}60%,100%{left:130%}}.ag-cta small{display:block;font-family:'Bebas Neue',sans-serif;letter-spacing:.3em;font-size:12px;color:#B49356}.ag-cta b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:28px;letter-spacing:.06em;line-height:1.1;margin:.4rem 0;color:#FFFDF8}.ag-cta span{display:block;font:300 14px Outfit,sans-serif;opacity:.85}.ag-cta em{display:inline-block;margin-top:.9rem;font-style:normal;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#B49356;border-bottom:1px solid #B49356;padding-bottom:2px}@media (prefers-reduced-motion:reduce){.ag-cta:before{animation:none}.ag-cta{transition:none}}";
+    document.head.appendChild(st2);
     fetch(DATA_URL, { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
       data = j;
       try { eventsLD(); } catch (e) {}
