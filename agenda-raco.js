@@ -358,6 +358,7 @@
     var left = showX ?
       '<div class="px"><span class="k">' + t.xLabel + '</span><h3>' + t.xTitle + '</h3>' +
       '<p>' + t.xText + '</p>' +
+      '<a href="/navidad/" style="display:inline-block;margin:.2rem 0 .4rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:.12em;font-size:15px;color:var(--gold,#B49356);text-decoration:none">' + t.xDay + ' →</a>' +
       '<div class="pr">' + (x.precios || []).map(function (p) { return '<div><b>' + esc(p) + '€</b><small>' + t.pp + '</small></div>'; }).join('') + '</div>' +
       '<div class="bt"><a class="b" href="#agenda" data-ag="mx">' + t.xAsk + '</a><a class="b o" href="' + MENUS_URL + '" data-ag="xsee">' + t.xSee + '</a></div></div>' : '';
     var items = list.map(function (e, i) {
@@ -534,7 +535,7 @@ validFrom: '2026-11-01T09:00:00+01:00'
     fetch(DATA_URL, { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
       data = j;
       try { eventsLD(); } catch (e) {}
-      return; /* Agenda oculta: quitar esta linea para volver a mostrarla */
+      if (!xmasActive() && !upcoming().length && !(data.jueves_bodega)) return;
       render();
       if (location.hash === '#agenda') document.getElementById('agenda').scrollIntoView();
       schedulePop();
